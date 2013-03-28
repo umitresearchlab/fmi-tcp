@@ -1,21 +1,37 @@
 fmi-master
 ==========
 
-Co-simulation CLI.
+Command line interface for doing co-simulation using FMUs. Built on top of [FMILibrary](http://www.jmodelica.org/FMILibrary) from [jModelica](http://www.jmodelica.org).
 
+### Build
+The build was done successfully on Ubuntu Linux 12.10.
 
-# Manual page
+Begin with installing [FMILibrary](http://www.jmodelica.org/FMILibrary). Make sure the libraries and include files ends up in /usr/lib and /usr/include (or whatever suits you best).
+
+Build and install the master using the following commands. You'll need [CMake](http://www.cmake.org/).
 ```
-FMU-MASTER(1)                                                    FMU-MASTER(1)
+cd path/to/fmilib-master;
+mkdir build;
+cd build;
+cmake ..;
+make;
+sudo make install;
+```
+
+Now you should be able to run ```fmi-master``` from the command line. Run it without arguments to view the help page.
+
+### Manual page
+```
+fmi-master(1)                                                    fmi-master(1)
 
 NAME
-       fmu-master - simulate FMUs
+       fmi-master - simulate FMUs
 
 SYNOPSIS
-       fmu-master [ -hlqrvcdfmopst ] [ files ...  ]
+       fmi-master [ -hlqrvcdfmopst ] [ files ...  ]
 
 DESCRIPTION
-       fmu-master simulates FMUs using the FMILibrary from JModelica.org
+       fmi-master simulates FMUs using the FMILibrary from JModelica.org
 
 FLAGS
        -h     Show help and quit.
@@ -75,18 +91,18 @@ OPTIONS
 
 EXAMPLES
        To run an FMU simulation from time 0 to 5 with timestep 0.01:
-           fmu-master -t 5 -d 0.01 ../myFMU.fmu
+           fmi-master -t 5 -d 0.01 ../myFMU.fmu
 
        To  simulate  two FMUs connected from the first output of the first FMU
        to the first input of the second:
-           fmu-master -c 0,0,1,0 a.fmu b.fmu
+           fmi-master -c 0,0,1,0 a.fmu b.fmu
 
        To simulate quietly (without output to STDOUT) and save the results  to
        file:
-           fmu-master -q -o out.csv a.fmu
+           fmi-master -q -o out.csv a.fmu
 
 ABOUT
        The app was built by Stefan Hedman at UMIT Research Lab 2013.
 
-                                     local                       FMU-MASTER(1)
+                                     local                       fmi-master(1)
 ```
