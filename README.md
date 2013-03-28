@@ -5,7 +5,8 @@ Co-simulation CLI.
 
 
 # Manual page
-```FMU-MASTER(1)                                                    FMU-MASTER(1)
+```
+FMU-MASTER(1)                                                    FMU-MASTER(1)
 
 NAME
        fmu-master - simulate FMUs
