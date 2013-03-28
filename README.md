@@ -78,4 +78,37 @@ OPTIONS
        -m [METHOD]
               Stepping  method. Available methods are "jacobi" (Jacobi, paral‐
               lel) and "gs" (Gauss-Seidel, serial). Default is "jacobi".
+              
+       -o [OUTFILE]
+              Result output file. If set to "stdout", then output will  be  to
+              STDOUT. Default value is "result.csv".
+
+       -p [PARAMS]
+              Parameter specification. Triplets separated by :, specifying FMU
+              index, value reference index and parameter value.  Example  set‐
+              ting    the   three   first   value   references   of   FMU   0:
+              "0,0,12.3:0,1,true:0,2,9". Default is no parameters.
+
+       -s [SEPARATOR]
+              CSV separator character. Default is comma (,).
+
+       -t [ENDTIME]
+              End simulation time in seconds. Default is 1.0.
+
+EXAMPLES
+       To run an FMU simulation from time 0 to 5 with timestep 0.01:
+           fmi-master -t 5 -d 0.01 ../myFMU.fmu
+
+       To simulate two FMUs connected from the first output of the  first  FMU
+       to the first input of the second:
+           fmi-master -c 0,0,1,0 a.fmu b.fmu
+
+       To  simulate quietly (without output to STDOUT) and save the results to
+       file:
+           fmi-master -q -o out.csv a.fmu
+
+ABOUT
+       The app was built by Stefan Hedman at UMIT Research Lab 2013.
+
+                                     local                       FMI-MASTER(1)
 ```
