@@ -28,4 +28,4 @@ ADD_EXECUTABLE(fmi-master ${HEADERS} ${SRCS})
 TARGET_LINK_LIBRARIES(fmi-master fmilib dl rt)
 
 INSTALL (TARGETS fmi-master DESTINATION bin)
-INSTALL (FILES ${CMAKE_CURRENT_LIST_DIR}/doc/fmi-master.1.gz DESTINATION man/man1)
+INSTALL (FILES ${CMAKE_CURRENT_LIST_DIR}/man/fmi-master.1 DESTINATION man/man1)

@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <limits.h>
 
+#define EXECUTABLE_NAME "fmi-master"
 #define VERSION "0.1.3"
 #define MAX_FMUS 1000
 #define MAX_PARAMS 1000
