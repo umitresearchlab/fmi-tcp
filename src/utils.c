@@ -8,7 +8,6 @@
  * Transfer values in a connection
  */
 void fmi1TransferConnectionValues(connection c, fmi1_import_t ** fmus){
-
     int ci, found=0, k, i, l;
 
     // Temp for transfering values
@@ -24,6 +23,8 @@ void fmi1TransferConnectionValues(connection c, fmi1_import_t ** fmus){
     vrFrom[0] =   c.fromOutputVR;
     int fmuTo =   c.toFMU;
     vrTo[0] =     c.toInputVR;
+
+    //printf("Transferring %d,%d ---> %d,%d\n",fmuFrom,vrFrom[0],fmuTo,vrTo[0]);
 
     // Get variable list of both FMU participating in the connection
     fmi1_import_variable_list_t* varsFrom = fmi1_import_get_variable_list(fmus[fmuFrom]);
@@ -48,7 +49,7 @@ void fmi1TransferConnectionValues(connection c, fmi1_import_t ** fmus){
             // Found the input and output. Check if they have equal types
             if(typeFrom == typeTo){
 
-                //printf("Connection %d: Transferring value from FMU%d (vr=%d) to FMU%d (vr=%d)\n",ci,fmuFrom,vrFrom[0],fmuTo,vrTo[0]);
+                //printf("Connection: Transferring value from FMU%d (vr=%d) to FMU%d (vr=%d)\n",fmuFrom,vrFrom[0],fmuTo,vrTo[0]);
 
                 switch (typeFrom){
                 case fmi1_base_type_real:

@@ -31,10 +31,6 @@ int fmi1JacobiStep( double time,
                     int stepOrder[MAX_STEP_ORDER]){
     int ci, i;
 
-    for(ci=0; ci<numConnections; ci++){ // Loop over connections
-        fmi1TransferConnectionValues(connections[ci], fmus);
-    }
-
     // Step all the FMUs
     fmi1_status_t status = fmi1_status_ok;
     for(i=0; i<numFMUs; i++){
@@ -44,6 +40,10 @@ int fmi1JacobiStep( double time,
             printf("doStep() of FMU %d didn't return fmiOK! Exiting...\n",i);
             return 1;
         }
+    }
+
+    for(ci=0; ci<numConnections; ci++){ // Loop over connections
+        fmi1TransferConnectionValues(connections[ci], fmus);
     }
 
     return 0;

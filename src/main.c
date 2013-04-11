@@ -151,7 +151,7 @@ int main( int argc, char *argv[] ) {
                     printf("%c",ch);
                 fclose(xmlFile);
             } else {
-                printf("Could not open XML file %s...\n",xmlPath);
+                printf("Could not open XML file %s.... Turn on logging (-l) for more info.\n",xmlPath);
             }
         }
 
@@ -162,7 +162,7 @@ int main( int argc, char *argv[] ) {
             fmus1[i] = fmi1_import_parse_xml ( contexts[i], tmpPath );
 
             if(!fmus1[i]){
-                fprintf(stderr,"Could not load XML\n");
+                fprintf(stderr,"Could not load XML. Turn on logging (-l) for more info.\n");
                 exit(EXIT_FAILURE);
             }
 
@@ -177,7 +177,7 @@ int main( int argc, char *argv[] ) {
 
             } else {
                 fmi_import_free_context(contexts[i]);
-                fprintf(stderr,"There was an error loading the FMU dll.\n");
+                fprintf(stderr,"There was an error loading the FMU dll. Turn on logging (-l) for more info.\n");
                 exit(EXIT_FAILURE);
             }
         } else if(versions[i] == fmi_version_2_0_enu) { // FMI 2.0
@@ -187,7 +187,7 @@ int main( int argc, char *argv[] ) {
             // Test some fmu2 stuff
             fmus2[i] = fmi2_import_parse_xml(contexts[i], tmpPath, 0);
             if(!fmus2[i]){
-                fprintf(stderr,"Could not load XML\n");
+                fprintf(stderr,"Could not load XML. Turn on logging (-l) for more info.\n");
                 exit(EXIT_FAILURE);
             }
 
@@ -205,7 +205,7 @@ int main( int argc, char *argv[] ) {
 
             jm_status_enu_t status = fmi2_import_create_dllfmu(fmus2[i], fmi2_fmu_kind_cs, &callBackFunctions);
             if(status == jm_status_error) {
-                printf("Could not create the DLL loading mechanism(C-API) (error: %s).\n", fmi2_import_get_last_error(fmus2[i]));
+                printf("Could not create the DLL loading mechanism(C-API) (error: %s). Turn on logging (-l) for more info.\n", fmi2_import_get_last_error(fmus2[i]));
                 exit(EXIT_FAILURE);
             }
 
@@ -249,8 +249,10 @@ int main( int argc, char *argv[] ) {
                 }
             }
 
-            printf("\n  OUTPUT CSV FILE\n");
-            printf("    %s\n",outFilePath);
+            if(outFileGiven){
+                printf("\n  OUTPUT CSV FILE\n");
+                printf("    %s\n",outFilePath);
+            }
 
             printf("\n");
 
@@ -291,6 +293,7 @@ int main( int argc, char *argv[] ) {
                                 callbacks,
                                 quiet,
                                 stepfunction,
+                                outFileGiven,
                                 outfileFormat,
                                 outFilePath,
                                 realtime,

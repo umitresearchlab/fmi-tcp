@@ -54,6 +54,7 @@ int fmi1simulate(fmi1_import_t** fmus,
                  jm_callbacks callbacks,
                  int quiet,
                  fmi1stepfunction stepfunc,
+                 int printToFile,
                  enum FILEFORMAT outFileFormat,
                  char outFilePath[PATH_MAX],
                  int realTimeMode,
@@ -79,12 +80,14 @@ int fmi1simulate(fmi1_import_t** fmus,
 
     // Open result file
     FILE * f;
-    if(strcmp(outFilePath,"stdout")==0){
-        f = stdout;
-    } else {
-        if (!(f = fopen(outFilePath, "w"))) {
-            fprintf(stderr,"Could not write to %s\n", outFilePath);
-            return 1;
+    if(printToFile){
+        if(strcmp(outFilePath,"stdout")==0){
+            f = stdout;
+        } else {
+            if (!(f = fopen(outFilePath, "w"))) {
+                fprintf(stderr,"Could not write to %s\n", outFilePath);
+                return 1;
+            }
         }
     }
 
@@ -95,7 +98,7 @@ int fmi1simulate(fmi1_import_t** fmus,
     }
 
     // Write CSV header
-    if(outFileFormat == csv){
+    if(printToFile && outFileFormat == csv){
         writeCsvHeader(f, fmuNames, fmus, numFMUs, separator);
     }
 
@@ -131,7 +134,7 @@ int fmi1simulate(fmi1_import_t** fmus,
     time = tStart;
 
     // Write CSV row for time=0
-    if(outFileFormat == csv){
+    if(printToFile && outFileFormat == csv){
         writeCsvRow(f, fmus, numFMUs, time, separator);
     }
 
@@ -168,7 +171,7 @@ int fmi1simulate(fmi1_import_t** fmus,
         // Advance time
         time += timeStep;
 
-        if(outFileFormat == csv){
+        if(printToFile && outFileFormat == csv){
             writeCsvRow(f, fmus, numFMUs, time, separator);
         }
 
@@ -194,7 +197,8 @@ int fmi1simulate(fmi1_import_t** fmus,
         }
     }
 
-    fclose(f);
+    if(printToFile)
+        fclose(f);
 
     *numSteps = nSteps;
 
