@@ -7,7 +7,7 @@
 #include "main.h"
 
 /// @brief Sets the initial values for the given FMU. It simply reads from XML and does setXXX() in the FMU.
-void setInitialValues(fmi1_import_t* fmu);
+void setInitialValues1(fmi1_import_t* fmu, fmi1_import_variable_list_t* vl);
 
 /// @brief Set initial values from the command line, overrides the XML init values
 void setParams(int numFMUs, int numParams, fmi1_import_t ** fmus, param params[MAX_PARAMS]);
@@ -39,6 +39,7 @@ void setParams(int numFMUs, int numParams, fmi1_import_t ** fmus, param params[M
 int fmi1simulate(   fmi1_import_t** fmus,
                     char fmuPaths[MAX_FMUS][PATH_MAX],
                     int numFMUs,
+                    fmi1_import_variable_list_t** variables,
                     connection connections[MAX_CONNECTIONS],
                     int numParams,
                     param params[MAX_PARAMS],
@@ -64,20 +65,24 @@ int fmi1simulate(   fmi1_import_t** fmus,
 int fmi2simulate(   fmi2_import_t** fmus,
                     char fmuPaths[MAX_FMUS][PATH_MAX],
                     int numFMUs,
+                    fmi2_import_variable_list_t** variables,
                     connection connections[MAX_CONNECTIONS],
-                    int numParams,
+                    int numParameters,
                     param params[MAX_PARAMS],
                     int numConnections,
                     double tEnd,
                     double timeStep,
-                    int loggingEnabled,
-                    char csvSeparator,
+                    int loggingOn,
+                    char separator,
                     jm_callbacks callbacks,
-                    int quietModeEnabled,
+                    int quiet,
                     fmi2stepfunction stepfunc,
+                    int printToFile,
                     enum FILEFORMAT outFileFormat,
                     char outFilePath[PATH_MAX],
-                    int realTimeModeEnabled,
-                    int * numSteps);
+                    int realTimeMode,
+                    int * numSteps,
+                    int numStepOrder,
+                    int stepOrder[MAX_STEP_ORDER]);
 
 #endif /* SIMULATE_H */

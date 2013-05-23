@@ -85,6 +85,7 @@ typedef int (*fmi1stepfunction)(double time,                // System stepping f
                                 double communicationTimeStep,
                                 int numFMUs,
                                 fmi1_import_t ** fmus,
+                                fmi1_import_variable_list_t** variables,
                                 int numConnections,
                                 connection connections[MAX_CONNECTIONS],
                                 int numStepOrder,

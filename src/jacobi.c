@@ -5,14 +5,14 @@
 #include "utils.h"
 
 ///  @todo
-int fmi2JacobiStep( double time,
-                    double communicationTimeStep,
-                    int numFMUs,
-                    fmi2_import_t ** fmus,
-                    int numConnections,
-                    connection connections[MAX_CONNECTIONS],
-                    int numStepOrder,
-                    int stepOrder[MAX_STEP_ORDER]){
+int fmi2JacobiStep(     double time,
+                        double communicationTimeStep,
+                        int numFMUs,
+                        fmi2_import_t ** fmus,
+                        int numConnections,
+                        connection connections[MAX_CONNECTIONS],
+                        int numStepOrder,
+                        int stepOrder[MAX_STEP_ORDER]){
     fprintf(stderr, "fmi2JacobiStep not implemented yet\n");
     return 1;
 }
@@ -25,6 +25,7 @@ int fmi1JacobiStep( double time,
                     double communicationTimeStep,
                     int numFMUs,
                     fmi1_import_t ** fmus,
+                    fmi1_import_variable_list_t** variables,
                     int numConnections,
                     connection connections[MAX_CONNECTIONS],
                     int numStepOrder,
@@ -43,7 +44,7 @@ int fmi1JacobiStep( double time,
     }
 
     for(ci=0; ci<numConnections; ci++){ // Loop over connections
-        fmi1TransferConnectionValues(connections[ci], fmus);
+        fmi1TransferConnectionValues(connections[ci], fmus, variables);
     }
 
     return 0;

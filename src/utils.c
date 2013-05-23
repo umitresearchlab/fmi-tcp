@@ -6,8 +6,10 @@
 
 /**
  * Transfer values in a connection
+ * @todo should transfer more cleverly
+ * @todo apparently fmi1_import_get_variable_list() allocates new list objects. Reuse somehow?
  */
-void fmi1TransferConnectionValues(connection c, fmi1_import_t ** fmus){
+void fmi1TransferConnectionValues(connection c, fmi1_import_t ** fmus, fmi1_import_variable_list_t** variables){
     int ci, found=0, k, i, l;
 
     // Temp for transfering values
@@ -27,8 +29,8 @@ void fmi1TransferConnectionValues(connection c, fmi1_import_t ** fmus){
     //printf("Transferring %d,%d ---> %d,%d\n",fmuFrom,vrFrom[0],fmuTo,vrTo[0]);
 
     // Get variable list of both FMU participating in the connection
-    fmi1_import_variable_list_t* varsFrom = fmi1_import_get_variable_list(fmus[fmuFrom]);
-    fmi1_import_variable_list_t* varsTo =   fmi1_import_get_variable_list(fmus[fmuTo]);
+    fmi1_import_variable_list_t* varsFrom = variables[fmuFrom]; // fmi1_import_get_variable_list(fmus[fmuFrom]);
+    fmi1_import_variable_list_t* varsTo =   variables[fmuTo];   // fmi1_import_get_variable_list(fmus[fmuTo]);
     int numFrom = fmi1_import_get_variable_list_size(varsFrom);
     int numTo   = fmi1_import_get_variable_list_size(varsTo);
 

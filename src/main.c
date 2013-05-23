@@ -112,17 +112,19 @@ int main( int argc, char *argv[] ) {
     callbacks.log_level = loggingOn ? jm_log_level_all : jm_log_level_fatal;
     callbacks.context = 0;
 
-    fmi1_import_t** fmus1 =             calloc(sizeof(fmi1_import_t*),numFMUs);
-    fmi2_import_t** fmus2 =             calloc(sizeof(fmi2_import_t*),numFMUs);
-    fmi_import_context_t** contexts =   calloc(sizeof(fmi_import_context_t*),numFMUs);
-    fmi_version_enu_t* versions =       calloc(sizeof(fmi_version_enu_t),numFMUs);
-    const char** tmpPaths =             calloc(sizeof(const char*),numFMUs);
+    fmi1_import_t** fmus1 =                     calloc(sizeof(fmi1_import_t*),numFMUs);
+    fmi2_import_t** fmus2 =                     calloc(sizeof(fmi2_import_t*),numFMUs);
+    fmi_import_context_t** contexts =           calloc(sizeof(fmi_import_context_t*),numFMUs);
+    fmi_version_enu_t* versions =               calloc(sizeof(fmi_version_enu_t),numFMUs);
+    fmi1_import_variable_list_t ** variables1 = calloc(sizeof(fmi1_import_variable_list_t*),numFMUs);
+    fmi2_import_variable_list_t ** variables2 = calloc(sizeof(fmi2_import_variable_list_t*),numFMUs);
+    const char** tmpPaths =                     calloc(sizeof(const char*),numFMUs);
 
     int numFMU1 = 0, numFMU2 = 0; // Count the number of each version
 
     // Load all FMUs
     for(i=0; i<numFMUs; i++){
-        
+
         char buf[PATH_MAX+1]; /* not sure about the "+ 1" */
         char *res = realpath(fmuPaths[i], buf);
         if (res) {
@@ -180,8 +182,12 @@ int main( int argc, char *argv[] ) {
                 fprintf(stderr,"There was an error loading the FMU dll. Turn on logging (-l) for more info.\n");
                 exit(EXIT_FAILURE);
             }
+
+            // Get variable list
+            variables1[i] = fmi1_import_get_variable_list(fmus1[i]);
+
         } else if(versions[i] == fmi_version_2_0_enu) { // FMI 2.0
-    
+
             numFMU2++;
 
             // Test some fmu2 stuff
@@ -282,6 +288,7 @@ int main( int argc, char *argv[] ) {
             res = fmi1simulate( fmus1,
                                 fmuPaths,
                                 numFMUs,
+                                variables1,
                                 connections,
                                 numParameters,
                                 params,
@@ -301,7 +308,7 @@ int main( int argc, char *argv[] ) {
                                 numStepOrder,
                                 stepOrder);
         } else if(numFMU2){
-            
+
             // Pick stepfunction
             fmi2stepfunction stepfunction;
             switch(method){
@@ -318,6 +325,7 @@ int main( int argc, char *argv[] ) {
             res = fmi2simulate( fmus2,
                                 fmuPaths,
                                 numFMUs,
+                                NULL,
                                 connections,
                                 numParameters,
                                 params,
@@ -329,10 +337,13 @@ int main( int argc, char *argv[] ) {
                                 callbacks,
                                 quiet,
                                 stepfunction,
+                                outFileGiven,
                                 outfileFormat,
                                 outFilePath,
                                 realtime,
-                                &numSteps);
+                                &numSteps,
+                                numStepOrder,
+                                stepOrder);
 
         } else {
             fprintf(stderr, "Something went wrong...\n");
@@ -342,7 +353,7 @@ int main( int argc, char *argv[] ) {
             if(res==0){
                 printf("  SIMULATION TERMINATED SUCCESSFULLY\n\n");
 
-                // print simulation summary 
+                // print simulation summary
                 printf("  START ............ %g\n", 0.0);
                 printf("  END .............. %g\n", tEnd);
                 printf("  STEPS ............ %d\n", numSteps);
@@ -360,6 +371,7 @@ int main( int argc, char *argv[] ) {
         // Free the FMU
         switch(versions[i]){
             case fmi_version_1_enu:
+                fmi1_import_free_variable_list(variables1[i]);
                 fmi1_import_destroy_dllfmu(fmus1[i]);
                 fmi1_import_free(fmus1[i]);
                 break;

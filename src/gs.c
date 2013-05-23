@@ -4,6 +4,7 @@
 #include "main.h"
 #include "utils.h"
 
+
 int fmi1GaussSeidelStep(double time,
                         double communicationTimeStep,
                         int numFMUs,

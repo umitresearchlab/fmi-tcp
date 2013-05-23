@@ -10,6 +10,5 @@ void printHeader(){
 void printHelp() {
     char command[200];
     sprintf(command,"man %s",EXECUTABLE_NAME);
-    printf("running... %s\n",command);
     system(command);
 }
