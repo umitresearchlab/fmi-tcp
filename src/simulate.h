@@ -8,9 +8,11 @@
 
 /// @brief Sets the initial values for the given FMU. It simply reads from XML and does setXXX() in the FMU.
 void setInitialValues1(fmi1_import_t* fmu, fmi1_import_variable_list_t* vl);
+void setInitialValues2(fmi2_import_t* fmu, fmi2_import_variable_list_t* vl);
 
 /// @brief Set initial values from the command line, overrides the XML init values
-void setParams(int numFMUs, int numParams, fmi1_import_t ** fmus, param params[MAX_PARAMS]);
+void setParams1(int numFMUs, int numParams, fmi1_import_t ** fmus, param params[MAX_PARAMS]);
+void setParams2(int numFMUs, int numParams, fmi2_import_t ** fmus, param params[MAX_PARAMS]);
 
 /**
  * @brief Simulate the given FMUs.

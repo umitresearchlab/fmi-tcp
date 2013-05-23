@@ -106,7 +106,6 @@ int fmi2simulate(fmi2_import_t** fmus,
             return 1;
         }
     }
-    /*
 
     // Set initial values from the XML file
     for(i=0; i<numFMUs; i++){
@@ -114,7 +113,7 @@ int fmi2simulate(fmi2_import_t** fmus,
     }
 
     // Set user-given parameters
-    setParams(numFMUs, numParameters, fmus, params);
+    setParams2(numFMUs, numParameters, fmus, params);
 
     time = tStart;
 
@@ -125,15 +124,15 @@ int fmi2simulate(fmi2_import_t** fmus,
 
     // enter the simulation loop
     int l;
-    fmi1_base_type_enu_t type;
-    fmi1_value_reference_t vrFrom[1];
-    fmi1_value_reference_t vrTo[1];
-    fmi1_real_t rr[2];
-    fmi1_boolean_t bb[2];
-    fmi1_integer_t ii[2];
-    fmi1_string_t ss[2];
+    fmi2_base_type_enu_t type;
+    fmi2_value_reference_t vrFrom[1];
+    fmi2_value_reference_t vrTo[1];
+    fmi2_real_t rr[2];
+    fmi2_boolean_t bb[2];
+    fmi2_integer_t ii[2];
+    fmi2_string_t ss[2];
     int found = 0;
-    status = fmi1_status_ok;
+    status = fmi2_status_ok;
 
 
     struct timespec time1, time2, diffTime;
@@ -171,6 +170,7 @@ int fmi2simulate(fmi2_import_t** fmus,
         }
     }
 
+    /*
     // end simulation
     for(i=0; i<numFMUs; i++){
         fmi1_status_t s = fmi1_import_terminate_slave(fmus[i]);
@@ -280,7 +280,7 @@ int fmi1simulate(fmi1_import_t** fmus,
     }
 
     // Set user-given parameters
-    setParams(numFMUs, numParameters, fmus, params);
+    setParams1(numFMUs, numParameters, fmus, params);
 
     time = tStart;
 
@@ -411,7 +411,64 @@ void setInitialValues1(fmi1_import_t* fmu, fmi1_import_variable_list_t* vl){
     }
 }
 
-void setParams(int numFMUs, int numParams, fmi1_import_t ** fmus, param params[MAX_PARAMS]){
+
+/**
+ * @todo should do setReal with arrays to save some performance. There's a reason why they do batch setXXX() in fmi
+ */
+void setInitialValues2(fmi2_import_t* fmu, fmi2_import_variable_list_t* vl){
+    /*
+    int k;
+
+    // Set initial values
+    //fmi1_import_variable_list_t* vl = fmi1_import_get_variable_list(fmu);
+    int num = fmi1_import_get_variable_list_size(vl);
+    for (k=0; num; k++) {
+        fmi1_import_variable_t * v = fmi1_import_get_variable(vl,k);
+        if(!v) break;
+
+        fmi1_value_reference_t vr[1];
+        vr[0] = fmi1_import_get_variable_vr(v);
+
+        fmi1_import_variable_typedef_t * vt = fmi1_import_get_variable_declared_type(v);
+
+        fmi1_base_type_enu_t bt;
+        bt = fmi1_import_get_variable_base_type(v);
+
+        fmi1_real_t lol[1];
+        fmi1_integer_t innt[1];
+        fmi1_boolean_t boool[1];
+        fmi1_string_t striing[1];
+
+        // Set initial values from the XML file
+        if(fmi1_import_get_variable_has_start(v)){
+            switch (bt){
+            case fmi1_base_type_real:
+                lol[0] = fmi1_import_get_real_variable_start((fmi1_import_real_variable_t*) v);
+                fmi1_import_set_real(fmu,   vr,   1, lol);
+                break;
+            case fmi1_base_type_int:
+            case fmi1_base_type_enum:
+                innt[0] = fmi1_import_get_integer_variable_start((fmi1_import_integer_variable_t*) v);
+                fmi1_import_set_integer(fmu,   vr,   1, innt);
+                break;
+            case fmi1_base_type_bool:
+                boool[0] = fmi1_import_get_boolean_variable_start((fmi1_import_bool_variable_t*) v);
+                fmi1_import_set_boolean(fmu,   vr,   1, boool);
+                break;
+            case fmi1_base_type_str:
+                striing[0] = fmi1_import_get_string_variable_start((fmi1_import_string_variable_t*) v);
+                fmi1_import_set_string(fmu,   vr,   1, striing);
+                break;
+            default:
+                fprintf(stderr,"Could not determine type of value reference %d in FMU. Continuing without setting initial value...\n", vr[0]);
+                break;
+            }
+        }
+    }
+    */
+}
+
+void setParams1(int numFMUs, int numParams, fmi1_import_t ** fmus, param params[MAX_PARAMS]){
     int i,j,k;
     for(i=0; i<numFMUs; i++){
 
@@ -477,4 +534,75 @@ void setParams(int numFMUs, int numParams, fmi1_import_t ** fmus, param params[M
             }
         }
     }
+}
+
+
+void setParams2(int numFMUs, int numParams, fmi2_import_t ** fmus, param params[MAX_PARAMS]){
+    /*
+    int i,j,k;
+    for(i=0; i<numFMUs; i++){
+
+        fmi1_import_variable_list_t* vl = fmi1_import_get_variable_list(fmus[i]);
+        int num = fmi1_import_get_variable_list_size(vl);
+        for (k=0; num; k++) {
+            fmi1_import_variable_t* v = fmi1_import_get_variable(vl,k);
+            if(!v) break;
+
+            fmi1_value_reference_t vr[1];
+            vr[0] = fmi1_import_get_variable_vr(v);
+            fmi1_base_type_enu_t type = fmi1_import_get_variable_base_type(v);
+
+            // Temp things to pass to fmi1_import_set_xxx()
+            fmi1_real_t lol[1];
+            fmi1_integer_t innt[1];
+            fmi1_boolean_t boool[1];
+            fmi1_string_t striing[1];
+
+            int j;
+            for(j=0; j < numParams; j++){ // Loop over params
+
+                int fmuIndex = params[j].fmuIndex;
+                int valueReference = params[j].valueReference;
+
+                if( i == fmuIndex && // Correct FMU
+                    vr[0] == valueReference // Correct valuereference
+                    ) {
+
+                    float tmpFloat;
+                    int tmpInt;
+
+                    switch (type){
+
+                    case fmi1_base_type_real: // Real
+                        lol[0] = params[j].realValue;
+                        fmi1_import_set_real(fmus[i],   vr,   1, lol);
+                        break;
+
+                    case fmi1_base_type_int: // Integer
+                    case fmi1_base_type_enum:
+                        innt[0] = params[j].intValue;
+                        fmi1_import_set_integer(fmus[i],   vr,   1, innt);
+                        break;
+
+                    // Boolean
+                    case fmi1_base_type_bool:
+                        boool[0] = params[j].boolValue;
+                        fmi1_import_set_boolean(fmus[i],   vr,   1, boool);
+                        break;
+
+                    // String
+                    case fmi1_base_type_str:
+                        striing[0] = params[j].stringValue;
+                        fmi1_import_set_string(fmus[i],   vr,   1, striing);
+                        break;
+
+                    default:
+                        printf("Could not determine type of value reference %d in FMU %d. Continuing without connection value transfer...\n", vr[0],i);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    */
 }

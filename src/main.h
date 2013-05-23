@@ -94,10 +94,11 @@ typedef int (*fmi1stepfunction)(double time,                // System stepping f
  * @todo Implement me!
  * @return int Zero if successful, otherwise error code.
  */
-typedef int (*fmi2stepfunction)(double time,                
+typedef int (*fmi2stepfunction)(double time,
                                 double communicationTimeStep,
                                 int numFMUs,
                                 fmi2_import_t ** fmus,
+                                fmi2_import_variable_list_t** variables,
                                 int numConnections,
                                 connection connections[MAX_CONNECTIONS],
                                 int numStepOrder,
