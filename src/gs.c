@@ -4,11 +4,11 @@
 #include "main.h"
 #include "utils.h"
 
-
 int fmi1GaussSeidelStep(double time,
                         double communicationTimeStep,
                         int numFMUs,
                         fmi1_import_t ** fmus,
+                        fmi1_import_variable_list_t** variables,
                         int numConnections,
                         connection connections[MAX_CONNECTIONS],
                         int numStepOrder,
@@ -27,7 +27,7 @@ int fmi1GaussSeidelStep(double time,
         // Get all connections where this FMU is the "from" FMU
         for(j=0; j<numConnections; j++){
             if(connections[j].fromFMU == fmuIndex)
-                fmi1TransferConnectionValues(connections[j], fmus);
+                fmi1TransferConnectionValues(connections[j], fmus, variables);
         }
     }
 

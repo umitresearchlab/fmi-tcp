@@ -104,6 +104,7 @@ typedef int (*fmi2stepfunction)(double time,
                                 int numStepOrder,
                                 int stepOrder[MAX_STEP_ORDER]);
 
+
 void importlogger(jm_callbacks* c, jm_string module, jm_log_level_enu_t log_level, jm_string message);
 void fmi1Logger(fmi1_component_t c, fmi1_string_t instanceName, fmi1_status_t status, fmi1_string_t category, fmi1_string_t message, ...);
 void fmi1StepFinished(fmi1_component_t c, fmi1_status_t status);

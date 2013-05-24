@@ -211,13 +211,18 @@ int main( int argc, char *argv[] ) {
 
             jm_status_enu_t status = fmi2_import_create_dllfmu(fmus2[i], fmi2_fmu_kind_cs, &callBackFunctions);
             if(status == jm_status_error) {
+                fmi_import_free_context(contexts[i]);
                 printf("Could not create the DLL loading mechanism(C-API) (error: %s). Turn on logging (-l) for more info.\n", fmi2_import_get_last_error(fmus2[i]));
                 exit(EXIT_FAILURE);
             }
 
+            /*
             fprintf(stderr,"FMI v2.0 not supported yet.\n");
             doSimulate = 0;
             exitCode = EXIT_FAILURE;
+            */
+
+            variables2[i] = fmi2_import_get_variable_list(fmus2[i],0); // 0=sorted by order in the XML file, 1=alphabetically
 
         } else {
             fprintf(stderr,"FMI version not recognized.\n");
@@ -325,7 +330,7 @@ int main( int argc, char *argv[] ) {
             res = fmi2simulate( fmus2,
                                 fmuPaths,
                                 numFMUs,
-                                NULL,
+                                variables2,
                                 connections,
                                 numParameters,
                                 params,

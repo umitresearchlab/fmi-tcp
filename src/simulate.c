@@ -40,8 +40,8 @@ int fmi2simulate(fmi2_import_t** fmus,
                  int * numSteps,
                  int numStepOrder,
                  int stepOrder[MAX_STEP_ORDER]){
-    printf("FMI2 simulation not supported yet!\n");
-    return 1;
+    /*printf("FMI2 simulation not supported yet!\n");
+    return 1;*/
 
     int i;
     int k;
@@ -82,7 +82,7 @@ int fmi2simulate(fmi2_import_t** fmus,
 
     // Write CSV header
     if(printToFile && outFileFormat == csv){
-        writeCsvHeader(f, fmuNames, fmus, numFMUs, separator);
+        writeCsvHeader2(f, fmuNames, fmus, numFMUs, separator);
     }
 
     // Init all the FMUs
@@ -119,7 +119,7 @@ int fmi2simulate(fmi2_import_t** fmus,
 
     // Write CSV row for time=0
     if(printToFile && outFileFormat == csv){
-        writeCsvRow(f, fmus, numFMUs, time, separator);
+        writeCsvRow2(f, fmus, numFMUs, time, separator);
     }
 
     // enter the simulation loop
@@ -155,7 +155,7 @@ int fmi2simulate(fmi2_import_t** fmus,
         time += timeStep;
 
         if(printToFile && outFileFormat == csv){
-            writeCsvRow(f, fmus, numFMUs, time, separator);
+            writeCsvRow2(f, fmus, numFMUs, time, separator);
         }
 
         nSteps++;
@@ -170,12 +170,11 @@ int fmi2simulate(fmi2_import_t** fmus,
         }
     }
 
-    /*
     // end simulation
     for(i=0; i<numFMUs; i++){
-        fmi1_status_t s = fmi1_import_terminate_slave(fmus[i]);
-        fmi1_import_free_slave_instance(fmus[i]);
-        if(s != fmi1_status_ok){
+        fmi2_status_t s = fmi2_import_terminate_slave(fmus[i]);
+        fmi2_import_free_slave_instance(fmus[i]);
+        if(s != fmi2_status_ok){
             fprintf(stderr,"Error terminating slave instance %d. Continuing...\n",i);
             simulationStatus = 1; // error
         }
@@ -185,7 +184,7 @@ int fmi2simulate(fmi2_import_t** fmus,
         fclose(f);
 
     *numSteps = nSteps;
-*/
+
     return simulationStatus;
 
 }
@@ -250,7 +249,7 @@ int fmi1simulate(fmi1_import_t** fmus,
 
     // Write CSV header
     if(printToFile && outFileFormat == csv){
-        writeCsvHeader(f, fmuNames, fmus, numFMUs, separator);
+        writeCsvHeader1(f, fmuNames, fmus, numFMUs, separator);
     }
 
     // Init all the FMUs
@@ -286,7 +285,7 @@ int fmi1simulate(fmi1_import_t** fmus,
 
     // Write CSV row for time=0
     if(printToFile && outFileFormat == csv){
-        writeCsvRow(f, fmus, numFMUs, time, separator);
+        writeCsvRow1(f, fmus, numFMUs, time, separator);
     }
 
     // enter the simulation loop
@@ -323,7 +322,7 @@ int fmi1simulate(fmi1_import_t** fmus,
         time += timeStep;
 
         if(printToFile && outFileFormat == csv){
-            writeCsvRow(f, fmus, numFMUs, time, separator);
+            writeCsvRow1(f, fmus, numFMUs, time, separator);
         }
 
         nSteps++;
