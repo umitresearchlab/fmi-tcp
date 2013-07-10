@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
+include_directories(${INCLUDE_PATHS})
+
 SET(SRCS
     src/main.c
     src/utils.c

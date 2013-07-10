@@ -2,3 +2,5 @@
 fmu
 build
 bin/*
+.cproject
+.project
