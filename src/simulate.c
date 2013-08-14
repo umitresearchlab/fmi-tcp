@@ -5,6 +5,7 @@
 
 #include "simulate.h"
 
+#ifndef WIN32
 /**
  * Computes time difference between start and end timespecs, and stores the result in diffTime.
  */
@@ -17,6 +18,7 @@ void diff(struct timespec start, struct timespec end, struct timespec * diffTime
         diffTime->tv_nsec = end.tv_nsec-start.tv_nsec;
     }
 }
+#endif
 
 int fmi2simulate(fmi2_import_t** fmus,
                  char fmuPaths[MAX_FMUS][PATH_MAX],
@@ -134,15 +136,16 @@ int fmi2simulate(fmi2_import_t** fmus,
     int found = 0;
     status = fmi2_status_ok;
 
-
+#ifndef WIN32
     struct timespec time1, time2, diffTime;
+#endif
 
     while (time < tEnd && status==fmi1_status_ok) {
-
+#ifndef WIN32
         if(realTimeMode){
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &time1);
         }
-
+#endif
         // Step the system of FMUs
         int result = (*stepfunc)(time, timeStep, numFMUs, fmus, variables, numConnections, connections, numStepOrder, stepOrder);
 
@@ -159,7 +162,7 @@ int fmi2simulate(fmi2_import_t** fmus,
         }
 
         nSteps++;
-
+#ifndef WIN32
         if(realTimeMode){
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &time2);
 
@@ -168,6 +171,7 @@ int fmi2simulate(fmi2_import_t** fmus,
             if(s < 0) s = 0;
             usleep(s);
         }
+#endif
     }
 
     // end simulation
@@ -301,14 +305,16 @@ int fmi1simulate(fmi1_import_t** fmus,
     status = fmi1_status_ok;
 
     int simulationStatus = 0; // Success
-
+#ifndef WIN32
     struct timespec time1, time2, diffTime;
+#endif
 
     while (time < tEnd && status==fmi1_status_ok) {
-
+#ifndef WIN32
         if(realTimeMode){
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &time1);
         }
+#endif
 
         // Step the system of FMUs
         int result = (*stepfunc)(time, timeStep, numFMUs, fmus, variables, numConnections, connections, numStepOrder, stepOrder);
@@ -326,7 +332,7 @@ int fmi1simulate(fmi1_import_t** fmus,
         }
 
         nSteps++;
-
+#ifndef WIN32
         if(realTimeMode){
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &time2);
 
@@ -335,6 +341,7 @@ int fmi1simulate(fmi1_import_t** fmus,
             if(s < 0) s = 0;
             usleep(s);
         }
+#endif
     }
 
     // end simulation

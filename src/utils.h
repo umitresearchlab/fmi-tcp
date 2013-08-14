@@ -1,6 +1,11 @@
 #include <fmilib.h>
 #include <stdio.h>
 
+#ifdef WIN32
+#include <stdlib.h>
+#include <errno.h>
+#endif
+
 #ifndef UTILS_H
 #define UTILS_H
 
@@ -70,5 +75,10 @@ void fmi1TransferConnectionValues(  connection c,
 void fmi2TransferConnectionValues(  connection c,
                                     fmi2_import_t ** fmus,
                                     fmi2_import_variable_list_t** variables);
+
+#ifdef WIN32
+char *realpath(const char * file_name,
+		       char * resolved_name);
+#endif
 
 #endif /* UTILS_H */
