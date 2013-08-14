@@ -136,7 +136,7 @@ int main( int argc, char *argv[] ) {
             exit(EXIT_FAILURE);
         }
 
-        const char* tmpPath = fmi_import_mk_temp_dir (&callbacks, "/tmp", "FMUMaster");
+        const char* tmpPath = fmi_import_mk_temp_dir (&callbacks, NULL, "FMUMaster");
 
         tmpPaths[i] = tmpPath;
         contexts[i] = fmi_import_allocate_context(&callbacks);
@@ -166,6 +166,11 @@ int main( int argc, char *argv[] ) {
             if(!fmus1[i]){
                 fprintf(stderr,"Could not load XML. Turn on logging (-l) for more info.\n");
                 exit(EXIT_FAILURE);
+            }
+
+            if(fmi1_import_get_fmu_kind(fmus1[i]) != fmi1_fmu_kind_enu_cs_standalone && fmi1_import_get_fmu_kind(fmus1[i]) != fmi1_fmu_kind_enu_cs_tool) {
+            	fprintf(stderr,"Only CS 1.0 & 2.0 is supported by this code\n");
+            	exit(EXIT_FAILURE);
             }
 
             int registerGlobally = 0;
@@ -198,7 +203,7 @@ int main( int argc, char *argv[] ) {
             }
 
             if(fmi2_import_get_fmu_kind(fmus2[i]) != fmi2_fmu_kind_cs) {
-                fprintf(stderr,"Only CS 2.0 is supported by this code\n");
+                fprintf(stderr,"Only CS 1.0 & 2.0 is supported by this code\n");
                 exit(EXIT_FAILURE);
             }
 
