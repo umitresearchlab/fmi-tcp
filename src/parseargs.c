@@ -32,7 +32,7 @@ int parseArguments( int argc,
                     int * numStepOrder){
     int index, c;
     opterr = 0;
-    *outFileGiven = 0;
+    *outFileGiven = 1;
 
     strcpy(outFilePath,DEFAULT_OUTFILE);
 
