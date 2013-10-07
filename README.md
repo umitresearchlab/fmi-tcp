@@ -6,9 +6,7 @@ Command line interface for doing co-simulation using FMUs. Built on top of [FMIL
 ### Build
 The build was done successfully on Ubuntu Linux 12.10.
 
-Begin with installing [FMILibrary](http://www.jmodelica.org/FMILibrary). Make sure the libraries and include files ends up in /usr/lib and /usr/include (or whatever suits you best).
-Use the INCLUDE_PATHS variable with cmake to specify the FMILibrary include files location.
-Use the LINK_DIRECTORIES variable with cmake to specify the FMILibrary binary location.
+Begin with installing [FMILibrary](http://www.jmodelica.org/FMILibrary). Make sure the libraries and include files ends up in /usr/lib and /usr/include.
 
 Build and install the master using the following commands. You'll need [CMake](http://www.cmake.org/).
 ```
@@ -18,6 +16,11 @@ cd build;
 cmake ..;
 make;
 sudo make install;
+```
+
+If the libraries and include files are not in /usr/lib and /usr/include then use the INCLUDE_PATHS variable to specify the include files location and LINK_DIRECTORIES variable to specify the libraries location.
+```
+cmake .. -DINCLUDE_PATHS=<include files location> -DLIBS_PATHS=<libraries location>
 ```
 
 Now you should be able to run ```fmi-master``` from the command line. Run it without arguments to view the help page.
