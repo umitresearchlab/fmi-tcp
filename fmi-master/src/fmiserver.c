@@ -1,0 +1,261 @@
+/*
+ * 
+ * @author Adeel Asghar <adeel.asghar@liu.se>
+ *
+ * Created on: Oct 25, 2013
+ *
+ */
+
+#include "fmiserver.h"
+#include "../../commands.h"
+#include "../../helper.h"
+
+FMICoSimulationServer* createFMICoSimulationServer(int numFMUS, double tStart, double stepSize, double tStop, int numConnections,
+    connection connections[MAX_CONNECTIONS]) {
+  FMICoSimulationServer* FMICSServer = malloc(sizeof(FMICoSimulationServer));
+  FMICSServer->numFMUS = numFMUS;
+  FMICSServer->numClients = 0;
+  FMICSServer->tStart = tStart;
+  FMICSServer->stepSize = stepSize;
+  FMICSServer->tStop = tStop;
+  FMICSServer->numConnections = numConnections;
+  int i;
+  for (i = 0 ; i < numConnections ; i++) {
+    FMICSServer->connections[i] = connections[i];
+    FMICSServer->connections[i].state = connectionInvalid;
+  }
+  /* server */
+  FMICSServer->pump = lw_eventpump_new();
+  FMICSServer->server = lw_server_new(FMICSServer->pump);
+  /* save this object in the server tag so we can use it later on. */
+  lw_server_set_tag(FMICSServer->server, (void*)FMICSServer);
+  /* connect the hooks */
+  lw_server_on_connect(FMICSServer->server, serverOnConnect);
+  lw_server_on_data(FMICSServer->server, serverOnData);
+  lw_server_on_disconnect(FMICSServer->server, serverOnDisconnect);
+  lw_server_on_error(FMICSServer->server, serverOnError);
+  /* setup the server host name and port */
+  lw_addr host = lw_addr_new_port(HOST_NAME, PORT);
+  lw_filter filter = lw_filter_new();
+  lw_filter_set_ipv6(filter, lw_false);
+  lw_filter_set_local(filter, host);
+  /* host/start the server */
+  lw_server_host_filter(FMICSServer->server, filter);
+  lw_filter_delete(filter);
+  /* start the eventloop */
+  lw_eventpump_start_eventloop(FMICSServer->pump);
+/*fprintf(stderr, "closing server");fflush(NULL);
+  lw_server_delete (server);
+  lw_pump_delete (pump);*/
+  return FMICSServer;
+}
+
+void sendCommand(lw_client client, int index, char* data, size_t size) {
+  fprintf(stderr, "server sending to client=%d, data=%.*s\n", index, size, data);fflush(NULL);
+  char cmd[size+1];
+  strcpy(cmd, data);
+  strcat(cmd, "\n");
+  lw_stream_write(client, cmd, size+1);
+}
+
+int findClientIndex(FMICoSimulationServer *FMICSServer, lw_client client) {
+  int index = 0;
+  lw_server_client client1 = lw_server_client_first(FMICSServer->server);
+  while (client1) {
+    if (client1 == client)
+      break;
+    if (index + 1 < FMICSServer->numClients)
+      client1 = lw_server_client_next(client1);
+    else
+      break;
+    index++;
+  }
+  return index;
+}
+
+lw_server_client findClientByIndex(FMICoSimulationServer *FMICSServer, int index) {
+  lw_server_client client = lw_server_client_first(FMICSServer->server);
+  int count = 1;
+  while (client) {
+    if (count - 1 == index)
+      return client;
+    if (count < FMICSServer->numClients)
+      client = lw_server_client_next(client);
+    else
+      break;
+    count++;
+  }
+  return 0;
+}
+
+void callfmi1DoStep(FMICoSimulationServer *FMICSServer) {
+  /* Before calling fmiDostep check if all connections are fulfilled.*/
+  int i;
+  int found = 0;
+  for (i = 0 ; i < FMICSServer->numConnections ; i++) {
+    if (connectionComplete != FMICSServer->connections[i].state) {
+      found = 1;
+      connection c = FMICSServer->connections[i];
+      fprintf(stdout, "Can't do fmiDoStep(), still waiting for pending connection to complete, connection %d,%d,%d,%d\n", c.fromFMU, c.fromOutputVR, c.toFMU, c.toInputVR);fflush(NULL);
+    }
+  }
+  if (!found) {
+    /* set all connection states to invalid again for the next step. */
+    for (i = 0 ; i < FMICSServer->numConnections ; i++) {
+      FMICSServer->connections[i].state = connectionInvalid;
+    }
+    /* call fmiDoStep for all clients */
+    lw_server_client client = lw_server_client_first(FMICSServer->server);
+    int count = 1;
+    while (client) {
+      sendCommand(client, count - 1, fmiDoStep, strlen(fmiDoStep));
+      if (count < FMICSServer->numClients)
+        client = lw_server_client_next(client);
+      else
+        break;
+      count++;
+    }
+  }
+}
+
+void serverOnConnect(lw_server server, lw_client client)
+{
+  fprintf(stderr, "server on_connect \n");fflush(NULL);
+  FMICoSimulationServer *FMICSServer = (FMICoSimulationServer*)lw_server_tag(server);
+  FMICSServer->numClients += 1;
+  int index = FMICSServer->numClients - 1;
+  fprintf(stderr, "FMICSServer->numClients = %d \n", FMICSServer->numClients);fflush(NULL);
+  if (FMICSServer->numClients < FMICSServer->numFMUS) {
+    char cmd[50];
+    sprintf(cmd, waitingForFMUs, FMICSServer->numFMUS - FMICSServer->numClients);
+    sendCommand(client, index, cmd, strlen(cmd));
+  } else {
+    char tStartCmd[50];
+    sprintf(tStartCmd, "%s%f", fmiTStart, FMICSServer->tStart);
+    char stepSizeCmd[50];
+    sprintf(stepSizeCmd, "%s%f", fmiStepSize, FMICSServer->stepSize);
+    char tEndCmd[50];
+    sprintf(tEndCmd, "%s%f", fmiTEnd, FMICSServer->tStop);
+    int i;
+    /* start simulation for the first client. */
+    if (FMICSServer->numClients > 1) {
+      lw_server_client client1 = lw_server_client_first(server);
+      sendCommand(client1, 0, tStartCmd, strlen(tStartCmd));
+      sendCommand(client1, 0, stepSizeCmd, strlen(stepSizeCmd));
+      sendCommand(client1, 0, tEndCmd, strlen(tEndCmd));
+      /* start simulations for the n-1 clients. */
+      for (i = 2 ;  i < FMICSServer->numClients ; i++) {
+        /* fetch the next client */
+        client1 = lw_server_client_next(client1);
+        sendCommand(client1, i - 1, tStartCmd, strlen(tStartCmd));
+        sendCommand(client1, i - 1, stepSizeCmd, strlen(stepSizeCmd));
+        sendCommand(client1, i - 1, tEndCmd, strlen(tEndCmd));
+      }
+    }
+    /* start simulation for the last client. */
+    sendCommand(client, FMICSServer->numClients - 1, tStartCmd, strlen(tStartCmd));
+    sendCommand(client, FMICSServer->numClients - 1, stepSizeCmd, strlen(stepSizeCmd));
+    sendCommand(client, FMICSServer->numClients - 1, tEndCmd, strlen(tEndCmd));
+  }
+}
+
+void serverOnData(lw_server server, lw_client client, const char* data, size_t size)
+{
+  FMICoSimulationServer *FMICSServer = (FMICoSimulationServer*)lw_server_tag(server);
+  int clientIndex = findClientIndex(FMICSServer, client);
+
+  char* response = (char*)malloc(size+1);
+  strncpy(response, data, size);
+  response[size] = '\0';
+  fprintf(stderr, "server received from client=%d, Data=%s\n", clientIndex, response);fflush(NULL);
+
+  char* token;
+  token = strtok(response, "\n");
+  while (token != NULL)
+  {
+    fprintf(stdout, "token = %s\n", token);fflush(NULL);
+    if (strncmp(token, fmiTEndOk, strlen(fmiTEndOk)) == 0) {
+      sendCommand(client, clientIndex, fmiInstantiateSlave, strlen(fmiInstantiateSlave));
+    } else if ((strncmp(token, fmiInstantiateSlaveSuccess, strlen(fmiInstantiateSlaveSuccess)) == 0) ||
+              (strncmp(token, fmiInstantiateSlaveWarning, strlen(fmiInstantiateSlaveWarning)) == 0)) {
+      /*
+       * handle fmiInstantiateSlave response.
+       * if the response is success then call fmiInitializeSlave
+       */
+      sendCommand(client, clientIndex, fmiInitializeSlave, strlen(fmiInitializeSlave));
+    } else if (strncmp(token, fmiInstantiateSlaveError, strlen(fmiInitializeSlaveError)) == 0) {
+      fprintf(stderr,"Could not instantiate model.\n");fflush(NULL);
+      exit(EXIT_FAILURE);
+    } else if (strncmp(token, fmiInitializeSlaveOk, strlen(fmiInitializeSlaveOk)) == 0) {
+      /*
+       * handle fmiInitializeSlave response.
+       * if the response is OK then call setInitialValues
+       */
+      sendCommand(client, clientIndex, setInitialValues, strlen(setInitialValues));
+    } else if (strncmp(token, fmiInitializeSlaveError, strlen(fmiInitializeSlaveError)) == 0) {
+      fprintf(stderr,"Could not initialize model.\n");fflush(NULL);
+      exit(EXIT_FAILURE);
+    } else if ((strncmp(token, setInitialValuesOk, strlen(setInitialValuesOk)) == 0) ||
+        (strncmp(token, fmiSetValueReturn, strlen(fmiSetValueReturn)) == 0) ||
+        (strncmp(token, fmiDoStepOk, strlen(fmiDoStepOk)) == 0)) {
+      /*
+       * handle setInitialValues response.
+       * if the response is OK then call fmiDoStep
+       */
+      /* check the client's connections */
+      int i;
+      int found = 0;
+      for (i = 0 ; i < FMICSServer->numConnections ; i++) {
+        connection c = FMICSServer->connections[i];
+        if (clientIndex == c.toFMU && c.state == connectionInvalid) {
+          found = 1;
+          lw_server_client fromClient = findClientByIndex(FMICSServer, c.fromFMU);
+          c.state = connectionRequested;
+          FMICSServer->connections[i] = c;
+          char cmd[50];
+          sprintf(cmd, "%s%d", fmiGetValue, c.fromOutputVR);
+          sendCommand(fromClient, c.fromFMU, cmd, strlen(cmd));
+          break;
+        }
+      }
+      /* if not found then we assume we have fulfilled all the connections of this client so we can now call fmiDoStep. */
+      if (!found) {
+        callfmi1DoStep(FMICSServer);
+      }
+    } else if (strncmp(token, fmiGetValueReturn, strlen(fmiGetValueReturn)) == 0) {
+      double value = unparseDoubleResult(token, fmiGetValueReturn, strlen(token));
+      int i;
+      for (i = 0 ; i < FMICSServer->numConnections ; i++) {
+        connection c = FMICSServer->connections[i];
+        if (clientIndex == c.fromFMU && c.state == connectionRequested) {
+          lw_server_client toClient = findClientByIndex(FMICSServer, c.toFMU);
+          c.state = connectionComplete;
+          FMICSServer->connections[i] = c;
+          char cmd[100];
+          sprintf(cmd, "%s%d#%s%f", fmiSetValueVr, c.toInputVR, fmiSetValue, value);
+          sendCommand(toClient, c.toFMU, cmd, strlen(cmd));
+          break;
+        }
+      }
+    } else if (strncmp(token, fmiDoStepError, strlen(fmiDoStepError)) == 0) {
+      fprintf(stderr,"doStep() of FMU didn't return fmiOK! Exiting...\n");fflush(NULL);
+      exit(EXIT_FAILURE);
+    } else if (strncmp(token, fmiDoStepFinished, strlen(fmiDoStepFinished)) == 0) {
+      sendCommand(client, clientIndex, fmiTerminateSlave, strlen(fmiTerminateSlave));
+    }
+    token = strtok(NULL, "\n");
+  }
+  free(response);
+}
+
+void serverOnDisconnect(lw_server server, lw_client client) {
+  fprintf(stdout, "Client disconnected\n");fflush(NULL);
+  FMICoSimulationServer *FMICSServer = (FMICoSimulationServer*)lw_server_tag(server);
+  FMICSServer->numClients -= 1;
+}
+
+void serverOnError(lw_server server, lw_error error) {
+  const char* errorString = lw_error_tostring(error);
+  fprintf(stderr, "Client received an error \"%s\"\n", errorString);fflush(NULL);
+  lw_server_delete(server);
+}

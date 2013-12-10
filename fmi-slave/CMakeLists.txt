@@ -1,27 +1,26 @@
 cmake_minimum_required(VERSION 2.8)
 
-INCLUDE_DIRECTORIES(${INCLUDE_PATHS})
-LINK_DIRECTORIES(${LIBS_PATHS})
+INCLUDE_DIRECTORIES(../ ${FMIL_INCLUDE_DIR} ${LACEWING_INCLUDE_DIR})
+LINK_DIRECTORIES(${FMIL_LIBS_DIR} ${LACEWING_LIBS_DIR})
 
 SET(SRCS
     src/main.c
     src/utils.c
     src/parseargs.c
-    src/help.c
     src/jacobi.c
     src/gs.c
-    src/simulate.c
-    src/log.c
+    src/fmiclient.c
+    ../helper.c
 )
 SET(HEADERS
     src/main.h
     src/utils.h
     src/parseargs.h
-    src/help.h
     src/jacobi.h
     src/gs.h
-    src/simulate.h
-    src/log.h
+    src/fmiclient.h
+    ../commands.h
+    ../helper.h
 )
 
 SET(EXECUTABLE_OUTPUT_PATH "${CMAKE_CURRENT_LIST_DIR}/../bin")
@@ -29,7 +28,7 @@ SET(EXECUTABLE_OUTPUT_PATH "${CMAKE_CURRENT_LIST_DIR}/../bin")
 ADD_EXECUTABLE(fmi-slave ${HEADERS} ${SRCS})
 
 IF(WIN32)
-TARGET_LINK_LIBRARIES(fmi-slave fmilib shlwapi)
+TARGET_LINK_LIBRARIES(fmi-slave fmilib shlwapi lacewing ws2_32 mswsock crypt32 secur32 mpr)
 ELSE(WIN32)
 TARGET_LINK_LIBRARIES(fmi-slave fmilib dl rt)
 ENDIF(WIN32)

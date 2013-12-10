@@ -60,22 +60,6 @@ void writeCsvRow2(FILE* file,
                   fmi2_real_t time,
                   char separator);
 
-/**
- * Transfer values in a connection
- * @todo should transfer more cleverly
- * @todo apparently fmi1_import_get_variable_list() allocates new list objects. Reuse somehow?
- */
-void fmi1TransferConnectionValues(  connection c,
-                                    fmi1_import_t ** fmus,
-                                    fmi1_import_variable_list_t** variables);
-
-/**
- * @see fmi1TransferConnectionValues
- */
-void fmi2TransferConnectionValues(  connection c,
-                                    fmi2_import_t ** fmus,
-                                    fmi2_import_variable_list_t** variables);
-
 #ifdef WIN32
 char *realpath(const char * file_name,
 		       char * resolved_name);

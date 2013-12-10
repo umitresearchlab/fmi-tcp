@@ -3,23 +3,7 @@
 
 /**
  * @brief Gauss-Seidel is a stepping method where we step the subsystems in serial. The order of connections will therefore matter.
- * @param time Current simulation time
- * @param communicationTimeStep Interval in seconds to exchange data in between FMUs
- * @param numFMUs
- * @param fmus
- * @param numConnections
- * @param connections
- * @param numStepOrder
- * @param stepOrder An integer array of FMU indices, telling which order to step
  */
-int fmi1GaussSeidelStep(double time,
-                        double communicationTimeStep,
-                        int numFMUs,
-                        fmi1_import_t ** fmus,
-                        fmi1_import_variable_list_t** variables,
-                        int numConnections,
-                        connection connections[MAX_CONNECTIONS],
-                        int numStepOrder,
-                        int stepOrder[MAX_STEP_ORDER]);
+fmi1_status_t fmi1GaussSeidelStep(FMICoSimulationClient *FMICSClient);
 
 #endif /* GS_H */
