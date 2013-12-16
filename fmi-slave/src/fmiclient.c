@@ -278,7 +278,7 @@ void fmi1SetValue(FMICoSimulationClient *FMICSClient, int valueReference, double
 }
 
 fmi1_status_t fmi1DoStep(FMICoSimulationClient *FMICSClient, int *finished) {
-  fmi1_status_t status;
+  fmi1_status_t status = fmi1_status_error;
   fprintf(stdout, "FMICSClient->tStart=%f\n", FMICSClient->tStart);fflush(NULL);
   fprintf(stdout, "FMICSClient->currentTime=%f\n", FMICSClient->currentTime);fflush(NULL);
   fprintf(stdout, "FMICSClient->tStop=%f\n", FMICSClient->tStop);fflush(NULL);
@@ -301,6 +301,14 @@ fmi1_status_t fmi1DoStep(FMICoSimulationClient *FMICSClient, int *finished) {
     *finished = 1;
   }
   return status;
+}
+
+fmi1_status_t fmi1PendingStatusString(FMICoSimulationClient *FMICSClient, fmi1_string_t *str) {
+  return fmi1_import_get_string_status(FMICSClient->importInstance, fmi1_pending_status, str);
+}
+
+fmi1_status_t fmi1DoStepStatus(FMICoSimulationClient *FMICSClient, fmi1_status_t *status) {
+  return fmi1_import_get_status(FMICSClient->importInstance, fmi1_do_step_status, status);
 }
 
 void connectClient(FMICoSimulationClient *FMICSClient, const char* hostName, int port) {
@@ -395,9 +403,33 @@ void clientOnData(lw_client client, const char* data, long size) {
         } else {
           if (status == fmi1_status_ok) {
             sendCommand(client, fmiDoStepOk, strlen(fmiDoStepOk));
+          } else if (status == fmi1_status_pending) {
+            /* ask the pending status from the FMU and print it as info */
+            fmi1_string_t str;
+            if (fmi1PendingStatusString(FMICSClient, &str) == fmi1_status_ok) {
+              fprintf(stdout, "INFO#%s\n", str);fflush(NULL);
+            }
+            /* tell the server that fmiDoStep is in pending state. */
+            sendCommand(client, fmiDoStepPending, strlen(fmiDoStepPending));
           } else {
             sendCommand(client, fmiDoStepError, strlen(fmiDoStepError));
           }
+        }
+      } else if (strncmp(token, fmiDoStepStatus, strlen(fmiDoStepStatus)) == 0) {  // handle fmiDoStepStatus
+        fmi1_status_t status = fmi1_status_error;
+        fmi1DoStepStatus(FMICSClient, &status);
+        if (status == fmi1_status_ok) {
+          sendCommand(client, fmiDoStepOk, strlen(fmiDoStepOk));
+        } else if (status == fmi1_status_pending) {
+          /* ask the pending status from the FMU and print it as info */
+          fmi1_string_t str;
+          if (fmi1PendingStatusString(FMICSClient, &str) == fmi1_status_ok) {
+            fprintf(stdout, "INFO#%s\n", str);fflush(NULL);
+          }
+          /* tell the server that fmiDoStep is in pending state. */
+          sendCommand(client, fmiDoStepPending, strlen(fmiDoStepPending));
+        } else {
+          sendCommand(client, fmiDoStepError, strlen(fmiDoStepError));
         }
       } else if (strncmp(token, fmiTerminateSlave, strlen(fmiTerminateSlave)) == 0) {  // handle fmiTerminateSlave
         destroyFMICoSimulationClient(FMICSClient);

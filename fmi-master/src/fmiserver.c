@@ -237,6 +237,12 @@ void serverOnData(lw_server server, lw_client client, const char* data, size_t s
           break;
         }
       }
+    } else if (strncmp(token, fmiDoStepPending, strlen(fmiDoStepPending)) == 0) {
+      /*
+       * We must start a timer here which should ask the slave about fmiGetStatus.
+       * No need to free the timer object. It is single shot timer and will automatically call the destroy after 5 seconds.
+       */
+      FMICoSimulationTimer *FMICSTimer = createFMICoSimulationTimer(client, FMICSServer);
     } else if (strncmp(token, fmiDoStepError, strlen(fmiDoStepError)) == 0) {
       fprintf(stderr,"doStep() of FMU didn't return fmiOK! Exiting...\n");fflush(NULL);
       exit(EXIT_FAILURE);
@@ -258,4 +264,33 @@ void serverOnError(lw_server server, lw_error error) {
   const char* errorString = lw_error_tostring(error);
   fprintf(stderr, "Client received an error \"%s\"\n", errorString);fflush(NULL);
   lw_server_delete(server);
+}
+
+/* timer methods */
+FMICoSimulationTimer* createFMICoSimulationTimer(lw_client client, FMICoSimulationServer *FMICSServer) {
+  FMICoSimulationTimer *FMICSTimer = malloc(sizeof(FMICoSimulationTimer));
+  FMICSTimer->client = client;
+  FMICSTimer->FMICSServer = FMICSServer;
+
+  FMICSTimer->timer = lw_timer_new(FMICSTimer->FMICSServer->pump);
+  lw_timer_on_tick(FMICSTimer->timer, timerOnTick);
+  /* save this object in the timer tag so we can use it later on. */
+  lw_timer_set_tag(FMICSTimer->timer, (void*)FMICSTimer);
+  /*
+   * start the timer.
+   * call timerOnTick after every 5 seconds.
+   */
+  lw_timer_start(FMICSTimer->timer, 5000);
+  return FMICSTimer;
+}
+
+void destroyFMICoSimulationTimer(FMICoSimulationTimer *FMICSTimer) {
+  lw_timer_delete(FMICSTimer->timer);
+  free(FMICSTimer);
+}
+
+void timerOnTick(lw_timer timer) {
+  FMICoSimulationTimer *FMICSTimer = (FMICoSimulationTimer*)lw_timer_tag(timer);
+  sendCommand(FMICSTimer->client, findClientIndex(FMICSTimer->FMICSServer, FMICSTimer->client), fmiDoStepStatus, strlen(fmiDoStepStatus));
+  destroyFMICoSimulationTimer(FMICSTimer);
 }

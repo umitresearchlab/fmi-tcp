@@ -36,4 +36,18 @@ void serverOnData(lw_server server, lw_client client, const char * data, size_t 
 void serverOnDisconnect(lw_server server, lw_client client);
 void serverOnError(lw_server server, lw_error error);
 
+/*
+ * A single shot timer to check the fmiDoStep status.
+ */
+typedef struct {
+  lw_client client;
+  FMICoSimulationServer *FMICSServer;
+  lw_timer timer;
+} FMICoSimulationTimer;
+
+FMICoSimulationTimer* createFMICoSimulationTimer(lw_client client, FMICoSimulationServer *FMICSServer);
+void destroyFMICoSimulationTimer(FMICoSimulationTimer *FMICSTimer);
+
+void timerOnTick(lw_timer timer);
+
 #endif /* FMISERVER_H_ */

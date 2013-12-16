@@ -52,6 +52,8 @@ fmi1_import_variable_t* fmi1GetVariableByVr(FMICoSimulationClient *FMICSClient, 
 void fmi1GetValue(FMICoSimulationClient *FMICSClient, int valueReference, char* retVal);
 void fmi1SetValue(FMICoSimulationClient *FMICSClient, int valueReference, double value);
 fmi1_status_t fmi1DoStep(FMICoSimulationClient *FMICSClient, int *finished);
+fmi1_status_t fmi1PendingStatusString(FMICoSimulationClient *FMICSClient, fmi1_string_t *str);
+fmi1_status_t fmi1DoStepStatus(FMICoSimulationClient *FMICSClient, fmi1_status_t *status);
 
 void connectClient(FMICoSimulationClient *FMICSClient, const char* hostName, int port);
 void clientOnConnect(lw_client client);
