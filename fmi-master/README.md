@@ -15,6 +15,10 @@ FLAGS
        -h     Show help and quit.
 
 OPTIONS
+       -port [PORT]
+              The port to run the server on.
+       -host [HOSTNAME]
+              The host name to run the server on.
        -n [numFMUS]
               Number of FMUs to connect.
        -d [TIMESTEP]
