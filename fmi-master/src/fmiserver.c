@@ -10,8 +10,8 @@
 #include "../../commands.h"
 #include "../../helper.h"
 
-FMICoSimulationServer* createFMICoSimulationServer(int numFMUS, double tStart, double stepSize, double tStop, int numConnections,
-    connection connections[MAX_CONNECTIONS]) {
+FMICoSimulationServer* createFMICoSimulationServer(char hostName[PATH_MAX], long port, int numFMUS, double tStart, double stepSize,
+    double tStop, int numConnections, connection connections[MAX_CONNECTIONS]) {
   FMICoSimulationServer* FMICSServer = malloc(sizeof(FMICoSimulationServer));
   FMICSServer->numFMUS = numFMUS;
   FMICSServer->numClients = 0;
@@ -35,7 +35,7 @@ FMICoSimulationServer* createFMICoSimulationServer(int numFMUS, double tStart, d
   lw_server_on_disconnect(FMICSServer->server, serverOnDisconnect);
   lw_server_on_error(FMICSServer->server, serverOnError);
   /* setup the server host name and port */
-  lw_addr host = lw_addr_new_port(HOST_NAME, PORT);
+  lw_addr host = lw_addr_new_port(hostName, port);
   lw_filter filter = lw_filter_new();
   lw_filter_set_ipv6(filter, lw_false);
   lw_filter_set_local(filter, host);

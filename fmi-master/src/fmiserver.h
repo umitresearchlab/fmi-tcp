@@ -23,8 +23,8 @@ typedef struct {
   lw_server server;
 } FMICoSimulationServer;
 
-FMICoSimulationServer* createFMICoSimulationServer(int numFMUS, double tStart, double stepSize, double tStop, int numConnections,
-    connection connections[MAX_CONNECTIONS]);
+FMICoSimulationServer* createFMICoSimulationServer(char hostName[PATH_MAX], long port, int numFMUS, double tStart, double stepSize,
+    double tStop, int numConnections, connection connections[MAX_CONNECTIONS]);
 
 void sendCommand(lw_client client, int index, char* data, size_t size);
 int findClientIndex(FMICoSimulationServer *FMICSServer, lw_client client);

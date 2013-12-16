@@ -30,10 +30,12 @@ int main( int argc, char *argv[] ) {
   int version=0,
       numFMUs=-1,
       numConnections=0;
+  long port = 10200;
+  char hostName[PATH_MAX] = "localhost";
   double tEnd=1.0,timeStep=0.1;
   connection connections[MAX_CONNECTIONS];
 
-  int status = parseArguments(argc, argv, &version, &numFMUs, &timeStep, &tEnd, &numConnections, connections);
+  int status = parseArguments(argc, argv, &version, &port, hostName, &numFMUs, &timeStep, &tEnd, &numConnections, connections);
   if (version) {
     // version flag given
     printf(VERSION);
@@ -57,6 +59,6 @@ int main( int argc, char *argv[] ) {
   fflush(NULL);
 
   FMICoSimulationServer *FMICServer = 0;
-  FMICServer = createFMICoSimulationServer(numFMUs, 0, timeStep, tEnd, numConnections, connections);
+  FMICServer = createFMICoSimulationServer(hostName, port, numFMUs, 0, timeStep, tEnd, numConnections, connections);
   return 0;
 }

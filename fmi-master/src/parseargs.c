@@ -12,8 +12,8 @@ void printInvalidArg(char* option) {
   fprintf(stderr, "Invalid argument of %s. Use -h for help.\n", option);
 }
 
-int parseArguments(int argc, char *argv[], int* version, int* numFMUs, double* timeStepSize, double* tEnd, int* numConnections,
-    connection connections[MAX_CONNECTIONS]) {
+int parseArguments(int argc, char *argv[], int* version, long* port, char hostName[PATH_MAX], int* numFMUs, double* timeStepSize,
+    double* tEnd, int* numConnections, connection connections[MAX_CONNECTIONS]) {
   int j, numScanned;
   const char* connectionsArg;
   int n, skip, l, cont, i;
@@ -25,6 +25,14 @@ int parseArguments(int argc, char *argv[], int* version, int* numFMUs, double* t
       return 1;
     } else if (strncmp(argv[j], "-v", 2) == 0) {
       *version = 1;
+    } else if (strncmp(argv[j], "-port=", 6) == 0) {
+      numScanned = sscanf(argv[j]+6, "%d", port);
+      if (numScanned <= 0) {
+        printInvalidArg(argv[j]);
+        return 1;
+      }
+    } else if (strncmp(argv[j], "-host=", 6) == 0) {
+      strcpy(hostName, argv[j]+6);
     } else if (strncmp(argv[j], "-n=", 3) == 0) {
       numScanned = sscanf(argv[j]+3,"%d", numFMUs);
       if (numScanned <= 0) {

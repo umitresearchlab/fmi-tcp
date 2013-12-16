@@ -16,6 +16,8 @@
  * @param argc Given by system
  * @param argv Given by system
  * @param versionMode
+ * @param port
+ * @param hostName
  * @param numFMUs number of FMUs
  * @param timeStepSize
  * @param tEnd
@@ -23,7 +25,7 @@
  * @param connections
  * @return int Returns 0 if the program should proceed, 1 if the program should end.
  */
-int parseArguments(int argc, char *argv[], int* versionMode, int* numFMUs, double* timeStepSize, double* tEnd, int* numConnections,
-    connection connections[MAX_CONNECTIONS]);
+int parseArguments(int argc, char *argv[], int* versionMode, long* port, char hostName[PATH_MAX], int* numFMUs, double* timeStepSize,
+    double* tEnd, int* numConnections, connection connections[MAX_CONNECTIONS]);
 
 #endif /* PARSEARGS_H_ */
