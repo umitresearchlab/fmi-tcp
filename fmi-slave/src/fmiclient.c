@@ -49,7 +49,7 @@ FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int log
     fmi_import_free_context(FMICSClient->importContext);
     free(FMICSClient->workingDirectory);
     free(FMICSClient);
-    fprintf(stderr, "The FMU version is %s. Unknown/Unsupported FMU version.\n", fmi_version_to_string(FMICSClient->version));fflush(NULL);
+    logPrint(stderr, "The FMU version is %s. Unknown/Unsupported FMU version.\n", fmi_version_to_string(FMICSClient->version));fflush(NULL);
     return 0;
   }
   if (FMICSClient->version == fmi_version_1_enu) { // FMI 1.0
@@ -59,7 +59,7 @@ FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int log
       fmi_import_free_context(FMICSClient->importContext);
       free(FMICSClient->workingDirectory);
       free(FMICSClient);
-      fprintf(stderr, "Error parsing the XML file contained in %s\n", FMICSClient->workingDirectory);
+      logPrint(stderr, "Error parsing the XML file contained in %s\n", FMICSClient->workingDirectory);
       return 0;
     }
     /* check FMU kind */
@@ -68,7 +68,7 @@ FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int log
       fmi_import_free_context(FMICSClient->importContext);
       free(FMICSClient->workingDirectory);
       free(FMICSClient);
-      fprintf(stderr,"Only CS 1.0 & 2.0 is supported by this code\n");fflush(NULL);
+      logPrint(stderr,"Only CS 1.0 & 2.0 is supported by this code\n");fflush(NULL);
       return 0;
     }
     /* FMI callback functions */
@@ -82,7 +82,7 @@ FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int log
       fmi_import_free_context(FMICSClient->importContext);
       free(FMICSClient->workingDirectory);
       free(FMICSClient);
-      fprintf(stderr, "There was an error loading the FMU dll. Turn on logging (-l) for more info.\n");
+      logPrint(stderr, "There was an error loading the FMU dll. Turn on logging (-l) for more info.\n");
       return 0;
     }
     FMICSClient->instanceName = (char*)fmi1_import_get_model_name(FMICSClient->importInstance);
@@ -123,7 +123,7 @@ void destroyFMICoSimulationClient(FMICoSimulationClient *FMICSClient) {
 }
 
 void sendCommand(lw_client client, char* data, size_t size) {
-  fprintf(stderr, "sending data=%.*s\n", size, data);fflush(NULL);
+  logPrint(stderr, "sending data=%.*s\n", size, data);fflush(NULL);
   char cmd[size+1];
   strcpy(cmd, data);
   strcat(cmd, "\n");
@@ -183,7 +183,7 @@ void fmi1SetInitialValues(FMICoSimulationClient *FMICSClient) {
         fmi1_import_set_string(FMICSClient->importInstance,   vr,   1, striing);
         break;
       default:
-        fprintf(stderr,"Could not determine type of value reference %d in FMU. Continuing without setting initial value...\n", vr[0]);
+        logPrint(stderr,"Could not determine type of value reference %d in FMU. Continuing without setting initial value...\n", vr[0]);
         break;
       }
     }
@@ -217,23 +217,23 @@ void fmi1GetValue(FMICoSimulationClient *FMICSClient, int valueReference, char* 
   switch (baseType) {
   case fmi1_base_type_real:
     fmi1_import_get_real(FMICSClient->importInstance, vr, 1, rr);
-    fprintf(stdout, "fmi1_import_get_real = %f\n", rr[0]);fflush(NULL);
+    logPrint(stdout, "fmi1_import_get_real = %f\n", rr[0]);fflush(NULL);
     sprintf(retVal, "%f", rr[0]);
     break;
   case fmi1_base_type_int:
   case fmi1_base_type_enum:
     fmi1_import_get_integer(FMICSClient->importInstance, vr, 1, ii);
-    fprintf(stdout, "fmi1_import_get_integer = %d\n", ii[0]);fflush(NULL);
+    logPrint(stdout, "fmi1_import_get_integer = %d\n", ii[0]);fflush(NULL);
     sprintf(retVal, "%d", ii[0]);
     break;
   case fmi1_base_type_bool:
     fmi1_import_get_boolean(FMICSClient->importInstance, vr, 1, bb);
-    fprintf(stdout, "fmi1_import_get_boolean = %d\n", bb[0]);fflush(NULL);
+    logPrint(stdout, "fmi1_import_get_boolean = %d\n", bb[0]);fflush(NULL);
     sprintf(retVal, "%d", bb[0]);
     break;
   case fmi1_base_type_str:
     fmi1_import_get_string(FMICSClient->importInstance, vr, 1, ss);
-    fprintf(stdout, "fmi1_import_get_string = %s\n", ss[0]);fflush(NULL);
+    logPrint(stdout, "fmi1_import_get_string = %s\n", ss[0]);fflush(NULL);
     sprintf(retVal, "%s", ss[0]);
     break;
   default:
@@ -261,15 +261,15 @@ void fmi1SetValue(FMICoSimulationClient *FMICSClient, int valueReference, double
   case fmi1_base_type_int:
   case fmi1_base_type_enum:
     fmi1_import_get_integer(FMICSClient->importInstance, vr, 1, ii);
-    fprintf(stdout, "fmi1_import_get_integer = %d\n", ii[0]);fflush(NULL);
+    logPrint(stdout, "fmi1_import_get_integer = %d\n", ii[0]);fflush(NULL);
     break;
   case fmi1_base_type_bool:
     fmi1_import_get_boolean(FMICSClient->importInstance, vr, 1, bb);
-    fprintf(stdout, "fmi1_import_get_boolean = %d\n", bb[0]);fflush(NULL);
+    logPrint(stdout, "fmi1_import_get_boolean = %d\n", bb[0]);fflush(NULL);
     break;
   case fmi1_base_type_str:
     fmi1_import_get_string(FMICSClient->importInstance, vr, 1, ss);
-    fprintf(stdout, "fmi1_import_get_string = %s\n", ss[0]);fflush(NULL);
+    logPrint(stdout, "fmi1_import_get_string = %s\n", ss[0]);fflush(NULL);
     break;
   default:
     //printf("Could not determine type of value reference %d in FMU %d. Continuing without connection value transfer...\n", vrFrom[0],fmuFrom);
@@ -279,9 +279,9 @@ void fmi1SetValue(FMICoSimulationClient *FMICSClient, int valueReference, double
 
 fmi1_status_t fmi1DoStep(FMICoSimulationClient *FMICSClient, int *finished) {
   fmi1_status_t status = fmi1_status_error;
-  fprintf(stdout, "FMICSClient->tStart=%f\n", FMICSClient->tStart);fflush(NULL);
-  fprintf(stdout, "FMICSClient->currentTime=%f\n", FMICSClient->currentTime);fflush(NULL);
-  fprintf(stdout, "FMICSClient->tStop=%f\n", FMICSClient->tStop);fflush(NULL);
+  /*logPrint(stdout, "FMICSClient->tStart=%f\n", FMICSClient->tStart);fflush(NULL);
+  logPrint(stdout, "FMICSClient->currentTime=%f\n", FMICSClient->currentTime);fflush(NULL);
+  logPrint(stdout, "FMICSClient->tStop=%f\n", FMICSClient->tStop);fflush(NULL);*/
   if (FMICSClient->currentTime < FMICSClient->tStop) {
     switch (method) {
     case jacobi:
@@ -291,7 +291,7 @@ fmi1_status_t fmi1DoStep(FMICoSimulationClient *FMICSClient, int *finished) {
       status = fmi1GaussSeidelStep(FMICSClient);
       break;
     default:
-      fprintf(stderr, "Method enum not correct!\n");
+      logPrint(stderr, "Method enum not correct!\n");
       exit(EXIT_FAILURE);
       break;
     }
@@ -339,14 +339,14 @@ void clientOnData(lw_client client, const char* data, long size) {
   char* request = (char*)malloc(size+1);
   strncpy(request, data, size);
   request[size] = '\0';
-  fprintf(stdout, "clientOnData = %s\n", request);fflush(NULL);
+  logPrint(stdout, "clientOnData = %s\n", request);fflush(NULL);
   FMICoSimulationClient *FMICSClient = (FMICoSimulationClient*)lw_stream_tag(client);
 
   char* token;
   token = strtok(request, "\n");
   while (token != NULL)
   {
-    fprintf(stdout, "token = %s\n", token);fflush(NULL);
+    logPrint(stdout, "token = %s\n", token);fflush(NULL);
     if (strncmp(token, fmiTStart, strlen(fmiTStart)) == 0) {  /* Handle fmiTStart */
       FMICSClient->tStart = unparseDoubleResult(token, fmiTStart, size);
       FMICSClient->currentTime = FMICSClient->tStart;
@@ -407,7 +407,7 @@ void clientOnData(lw_client client, const char* data, long size) {
             /* ask the pending status from the FMU and print it as info */
             fmi1_string_t str;
             if (fmi1PendingStatusString(FMICSClient, &str) == fmi1_status_ok) {
-              fprintf(stdout, "INFO#%s\n", str);fflush(NULL);
+              logPrint(stdout, "INFO#%s\n", str);fflush(NULL);
             }
             /* tell the server that fmiDoStep is in pending state. */
             sendCommand(client, fmiDoStepPending, strlen(fmiDoStepPending));
@@ -424,7 +424,7 @@ void clientOnData(lw_client client, const char* data, long size) {
           /* ask the pending status from the FMU and print it as info */
           fmi1_string_t str;
           if (fmi1PendingStatusString(FMICSClient, &str) == fmi1_status_ok) {
-            fprintf(stdout, "INFO#%s\n", str);fflush(NULL);
+            logPrint(stdout, "INFO#%s\n", str);fflush(NULL);
           }
           /* tell the server that fmiDoStep is in pending state. */
           sendCommand(client, fmiDoStepPending, strlen(fmiDoStepPending));
@@ -435,7 +435,7 @@ void clientOnData(lw_client client, const char* data, long size) {
         destroyFMICoSimulationClient(FMICSClient);
         lw_stream_close(client, lw_true);
       } else {
-        fprintf(stdout, "%s\n", token);fflush(NULL);
+        logPrint(stdout, "%s\n", token);fflush(NULL);
       }
     } else if (FMICSClient->version == fmi_version_2_0_enu) { // FMI 2.0
 
@@ -446,7 +446,7 @@ void clientOnData(lw_client client, const char* data, long size) {
 }
 
 void clientOnDisconnect(lw_client client) {
-  fprintf(stdout, "Client disconnected\n");fflush(NULL);
+  logPrint(stdout, "Client disconnected\n");fflush(NULL);
   lw_pump pump = lw_stream_pump(client);
   lw_eventpump_post_eventloop_exit(pump);
   lw_stream_delete(client);
@@ -460,13 +460,13 @@ void clientOnError(lw_client client, lw_error error) {
 
   if (strcmp(errorString, "Error connecting") == 0) {
     lw_addr address = lw_client_server_addr(client);
-    fprintf(stderr, "Unable to connect to the server running at %s\n", lw_addr_tostring(address));fflush(NULL);
+    logPrint(stderr, "Unable to connect to the server running at %s\n", lw_addr_tostring(address));fflush(NULL);
     destroyFMICoSimulationClient(FMICSClient);
     lw_eventpump_post_eventloop_exit(pump);
     lw_stream_delete(client);
     return;
   }
-  fprintf(stderr, "Client received an error \"%s\"\n", errorString);fflush(NULL);
+  logPrint(stderr, "Client received an error \"%s\"\n", errorString);fflush(NULL);
   destroyFMICoSimulationClient(FMICSClient);
   lw_eventpump_post_eventloop_exit(pump);
   lw_stream_delete(client);

@@ -9,7 +9,7 @@
 #include "parseargs.h"
 
 void printInvalidArg(char* option) {
-  fprintf(stderr, "Invalid argument of %s. Use -h for help.\n", option);
+  logPrint(stderr, "Invalid argument of %s. Use -h for help.\n", option);
 }
 
 int parseArguments(int argc, char *argv[], int* version, long* port, char hostName[PATH_MAX], int* numFMUs, double* timeStepSize,

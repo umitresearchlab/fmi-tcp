@@ -56,7 +56,7 @@ int main( int argc, char *argv[] ) {
   }
 
   if (strcmp(fmuPath, "") == 0) {
-    fprintf(stderr, "No FMU given. Aborting... (see -h for help)\n");
+    logPrint(stderr, "No FMU given. Aborting... (see -h for help)\n");
     return EXIT_FAILURE;
   }
 

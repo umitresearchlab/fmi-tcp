@@ -5,7 +5,7 @@
 #include "parseargs.h"
 
 void printInvalidArg(char* option) {
-  fprintf(stderr, "Invalid argument of %s. Use -h for help.\n", option);
+  logPrint(stderr, "Invalid argument of %s. Use -h for help.\n", option);
 }
 
 int parseArguments( int argc,
@@ -34,7 +34,7 @@ int parseArguments( int argc,
         } else if(strcmp(argv[j]+3,"gs") == 0){
           *method = gs;
         } else {
-          fprintf(stderr,"Method \"%s\" not recognized. Use \"jacobi\" or \"gs\".\n",argv[j]+3);
+          logPrint(stderr,"Method \"%s\" not recognized. Use \"jacobi\" or \"gs\".\n",argv[j]+3);
           return 1;
         }
       } else if (strncmp(argv[j], "-v", 2) == 0) {

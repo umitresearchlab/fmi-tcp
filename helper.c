@@ -8,6 +8,13 @@
 
 #include "helper.h"
 
+void logPrint(FILE *stream, const char *format, ...) {
+  va_list args;
+  va_start(args, format);
+  vfprintf(stream, format, args);
+  va_end(args);
+}
+
 /*
  * @brief Parses the result like fmiStepSize=0.200000
  * @param data - represents the full result data.

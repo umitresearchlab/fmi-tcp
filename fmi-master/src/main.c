@@ -44,7 +44,7 @@ int main( int argc, char *argv[] ) {
   }
 
   if (numFMUs == -1) {
-    fprintf(stderr, "Number of FMU(s) is not defined. Use -n option e.g -n=2.\n");fflush(NULL);
+    logPrint(stderr, "Number of FMU(s) is not defined. Use -n option e.g -n=2.\n");fflush(NULL);
     exit(EXIT_FAILURE);
   }
 
