@@ -30,7 +30,7 @@ ADD_EXECUTABLE(fmi-slave ${HEADERS} ${SRCS})
 IF(WIN32)
 TARGET_LINK_LIBRARIES(fmi-slave fmilib shlwapi lacewing ws2_32 mswsock crypt32 secur32 mpr)
 ELSE(WIN32)
-TARGET_LINK_LIBRARIES(fmi-slave fmilib dl rt lacewing)
+TARGET_LINK_LIBRARIES(fmi-slave fmilib dl lacewing)
 ENDIF(WIN32)
 
 INSTALL (TARGETS fmi-slave DESTINATION bin)
