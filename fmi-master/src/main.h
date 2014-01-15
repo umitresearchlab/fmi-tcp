@@ -19,6 +19,11 @@
 #define VERSION "0.1.3"
 #define MAX_CONNECTIONS 1000
 
+typedef enum METHOD {
+    jacobi,
+    gs
+} METHOD;
+
 /** \brief Base types used in type definitions */
 typedef enum connectionState
 {

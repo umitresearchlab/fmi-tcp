@@ -17,6 +17,7 @@ typedef struct {
   double tStart;
   double stepSize;
   double tStop;
+  enum METHOD method;
   int numConnections;
   connection connections[MAX_CONNECTIONS];
   lw_pump pump;
@@ -24,7 +25,7 @@ typedef struct {
 } FMICoSimulationServer;
 
 FMICoSimulationServer* createFMICoSimulationServer(char hostName[PATH_MAX], long port, int numFMUS, double tStart, double stepSize,
-    double tStop, int numConnections, connection connections[MAX_CONNECTIONS]);
+    double tStop, enum METHOD method, int numConnections, connection connections[MAX_CONNECTIONS]);
 
 void sendCommand(lw_client client, int index, char* data, size_t size);
 int findClientIndex(FMICoSimulationServer *FMICSServer, lw_client client);

@@ -14,7 +14,6 @@ int parseArguments( int argc,
                     int* loggingOn,
                     int* debugLogging,
                     int* version,
-                    enum METHOD * method,
                     int* port,
                     char hostName[PATH_MAX]){
     int j;
@@ -28,15 +27,6 @@ int parseArguments( int argc,
         *loggingOn = 1;
       } else if (strncmp(argv[j], "-dl", 3) == 0) {
         *debugLogging = 1;
-      } else if (strncmp(argv[j], "-m=", 3) == 0) {
-        if (strcmp(argv[j]+3,"jacobi") == 0) {
-          *method = jacobi;
-        } else if(strcmp(argv[j]+3,"gs") == 0){
-          *method = gs;
-        } else {
-          logPrint(stderr,"Method \"%s\" not recognized. Use \"jacobi\" or \"gs\".\n",argv[j]+3);
-          return 1;
-        }
       } else if (strncmp(argv[j], "-v", 2) == 0) {
         *version = 1;
       } else if (strncmp(argv[j], "-port=", 6) == 0) {

@@ -32,7 +32,6 @@ typedef struct {
   int stopTimeDefined;
   double tStop;
   fmi1_import_variable_list_t* variables;
-  enum METHOD method;
   /*
    * TCP Client fields
    */
@@ -40,7 +39,7 @@ typedef struct {
   lw_client client;
 } FMICoSimulationClient;
 
-FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int loggingOn, int debugLogging, enum METHOD method);
+FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int loggingOn, int debugLogging);
 void destroyFMICoSimulationClient(FMICoSimulationClient *FMICSClient);
 
 void sendCommand(lw_client client, char* data, size_t size);

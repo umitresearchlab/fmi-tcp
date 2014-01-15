@@ -8,8 +8,6 @@
 
 #include "fmiclient.h"
 #include "../../commands.h"
-#include "jacobi.h"
-#include "gs.h"
 #include "../../helper.h"
 
 void fmi1_null_logger(  fmi1_component_t    c,
@@ -28,7 +26,7 @@ void importlogger(jm_callbacks* c, jm_string module, jm_log_level_enu_t log_leve
   printf("module = %s, log level = %s: %s\n", module, jm_log_level_to_string(log_level), message);fflush(NULL);
 }
 
-FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int loggingOn, int debugLogging, enum METHOD method) {
+FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int loggingOn, int debugLogging) {
   FMICoSimulationClient* FMICSClient = malloc(sizeof(FMICoSimulationClient));
   FMICSClient->logLevel = loggingOn ? jm_log_level_all : jm_log_level_fatal;
   /* JM callbacks */
@@ -105,7 +103,6 @@ FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int log
     */
     FMICSClient->debugLogging = debugLogging;
     FMICSClient->variables = fmi1_import_get_variable_list(FMICSClient->importInstance);
-    FMICSClient->method = method;
   } else if (FMICSClient->version == fmi_version_2_0_enu) { // FMI 2.0
 
   }
@@ -288,18 +285,7 @@ fmi1_status_t fmi1DoStep(FMICoSimulationClient *FMICSClient, int *finished) {
   logPrint(stdout, "FMICSClient->currentTime=%f\n", FMICSClient->currentTime);fflush(NULL);
   logPrint(stdout, "FMICSClient->tStop=%f\n", FMICSClient->tStop);fflush(NULL);*/
   if (FMICSClient->currentTime < FMICSClient->tStop) {
-    switch (method) {
-    case jacobi:
-      status = fmi1JacobiStep(FMICSClient);
-      break;
-    case gs:
-      status = fmi1GaussSeidelStep(FMICSClient);
-      break;
-    default:
-      logPrint(stderr, "Method enum not correct!\n");
-      exit(EXIT_FAILURE);
-      break;
-    }
+    status = fmi1_import_do_step(FMICSClient->importInstance, FMICSClient->currentTime, FMICSClient->stepSize, 1);
     FMICSClient->currentTime += FMICSClient->stepSize;
     *finished = 0;
   } else {

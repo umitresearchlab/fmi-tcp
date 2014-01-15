@@ -25,6 +25,9 @@ OPTIONS
               Timestep size. Default is 0.1.
        -t [ENDTIME]
               End simulation time in seconds. Default is 1.0.
+       -m [METHOD]
+              Stepping  method. Available methods are "jacobi" (Jacobi, paral‐
+              lel) and "gs" (Gauss-Seidel, serial). Default is "jacobi".
        -c [CONNECTIONS]
               Connection  specification. No connections by default. Quadruples
               of positive integers, representing which FMU and value reference

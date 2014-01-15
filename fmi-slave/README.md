@@ -21,10 +21,6 @@ FLAGS
        -v     Show version and quit.
 
 OPTIONS
-       -m [METHOD]
-              Stepping  method. Available methods are "jacobi" (Jacobi, paral‐
-              lel) and "gs" (Gauss-Seidel, serial). Default is "jacobi".
-              
        -port [PORT]
               The server port to connect.
               

@@ -22,7 +22,6 @@ int parseArguments( int argc,
                     int* loggingOn,
                     int* debugLogging,
                     int* versionMode,
-                    enum METHOD * method,
                     int* port,
                     char hostName[PATH_MAX]);
 

@@ -7,8 +7,6 @@ SET(SRCS
     src/main.c
     src/utils.c
     src/parseargs.c
-    src/jacobi.c
-    src/gs.c
     src/fmiclient.c
     ../helper.c
 )
@@ -16,8 +14,6 @@ SET(HEADERS
     src/main.h
     src/utils.h
     src/parseargs.h
-    src/jacobi.h
-    src/gs.h
     src/fmiclient.h
     ../commands.h
     ../helper.h

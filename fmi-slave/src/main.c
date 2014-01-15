@@ -35,7 +35,6 @@ int main( int argc, char *argv[] ) {
   int loggingOn=0,
   debugLogging=0,
   version=0;
-  enum METHOD method = jacobi;
   int port = -1;
   char hostName[PATH_MAX] = "localhost";
   int status =parseArguments(argc,
@@ -44,7 +43,6 @@ int main( int argc, char *argv[] ) {
       &loggingOn,
       &debugLogging,
       &version,
-      &method,
       &port,
       hostName);
 
@@ -77,7 +75,7 @@ int main( int argc, char *argv[] ) {
   if (res) {
     // OK
     strcpy(fmuPath,buf);
-    FMICSClient = createFMICoSimulationClient(fmuPath, loggingOn, debugLogging, method);
+    FMICSClient = createFMICoSimulationClient(fmuPath, loggingOn, debugLogging);
   } else {
     // Error opening...
     exit(EXIT_FAILURE);

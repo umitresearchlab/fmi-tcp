@@ -11,13 +11,14 @@
 #include "../../helper.h"
 
 FMICoSimulationServer* createFMICoSimulationServer(char hostName[PATH_MAX], long port, int numFMUS, double tStart, double stepSize,
-    double tStop, int numConnections, connection connections[MAX_CONNECTIONS]) {
+    double tStop, enum METHOD method, int numConnections, connection connections[MAX_CONNECTIONS]) {
   FMICoSimulationServer* FMICSServer = malloc(sizeof(FMICoSimulationServer));
   FMICSServer->numFMUS = numFMUS;
   FMICSServer->numClients = 0;
   FMICSServer->tStart = tStart;
   FMICSServer->stepSize = stepSize;
   FMICSServer->tStop = tStop;
+  FMICSServer->method = method;
   FMICSServer->numConnections = numConnections;
   int i;
   for (i = 0 ; i < numConnections ; i++) {

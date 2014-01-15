@@ -13,7 +13,7 @@ void printInvalidArg(char* option) {
 }
 
 int parseArguments(int argc, char *argv[], int* version, long* port, char hostName[PATH_MAX], int* numFMUs, double* timeStepSize,
-    double* tEnd, int* numConnections, connection connections[MAX_CONNECTIONS]) {
+    double* tEnd, enum METHOD* method, int* numConnections, connection connections[MAX_CONNECTIONS]) {
   int j, numScanned;
   const char* connectionsArg;
   int n, skip, l, cont, i;
@@ -49,6 +49,15 @@ int parseArguments(int argc, char *argv[], int* version, long* port, char hostNa
       numScanned = sscanf(argv[j]+3,"%lf", tEnd);
       if (numScanned <= 0) {
         printInvalidArg(argv[j]);
+        return 1;
+      }
+    } else if (strncmp(argv[j], "-m=", 3) == 0) {
+      if (strcmp(argv[j]+3,"jacobi") == 0) {
+        *method = jacobi;
+      } else if(strcmp(argv[j]+3,"gs") == 0){
+        *method = gs;
+      } else {
+        logPrint(stderr,"Method \"%s\" not recognized. Use \"jacobi\" or \"gs\".\n",argv[j]+3);
         return 1;
       }
     } else if (strncmp(argv[j], "-c=", 3) == 0) {

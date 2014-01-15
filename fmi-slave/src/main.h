@@ -19,9 +19,4 @@ enum FILEFORMAT {
     csv
 } fileformat;
 
-enum METHOD {
-    jacobi,
-    gs
-} method;
-
 #endif /* MAIN_H */

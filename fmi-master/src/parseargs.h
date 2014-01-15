@@ -26,6 +26,6 @@
  * @return int Returns 0 if the program should proceed, 1 if the program should end.
  */
 int parseArguments(int argc, char *argv[], int* versionMode, long* port, char hostName[PATH_MAX], int* numFMUs, double* timeStepSize,
-    double* tEnd, int* numConnections, connection connections[MAX_CONNECTIONS]);
+    double* tEnd, enum METHOD* method, int* numConnections, connection connections[MAX_CONNECTIONS]);
 
 #endif /* PARSEARGS_H_ */

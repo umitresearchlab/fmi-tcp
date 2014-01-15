@@ -33,9 +33,10 @@ int main( int argc, char *argv[] ) {
   long port = 10200;
   char hostName[PATH_MAX] = "localhost";
   double tEnd=1.0,timeStep=0.1;
+  enum METHOD method = jacobi;
   connection connections[MAX_CONNECTIONS];
 
-  int status = parseArguments(argc, argv, &version, &port, hostName, &numFMUs, &timeStep, &tEnd, &numConnections, connections);
+  int status = parseArguments(argc, argv, &version, &port, hostName, &numFMUs, &timeStep, &tEnd, &method, &numConnections, connections);
   if (version) {
     // version flag given
     printf(VERSION);
@@ -59,6 +60,6 @@ int main( int argc, char *argv[] ) {
   fflush(NULL);
 
   FMICoSimulationServer *FMICServer = 0;
-  FMICServer = createFMICoSimulationServer(hostName, port, numFMUs, 0, timeStep, tEnd, numConnections, connections);
+  FMICServer = createFMICoSimulationServer(hostName, port, numFMUs, 0, timeStep, tEnd, method, numConnections, connections);
   return 0;
 }
