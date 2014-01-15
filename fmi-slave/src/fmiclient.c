@@ -242,37 +242,42 @@ void fmi1GetValue(FMICoSimulationClient *FMICSClient, int valueReference, char* 
   }
 }
 
-void fmi1SetValue(FMICoSimulationClient *FMICSClient, int valueReference, double value) {
+void fmi1SetValue(FMICoSimulationClient *FMICSClient, int valueReference, const char* data, const char* name) {
   fmi1_import_variable_t* v = fmi1GetVariableByVr(FMICSClient, valueReference);
   if (!v)
     return;
   fmi1_value_reference_t vr[1];
   vr[0] = valueReference;
   fmi1_base_type_enu_t baseType = fmi1_import_get_variable_base_type(v);
-  fmi1_real_t rr[1] = {value};
-  fmi1_boolean_t bb[1];
+  fmi1_real_t rr[1];
+  double rr_value;
   fmi1_integer_t ii[1];
+  int ii_value;
+  fmi1_boolean_t bb[1];
+  int bb_value;
   fmi1_string_t ss[1];
-  fmi1_status_t status;
   switch (baseType) {
   case fmi1_base_type_real:
-    status = fmi1_import_set_real(FMICSClient->importInstance, vr, 1, rr);
+    rr_value = unparseDoubleResult(data, name, strlen(data));
+    rr[0] = rr_value;
+    fmi1_import_set_real(FMICSClient->importInstance, vr, 1, rr);
     break;
   case fmi1_base_type_int:
   case fmi1_base_type_enum:
-    fmi1_import_get_integer(FMICSClient->importInstance, vr, 1, ii);
-    logPrint(stdout, "fmi1_import_get_integer = %d\n", ii[0]);fflush(NULL);
+    ii_value = unparseIntResult(data, name, strlen(data));
+    ii[0] = ii_value;
+    fmi1_import_set_integer(FMICSClient->importInstance, vr, 1, ii);
     break;
   case fmi1_base_type_bool:
-    fmi1_import_get_boolean(FMICSClient->importInstance, vr, 1, bb);
-    logPrint(stdout, "fmi1_import_get_boolean = %d\n", bb[0]);fflush(NULL);
+    bb_value = unparseIntResult(data, name, strlen(data));
+    bb[0] = bb_value;
+    fmi1_import_set_boolean(FMICSClient->importInstance, vr, 1, bb);
     break;
   case fmi1_base_type_str:
-    fmi1_import_get_string(FMICSClient->importInstance, vr, 1, ss);
-    logPrint(stdout, "fmi1_import_get_string = %s\n", ss[0]);fflush(NULL);
+    logPrint(stderr, "fmi1_import_set_string is not handled yet.\n");fflush(NULL);
     break;
   default:
-    //printf("Could not determine type of value reference %d in FMU %d. Continuing without connection value transfer...\n", vrFrom[0],fmuFrom);
+    logPrint(stdout, "Could not determine type of value reference %d. Continuing without fmi1SetValue.\n", valueReference);
     break;
   }
 }
@@ -390,10 +395,9 @@ void clientOnData(lw_client client, const char* data, long size) {
         char* fmiSetValueStr = strtok(NULL, " ");
         /* fetch the results */
         int vr = unparseIntResult(fmiSetValueVrStr, fmiSetValueVr, strlen(fmiSetValueVrStr));
-        double value = unparseDoubleResult(fmiSetValueStr, fmiSetValue, strlen(fmiSetValueStr));
         /* do fmi1_import_set_real, fmi1_import_set_integer etc. */
-        fmi1SetValue(FMICSClient, vr, value);
-        /* tell server we are done */
+        fmi1SetValue(FMICSClient, vr, fmiSetValueStr, fmiSetValue);
+        /* tell server we are done setting value */
         sendCommand(client, fmiSetValueReturn, strlen(fmiSetValueReturn));
       } else if (strncmp(token, fmiDoStep, strlen(fmiDoStep)) == 0) {  /* Handle fmiDoStep */
         int finished = 0;
