@@ -24,13 +24,24 @@ typedef struct {
   lw_server server;
 } FMICoSimulationServer;
 
+typedef enum CLIENTSTATE {
+  stateNone,
+  stateInitialized
+} CLIENTSTATE;
+
+typedef struct {
+  enum CLIENTSTATE state;
+} FMIClientInfo;
+
 FMICoSimulationServer* createFMICoSimulationServer(char hostName[PATH_MAX], long port, int numFMUS, double tStart, double stepSize,
     double tStop, enum METHOD method, int numConnections, connection connections[MAX_CONNECTIONS]);
 
 void sendCommand(lw_client client, int index, char* data, size_t size);
 int findClientIndex(FMICoSimulationServer *FMICSServer, lw_client client);
 lw_server_client findClientByIndex(FMICoSimulationServer *FMICSServer, int index);
-void callfmi1DoStep(FMICoSimulationServer *FMICSServer);
+int allClientsInitialized(FMICoSimulationServer *FMICSServer);
+void callfmi1DoStepJacobi(FMICoSimulationServer *FMICSServer);
+void callfmi1DoStepGaussSeidel(FMICoSimulationServer *FMICSServer, int clientIndex);
 
 void serverOnConnect(lw_server server, lw_client client);
 void serverOnData(lw_server server, lw_client client, const char * data, size_t size);
