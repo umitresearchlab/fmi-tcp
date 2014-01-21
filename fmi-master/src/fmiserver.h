@@ -26,7 +26,9 @@ typedef struct {
 
 typedef enum CLIENTSTATE {
   stateNone,
-  stateInitialized
+  stateInitialized,
+  stateStepping,
+  stateSteppingFinished
 } CLIENTSTATE;
 
 typedef struct {
@@ -39,9 +41,9 @@ FMICoSimulationServer* createFMICoSimulationServer(char hostName[PATH_MAX], long
 void sendCommand(lw_client client, int index, char* data, size_t size);
 int findClientIndex(FMICoSimulationServer *FMICSServer, lw_client client);
 lw_server_client findClientByIndex(FMICoSimulationServer *FMICSServer, int index);
-int allClientsInitialized(FMICoSimulationServer *FMICSServer);
+int hasAllClientsState(FMICoSimulationServer *FMICSServer, CLIENTSTATE state);
 void callfmi1DoStepJacobi(FMICoSimulationServer *FMICSServer);
-void callfmi1DoStepGaussSeidel(FMICoSimulationServer *FMICSServer, int clientIndex);
+void callfmi1DoStepGaussSeidel(FMICoSimulationServer *FMICSServer, lw_server_client client);
 
 void serverOnConnect(lw_server server, lw_client client);
 void serverOnData(lw_server server, lw_client client, const char * data, size_t size);

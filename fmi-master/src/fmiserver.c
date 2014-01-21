@@ -74,12 +74,12 @@ int findClientIndex(FMICoSimulationServer *FMICSServer, lw_client client) {
   return index;
 }
 
-int allClientsInitialized(FMICoSimulationServer *FMICSServer) {
+int hasAllClientsState(FMICoSimulationServer *FMICSServer, CLIENTSTATE state) {
   lw_server_client client = lw_server_client_first(FMICSServer->server);
   int count = 1;
   while (client) {
     FMIClientInfo *clientInfo = (FMIClientInfo*)lw_stream_tag(client);
-    if (clientInfo->state == stateNone)
+    if (clientInfo->state != state)
       return 0;
     if (count < FMICSServer->numClients)
       client = lw_server_client_next(client);
@@ -135,26 +135,26 @@ void callfmi1DoStepJacobi(FMICoSimulationServer *FMICSServer) {
   }
 }
 
-void callfmi1DoStepGaussSeidel(FMICoSimulationServer *FMICSServer, int clientIndex) {
-  /* Before calling fmiDostep check if all connections of this FMU are fulfilled.*/
+void callfmi1DoStepGaussSeidel(FMICoSimulationServer *FMICSServer, lw_server_client client) {
+  /* Before calling fmiDostep check if all connections of this slave are fulfilled.*/
   int i;
-  int found = 0;
+  int isConnectionPending = 0;
+  int clientIndex = findClientIndex(FMICSServer, client);
   for (i = 0 ; i < FMICSServer->numConnections ; i++) {
     connection c = FMICSServer->connections[i];
-    if (clientIndex == c.toFMU && c.state != connectionComplete) {
-      found = 1;
+    if (clientIndex == c.toFMU && connectionComplete != c.state) {
+      isConnectionPending = 1;
       logPrint(stdout, "Can't do fmiDoStep(), still waiting for pending connection to complete, connection %d,%d,%d,%d\n", c.fromFMU, c.fromOutputVR, c.toFMU, c.toInputVR);fflush(NULL);
     }
   }
-  if (!found) {
-    /* set all connection states of this FMU to invalid again for the next step. */
+  if (!isConnectionPending) {
+    /* set all connection states to invalid again for the next step. */
     for (i = 0 ; i < FMICSServer->numConnections ; i++) {
       if (clientIndex == FMICSServer->connections[i].toFMU) {
         FMICSServer->connections[i].state = connectionInvalid;
       }
     }
-    /* call fmiDoStep for this FMU */
-    lw_server_client client = findClientByIndex(FMICSServer, clientIndex);
+    /* call fmiDoStep */
     sendCommand(client, clientIndex, fmiDoStep, strlen(fmiDoStep));
   }
 }
@@ -245,42 +245,79 @@ void serverOnData(lw_server server, lw_client client, const char* data, size_t s
     } else if ((strncmp(token, setInitialValuesOk, strlen(setInitialValuesOk)) == 0) ||
         (strncmp(token, fmiSetValueReturn, strlen(fmiSetValueReturn)) == 0) ||
         (strncmp(token, fmiDoStepOk, strlen(fmiDoStepOk)) == 0)) {
-      clientInfo->state = stateInitialized;
+      /* if no connections just call fmiDoStep */
       if (FMICSServer->numConnections == 0) {
         sendCommand(client, clientIndex, fmiDoStep, strlen(fmiDoStep));
-      } else if (allClientsInitialized(FMICSServer)) {
-        /*
-         * handle setInitialValues response.
-         * if the response is OK then call fmiDoStep
-         */
-        /* check the client's connections */
-        int i;
-        int found = 0;
-        for (i = 0 ; i < FMICSServer->numConnections ; i++) {
-          connection c = FMICSServer->connections[i];
-          if (c.state == connectionInvalid) {
-            lw_server_client fromClient = findClientByIndex(FMICSServer, c.fromFMU);
-            if (fromClient) {     /* it might be that the client we want here is already finished. */
-              found = 1;
-              c.state = connectionRequested;
-              FMICSServer->connections[i] = c;
-              char cmd[50];
-              sprintf(cmd, "%s%d", fmiGetValue, c.fromOutputVR);
-              sendCommand(fromClient, c.fromFMU, cmd, strlen(cmd));
-              break;
+      } else {
+        int clientsInitialized = 1;
+        if (strncmp(token, setInitialValuesOk, strlen(setInitialValuesOk)) == 0) {
+          clientInfo->state = stateInitialized;
+          clientsInitialized = hasAllClientsState(FMICSServer, stateInitialized);
+        }
+        lw_server_client serverClient;
+        switch (FMICSServer->method) {
+        case jacobi:  /* parallel */
+          if (clientsInitialized) {
+            /* check the client's connections */
+            int i;
+            int found = 0;
+            for (i = 0 ; i < FMICSServer->numConnections ; i++) {
+              connection c = FMICSServer->connections[i];
+              if (c.state == connectionInvalid) {
+                lw_server_client fromClient = findClientByIndex(FMICSServer, c.fromFMU);
+                if (fromClient) {     /* it might be that the client we want here is already finished. */
+                  found = 1;
+                  c.state = connectionRequested;
+                  FMICSServer->connections[i] = c;
+                  char cmd[50];
+                  sprintf(cmd, "%s%d", fmiGetValue, c.fromOutputVR);
+                  sendCommand(fromClient, c.fromFMU, cmd, strlen(cmd));
+                  break;
+                }
+              }
+            }
+            /* if not found then we assume we have fulfilled all the connections of this client so we can now call fmiDoStep. */
+            if (!found) {
+              callfmi1DoStepJacobi(FMICSServer);
             }
           }
-        }
-        /* if not found then we assume we have fulfilled all the connections of this client so we can now call fmiDoStep. */
-        if (!found) {
-          switch (FMICSServer->method) {
-          case jacobi:  /* parallel */
-            callfmi1DoStepJacobi(FMICSServer);
-            break;
-          case gs:      /* Sequential */
-            callfmi1DoStepGaussSeidel(FMICSServer, clientIndex);
-            break;
+          break;
+        case gs:      /* Sequential */
+          if (clientsInitialized) {
+            /* loop through all the clients */
+            serverClient = lw_server_client_first(FMICSServer->server);
+            int count = 1;
+            while (serverClient) {
+              FMIClientInfo *serverClientInfo = (FMIClientInfo*)lw_stream_tag(serverClient);
+              serverClientInfo->state = stateStepping;
+              int i;
+              int found = 0;
+              for (i = 0 ; i < FMICSServer->numConnections ; i++) {
+                connection c = FMICSServer->connections[i];
+                if (findClientIndex(FMICSServer, serverClient) == c.toFMU && c.state == connectionInvalid) {
+                  lw_server_client fromClient = findClientByIndex(FMICSServer, c.fromFMU);
+                  if (fromClient) {     /* it might be that the client we want here is already finished. */
+                    found = 1;
+                    c.state = connectionRequested;
+                    FMICSServer->connections[i] = c;
+                    char cmd[50];
+                    sprintf(cmd, "%s%d", fmiGetValue, c.fromOutputVR);
+                    sendCommand(fromClient, c.fromFMU, cmd, strlen(cmd));
+                  }
+                }
+              }
+              /* if not found then this client doesn't have any connection so just call fmiDoStep for it. */
+              if (!found) {
+                callfmi1DoStepGaussSeidel(FMICSServer, serverClient);
+              }
+              if (count < FMICSServer->numClients)
+                serverClient = lw_server_client_next(serverClient);
+              else
+                break;
+              count++;
+            }
           }
+          break;
         }
       }
     } else if (strncmp(token, fmiGetValueReturn, strlen(fmiGetValueReturn)) == 0) {
@@ -308,7 +345,27 @@ void serverOnData(lw_server server, lw_client client, const char* data, size_t s
       logPrint(stderr,"doStep() of FMU didn't return fmiOK! Exiting...\n");fflush(NULL);
       exit(EXIT_FAILURE);
     } else if (strncmp(token, fmiDoStepFinished, strlen(fmiDoStepFinished)) == 0) {
-      sendCommand(client, clientIndex, fmiTerminateSlave, strlen(fmiTerminateSlave));
+      clientInfo->state = stateSteppingFinished;
+      switch (FMICSServer->method) {
+      case jacobi:  /* parallel */
+        sendCommand(client, clientIndex, fmiTerminateSlave, strlen(fmiTerminateSlave));
+        break;
+      case gs:
+        if (hasAllClientsState(FMICSServer, stateSteppingFinished)) {
+          /* loop through all the clients and call fmiTerminate */
+          lw_server_client serverClient = lw_server_client_first(FMICSServer->server);
+          int count = 1;
+          while (serverClient) {
+            sendCommand(serverClient, findClientIndex(FMICSServer, serverClient), fmiTerminateSlave, strlen(fmiTerminateSlave));
+            if (count < FMICSServer->numClients)
+              serverClient = lw_server_client_next(serverClient);
+            else
+              break;
+            count++;
+          }
+        }
+        break;
+      }
     }
     token = strtok(NULL, "\n");
   }
