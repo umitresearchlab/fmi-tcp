@@ -19,6 +19,8 @@
 #define VERSION "0.1.3"
 #define MAX_CONNECTIONS 1000
 
+extern int debugFlag;
+
 typedef enum METHOD {
     jacobi,
     gs

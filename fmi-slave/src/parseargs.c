@@ -29,6 +29,8 @@ int parseArguments( int argc,
         *debugLogging = 1;
       } else if (strncmp(argv[j], "-v", 2) == 0) {
         *version = 1;
+      } else if (strncmp(argv[j], "-debug", 6) == 0) {
+        debugFlag = 1;
       } else if (strncmp(argv[j], "-port=", 6) == 0) {
         numScanned = sscanf(argv[j]+6, "%d", port);
         if (numScanned <= 0) {

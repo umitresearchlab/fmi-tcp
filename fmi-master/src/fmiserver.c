@@ -52,7 +52,7 @@ FMICoSimulationServer* createFMICoSimulationServer(char hostName[PATH_MAX], long
 }
 
 void sendCommand(lw_client client, int index, char* data, size_t size) {
-  logPrint(stderr, "server sending to client=%d, data=%.*s\n", index, size, data);fflush(NULL);
+  debugPrint(debugFlag, stderr, "server sending to client=%d, data=%.*s\n", index, size, data);fflush(NULL);
   char cmd[size+1];
   strcpy(cmd, data);
   strcat(cmd, "\n");
@@ -161,11 +161,11 @@ void callfmi1DoStepGaussSeidel(FMICoSimulationServer *FMICSServer, lw_server_cli
 
 void serverOnConnect(lw_server server, lw_client client)
 {
-  logPrint(stderr, "server on_connect \n");fflush(NULL);
+  debugPrint(debugFlag, stderr, "server on_connect \n");fflush(NULL);
   FMICoSimulationServer *FMICSServer = (FMICoSimulationServer*)lw_server_tag(server);
   FMICSServer->numClients += 1;
   int index = FMICSServer->numClients - 1;
-  logPrint(stderr, "FMICSServer->numClients = %d \n", FMICSServer->numClients);fflush(NULL);
+  debugPrint(debugFlag, stderr, "FMICSServer->numClients = %d \n", FMICSServer->numClients);fflush(NULL);
 
   FMIClientInfo *clientInfo = malloc(sizeof(FMIClientInfo));
   clientInfo->state = stateNone;
@@ -214,13 +214,13 @@ void serverOnData(lw_server server, lw_client client, const char* data, size_t s
   char* response = (char*)malloc(size+1);
   strncpy(response, data, size);
   response[size] = '\0';
-  logPrint(stderr, "server received from client=%d, Data=%s\n", clientIndex, response);fflush(NULL);
+  debugPrint(debugFlag, stderr, "server received from client=%d, Data=%s\n", clientIndex, response);fflush(NULL);
 
   char* token;
   token = strtok(response, "\n");
   while (token != NULL)
   {
-    logPrint(stdout, "token = %s\n", token);fflush(NULL);
+    debugPrint(debugFlag, stdout, "token = %s\n", token);fflush(NULL);
     if (strncmp(token, fmiTEndOk, strlen(fmiTEndOk)) == 0) {
       sendCommand(client, clientIndex, fmiInstantiateSlave, strlen(fmiInstantiateSlave));
     } else if ((strncmp(token, fmiInstantiateSlaveSuccess, strlen(fmiInstantiateSlaveSuccess)) == 0) ||
@@ -229,6 +229,7 @@ void serverOnData(lw_server server, lw_client client, const char* data, size_t s
        * handle fmiInstantiateSlave response.
        * if the response is success then call fmiInitializeSlave
        */
+      logPrint(stdout, "Slave %d has successfully done Instantiation.\n", clientIndex);fflush(NULL);
       sendCommand(client, clientIndex, fmiInitializeSlave, strlen(fmiInitializeSlave));
     } else if (strncmp(token, fmiInstantiateSlaveError, strlen(fmiInitializeSlaveError)) == 0) {
       logPrint(stderr,"Could not instantiate model.\n");fflush(NULL);
@@ -238,6 +239,7 @@ void serverOnData(lw_server server, lw_client client, const char* data, size_t s
        * handle fmiInitializeSlave response.
        * if the response is OK then call setInitialValues
        */
+      logPrint(stdout, "Slave %d has successfully done Initialization.\n", clientIndex);fflush(NULL);
       sendCommand(client, clientIndex, setInitialValues, strlen(setInitialValues));
     } else if (strncmp(token, fmiInitializeSlaveError, strlen(fmiInitializeSlaveError)) == 0) {
       logPrint(stderr,"Could not initialize model.\n");fflush(NULL);
@@ -245,6 +247,10 @@ void serverOnData(lw_server server, lw_client client, const char* data, size_t s
     } else if ((strncmp(token, setInitialValuesOk, strlen(setInitialValuesOk)) == 0) ||
         (strncmp(token, fmiSetValueReturn, strlen(fmiSetValueReturn)) == 0) ||
         (strncmp(token, fmiDoStepOk, strlen(fmiDoStepOk)) == 0)) {
+      /* if fmiDoStepOK is returned then just inform user about successful step. */
+      if (strncmp(token, fmiDoStepOk, strlen(fmiDoStepOk)) == 0) {
+        logPrint(stdout, "Slave %d has successfully taken a step.\n", clientIndex);fflush(NULL);
+      }
       /* if no connections just call fmiDoStep */
       if (FMICSServer->numConnections == 0) {
         sendCommand(client, clientIndex, fmiDoStep, strlen(fmiDoStep));

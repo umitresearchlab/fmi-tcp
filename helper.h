@@ -15,6 +15,7 @@
 #include <stdarg.h>
 
 void logPrint(FILE *stream, const char *format, ...);
+void debugPrint(int debugFlag, FILE *stream, const char *format, ...);
 
 double unparseDoubleResult(const char* data, const char* name, long size);
 int unparseIntResult(const char* data, const char* name, long size);

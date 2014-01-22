@@ -12,6 +12,8 @@
 #include "parseargs.h"
 #include "fmiclient.h"
 
+int debugFlag = 0;
+
 void printHeader(){
   printf("  FMU CO-SIMULATION SLAVE CLI %s\n",VERSION);
 }

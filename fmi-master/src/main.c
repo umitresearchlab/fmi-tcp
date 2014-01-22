@@ -9,6 +9,8 @@
 #include "main.h"
 #include "fmiserver.h"
 
+int debugFlag = 0;
+
 void printHeader() {
   printf("  FMU CO-SIMULATION MASTER CLI %s\n",VERSION);
 }

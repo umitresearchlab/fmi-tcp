@@ -15,6 +15,8 @@
 #define EXECUTABLE_NAME "fmi-slave"
 #define VERSION "0.1.3"
 
+extern int debugFlag;
+
 enum FILEFORMAT {
     csv
 } fileformat;
