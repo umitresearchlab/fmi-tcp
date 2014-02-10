@@ -11,16 +11,16 @@ SET(SRCS
     ../helper.c
 )
 SET(HEADERS
-    src/main.h
-    src/utils.h
-    src/parseargs.h
-    src/fmiclient.h
+    include/main.h
+    include/utils.h
+    include/parseargs.h
+    include/fmiclient.h
     ../commands.h
     ../helper.h
 )
 
 SET(EXECUTABLE_OUTPUT_PATH "${CMAKE_CURRENT_LIST_DIR}/../bin")
-
+INCLUDE_DIRECTORIES(include)
 ADD_EXECUTABLE(fmi-slave ${HEADERS} ${SRCS})
 
 IF(WIN32)
