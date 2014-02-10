@@ -7,6 +7,7 @@
  */
 
 #include "parseargs.h"
+#include <string.h>
 
 void printInvalidArg(char* option) {
   logPrint(stderr, "Invalid argument of %s. Use -h for help.\n", option);
@@ -36,7 +37,7 @@ int parseArguments( int argc, char *argv[],
     } else if (strncmp(argv[j], "-debug", 6) == 0) {
       debugFlag = 1;
     } else if (strncmp(argv[j], "-port=", 6) == 0) {
-      numScanned = sscanf(argv[j]+6, "%d", port);
+      numScanned = sscanf(argv[j]+6, "%ld", port);
       if (numScanned <= 0) {
         printInvalidArg(argv[j]);
         return 1;
