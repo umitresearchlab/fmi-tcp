@@ -1,5 +1,5 @@
 /*
- * 
+ *
  * @author Adeel Asghar <adeel.asghar@liu.se>
  *
  * Created on: Oct 25, 2013
@@ -12,8 +12,16 @@ void printInvalidArg(char* option) {
   logPrint(stderr, "Invalid argument of %s. Use -h for help.\n", option);
 }
 
-int parseArguments(int argc, char *argv[], int* version, long* port, char hostName[PATH_MAX], int* numFMUs, double* timeStepSize,
-    double* tEnd, enum METHOD* method, int* numConnections, connection connections[MAX_CONNECTIONS]) {
+int parseArguments( int argc, char *argv[],
+                    int* version,
+                    long* port,
+                    char hostName[PATH_MAX],
+                    int* numFMUs,
+                    double* timeStepSize,
+                    double* tEnd,
+                    enum METHOD* method,
+                    int* numConnections,
+                    connection connections[MAX_CONNECTIONS]) {
   int j, numScanned;
   const char* connectionsArg;
   int n, skip, l, cont, i;

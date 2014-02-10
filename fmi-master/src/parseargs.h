@@ -1,5 +1,5 @@
 /*
- * 
+ *
  * @author Adeel Asghar <adeel.asghar@liu.se>
  *
  * Created on: Oct 25, 2013
@@ -21,11 +21,21 @@
  * @param numFMUs number of FMUs
  * @param timeStepSize
  * @param tEnd
+ * @param method
  * @param numConnections
  * @param connections
  * @return int Returns 0 if the program should proceed, 1 if the program should end.
  */
-int parseArguments(int argc, char *argv[], int* versionMode, long* port, char hostName[PATH_MAX], int* numFMUs, double* timeStepSize,
-    double* tEnd, enum METHOD* method, int* numConnections, connection connections[MAX_CONNECTIONS]);
+int parseArguments( int argc,
+                    char *argv[],
+                    int* versionMode,
+                    long* port,
+                    char hostName[PATH_MAX],
+                    int* numFMUs,
+                    double* timeStepSize,
+                    double* tEnd,
+                    enum METHOD* method,
+                    int* numConnections,
+                    connection connections[MAX_CONNECTIONS]);
 
 #endif /* PARSEARGS_H_ */
