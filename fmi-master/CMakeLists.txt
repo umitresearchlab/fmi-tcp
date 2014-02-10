@@ -28,4 +28,3 @@ TARGET_LINK_LIBRARIES(fmi-master fmilib dl lacewing)
 ENDIF(WIN32)
 
 INSTALL (TARGETS fmi-master DESTINATION bin)
-INSTALL (FILES ${CMAKE_CURRENT_LIST_DIR}/man/fmi-master.1 DESTINATION man/man1)

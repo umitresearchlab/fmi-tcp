@@ -30,4 +30,3 @@ TARGET_LINK_LIBRARIES(fmi-slave fmilib dl lacewing)
 ENDIF(WIN32)
 
 INSTALL (TARGETS fmi-slave DESTINATION bin)
-INSTALL (FILES ${CMAKE_CURRENT_LIST_DIR}/man/fmi-slave.1 DESTINATION man/man1)
