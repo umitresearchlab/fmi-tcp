@@ -1,5 +1,5 @@
 /*
- * 
+ *
  * @author Adeel Asghar <adeel.asghar@liu.se>
  *
  * Created on: Oct 25, 2013
@@ -10,8 +10,15 @@
 #include "../../commands.h"
 #include "../../helper.h"
 
-FMICoSimulationServer* createFMICoSimulationServer(char hostName[PATH_MAX], long port, int numFMUS, double tStart, double stepSize,
-    double tStop, enum METHOD method, int numConnections, connection connections[MAX_CONNECTIONS]) {
+FMICoSimulationServer* createFMICoSimulationServer( char hostName[PATH_MAX],
+                                                    long port,
+                                                    int numFMUS,
+                                                    double tStart,
+                                                    double stepSize,
+                                                    double tStop,
+                                                    enum METHOD method,
+                                                    int numConnections,
+                                                    connection connections[MAX_CONNECTIONS]) {
   FMICoSimulationServer* FMICSServer = malloc(sizeof(FMICoSimulationServer));
   FMICSServer->numFMUS = numFMUS;
   FMICSServer->numClients = 0;
