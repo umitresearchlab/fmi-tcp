@@ -61,8 +61,7 @@ void writeCsvRow2(FILE* file,
                   char separator);
 
 #ifdef WIN32
-char *realpath(const char * file_name,
-		       char * resolved_name);
+char *realpath(const char * file_name, char * resolved_name);
 #endif
 
 #endif /* UTILS_H */
