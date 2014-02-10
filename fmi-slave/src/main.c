@@ -19,9 +19,23 @@ void printHeader(){
 }
 
 void printHelp() {
-  char command[200];
-  sprintf(command,"man %s",EXECUTABLE_NAME);
-  system(command);
+    printf("\n\
+FMI-SLAVE\n\
+\n\
+    Client for distributed FMI simulation.\n\
+\n\
+FLAGS\n\
+\n\
+ -h Show help and quit.\n\
+\n\
+OPTIONS\n\
+\n\
+EXAMPLES\n\
+\n\
+LICENSE\n\
+\
+\tMIT license\n\n");
+
 }
 
 int main( int argc, char *argv[] ) {
