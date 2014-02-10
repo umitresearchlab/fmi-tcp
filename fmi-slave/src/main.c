@@ -21,14 +21,21 @@ void printHeader(){
 void printHelp() {
     printf("\n\
 FMI-SLAVE\n\
-\n\
     Client for distributed FMI simulation.\n\
 \n\
-FLAGS\n\
+USAGE\n\
+    fmi-slave [FLAGS] [OPTIONS] fmupath\n\
 \n\
- -h Show help and quit.\n\
+FLAGS\n\
+    -h      Show help and quit.\n\
+    -l      Turn on logging\n\
+    -dl     Turn on debug logging\n\
+    -v      Print version.\n\
+    -debug  Start in debug mode.\n\
 \n\
 OPTIONS\n\
+    -port=<integer>     Server port to connect to.\n\
+    -host=<string>      Server host.\n\
 \n\
 EXAMPLES\n\
 \n\
