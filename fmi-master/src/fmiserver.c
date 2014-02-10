@@ -59,7 +59,7 @@ FMICoSimulationServer* createFMICoSimulationServer( char hostName[PATH_MAX],
 }
 
 void sendCommand(lw_client client, int index, char* data, size_t size) {
-  debugPrint(debugFlag, stderr, "server sending to client=%d, data=%.*s\n", index, size, data);fflush(NULL);
+  debugPrint(debugFlag, stderr, "--> %d: %.*s\n", index, size, data);fflush(NULL);
   char cmd[size+1];
   strcpy(cmd, data);
   strcat(cmd, "\n");
@@ -174,15 +174,18 @@ void serverOnConnect(lw_server server, lw_client client)
   int index = FMICSServer->numClients - 1;
   debugPrint(debugFlag, stderr, "FMICSServer->numClients = %d \n", FMICSServer->numClients);fflush(NULL);
 
+  /* Attach our client info onto the lacewing client object */
   FMIClientInfo *clientInfo = malloc(sizeof(FMIClientInfo));
   clientInfo->state = stateNone;
   lw_stream_set_tag(client, (void*)clientInfo);
 
   if (FMICSServer->numClients < FMICSServer->numFMUS) {
+    /* Not enough clients yet. */
     char cmd[50];
     sprintf(cmd, waitingForFMUs, FMICSServer->numFMUS - FMICSServer->numClients);
     sendCommand(client, index, cmd, strlen(cmd));
   } else {
+    /* Enough clients. Start simulation! */
     char tStartCmd[50];
     sprintf(tStartCmd, "%s%f", fmiTStart, FMICSServer->tStart);
     char stepSizeCmd[50];
@@ -221,13 +224,13 @@ void serverOnData(lw_server server, lw_client client, const char* data, size_t s
   char* response = (char*)malloc(size+1);
   strncpy(response, data, size);
   response[size] = '\0';
-  debugPrint(debugFlag, stderr, "server received from client=%d, Data=%s\n", clientIndex, response);fflush(NULL);
+  debugPrint(debugFlag, stderr, "<-- %d: %s\n", clientIndex, response);fflush(NULL);
 
   char* token;
   token = strtok(response, "\n");
   while (token != NULL)
   {
-    debugPrint(debugFlag, stdout, "token = %s\n", token);fflush(NULL);
+    /*debugPrint(debugFlag, stdout, "token = %s\n", token);fflush(NULL);*/
     if (strncmp(token, fmiTEndOk, strlen(fmiTEndOk)) == 0) {
       sendCommand(client, clientIndex, fmiInstantiateSlave, strlen(fmiInstantiateSlave));
     } else if ((strncmp(token, fmiInstantiateSlaveSuccess, strlen(fmiInstantiateSlaveSuccess)) == 0) ||
