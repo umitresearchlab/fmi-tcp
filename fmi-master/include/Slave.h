@@ -4,10 +4,10 @@
 #include "lacewing.h"
 
 enum SlaveState {
-  NONE,
-  INITIALIZED,
-  STEPPING,
-  STEPPINGFINISHED
+    SLAVE_NONE,
+    SLAVE_INITIALIZED,
+    SLAVE_STEPPING,
+    SLAVE_STEPPINGFINISHED
 };
 
 class Slave {
@@ -15,6 +15,7 @@ class Slave {
 private:
     SlaveState m_state;
     lw_client m_client;
+    int m_id;
     void sendCommand(char* data, size_t size);
 
 public:
@@ -24,6 +25,17 @@ public:
 
     void doStep();
     lw_client getClient();
+    int getId();
+    void setId(int id);
+    void setState(SlaveState s);
+    SlaveState getState();
+    void initialize();
+    void instantiate();
+    void setInitialValues();
+    void terminate();
+    void getReal(int valueRef);
+    void setReal(int valueRef, double value);
+
 };
 
 #endif

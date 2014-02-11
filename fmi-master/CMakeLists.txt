@@ -26,8 +26,11 @@ SET(MASTER_SRCS
     src/Logger.cpp
     src/Slave.cpp
     src/main.cpp
+    ../helper.c
 )
 SET(MASTER_HEADERS
+    ../commands.h
+    ../helper.h
     include/url_parser.h
     include/StrongConnection.h
     include/Connection.h
