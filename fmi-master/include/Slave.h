@@ -3,39 +3,42 @@
 
 #include "lacewing.h"
 
-enum SlaveState {
-    SLAVE_NONE,
-    SLAVE_INITIALIZED,
-    SLAVE_STEPPING,
-    SLAVE_STEPPINGFINISHED
-};
+namespace fmitcp {
 
-class Slave {
+    enum SlaveState {
+        SLAVE_NONE,
+        SLAVE_INITIALIZED,
+        SLAVE_STEPPING,
+        SLAVE_STEPPINGFINISHED
+    };
 
-private:
-    SlaveState m_state;
-    lw_client m_client;
-    int m_id;
-    void sendCommand(char* data, size_t size);
+    class Slave {
 
-public:
+    private:
+        SlaveState m_state;
+        lw_client m_client;
+        int m_id;
+        void sendCommand(char* data, size_t size);
 
-    Slave(lw_client);
-    ~Slave();
+    public:
 
-    void doStep();
-    lw_client getClient();
-    int getId();
-    void setId(int id);
-    void setState(SlaveState s);
-    SlaveState getState();
-    void initialize();
-    void instantiate();
-    void setInitialValues();
-    void terminate();
-    void getReal(int valueRef);
-    void setReal(int valueRef, double value);
+        Slave(lw_client);
+        ~Slave();
 
+        void doStep();
+        lw_client getClient();
+        int getId();
+        void setId(int id);
+        void setState(SlaveState s);
+        SlaveState getState();
+        void initialize();
+        void instantiate();
+        void setInitialValues();
+        void terminate();
+        void getReal(int valueRef);
+        void setReal(int valueRef, double value);
+
+    };
 };
 
 #endif

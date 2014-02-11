@@ -8,6 +8,7 @@
 #include "commands.h"
 #include "url_parser.h"
 
+using namespace fmitcp;
 
 /*
  * @brief Parses the result like fmiStepSize=0.200000
@@ -36,7 +37,6 @@ int unparseIntResult(const char* data, const char* name, long size) {
   free(str);
   return res;
 }
-
 
 Master::Master(){
     init();

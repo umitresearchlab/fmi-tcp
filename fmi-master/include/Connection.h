@@ -3,28 +3,31 @@
 
 #include "Slave.h"
 
-enum ConnectionState {
-  CONNECTION_INVALID,
-  CONNECTION_REQUESTED,
-  CONNECTION_COMPLETE
-};
+namespace fmitcp {
 
-class Connection {
+    enum ConnectionState {
+      CONNECTION_INVALID,
+      CONNECTION_REQUESTED,
+      CONNECTION_COMPLETE
+    };
 
-protected:
-    Slave* m_slaveA;
-    Slave* m_slaveB;
-    ConnectionState m_state;
+    class Connection {
 
-public:
-    Connection(Slave* slaveA, Slave* slaveB);
-    virtual ~Connection();
+    protected:
+        Slave* m_slaveA;
+        Slave* m_slaveB;
+        ConnectionState m_state;
 
-    ConnectionState getState();
-    void setState(ConnectionState s);
+    public:
+        Connection(Slave* slaveA, Slave* slaveB);
+        virtual ~Connection();
 
-    Slave * getSlaveA();
-    Slave * getSlaveB();
+        ConnectionState getState();
+        void setState(ConnectionState s);
+
+        Slave * getSlaveA();
+        Slave * getSlaveB();
+    };
 };
 
 #endif

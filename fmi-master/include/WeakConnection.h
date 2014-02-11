@@ -3,22 +3,25 @@
 
 #include "Connection.h"
 
-class WeakConnection : public Connection {
+namespace fmitcp {
 
-protected:
-    int m_valueRefA;
-    int m_valueRefB;
+    class WeakConnection : public Connection {
 
-public:
-    WeakConnection( Slave* slaveA,
-                    Slave* slaveB,
-                    int valueRefA,
-                    int valueRefB );
-    ~WeakConnection();
+    protected:
+        int m_valueRefA;
+        int m_valueRefB;
 
-    int getValueRefA();
-    int getValueRefB();
+    public:
+        WeakConnection( Slave* slaveA,
+                        Slave* slaveB,
+                        int valueRefA,
+                        int valueRefB );
+        ~WeakConnection();
 
+        int getValueRefA();
+        int getValueRefB();
+
+    };
 };
 
 #endif

@@ -9,72 +9,75 @@
 #include "lacewing.h"
 #include <limits.h>
 
-enum WeakCouplingAlgorithm {
-    SERIAL = 1,
-    PARALLEL = 2
-};
+namespace fmitcp {
 
-enum MasterState {
-    MASTER_IDLE = 1,
-    MASTER_INITIALIZING = 2,
-    MASTER_TRANSFERRING_WEAK = 4,
-    MASTER_TRANSFERRING_STRONG = 8,
-    MASTER_STEPPING = 16
-};
+    enum WeakCouplingAlgorithm {
+        SERIAL = 1,
+        PARALLEL = 2
+    };
 
-class Master {
+    enum MasterState {
+        MASTER_IDLE = 1,
+        MASTER_INITIALIZING = 2,
+        MASTER_TRANSFERRING_WEAK = 4,
+        MASTER_TRANSFERRING_STRONG = 8,
+        MASTER_STEPPING = 16
+    };
 
-private:
-    int numFMUS;
-    int numClients;
-    double tStart;
-    double stepSize;
-    double tStop;
-    std::vector<WeakConnection*> m_weakConnections;
-    std::vector<StrongConnection*> m_strongConnections;
-    std::vector<Slave*> m_slaves;
-    std::vector<int> m_slave_ids;
-    lw_pump m_pump;
-    int m_slaveIdCounter;
-    Logger m_logger;
-    WeakCouplingAlgorithm m_method;
-    MasterState m_state;
-    double m_timeStep;
-    double m_endTime;
-    bool m_endTimeEnabled;
+    class Master {
 
-public:
-    Master();
-    Master(const Logger& logger);
-    ~Master();
+    private:
+        int numFMUS;
+        int numClients;
+        double tStart;
+        double stepSize;
+        double tStop;
+        std::vector<WeakConnection*> m_weakConnections;
+        std::vector<StrongConnection*> m_strongConnections;
+        std::vector<Slave*> m_slaves;
+        std::vector<int> m_slave_ids;
+        lw_pump m_pump;
+        int m_slaveIdCounter;
+        Logger m_logger;
+        WeakCouplingAlgorithm m_method;
+        MasterState m_state;
+        double m_timeStep;
+        double m_endTime;
+        bool m_endTimeEnabled;
 
-    void init();
+    public:
+        Master();
+        Master(const Logger& logger);
+        ~Master();
 
-    /// Connects to a slave and gets info about it
-    int connectSlave(const char uri[PATH_MAX]);
+        void init();
 
-    Slave * getSlave(lw_client client);
-    Slave * getSlave(int id);
-    void clientConnected(lw_client client);
-    void clientDisconnected(lw_client client);
-    void clientData(lw_client client, const char* data, long size);
+        /// Connects to a slave and gets info about it
+        int connectSlave(const char uri[PATH_MAX]);
 
-    void setTimeStep(double timeStep);
-    void setEnableEndTime(bool enable);
-    void setEndTime(double endTime);
-    void setMethod(WeakCouplingAlgorithm algorithm);
+        Slave * getSlave(lw_client client);
+        Slave * getSlave(int id);
+        void clientConnected(lw_client client);
+        void clientDisconnected(lw_client client);
+        void clientData(lw_client client, const char* data, long size);
 
-    void createStrongConnection(int slaveA, int slaveB, int connectorA, int connectorB);
-    void createWeakConnection(int slaveA, int slaveB, int valueReferenceA, int valueReferenceB);
+        void setTimeStep(double timeStep);
+        void setEnableEndTime(bool enable);
+        void setEndTime(double endTime);
+        void setMethod(WeakCouplingAlgorithm algorithm);
 
-    void transferWeakConnectionData();
+        void createStrongConnection(int slaveA, int slaveB, int connectorA, int connectorB);
+        void createWeakConnection(int slaveA, int slaveB, int valueReferenceA, int valueReferenceB);
 
-    /// Start simulation
-    void simulate();
+        void transferWeakConnectionData();
 
-    void initializeSlaves();
+        /// Start simulation
+        void simulate();
 
-    bool hasAllClientsState(SlaveState state);
+        void initializeSlaves();
+
+        bool hasAllClientsState(SlaveState state);
+    };
 };
 
 #endif /* MASTER_H_ */

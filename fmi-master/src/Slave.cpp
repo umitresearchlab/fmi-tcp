@@ -2,6 +2,8 @@
 #include "lacewing.h"
 #include "string.h"
 
+using namespace fmitcp;
+
 Slave::Slave(lw_client client){
     m_client = client;
     m_id = 0;

@@ -4,17 +4,20 @@
 #include "Connection.h"
 #include "Slave.h"
 
-class StrongConnection : public Connection {
-private:
-    int m_connectorRefA;
-    int m_connectorRefB;
+namespace fmitcp {
 
-public:
-    StrongConnection(Slave* slaveA,
-                     Slave* slaveB,
-                     int connectorRefA,
-                     int connectorRefB );
-    ~StrongConnection();
+    class StrongConnection : public Connection {
+    private:
+        int m_connectorRefA;
+        int m_connectorRefB;
+
+    public:
+        StrongConnection(Slave* slaveA,
+                         Slave* slaveB,
+                         int connectorRefA,
+                         int connectorRefB );
+        ~StrongConnection();
+    };
 };
 
 #endif

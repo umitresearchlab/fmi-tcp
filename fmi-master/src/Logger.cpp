@@ -1,6 +1,8 @@
 #include "Logger.h"
 #include "stdio.h"
 
+using namespace fmitcp;
+
 Logger::Logger(){
 
 }

@@ -1,7 +1,9 @@
 #include "main.h"
 #include "Master.h"
 
-int main( int argc, char *argv[] ) {
+using namespace fmitcp;
+
+int main(int argc, char *argv[] ) {
 
     printf("FMI Master\n");
 

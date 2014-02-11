@@ -1,5 +1,7 @@
 #include "WeakConnection.h"
 
+using namespace fmitcp;
+
 WeakConnection::WeakConnection( Slave* slaveA,
                                 Slave* slaveB,
                                 int valueRefA,

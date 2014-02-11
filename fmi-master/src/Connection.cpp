@@ -1,5 +1,7 @@
 #include "Connection.h"
 
+using namespace fmitcp;
+
 Connection::Connection( Slave * slaveA,
                         Slave * slaveB ){
     m_slaveA = slaveA;
