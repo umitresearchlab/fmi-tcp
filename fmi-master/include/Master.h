@@ -4,8 +4,14 @@
 #include <vector>
 #include "Connection.h"
 #include "Slave.h"
+#include "Logger.h"
 #include "lacewing.h"
 #include <limits.h>
+
+enum WeakCouplingAlgorithm {
+    SERIAL = 1,
+    PARALLEL = 2
+};
 
 class Master {
 
@@ -21,10 +27,18 @@ private:
     std::vector<int> m_slave_ids;
     lw_pump m_pump;
     int m_slaveIdCounter;
+    Logger m_logger;
+    WeakCouplingAlgorithm m_method;
+    double m_timeStep;
+    double m_endTime;
+    bool m_endTimeEnabled;
 
 public:
     Master();
+    Master(const Logger& logger);
     ~Master();
+
+    void init();
 
     /// Connects to a slave and gets info about it
     int connectSlave(const char uri[PATH_MAX]);
@@ -34,8 +48,13 @@ public:
     void clientDisconnected(lw_client client);
     void clientData(lw_client client);
 
-    void createStrongCoupling(int slaveA, int slaveB, int connectorA, int connectorB);
-    void createWeakCoupling(int slaveA, int slaveB, int valueReferenceA, int valueReferenceB);
+    void setTimeStep(double timeStep);
+    void setEnableEndTime(bool enable);
+    void setEndTime(double endTime);
+    void setMethod(WeakCouplingAlgorithm algorithm);
+
+    void createStrongConnection(int slaveA, int slaveB, int connectorA, int connectorB);
+    void createWeakConnection(int slaveA, int slaveB, int valueReferenceA, int valueReferenceB);
 
     /// Start simulation
     void simulate();

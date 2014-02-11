@@ -20,12 +20,20 @@ SET(HEADERS
 SET(MASTER_SRCS
     src/url_parser.c
     src/Master.cpp
+    src/StrongConnection.cpp
+    src/Connection.cpp
+    src/WeakConnection.cpp
+    src/Logger.cpp
     src/Slave.cpp
     src/main.cpp
 )
 SET(MASTER_HEADERS
     include/url_parser.h
+    include/StrongConnection.h
+    include/Connection.h
+    include/WeakConnection.h
     include/Master.h
+    include/Logger.h
     include/Slave.h
 )
 
