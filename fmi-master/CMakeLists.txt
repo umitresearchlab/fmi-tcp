@@ -17,15 +17,31 @@ SET(HEADERS
     ../helper.h
 )
 
+SET(MASTER_SRCS
+    src/url_parser.c
+    src/Master.cpp
+    src/Slave.cpp
+    src/main.cpp
+)
+SET(MASTER_HEADERS
+    include/url_parser.h
+    include/Master.h
+    include/Slave.h
+)
+
 SET(EXECUTABLE_OUTPUT_PATH "${CMAKE_CURRENT_LIST_DIR}/../bin")
 
 INCLUDE_DIRECTORIES(include)
+
 ADD_EXECUTABLE(fmi-master ${HEADERS} ${SRCS})
+ADD_EXECUTABLE(master     ${MASTER_HEADERS} ${MASTER_SRCS})
 
 IF(WIN32)
 TARGET_LINK_LIBRARIES(fmi-master fmilib shlwapi lacewing ws2_32 mswsock crypt32 secur32 mpr)
+TARGET_LINK_LIBRARIES(master fmilib shlwapi lacewing ws2_32 mswsock crypt32 secur32 mpr)
 ELSE(WIN32)
 TARGET_LINK_LIBRARIES(fmi-master fmilib dl lacewing)
+TARGET_LINK_LIBRARIES(master fmilib dl lacewing)
 ENDIF(WIN32)
 
 INSTALL (TARGETS fmi-master DESTINATION bin)
