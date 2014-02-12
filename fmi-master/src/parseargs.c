@@ -1,5 +1,5 @@
 /*
- * 
+ *
  * @author Adeel Asghar <adeel.asghar@liu.se>
  *
  * Created on: Oct 25, 2013
@@ -7,13 +7,22 @@
  */
 
 #include "parseargs.h"
+#include <string.h>
 
 void printInvalidArg(char* option) {
   logPrint(stderr, "Invalid argument of %s. Use -h for help.\n", option);
 }
 
-int parseArguments(int argc, char *argv[], int* version, long* port, char hostName[PATH_MAX], int* numFMUs, double* timeStepSize,
-    double* tEnd, enum METHOD* method, int* numConnections, connection connections[MAX_CONNECTIONS]) {
+int parseArguments( int argc, char *argv[],
+                    int* version,
+                    long* port,
+                    char hostName[PATH_MAX],
+                    int* numFMUs,
+                    double* timeStepSize,
+                    double* tEnd,
+                    enum METHOD* method,
+                    int* numConnections,
+                    connection connections[MAX_CONNECTIONS]) {
   int j, numScanned;
   const char* connectionsArg;
   int n, skip, l, cont, i;
@@ -28,7 +37,7 @@ int parseArguments(int argc, char *argv[], int* version, long* port, char hostNa
     } else if (strncmp(argv[j], "-debug", 6) == 0) {
       debugFlag = 1;
     } else if (strncmp(argv[j], "-port=", 6) == 0) {
-      numScanned = sscanf(argv[j]+6, "%d", port);
+      numScanned = sscanf(argv[j]+6, "%ld", port);
       if (numScanned <= 0) {
         printInvalidArg(argv[j]);
         return 1;

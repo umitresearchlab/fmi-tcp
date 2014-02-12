@@ -19,9 +19,30 @@ void printHeader(){
 }
 
 void printHelp() {
-  char command[200];
-  sprintf(command,"man %s",EXECUTABLE_NAME);
-  system(command);
+    printf("\n\
+FMI-SLAVE\n\
+    Client for distributed FMI simulation.\n\
+\n\
+USAGE\n\
+    fmi-slave [FLAGS] [OPTIONS] fmupath\n\
+\n\
+FLAGS\n\
+    -h      Show help and quit.\n\
+    -l      Turn on logging\n\
+    -dl     Turn on debug logging\n\
+    -v      Print version.\n\
+    -debug  Start in debug mode.\n\
+\n\
+OPTIONS\n\
+    -port=<integer>     Server port to connect to.\n\
+    -host=<string>      Server host.\n\
+\n\
+EXAMPLES\n\
+\n\
+LICENSE\n\
+\
+\tMIT license\n\n");
+
 }
 
 int main( int argc, char *argv[] ) {

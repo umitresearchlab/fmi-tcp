@@ -12,8 +12,10 @@
  * @param argv Given by system
  * @param fmuFilePath
  * @param loggingOn
+ * @param debugLogging
  * @param versionMode
- * @param method
+ * @param port
+ * @param hostName
  * @return int Returns 0 if the program should proceed, 1 if the program should end.
  */
 int parseArguments( int argc,

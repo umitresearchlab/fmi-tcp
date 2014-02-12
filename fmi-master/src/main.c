@@ -1,5 +1,5 @@
 /*
- * 
+ *
  * @author Adeel Asghar <adeel.asghar@liu.se>
  *
  * Created on: Oct 25, 2013
@@ -16,9 +16,46 @@ void printHeader() {
 }
 
 void printHelp() {
-  char command[200];
-  sprintf(command,"man %s",EXECUTABLE_NAME);
-  system(command);
+    printf("\n\
+FMI-MASTER\n\
+\n\
+    Server for distributed FMI simulation.\n\
+\n\
+FLAGS\n\
+\n\
+    -h     Show help and quit.\n\
+    -v     Show version and quit.\n\
+    -debug Start in debug mode.\n\
+    -n     Number of FMUs.\n\
+\n\
+OPTIONS\n\
+\n\
+ -c=[CONNECTIONS]\n\
+    Connection specification. No connections by default. Quadruples of positive\n\
+    integers, representing which FMU and value reference to connect from and\n\
+    what to connect to. Syntax is\n\
+        CONN1:CONN2:CONN3...\n\
+    where CONNX is four comma-separated integers; FMUFROM,VRFROM,FMUTO,VRTO.\n\
+    An example connection string is\n\
+        0,0,1,0:0,1,1,1\n\
+    which means: connect FMU0 (value reference 0) to FMU1 (vr 0) and FMU0 (vr 1)\n\
+    to FMU1 (vr 1). Default is no connections.\n\
+ \n\
+ -d=[TIMESTEP]  Timestep size. Default is 0.1.\n\
+ \n\
+ -m=[METHOD]    Stepping method. Available methods are \"jacobi\" (Jacobi,\n\
+                parallel) and \"gs\" (Gauss-Seidel, serial). Default is \"jacobi\".\n\
+ \n\
+ -t=[ENDTIME]   End simulation time in seconds. Default is 1.0.\n\
+ \n\
+ -host=[HOST]   Server host.\n\
+ \n\
+ -port=[PORT]   Port to listen to.\n\
+ \n\
+LICENSE\n\
+\
+\tMIT license\n\n");
+
 }
 
 int main( int argc, char *argv[] ) {
