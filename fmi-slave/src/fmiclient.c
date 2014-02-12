@@ -90,10 +90,9 @@ FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int log
     FMICSClient->visible = 0;        // no simulator user interface
     FMICSClient->interactive = 0;    // simulation run without user interaction
     FMICSClient->debugLogging = debugLogging;
-    fmi1_import_set_debug_logging(FMICSClient->importInstance, FMICSClient->debugLogging);
     /*
      * We define these fields in the clientOnData function.
-     * These the first values sent by the server to the client.
+     * These are the first values sent by the server to the client.
      *
     FMICSClient->tStart = 0;
     FMICSClient->currentTime = 0;
@@ -130,6 +129,7 @@ void sendCommand(lw_client client, char* data, size_t size) {
 jm_status_enu_t fmi1InstantiateSlaveWrapper(FMICoSimulationClient *FMICSClient) {
   jm_status_enu_t status = fmi1_import_instantiate_slave(FMICSClient->importInstance, FMICSClient->instanceName, FMICSClient->fmuLocation,
       FMICSClient->mimeType, FMICSClient->timeOut, FMICSClient->visible, FMICSClient->interactive);
+  fmi1_import_set_debug_logging(FMICSClient->importInstance, FMICSClient->debugLogging);
   return status;
 }
 
