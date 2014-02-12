@@ -5,22 +5,17 @@
 
 namespace fmitcp {
 
-    enum SlaveState {
-        SLAVE_NONE,
-        SLAVE_INITIALIZED,
-        SLAVE_STEPPING,
-        SLAVE_STEPPINGFINISHED
-    };
-
+    /// Container for slave data from the master's perspective.
     class Slave {
 
-    private:
-        SlaveState m_state;
-        lw_client m_client;
-        int m_id;
-        void sendCommand(char* data, size_t size);
-
     public:
+
+        enum SlaveState {
+            SLAVE_NONE,
+            SLAVE_INITIALIZED,
+            SLAVE_STEPPING,
+            SLAVE_STEPPINGFINISHED
+        };
 
         Slave(lw_client);
         ~Slave();
@@ -31,13 +26,19 @@ namespace fmitcp {
         void setId(int id);
         void setState(SlaveState s);
         SlaveState getState();
-        void initialize();
+        void initialize(double relativeTolerance, double tStart, bool stopTimeDefined, double tStop);
         void instantiate();
         void setInitialValues();
         void terminate();
         void getReal(int valueRef);
         void setReal(int valueRef, double value);
+        bool isConnected();
 
+    private:
+        SlaveState m_state;
+        lw_client m_client;
+        int m_id;
+        void sendCommand(char* data, size_t size);
     };
 };
 

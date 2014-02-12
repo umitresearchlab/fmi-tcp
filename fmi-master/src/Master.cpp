@@ -55,6 +55,11 @@ void Master::init(){
     // Set state
     m_state = MASTER_IDLE;
     m_slaveIdCounter = 0;
+
+    m_relativeTolerance = 0.0001;
+    m_startTime = 0;
+    m_endTimeDefined = false;
+    m_endTime = 10;
 }
 
 Master::~Master(){
@@ -96,8 +101,6 @@ void clientOnError(lw_client client, lw_error error) {
 
     if (strcmp(errorString, "Error connecting") == 0) {
         lw_addr address = lw_client_server_addr(client);
-        lw_stream_delete(client);
-        return;
     }
 
     lw_stream_delete(client);
@@ -180,12 +183,30 @@ Slave * Master::getSlave(int id){
 }
 
 void Master::clientConnected(lw_client client){
-    m_logger.log(NETWORK,"Client connected\n");
+    m_logger.log(Logger::NETWORK,"Connected to slave.\n");
     Slave * slave = getSlave(client);
+
+    // Check if all slaves are connected.
+    bool allConnected = true;
+    for(int i=0; i<m_slaves.size(); i++){
+        if(!m_slaves[i]->isConnected()){
+            allConnected = false;
+            break;
+        }
+    }
+
+    if(!allConnected)
+        return;
+
+    // Enough slaves connected. Start simulation!
+    for(int i=0; i<m_slaves.size(); i++){
+        m_logger.log(Logger::DEBUG,"Initializing slave %d...\n", i);
+        m_slaves[i]->initialize(m_relativeTolerance, m_startTime, m_endTimeDefined, m_endTime);
+    }
 }
 
 void Master::clientDisconnected(lw_client client){
-    m_logger.log(NETWORK,"Client disconnected\n");
+    m_logger.log(Logger::NETWORK,"Disconnected slave.\n");
 
     // Remove from slave vector
     for(int i=0; i<m_slaves.size(); i++){
@@ -203,7 +224,7 @@ void Master::clientDisconnected(lw_client client){
 }
 
 void Master::clientData(lw_client client, const char* data, long size){
-    m_logger.log(NETWORK,"<-- %s\n",data);
+    m_logger.log(Logger::NETWORK,"<-- %s\n",data);
     Slave * slave = getSlave(client);
 
     char* response = (char*)malloc(size+1);
@@ -337,7 +358,7 @@ void Master::setTimeStep(double timeStep){
 }
 
 void Master::setEnableEndTime(bool enable){
-    m_endTimeEnabled = enable;
+    m_endTimeDefined = enable;
 }
 
 void Master::setEndTime(double endTime){
@@ -349,7 +370,7 @@ void Master::setWeakMethod(WeakCouplingAlgorithm algorithm){
 }
 
 
-bool Master::hasAllClientsState(SlaveState state){
+bool Master::hasAllClientsState(Slave::SlaveState state){
     for(int i=0; i<m_slaves.size(); i++){
         if(m_slaves[i]->getState() != state)
             return false;

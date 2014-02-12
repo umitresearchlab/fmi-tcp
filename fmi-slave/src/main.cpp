@@ -97,6 +97,7 @@ int main( int argc, char *argv[] ) {
     }
 
     Slave slave(fmuPath);
+    slave.setLogger(Logger());
     slave.host(hostName,port);
 
     return EXIT_SUCCESS;

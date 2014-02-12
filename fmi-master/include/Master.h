@@ -28,11 +28,6 @@ namespace fmitcp {
     class Master {
 
     private:
-        int numFMUS;
-        int numClients;
-        double tStart;
-        double stepSize;
-        double tStop;
         std::vector<WeakConnection*> m_weakConnections;
         std::vector<StrongConnection*> m_strongConnections;
         std::vector<Slave*> m_slaves;
@@ -42,9 +37,11 @@ namespace fmitcp {
         Logger m_logger;
         WeakCouplingAlgorithm m_method;
         MasterState m_state;
+        double m_relativeTolerance;
         double m_timeStep;
+        double m_startTime;
         double m_endTime;
-        bool m_endTimeEnabled;
+        bool m_endTimeDefined;
 
     public:
         Master();
@@ -77,7 +74,7 @@ namespace fmitcp {
 
         void initializeSlaves();
 
-        bool hasAllClientsState(SlaveState state);
+        bool hasAllClientsState(Slave::SlaveState state);
     };
 };
 

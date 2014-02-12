@@ -1,4 +1,5 @@
 #include "Slave.h"
+#include "Logger.h"
 #include "fmilib.h"
 #include "stdio.h"
 #include "stdlib.h"
@@ -7,19 +8,23 @@
 using namespace fmitcp;
 
 void serverOnConnect(lw_server server, lw_client client){
-    printf("Master Connected!\n");
+    Slave * slave = (Slave*)lw_server_tag(server);
+    slave->onMasterConnect(client);
 }
 
 void serverOnData(lw_server server, lw_client client, const char* data, size_t size){
-    printf("Master Data!\n");
+    Slave * slave = (Slave*)lw_server_tag(server);
+    slave->onMasterData(client,data,size);
 }
 
 void serverOnDisconnect(lw_server server, lw_client client) {
-    printf("Master disconnected!\n");
+    Slave * slave = (Slave*)lw_server_tag(server);
+    slave->onMasterDisconnect(client);
 }
 
 void serverOnError(lw_server server, lw_error error) {
-    printf("Master error!\n");
+    Slave * slave = (Slave*)lw_server_tag(server);
+    slave->onError(error);
 }
 
 void fmi1_null_logger(  fmi1_component_t    c,
@@ -45,17 +50,22 @@ Slave::Slave(std::string fmuPath){
     m_fmi1Variables = NULL;
 
     m_pump = lw_eventpump_new();
+    m_connected = true;
 }
 
 Slave::~Slave(){
     if(m_context != NULL) fmi_import_free_context(m_context);
 
-    // if(m_fmi1Variables != NULL) // todo: free variable lists
+    // if(m_fmi1Variables != NULL) // todo: free variable list
 
     // Clear pump
     lw_eventpump_post_eventloop_exit(m_pump);
     lw_pump_delete(m_pump);
 
+}
+
+void Slave::setLogger(const Logger& logger){
+    m_logger = logger;
 }
 
 void Slave::host(std::string hostName, long port){
@@ -157,9 +167,22 @@ void Slave::host(std::string hostName, long port){
     lw_eventpump_start_eventloop(m_pump);
 }
 
+void Slave::onMasterConnect(lw_client client){
+    m_master = client;
+    m_connected = true;
+    m_logger.log(Logger::DEBUG,"Master connected.");
+}
 
-
-
+void Slave::onMasterDisconnect(lw_client client){
+    m_connected = false;
+    m_logger.log(Logger::DEBUG,"Master disconnected.");
+}
+void Slave::onError(lw_error error){
+    m_logger.log(Logger::DEBUG,"Error.");
+}
+void Slave::onMasterData(lw_client client, const char* data, size_t size){
+    m_logger.log(Logger::DEBUG,"Error.");
+}
 
 
 

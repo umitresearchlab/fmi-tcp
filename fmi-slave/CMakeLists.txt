@@ -22,13 +22,18 @@ SET(HEADERS
 SET(SLAVE_SRCS
     src/main.cpp
     src/Slave.cpp
+    ../common/src/Logger.cpp
 )
 SET(SLAVE_HEADERS
     include/Slave.h
+    ../common/include/Logger.h
 )
 
 SET(EXECUTABLE_OUTPUT_PATH "${CMAKE_CURRENT_LIST_DIR}/../bin")
+
 INCLUDE_DIRECTORIES(include)
+INCLUDE_DIRECTORIES(../common/include)
+
 ADD_EXECUTABLE(fmi-slave ${HEADERS}         ${SRCS})
 ADD_EXECUTABLE(slave     ${SLAVE_HEADERS}   ${SLAVE_SRCS})
 
