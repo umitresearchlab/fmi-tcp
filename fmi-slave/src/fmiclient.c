@@ -52,8 +52,8 @@ FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int log
   }
   if (FMICSClient->version == fmi_version_1_enu) { // FMI 1.0
     // parse the xml file
-    FMICSClient->importInstance = fmi1_import_parse_xml(FMICSClient->importContext, FMICSClient->workingDirectory);
-    if(!FMICSClient->importInstance) {
+    FMICSClient->FMI1ImportInstance = fmi1_import_parse_xml(FMICSClient->importContext, FMICSClient->workingDirectory);
+    if(!FMICSClient->FMI1ImportInstance) {
       fmi_import_free_context(FMICSClient->importContext);
       free(FMICSClient->workingDirectory);
       free(FMICSClient);
@@ -61,21 +61,21 @@ FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int log
       return 0;
     }
     /* check FMU kind */
-    fmi1_fmu_kind_enu_t fmiType = fmi1_import_get_fmu_kind(FMICSClient->importInstance);
+    fmi1_fmu_kind_enu_t fmiType = fmi1_import_get_fmu_kind(FMICSClient->FMI1ImportInstance);
     if(fmiType != fmi1_fmu_kind_enu_cs_standalone && fmiType != fmi1_fmu_kind_enu_cs_tool) {
       fmi_import_free_context(FMICSClient->importContext);
       free(FMICSClient->workingDirectory);
       free(FMICSClient);
-      logPrint(stderr,"Only CS 1.0 & 2.0 is supported by this code\n");fflush(NULL);
+      logPrint(stderr,"Only FMI Co-Simulation 1.0 & 2.0 are supported.\n");fflush(NULL);
       return 0;
     }
     /* FMI callback functions */
     int registerGlobally = 0;
-    FMICSClient->callbackFunctions.logger = loggingOn ? fmi1_log_forwarding : fmi1_null_logger;
-    FMICSClient->callbackFunctions.allocateMemory = calloc;
-    FMICSClient->callbackFunctions.freeMemory = free;
+    FMICSClient->FMI1CallbackFunctions.logger = loggingOn ? fmi1_log_forwarding : fmi1_null_logger;
+    FMICSClient->FMI1CallbackFunctions.allocateMemory = calloc;
+    FMICSClient->FMI1CallbackFunctions.freeMemory = free;
     /* Load the binary (dll/so) */
-    jm_status_enu_t status = fmi1_import_create_dllfmu(FMICSClient->importInstance, FMICSClient->callbackFunctions, registerGlobally);
+    jm_status_enu_t status = fmi1_import_create_dllfmu(FMICSClient->FMI1ImportInstance, FMICSClient->FMI1CallbackFunctions, registerGlobally);
     if (status == jm_status_error) {
       fmi_import_free_context(FMICSClient->importContext);
       free(FMICSClient->workingDirectory);
@@ -83,7 +83,7 @@ FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int log
       logPrint(stderr, "There was an error loading the FMU dll. Turn on logging (-l) for more info.\n");
       return 0;
     }
-    FMICSClient->instanceName = (char*)fmi1_import_get_model_name(FMICSClient->importInstance);
+    FMICSClient->instanceName = (char*)fmi1_import_get_model_name(FMICSClient->FMI1ImportInstance);
     FMICSClient->fmuLocation = fmi_import_create_URL_from_abs_path(&FMICSClient->JMCallbacks, (const char*)fileName);
     FMICSClient->mimeType = "application/x-fmu-sharedlibrary";       // denotes tool in case of tool coupling
     FMICSClient->timeOut = 1000;     // wait period in milliseconds, 0 for unlimited wait period
@@ -101,18 +101,72 @@ FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int log
     FMICSClient->tStop = tEnd;
     */
     FMICSClient->debugLogging = debugLogging;
-    FMICSClient->variables = fmi1_import_get_variable_list(FMICSClient->importInstance);
+    FMICSClient->FMI1Variables = fmi1_import_get_variable_list(FMICSClient->FMI1ImportInstance);
   } else if (FMICSClient->version == fmi_version_2_0_enu) { // FMI 2.0
-
+    // parse the xml file
+    FMICSClient->FMI2ImportInstance = fmi2_import_parse_xml(FMICSClient->importContext, FMICSClient->workingDirectory, NULL);
+    if(!FMICSClient->FMI2ImportInstance) {
+      fmi_import_free_context(FMICSClient->importContext);
+      free(FMICSClient->workingDirectory);
+      free(FMICSClient);
+      logPrint(stderr, "Error parsing the XML file contained in %s\n", FMICSClient->workingDirectory);
+      return 0;
+    }
+    /* check FMU kind */
+    fmi2_fmu_kind_enu_t fmiType = fmi2_import_get_fmu_kind(FMICSClient->FMI2ImportInstance);
+    if(fmiType != fmi2_fmu_kind_cs) {
+      fmi_import_free_context(FMICSClient->importContext);
+      free(FMICSClient->workingDirectory);
+      free(FMICSClient);
+      logPrint(stderr,"Only FMI Co-Simulation 1.0 & 2.0 are supported.\n");fflush(NULL);
+      return 0;
+    }
+    /* FMI callback functions */
+    FMICSClient->FMI2CallbackFunctions.logger = loggingOn ? fmi2_log_forwarding : fmi2_null_logger;
+    FMICSClient->FMI2CallbackFunctions.allocateMemory = calloc;
+    FMICSClient->FMI2CallbackFunctions.freeMemory = free;
+    /* Load the binary (dll/so) */
+    jm_status_enu_t status = fmi2_import_create_dllfmu(FMICSClient->FMI2ImportInstance, fmiType, &FMICSClient->FMI2CallbackFunctions);
+    if (status == jm_status_error) {
+      fmi_import_free_context(FMICSClient->importContext);
+      free(FMICSClient->workingDirectory);
+      free(FMICSClient);
+      logPrint(stderr, "There was an error loading the FMU dll. Turn on logging (-l) for more info.\n");fflush(NULL);
+      return 0;
+    }
+    FMICSClient->instanceName = (char*)fmi2_import_get_model_name(FMICSClient->FMI2ImportInstance);
+    FMICSClient->fmuLocation = fmi_import_create_URL_from_abs_path(&FMICSClient->JMCallbacks, (const char*)fileName);
+    FMICSClient->mimeType = "application/x-fmu-sharedlibrary";       // denotes tool in case of tool coupling
+    FMICSClient->timeOut = 1000;     // wait period in milliseconds, 0 for unlimited wait period
+    FMICSClient->visible = 0;        // no simulator user interface
+    FMICSClient->interactive = 0;    // simulation run without user interaction
+    FMICSClient->debugLogging = debugLogging;
+    /*
+     * We define these fields in the clientOnData function.
+     * These are the first values sent by the server to the client.
+     *
+        FMICSClient->tStart = 0;
+        FMICSClient->currentTime = 0;
+        FMICSClient->stepSize = stepSize;
+        FMICSClient->stopTimeDefined = tEnd > 0;
+        FMICSClient->tStop = tEnd;
+     */
+    FMICSClient->debugLogging = debugLogging;
+    /* 0 - original order as found in the XML file;
+     * 1 - sorted alphabetically by variable name;
+     * 2 sorted by types/value references.
+     */
+    int sortOrder = 0;
+    FMICSClient->FMI2Variables = fmi2_import_get_variable_list(FMICSClient->FMI2ImportInstance, sortOrder);
   }
   return FMICSClient;
 }
 
 void destroyFMICoSimulationClient(FMICoSimulationClient *FMICSClient) {
-  fmi1_import_terminate_slave(FMICSClient->importInstance);
-  fmi1_import_free_slave_instance(FMICSClient->importInstance);
-  fmi1_import_destroy_dllfmu(FMICSClient->importInstance);
-  fmi1_import_free(FMICSClient->importInstance);
+  fmi1_import_terminate_slave(FMICSClient->FMI1ImportInstance);
+  fmi1_import_free_slave_instance(FMICSClient->FMI1ImportInstance);
+  fmi1_import_destroy_dllfmu(FMICSClient->FMI1ImportInstance);
+  fmi1_import_free(FMICSClient->FMI1ImportInstance);
   fmi_import_free_context(FMICSClient->importContext);
   fmi_import_rmdir(&FMICSClient->JMCallbacks, FMICSClient->workingDirectory);
   free(FMICSClient->workingDirectory);
@@ -127,23 +181,23 @@ void sendCommand(lw_client client, char* data, size_t size) {
 }
 
 jm_status_enu_t fmi1InstantiateSlaveWrapper(FMICoSimulationClient *FMICSClient) {
-  jm_status_enu_t status = fmi1_import_instantiate_slave(FMICSClient->importInstance, FMICSClient->instanceName, FMICSClient->fmuLocation,
+  jm_status_enu_t status = fmi1_import_instantiate_slave(FMICSClient->FMI1ImportInstance, FMICSClient->instanceName, FMICSClient->fmuLocation,
       FMICSClient->mimeType, FMICSClient->timeOut, FMICSClient->visible, FMICSClient->interactive);
-  fmi1_import_set_debug_logging(FMICSClient->importInstance, FMICSClient->debugLogging);
+  fmi1_import_set_debug_logging(FMICSClient->FMI1ImportInstance, FMICSClient->debugLogging);
   return status;
 }
 
 fmi1_status_t fmi1InitializeSlaveWrapper(FMICoSimulationClient *FMICSClient) {
-  fmi1_status_t status = fmi1_import_initialize_slave(FMICSClient->importInstance, FMICSClient->tStart, FMICSClient->stopTimeDefined,
+  fmi1_status_t status = fmi1_import_initialize_slave(FMICSClient->FMI1ImportInstance, FMICSClient->tStart, FMICSClient->stopTimeDefined,
       FMICSClient->tStop);
   return status;
 }
 
 void fmi1SetInitialValues(FMICoSimulationClient *FMICSClient) {
   int k;
-  int num = fmi1_import_get_variable_list_size(FMICSClient->variables);
+  int num = fmi1_import_get_variable_list_size(FMICSClient->FMI1Variables);
   for (k=0; num; k++) {
-    fmi1_import_variable_t * v = fmi1_import_get_variable(FMICSClient->variables, k);
+    fmi1_import_variable_t * v = fmi1_import_get_variable(FMICSClient->FMI1Variables, k);
     if(!v) break;
 
     fmi1_value_reference_t vr[1];
@@ -164,20 +218,20 @@ void fmi1SetInitialValues(FMICoSimulationClient *FMICSClient) {
       switch (bt){
       case fmi1_base_type_real:
         lol[0] = fmi1_import_get_real_variable_start((fmi1_import_real_variable_t*) v);
-        fmi1_import_set_real(FMICSClient->importInstance,   vr,   1, lol);
+        fmi1_import_set_real(FMICSClient->FMI1ImportInstance,   vr,   1, lol);
         break;
       case fmi1_base_type_int:
       case fmi1_base_type_enum:
         innt[0] = fmi1_import_get_integer_variable_start((fmi1_import_integer_variable_t*) v);
-        fmi1_import_set_integer(FMICSClient->importInstance,   vr,   1, innt);
+        fmi1_import_set_integer(FMICSClient->FMI1ImportInstance,   vr,   1, innt);
         break;
       case fmi1_base_type_bool:
         boool[0] = fmi1_import_get_boolean_variable_start((fmi1_import_bool_variable_t*) v);
-        fmi1_import_set_boolean(FMICSClient->importInstance,   vr,   1, boool);
+        fmi1_import_set_boolean(FMICSClient->FMI1ImportInstance,   vr,   1, boool);
         break;
       case fmi1_base_type_str:
         striing[0] = fmi1_import_get_string_variable_start((fmi1_import_string_variable_t*) v);
-        fmi1_import_set_string(FMICSClient->importInstance,   vr,   1, striing);
+        fmi1_import_set_string(FMICSClient->FMI1ImportInstance,   vr,   1, striing);
         break;
       default:
         logPrint(stderr,"Could not determine type of value reference %d in FMU. Continuing without setting initial value...\n", vr[0]);
@@ -189,10 +243,10 @@ void fmi1SetInitialValues(FMICoSimulationClient *FMICSClient) {
 
 fmi1_import_variable_t* fmi1GetVariableByVr(FMICoSimulationClient *FMICSClient, int valueReference) {
   int i;
-  size_t n = fmi1_import_get_variable_list_size(FMICSClient->variables);
+  size_t n = fmi1_import_get_variable_list_size(FMICSClient->FMI1Variables);
   fmi1_import_variable_t* v = 0;
   for (i = 0 ; i < n ; i++) {
-    v = fmi1_import_get_variable(FMICSClient->variables, i);
+    v = fmi1_import_get_variable(FMICSClient->FMI1Variables, i);
     if (fmi1_import_get_variable_vr(v) == valueReference) {
       return v;
     }
@@ -213,23 +267,23 @@ void fmi1GetValue(FMICoSimulationClient *FMICSClient, int valueReference, char* 
   fmi1_string_t ss[1];
   switch (baseType) {
   case fmi1_base_type_real:
-    fmi1_import_get_real(FMICSClient->importInstance, vr, 1, rr);
+    fmi1_import_get_real(FMICSClient->FMI1ImportInstance, vr, 1, rr);
     debugPrint(debugFlag, stdout, "fmi1_import_get_real = %f\n", rr[0]);fflush(NULL);
     sprintf(retVal, "%f", rr[0]);
     break;
   case fmi1_base_type_int:
   case fmi1_base_type_enum:
-    fmi1_import_get_integer(FMICSClient->importInstance, vr, 1, ii);
+    fmi1_import_get_integer(FMICSClient->FMI1ImportInstance, vr, 1, ii);
     debugPrint(debugFlag, stdout, "fmi1_import_get_integer = %d\n", ii[0]);fflush(NULL);
     sprintf(retVal, "%d", ii[0]);
     break;
   case fmi1_base_type_bool:
-    fmi1_import_get_boolean(FMICSClient->importInstance, vr, 1, bb);
+    fmi1_import_get_boolean(FMICSClient->FMI1ImportInstance, vr, 1, bb);
     debugPrint(debugFlag, stdout, "fmi1_import_get_boolean = %d\n", bb[0]);fflush(NULL);
     sprintf(retVal, "%d", bb[0]);
     break;
   case fmi1_base_type_str:
-    fmi1_import_get_string(FMICSClient->importInstance, vr, 1, ss);
+    fmi1_import_get_string(FMICSClient->FMI1ImportInstance, vr, 1, ss);
     debugPrint(debugFlag, stdout, "fmi1_import_get_string = %s\n", ss[0]);fflush(NULL);
     sprintf(retVal, "%s", ss[0]);
     break;
@@ -257,18 +311,18 @@ void fmi1SetValue(FMICoSimulationClient *FMICSClient, int valueReference, const 
   case fmi1_base_type_real:
     rr_value = unparseDoubleResult(data, name, strlen(data));
     rr[0] = rr_value;
-    fmi1_import_set_real(FMICSClient->importInstance, vr, 1, rr);
+    fmi1_import_set_real(FMICSClient->FMI1ImportInstance, vr, 1, rr);
     break;
   case fmi1_base_type_int:
   case fmi1_base_type_enum:
     ii_value = unparseIntResult(data, name, strlen(data));
     ii[0] = ii_value;
-    fmi1_import_set_integer(FMICSClient->importInstance, vr, 1, ii);
+    fmi1_import_set_integer(FMICSClient->FMI1ImportInstance, vr, 1, ii);
     break;
   case fmi1_base_type_bool:
     bb_value = unparseIntResult(data, name, strlen(data));
     bb[0] = bb_value;
-    fmi1_import_set_boolean(FMICSClient->importInstance, vr, 1, bb);
+    fmi1_import_set_boolean(FMICSClient->FMI1ImportInstance, vr, 1, bb);
     break;
   case fmi1_base_type_str:
     logPrint(stderr, "fmi1_import_set_string is not handled yet.\n");fflush(NULL);
@@ -285,7 +339,7 @@ fmi1_status_t fmi1DoStep(FMICoSimulationClient *FMICSClient, int *finished) {
   debugPrint(debugFlag, stdout, "FMICSClient->currentTime=%f\n", FMICSClient->currentTime);fflush(NULL);
   debugPrint(debugFlag, stdout, "FMICSClient->tStop=%f\n", FMICSClient->tStop);fflush(NULL);
   if (FMICSClient->currentTime < FMICSClient->tStop) {
-    status = fmi1_import_do_step(FMICSClient->importInstance, FMICSClient->currentTime, FMICSClient->stepSize, 1);
+    status = fmi1_import_do_step(FMICSClient->FMI1ImportInstance, FMICSClient->currentTime, FMICSClient->stepSize, 1);
     FMICSClient->currentTime += FMICSClient->stepSize;
     *finished = 0;
   } else {
@@ -295,11 +349,11 @@ fmi1_status_t fmi1DoStep(FMICoSimulationClient *FMICSClient, int *finished) {
 }
 
 fmi1_status_t fmi1PendingStatusString(FMICoSimulationClient *FMICSClient, fmi1_string_t *str) {
-  return fmi1_import_get_string_status(FMICSClient->importInstance, fmi1_pending_status, str);
+  return fmi1_import_get_string_status(FMICSClient->FMI1ImportInstance, fmi1_pending_status, str);
 }
 
 fmi1_status_t fmi1DoStepStatus(FMICoSimulationClient *FMICSClient, fmi1_status_t *status) {
-  return fmi1_import_get_status(FMICSClient->importInstance, fmi1_do_step_status, status);
+  return fmi1_import_get_status(FMICSClient->FMI1ImportInstance, fmi1_do_step_status, status);
 }
 
 void connectClient(FMICoSimulationClient *FMICSClient, const char* hostName, int port) {

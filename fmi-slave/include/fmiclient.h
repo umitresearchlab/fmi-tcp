@@ -15,10 +15,12 @@ typedef struct {
   int logLevel;
   jm_callbacks JMCallbacks;
   fmi_import_context_t* importContext;
-  fmi1_callback_functions_t callbackFunctions;
+  fmi1_callback_functions_t FMI1CallbackFunctions;
+  fmi2_callback_functions_t FMI2CallbackFunctions;
   char* workingDirectory;
   fmi_version_enu_t version;
-  fmi1_import_t* importInstance;
+  fmi1_import_t* FMI1ImportInstance;
+  fmi2_import_t* FMI2ImportInstance;
   char* instanceName;
   int debugLogging;
   char* fmuLocation;
@@ -31,7 +33,8 @@ typedef struct {
   double stepSize;
   int stopTimeDefined;
   double tStop;
-  fmi1_import_variable_list_t* variables;
+  fmi1_import_variable_list_t* FMI1Variables;
+  fmi2_import_variable_list_t* FMI2Variables;
   /*
    * TCP Client fields
    */

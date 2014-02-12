@@ -99,6 +99,9 @@ int main( int argc, char *argv[] ) {
     // OK
     strcpy(fmuPath,buf);
     FMICSClient = createFMICoSimulationClient(fmuPath, loggingOn, debugLogging);
+    if (!FMICSClient) {
+      exit(EXIT_FAILURE);
+    }
   } else {
     // Error opening...
     exit(EXIT_FAILURE);

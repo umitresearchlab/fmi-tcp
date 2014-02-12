@@ -2,6 +2,7 @@
 fmu
 build
 bin/*
+FMIL/*
 .cproject
 .project
 .settings/*
