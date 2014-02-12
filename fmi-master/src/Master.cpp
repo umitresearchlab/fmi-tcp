@@ -2,11 +2,12 @@
 #include "Logger.h"
 #include "StrongConnection.h"
 #include "WeakConnection.h"
+#include "Message.h"
 #include "Slave.h"
 #include "string.h"
 #include "stdlib.h"
-#include "commands.h"
 #include "url_parser.h"
+#include <string>
 
 using namespace fmitcp;
 
@@ -123,9 +124,9 @@ void Master::transferWeakConnectionData(){
     }
 }
 
-int Master::connectSlave(const char uri[PATH_MAX]){
+int Master::connectSlave(std::string uri){
 
-    struct parsed_url * url = parse_url(uri);
+    struct parsed_url * url = parse_url(uri.c_str());
     long port = atoi(url->port);
 
     // Create new client
@@ -156,7 +157,8 @@ int Master::connectSlave(const char uri[PATH_MAX]){
 void Master::simulate(){
 
     // start the eventloop
-    lw_eventpump_start_eventloop(m_pump);
+    if(m_slaves.size())
+        lw_eventpump_start_eventloop(m_pump);
 }
 
 Slave * Master::getSlave(lw_client client){
@@ -201,7 +203,7 @@ void Master::clientDisconnected(lw_client client){
 }
 
 void Master::clientData(lw_client client, const char* data, long size){
-    m_logger.log(NETWORK,"Client data\n");
+    m_logger.log(NETWORK,"<-- %s\n",data);
     Slave * slave = getSlave(client);
 
     char* response = (char*)malloc(size+1);
@@ -209,19 +211,17 @@ void Master::clientData(lw_client client, const char* data, long size){
     response[size] = '\0';
     //debugPrint(debugFlag, stderr, "<-- %d: %s\n", clientIndex, response);fflush(NULL);
 
+    /*
     char* token;
     token = strtok(response, "\n");
     while (token != NULL) {
-        /*debugPrint(debugFlag, stdout, "token = %s\n", token);fflush(NULL);*/
-        if (strncmp(token, fmiTEndOk, strlen(fmiTEndOk)) == 0) {
+        // debugPrint(debugFlag, stdout, "token = %s\n", token);fflush(NULL);
+        if (strncmp(token, Message::fmiTEndOk, strlen(Message::fmiTEndOk)) == 0) {
           //sendCommand(client, clientIndex, fmiInstantiateSlave, strlen(fmiInstantiateSlave));
           slave->instantiate();
         } else if ((strncmp(token, fmiInstantiateSlaveSuccess, strlen(fmiInstantiateSlaveSuccess)) == 0) ||
                   (strncmp(token, fmiInstantiateSlaveWarning, strlen(fmiInstantiateSlaveWarning)) == 0)) {
-          /*
-           * handle fmiInstantiateSlave response.
-           * if the response is success then call fmiInitializeSlave
-           */
+           // handle fmiInstantiateSlave response. if the response is success then call fmiInitializeSlave
           m_logger.log(NETWORK,"Slave %d has successfully done Instantiation.\n", slave->getId());
           slave->initialize();
 
@@ -230,12 +230,9 @@ void Master::clientData(lw_client client, const char* data, long size){
           exit(EXIT_FAILURE);
 
         } else if (strncmp(token, fmiInitializeSlaveOk, strlen(fmiInitializeSlaveOk)) == 0) {
-          /*
-           * handle fmiInitializeSlave response.
-           * if the response is OK then call setInitialValues
-           */
-          m_logger.log(NETWORK,"Slave %d has successfully done Initialization.\n", slave->getId());
-          slave->setInitialValues();
+            // handle fmiInitializeSlave response. if the response is OK then call setInitialValues
+            m_logger.log(NETWORK,"Slave %d has successfully done Initialization.\n", slave->getId());
+            slave->setInitialValues();
 
         } else if (strncmp(token, fmiInitializeSlaveError, strlen(fmiInitializeSlaveError)) == 0) {
           m_logger.log(NETWORK,"Could not initialize model.\n");
@@ -244,7 +241,7 @@ void Master::clientData(lw_client client, const char* data, long size){
         } else if ((strncmp(token, setInitialValuesOk, strlen(setInitialValuesOk)) == 0) ||
             (strncmp(token, fmiSetValueReturn, strlen(fmiSetValueReturn)) == 0) ||
             (strncmp(token, fmiDoStepOk, strlen(fmiDoStepOk)) == 0)) {
-          /* if fmiDoStepOK is returned then just inform user about successful step. */
+          // if fmiDoStepOK is returned then just inform user about successful step.
           if (strncmp(token, fmiDoStepOk, strlen(fmiDoStepOk)) == 0) {
             m_logger.log(NETWORK,"Slave %d has successfully taken a step.\n", slave->getId());
           }
@@ -289,45 +286,6 @@ void Master::clientData(lw_client client, const char* data, long size){
               }
               break;
 
-              /*
-            case gs:      // Sequential
-              if (allSlavesInitialized) {
-                // loop through all the clients
-                serverClient = lw_server_client_first(FMICSServer->server);
-                int count = 1;
-                while (serverClient) {
-                  FMIClientInfo *serverClientInfo = (FMIClientInfo*)lw_stream_tag(serverClient);
-                  serverClientInfo->state = stateStepping;
-                  int i;
-                  int found = 0;
-                  for (i = 0 ; i < FMICSServer->numConnections ; i++) {
-                    connection c = FMICSServer->connections[i];
-                    if (findClientIndex(FMICSServer, serverClient) == c.toFMU && c.state == connectionInvalid) {
-                      lw_server_client fromClient = findClientByIndex(FMICSServer, c.fromFMU);
-                      if (fromClient) {     // it might be that the client we want here is already finished.
-                        found = 1;
-                        c.state = connectionRequested;
-                        FMICSServer->connections[i] = c;
-                        char cmd[50];
-                        sprintf(cmd, "%s%d", fmiGetValue, c.fromOutputVR);
-                        sendCommand(fromClient, c.fromFMU, cmd, strlen(cmd));
-                      }
-                    }
-                  }
-                  // if not found then this client doesn't have any connection so just call fmiDoStep for it.
-                  if (!found) {
-                    callfmi1DoStepGaussSeidel(FMICSServer, serverClient);
-                  }
-                  if (count < FMICSServer->numClients)
-                    serverClient = lw_server_client_next(serverClient);
-                  else
-                    break;
-                  count++;
-                }
-              }
-              break;
-              */
-
             }
           }
         } else if (strncmp(token, fmiGetValueReturn, strlen(fmiGetValueReturn)) == 0) {
@@ -346,10 +304,7 @@ void Master::clientData(lw_client client, const char* data, long size){
             }
           }
         } else if (strncmp(token, fmiDoStepPending, strlen(fmiDoStepPending)) == 0) {
-          /*
-           * We must start a timer here which should ask the slave about fmiGetStatus.
-           * No need to free the timer object. It is single shot timer and will automatically call the destroy after 5 seconds.
-           */
+           // We must start a timer here which should ask the slave about fmiGetStatus. No need to free the timer object. It is single shot timer and will automatically call the destroy after 5 seconds.
           //FMICoSimulationTimer *FMICSTimer = createFMICoSimulationTimer(client, FMICSServer);
           //Todo: need to fix
         } else if (strncmp(token, fmiDoStepError, strlen(fmiDoStepError)) == 0) {
@@ -361,28 +316,12 @@ void Master::clientData(lw_client client, const char* data, long size){
           case PARALLEL:  // parallel
             slave->terminate(); //sendCommand(client, clientIndex, fmiTerminateSlave, strlen(fmiTerminateSlave));
             break;
-            /*
-          case gs:
-            if (hasAllClientsState(FMICSServer, stateSteppingFinished)) {
-              // loop through all the clients and call fmiTerminate
-              lw_server_client serverClient = lw_server_client_first(FMICSServer->server);
-              int count = 1;
-              while (serverClient) {
-                sendCommand(serverClient, findClientIndex(FMICSServer, serverClient), fmiTerminateSlave, strlen(fmiTerminateSlave));
-                if (count < FMICSServer->numClients)
-                  serverClient = lw_server_client_next(serverClient);
-                else
-                  break;
-                count++;
-              }
-            }
-            break;
-            */
           }
         }
         token = strtok(NULL, "\n");
       }
       free(response);
+      */
 }
 
 void Master::createStrongConnection(int slaveA, int slaveB, int connectorA, int connectorB){
@@ -405,7 +344,7 @@ void Master::setEndTime(double endTime){
     m_endTime = endTime;
 }
 
-void Master::setMethod(WeakCouplingAlgorithm algorithm){
+void Master::setWeakMethod(WeakCouplingAlgorithm algorithm){
     m_method = algorithm;
 }
 

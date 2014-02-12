@@ -8,6 +8,7 @@
 #include "Logger.h"
 #include "lacewing.h"
 #include <limits.h>
+#include <string>
 
 namespace fmitcp {
 
@@ -53,7 +54,7 @@ namespace fmitcp {
         void init();
 
         /// Connects to a slave and gets info about it
-        int connectSlave(const char uri[PATH_MAX]);
+        int connectSlave(std::string uri);
 
         Slave * getSlave(lw_client client);
         Slave * getSlave(int id);
@@ -64,7 +65,7 @@ namespace fmitcp {
         void setTimeStep(double timeStep);
         void setEnableEndTime(bool enable);
         void setEndTime(double endTime);
-        void setMethod(WeakCouplingAlgorithm algorithm);
+        void setWeakMethod(WeakCouplingAlgorithm algorithm);
 
         void createStrongConnection(int slaveA, int slaveB, int connectorA, int connectorB);
         void createWeakConnection(int slaveA, int slaveB, int valueReferenceA, int valueReferenceB);

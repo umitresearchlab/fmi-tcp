@@ -5,13 +5,14 @@
 
 namespace fmitcp {
 
-    enum LogMessageType {
-        DEBUG = 1,
-        NETWORK = 2
-    };
-
     class Logger {
     public:
+
+        enum LogMessageType {
+            DEBUG = 1,
+            NETWORK = 2
+        };
+
         Logger();
         virtual ~Logger();
         virtual void log(LogMessageType type, const char * format, ...);

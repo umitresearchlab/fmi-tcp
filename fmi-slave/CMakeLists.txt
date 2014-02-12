@@ -19,14 +19,28 @@ SET(HEADERS
     ../helper.h
 )
 
+SET(SLAVE_SRCS
+    src/main.cpp
+    src/Slave.cpp
+)
+SET(SLAVE_HEADERS
+    include/Slave.h
+)
+
 SET(EXECUTABLE_OUTPUT_PATH "${CMAKE_CURRENT_LIST_DIR}/../bin")
 INCLUDE_DIRECTORIES(include)
-ADD_EXECUTABLE(fmi-slave ${HEADERS} ${SRCS})
+ADD_EXECUTABLE(fmi-slave ${HEADERS}         ${SRCS})
+ADD_EXECUTABLE(slave     ${SLAVE_HEADERS}   ${SLAVE_SRCS})
 
 IF(WIN32)
-TARGET_LINK_LIBRARIES(fmi-slave fmilib shlwapi lacewing ws2_32 mswsock crypt32 secur32 mpr)
+    SET(WINLIBS fmilib shlwapi lacewing ws2_32 mswsock crypt32 secur32 mpr)
+    TARGET_LINK_LIBRARIES(fmi-slave ${WINLIBS})
+    TARGET_LINK_LIBRARIES(slave     ${WINLIBS})
 ELSE(WIN32)
-TARGET_LINK_LIBRARIES(fmi-slave fmilib dl lacewing)
+    SET(LINUXLIBS fmilib dl lacewing)
+    TARGET_LINK_LIBRARIES(fmi-slave ${LINUXLIBS})
+    TARGET_LINK_LIBRARIES(slave     ${LINUXLIBS})
 ENDIF(WIN32)
 
-INSTALL (TARGETS fmi-slave DESTINATION bin)
+INSTALL (TARGETS fmi-slave  DESTINATION bin)
+INSTALL (TARGETS slave      DESTINATION bin)
