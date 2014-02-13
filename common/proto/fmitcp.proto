@@ -405,18 +405,34 @@ message fmi2_import_free_model_instance_res {
 
 // fmi2_status_t     fmi2_import_set_time (fmi2_import_t *fmu, fmi2_real_t time)
 //    Wrapper for the FMI function fmiSetTime(...)
-message fmi2_import_set_time_req {}
-message fmi2_import_set_time_res {}
+message fmi2_import_set_time_req {
+    required int32 fmuId = 1;
+    required double time = 2;
+}
+message fmi2_import_set_time_res {
+    required int32 fmuId = 1;
+    required fmi2_status_t status = 2;
+}
 
 // fmi2_status_t     fmi2_import_set_continuous_states (fmi2_import_t *fmu, const fmi2_real_t x[], size_t nx)
 //    Wrapper for the FMI function fmiSetContinuousStates(...)
-message fmi2_import_set_continuous_states_req {}
-message fmi2_import_set_continuous_states_res {}
+message fmi2_import_set_continuous_states_req {
+    required int32 fmuId = 1;
+    repeated double x = 2;
+}
+message fmi2_import_set_continuous_states_res {
+    required int32 fmuId = 1;
+    required fmi2_status_t status = 2;
+}
 
 // fmi2_status_t     fmi2_import_completed_integrator_step (fmi2_import_t *fmu, fmi2_boolean_t *callEventUpdate)
 //    Wrapper for the FMI function fmiCompletedIntegratorStep(...)
-message fmi2_import_completed_integrator_step_req {}
-message fmi2_import_completed_integrator_step_res {}
+message fmi2_import_completed_integrator_step_req {
+
+}
+message fmi2_import_completed_integrator_step_res {
+
+}
 
 // fmi2_status_t     fmi2_import_initialize_model (fmi2_import_t *fmu, fmi2_boolean_t toleranceControlled, fmi2_real_t relativeTolerance, fmi2_event_info_t *eventInfo)
 //    Wrapper for the FMI function fmiInitialize(...)
