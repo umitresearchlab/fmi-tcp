@@ -97,6 +97,10 @@ message fmitcp_message {
         type_fmi2_import_de_serialize_fmu_state_res = 86;
         type_fmi2_import_get_directional_derivative_req = 87;
         type_fmi2_import_get_directional_derivative_res = 88;
+
+        // ========= NETWORK SPECIFIC FUNCTIONS ============
+        type_get_xml_req = 89;
+        type_get_xml_res = 90;
     }
 
     // Identifies which field is filled in. All sub-messages are optional.
@@ -195,6 +199,10 @@ message fmitcp_message {
     //optional fmi2_import_de_serialize_fmu_state_res fmi2_import_de_serialize_fmu_state_res = 87;
     optional fmi2_import_get_directional_derivative_req fmi2_import_get_directional_derivative_req = 88;
     optional fmi2_import_get_directional_derivative_res fmi2_import_get_directional_derivative_res = 89;
+
+    // ========= NETWORK SPECIFIC FUNCTIONS ============
+    optional get_xml_req get_xml_req = 90;
+    optional get_xml_res get_xml_res = 91;
 }
 
 enum fmi2_status_t {
@@ -764,4 +772,16 @@ message fmi2_import_get_directional_derivative_req {
 message fmi2_import_get_directional_derivative_res {
     required int32 message_id = 1;
     repeated double dz = 2;
+}
+
+
+// ========= NETWORK SPECIFIC FUNCTIONS ============
+
+message get_xml_req {
+    required int32 message_id = 1;
+    required int32 fmuId = 2;
+}
+message get_xml_res {
+    required int32 message_id = 1;
+    required string xml = 2;
 }
