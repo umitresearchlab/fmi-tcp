@@ -1,17 +1,71 @@
-#include "main.h"
 #include "Master.h"
 #include <string>
+#include <fmitcp/Client.h>
+#include <stdlib.h>
+#include <signal.h>
 
 using namespace fmitcp;
 
-void printHelp(){
+// Define own client
+class MyFMIClient : public Client {
+public:
+    MyFMIClient(EventPump* pump) : Client(pump) {};
+    ~MyFMIClient(){};
 
+    void onConnect(){
+        printf("MyFMIClient::onConnect\n");
+        //fmi2_import_do_step(0,0,0.0,0.1,true);
+        m_pump->exitEventLoop();
+    };
+
+    void onDoStepResponse(){
+        printf("MyFMIClient::onDoStepResponse\n");
+        m_pump->exitEventLoop();
+    };
+
+    void onDisconnect(){
+        printf("MyFMIClient::onDisconnect\n");
+        m_pump->exitEventLoop();
+    };
+
+    void onError(string err){
+        printf("MyFMIClient::onError\n");
+        m_pump->exitEventLoop();
+    };
+};
+
+/*
+lw_pump pump;
+
+void onConnect(lw_client c){
+    printf("connect\n");
+    lw_eventpump_post_eventloop_exit(pump);
 }
+*/
 
 int main(int argc, char *argv[] ) {
 
     printf("FMI Master\n");
 
+    EventPump pump;
+    MyFMIClient client(&pump);
+    client.connect("localhost",3003);
+    pump.startEventLoop();
+
+    /*
+    pump = lw_eventpump_new();
+    lw_client client = lw_client_new (pump);
+
+    lw_client_on_connect(client,onConnect);
+    lw_client_connect(client, "localhost", 3000);
+
+    lw_eventpump_start_eventloop(pump);
+
+    lw_stream_delete (client);
+    lw_pump_delete (pump);
+    */
+
+    /*
     Logger logger;
     Master master(logger);
     master.setTimeStep(0.1);
@@ -21,7 +75,6 @@ int main(int argc, char *argv[] ) {
     int j, numScanned;
     const char* connectionsArg;
     int n, skip, l, cont, i;
-    connection *conn;
 
     for (j = 1; j < argc; j++) {
         std::string arg = argv[j];
@@ -32,7 +85,7 @@ int main(int argc, char *argv[] ) {
             return EXIT_SUCCESS;
 
         } else if (arg == "--version") {
-            printf("%s\n",VERSION);
+            printf("%s\n",FMITCP_VERSION);
             return EXIT_SUCCESS;
 
         } else if (arg ==  "--debug") {
@@ -80,34 +133,12 @@ int main(int argc, char *argv[] ) {
 
             }
 
-            /*
-        } else if (strncmp(argv[j], "-c=", 3) == 0) {
-            connectionsArg = argv[j]+3;
-            n=0;
-            skip=0;
-            l=strlen(connectionsArg);
-            cont=1;
-            i=0;
-            conn = &connections[0];
-            while((n=sscanf(&connectionsArg[skip],"%d,%d,%d,%d",&conn->fromFMU,&conn->fromOutputVR,&conn->toFMU,&conn->toInputVR))!=-1 && skip<l && cont){
-                // Now skip everything before the n'th colon
-                char* pos = strchr(&connectionsArg[skip],':');
-                if(pos==NULL){
-                    cont=0;
-                } else {
-                    skip += pos-&connectionsArg[skip]+1; // Dunno why this works... See http://www.cplusplus.com/reference/cstring/strchr/
-                    conn = &connections[i+1];
-                }
-                i++;
-            }
-            *numConnections = i;
-*/
-
         } else {
             // Assume URI to slave
             master.connectSlave(arg);
         }
     }
+    */
 
     //int slaveA = master.connectSlave("tcp://granular.cs.umu.se:3001");
     //int slaveB = master.connectSlave("tcp://granular.cs.umu.se:3002");
@@ -117,8 +148,8 @@ int main(int argc, char *argv[] ) {
         connectorReferenceB = 0;
     master.createWeakConnection(slaveA, slaveB, valueReferenceA, valueReferenceB);
     master.createStrongConnection(slaveA, slaveB, connectorReferenceA, connectorReferenceB);
-    */
     master.simulate();
+    */
 
     return 0;
 }

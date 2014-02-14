@@ -3,40 +3,45 @@
 #include <sstream>
 #include <stdlib.h>
 #include <string>
-#include "Slave.h"
-
-#define VERSION "0.0.1"
+#include <fmitcp/Server.h>
 
 using namespace fmitcp;
 
-void printHelp() {
-    printf("\n\
-FMI-SLAVE\n\
-    Client for distributed FMI simulation.\n\
-\n\
-USAGE\n\
-    fmi-slave [FLAGS] [OPTIONS] fmupath\n\
-\n\
-FLAGS\n\
-    -h      Show help and quit.\n\
-    -l      Turn on logging\n\
-    -dl     Turn on debug logging\n\
-    -v      Print version.\n\
-    -debug  Start in debug mode.\n\
-\n\
-OPTIONS\n\
-    -port=<integer>     Server port to connect to.\n\
-    -host=<string>      Server host.\n\
-\n\
-EXAMPLES\n\
-\n\
-LICENSE\n\
-\
-\tMIT license\n\n");
+// Define own server
+class MyFMIServer : public Server {
+public:
+    MyFMIServer(EventPump* pump) : Server(pump) {};
+    ~MyFMIServer(){};
 
-}
+    void onClientConnect(){
+        printf("MyFMIServer::onConnect\n");
+        m_pump->exitEventLoop();
+    };
+
+    void onClientDisconnect(){
+        printf("MyFMIServer::onDisconnect\n");
+        m_pump->exitEventLoop();
+    };
+
+    void onError(string message){
+        printf("MyFMIServer::onError\n");
+        m_pump->exitEventLoop();
+    };
+};
+
+using namespace fmitcp;
 
 int main( int argc, char *argv[] ) {
+
+    printf("FMI Server\n");
+
+    EventPump pump;
+    MyFMIServer server(&pump);
+    server.host("localhost",3003);
+    pump.startEventLoop();
+
+
+    /*
     if (argc == 1) {
         // No args given, print help
         printHelp();
@@ -99,6 +104,6 @@ int main( int argc, char *argv[] ) {
     Slave slave(fmuPath);
     slave.setLogger(Logger());
     slave.host(hostName,port);
-
+*/
     return EXIT_SUCCESS;
 }

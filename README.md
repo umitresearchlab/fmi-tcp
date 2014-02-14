@@ -1,7 +1,12 @@
-fmi-co-simulation       {#mainpage}
-=================
+fmi-tcp       {#mainpage}
+=======
 
-Implementation of FMI over TCP. Includes two applications: a master and a slave. The applications are built on top of [FMILibrary](http://www.jmodelica.org/FMILibrary) from [jModelica](http://www.jmodelica.org) and [Lacewing](http://lacewing-project.org/).
+Implementation of FMI over TCP. Includes a protocol and two command line
+applications: a master and a slave. The applications are built on top of
+[FMILibrary](http://www.jmodelica.org/FMILibrary) from
+[jModelica](http://www.jmodelica.org),
+[Lacewing](http://lacewing-project.org/) and
+[Google Protocol Buffers](https://developers.google.com/protocol-buffers/).
 
 ### Typical usage
 
@@ -12,7 +17,7 @@ Implementation of FMI over TCP. Includes two applications: a master and a slave.
 ### Build
 The build was done successfully on Ubuntu Linux 12.10 & Windows 7.
 
-Begin with installing [FMILibrary](http://www.jmodelica.org/FMILibrary) & [Lacewing](http://lacewing-project.org/). Make sure the libraries and include files ends up in /usr/lib and /usr/include.
+Begin with installing [FMILibrary](http://www.jmodelica.org/FMILibrary) and [Lacewing](http://lacewing-project.org/). Make sure the libraries and include files ends up in /usr/lib and /usr/include.
 Note that code is forced to link against the static lib of Lacewing.
 
 Build and install using the following commands. You'll need [CMake](http://www.cmake.org/).

@@ -1,0 +1,1 @@
+#define FMITCP_VERSION "0.0.1"

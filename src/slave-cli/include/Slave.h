@@ -2,7 +2,7 @@
 #define SLAVE_H_
 
 #include <string>
-#include "Logger.h"
+//#include "Logger.h"
 #include "fmilib.h"
 #include "lacewing.h"
 
@@ -56,13 +56,13 @@ namespace fmitcp {
         bool m_connected;
         double m_timeOut;
 
-        Logger m_logger;
+        //Logger m_logger;
 
     public:
         Slave(std::string fmuPath);
         virtual ~Slave();
 
-        void setLogger(const Logger& logger);
+        //void setLogger(const Logger& logger);
 
         /// Start the event pump and host at a given port
         void host(std::string host, long port);

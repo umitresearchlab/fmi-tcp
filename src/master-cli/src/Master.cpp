@@ -2,7 +2,6 @@
 #include "Logger.h"
 #include "StrongConnection.h"
 #include "WeakConnection.h"
-#include "Message.h"
 #include "Slave.h"
 #include "string.h"
 #include "stdlib.h"

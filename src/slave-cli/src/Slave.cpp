@@ -1,5 +1,5 @@
 #include "Slave.h"
-#include "Logger.h"
+//#include "Logger.h"
 #include "fmilib.h"
 #include "stdio.h"
 #include "stdlib.h"
@@ -64,9 +64,11 @@ Slave::~Slave(){
 
 }
 
+/*
 void Slave::setLogger(const Logger& logger){
     m_logger = logger;
 }
+*/
 
 void Slave::host(std::string hostName, long port){
     // JM callbacks
@@ -170,18 +172,18 @@ void Slave::host(std::string hostName, long port){
 void Slave::onMasterConnect(lw_client client){
     m_master = client;
     m_connected = true;
-    m_logger.log(Logger::DEBUG,"Master connected.");
+    //m_logger.log(Logger::DEBUG,"Master connected.");
 }
 
 void Slave::onMasterDisconnect(lw_client client){
     m_connected = false;
-    m_logger.log(Logger::DEBUG,"Master disconnected.");
+    //m_logger.log(Logger::DEBUG,"Master disconnected.");
 }
 void Slave::onError(lw_error error){
-    m_logger.log(Logger::DEBUG,"Error.");
+    //m_logger.log(Logger::DEBUG,"Error.");
 }
 void Slave::onMasterData(lw_client client, const char* data, size_t size){
-    m_logger.log(Logger::DEBUG,"Error.");
+    //m_logger.log(Logger::DEBUG,"Error.");
 }
 
 
