@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#define FMILIB_BUILDING_LIBRARY
 #include <fmilib.h>
 #include <stdio.h>
 #include <stdarg.h>

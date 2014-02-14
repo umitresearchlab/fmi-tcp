@@ -15,6 +15,7 @@ typedef struct {
   int logLevel;
   jm_callbacks JMCallbacks;
   fmi_import_context_t* importContext;
+  fmi1_fmu_kind_enu_t fmuType;
   fmi1_callback_functions_t FMI1CallbackFunctions;
   fmi2_callback_functions_t FMI2CallbackFunctions;
   char* workingDirectory;
@@ -47,6 +48,7 @@ void destroyFMICoSimulationClient(FMICoSimulationClient *FMICSClient);
 
 void sendCommand(lw_client client, char* data, size_t size);
 
+/* FMI 1.0 wrapper functions */
 jm_status_enu_t fmi1InstantiateSlaveWrapper(FMICoSimulationClient *FMICSClient);
 fmi1_status_t fmi1InitializeSlaveWrapper(FMICoSimulationClient *FMICSClient);
 void fmi1SetInitialValues(FMICoSimulationClient *FMICSClient);
@@ -57,9 +59,14 @@ fmi1_status_t fmi1DoStep(FMICoSimulationClient *FMICSClient, int *finished);
 fmi1_status_t fmi1PendingStatusString(FMICoSimulationClient *FMICSClient, fmi1_string_t *str);
 fmi1_status_t fmi1DoStepStatus(FMICoSimulationClient *FMICSClient, fmi1_status_t *status);
 
+/* FMI 2.0 wrapper functions */
+jm_status_enu_t fmi2InstantiateSlaveWrapper(FMICoSimulationClient *FMICSClient);
+
 void connectClient(FMICoSimulationClient *FMICSClient, const char* hostName, int port);
 void clientOnConnect(lw_client client);
-void clientOnData(lw_client client, const char * data, long size);
+void clientOnData(lw_client client, const char* data, long size);
+void fmi1ClientOnData(FMICoSimulationClient *FMICSClient, lw_client client, const char* token);
+void fmi2ClientOnData(FMICoSimulationClient *FMICSClient, lw_client client, const char* token);
 void clientOnDisconnect(lw_client client);
 void clientOnError(lw_client client, lw_error error);
 

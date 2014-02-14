@@ -1,6 +1,3 @@
-#include <fmilib.h>
-#include <stdio.h>
-
 #include "main.h"
 #include "utils.h"
 

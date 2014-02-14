@@ -61,14 +61,15 @@ FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int log
       return 0;
     }
     /* check FMU kind */
-    fmi1_fmu_kind_enu_t fmiType = fmi1_import_get_fmu_kind(FMICSClient->FMI1ImportInstance);
-    if(fmiType != fmi1_fmu_kind_enu_cs_standalone && fmiType != fmi1_fmu_kind_enu_cs_tool) {
+    fmi1_fmu_kind_enu_t fmuType = fmi1_import_get_fmu_kind(FMICSClient->FMI1ImportInstance);
+    if(fmuType != fmi1_fmu_kind_enu_cs_standalone && fmuType != fmi1_fmu_kind_enu_cs_tool) {
       fmi_import_free_context(FMICSClient->importContext);
       free(FMICSClient->workingDirectory);
       free(FMICSClient);
       logPrint(stderr,"Only FMI Co-Simulation 1.0 & 2.0 are supported.\n");fflush(NULL);
       return 0;
     }
+    FMICSClient->fmuType = fmuType;
     /* FMI callback functions */
     int registerGlobally = 0;
     FMICSClient->FMI1CallbackFunctions.logger = loggingOn ? fmi1_log_forwarding : fmi1_null_logger;
@@ -113,20 +114,21 @@ FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int log
       return 0;
     }
     /* check FMU kind */
-    fmi2_fmu_kind_enu_t fmiType = fmi2_import_get_fmu_kind(FMICSClient->FMI2ImportInstance);
-    if(fmiType != fmi2_fmu_kind_cs) {
+    fmi2_fmu_kind_enu_t fmuType = fmi2_import_get_fmu_kind(FMICSClient->FMI2ImportInstance);
+    if(fmuType != fmi2_fmu_kind_cs) {
       fmi_import_free_context(FMICSClient->importContext);
       free(FMICSClient->workingDirectory);
       free(FMICSClient);
       logPrint(stderr,"Only FMI Co-Simulation 1.0 & 2.0 are supported.\n");fflush(NULL);
       return 0;
     }
+    FMICSClient->fmuType = fmuType;
     /* FMI callback functions */
     FMICSClient->FMI2CallbackFunctions.logger = loggingOn ? fmi2_log_forwarding : fmi2_null_logger;
     FMICSClient->FMI2CallbackFunctions.allocateMemory = calloc;
     FMICSClient->FMI2CallbackFunctions.freeMemory = free;
     /* Load the binary (dll/so) */
-    jm_status_enu_t status = fmi2_import_create_dllfmu(FMICSClient->FMI2ImportInstance, fmiType, &FMICSClient->FMI2CallbackFunctions);
+    jm_status_enu_t status = fmi2_import_create_dllfmu(FMICSClient->FMI2ImportInstance, fmuType, &FMICSClient->FMI2CallbackFunctions);
     if (status == jm_status_error) {
       fmi_import_free_context(FMICSClient->importContext);
       free(FMICSClient->workingDirectory);
@@ -183,7 +185,9 @@ void sendCommand(lw_client client, char* data, size_t size) {
 jm_status_enu_t fmi1InstantiateSlaveWrapper(FMICoSimulationClient *FMICSClient) {
   jm_status_enu_t status = fmi1_import_instantiate_slave(FMICSClient->FMI1ImportInstance, FMICSClient->instanceName, FMICSClient->fmuLocation,
       FMICSClient->mimeType, FMICSClient->timeOut, FMICSClient->visible, FMICSClient->interactive);
-  fmi1_import_set_debug_logging(FMICSClient->FMI1ImportInstance, FMICSClient->debugLogging);
+  if (status != jm_status_error) {
+    fmi1_import_set_debug_logging(FMICSClient->FMI1ImportInstance, FMICSClient->debugLogging);
+  }
   return status;
 }
 
@@ -356,6 +360,23 @@ fmi1_status_t fmi1DoStepStatus(FMICoSimulationClient *FMICSClient, fmi1_status_t
   return fmi1_import_get_status(FMICSClient->FMI1ImportInstance, fmi1_do_step_status, status);
 }
 
+jm_status_enu_t fmi2InstantiateSlaveWrapper(FMICoSimulationClient *FMICSClient) {
+  jm_status_enu_t status = fmi2_import_instantiate(FMICSClient->FMI2ImportInstance, FMICSClient->instanceName, FMICSClient->fmuType,
+      FMICSClient->fmuLocation, FMICSClient->visible);
+  if (status != jm_status_error) {
+    /* fetch the logging categories from the FMU */
+    size_t nCategories = fmi2_import_get_log_categories_num(FMICSClient->FMI2ImportInstance);
+    fmi2_string_t categories[nCategories];
+    int i;
+    for (i = 0 ; i < nCategories ; i++) {
+      categories[i] = fmi2_import_get_log_category(FMICSClient->FMI2ImportInstance, i);
+    }
+    /* set debug logging */
+    fmi2_import_set_debug_logging(FMICSClient->FMI2ImportInstance, FMICSClient->debugLogging, nCategories, categories);
+  }
+  return status;
+}
+
 void connectClient(FMICoSimulationClient *FMICSClient, const char* hostName, int port) {
   FMICSClient->pump = lw_eventpump_new();
   FMICSClient->client = lw_client_new(FMICSClient->pump);
@@ -404,89 +425,173 @@ void clientOnData(lw_client client, const char* data, long size) {
     }
     /* handle commands according to the FMI version */
     if (FMICSClient->version == fmi_version_1_enu) { // FMI 1.0
-      if (strncmp(token, fmiInstantiateSlave, strlen(fmiInitializeSlave)) == 0) {  /* Handle fmiInstantiateSlave */
-        jm_status_enu_t status = fmi1InstantiateSlaveWrapper(FMICSClient);
-        if (status == jm_status_success) {
-          sendCommand(client, fmiInstantiateSlaveSuccess, strlen(fmiInstantiateSlaveSuccess));
-        } else if (status == jm_status_warning) {
-          sendCommand(client, fmiInstantiateSlaveWarning, strlen(fmiInstantiateSlaveWarning));
-        } else {
-          sendCommand(client, fmiInstantiateSlaveError, strlen(fmiInstantiateSlaveError));
-        }
-      } else if (strncmp(token, fmiInitializeSlave, strlen(fmiInitializeSlave)) == 0) {  /* Handle fmiInitializeSlave */
-        fmi1_status_t status = fmi1InitializeSlaveWrapper(FMICSClient);
-        if (status == fmi1_status_ok) {
-          sendCommand(client, fmiInitializeSlaveOk, strlen(fmiInitializeSlaveOk));
-        } else {
-          sendCommand(client, fmiInitializeSlaveError, strlen(fmiInitializeSlaveError));
-        }
-      } else if (strncmp(token, setInitialValues, strlen(setInitialValues)) == 0) {  /* Handle fmiInitializeSlave */
-        fmi1SetInitialValues(FMICSClient);
-        sendCommand(client, setInitialValuesOk, strlen(setInitialValuesOk));
-      } else if (strncmp(token, fmiGetValue, strlen(fmiGetValue)) == 0) {  /* Handle fmiGetValue */
-        char value[50];
-        fmi1GetValue(FMICSClient, unparseIntResult(token, fmiGetValue, strlen(token)), value);
-        char cmd[50];
-        sprintf(cmd, "%s%s", fmiGetValueReturn, value);
-        sendCommand(client, cmd, strlen(cmd));
-      } else if (strncmp(token, fmiSetValueVr, strlen(fmiSetValueVr)) == 0) {  /* Handle fmiSetValueVr */
-        /* split the fmisetvalue on #. the data is of form fmiSetValueVr=1#fmiSetValue=2.1 */
-        char* fmiSetValueVrStr = strtok((char*)token, "#");
-        char* fmiSetValueStr = strtok(NULL, " ");
-        /* fetch the results */
-        int vr = unparseIntResult(fmiSetValueVrStr, fmiSetValueVr, strlen(fmiSetValueVrStr));
-        /* do fmi1_import_set_real, fmi1_import_set_integer etc. */
-        fmi1SetValue(FMICSClient, vr, fmiSetValueStr, fmiSetValue);
-        /* tell server we are done setting value */
-        sendCommand(client, fmiSetValueReturn, strlen(fmiSetValueReturn));
-      } else if (strncmp(token, fmiDoStep, strlen(fmiDoStep)) == 0) {  /* Handle fmiDoStep */
-        int finished = 0;
-        fmi1_status_t status = fmi1DoStep(FMICSClient, &finished);
-        if (finished) {
-          sendCommand(client, fmiDoStepFinished, strlen(fmiDoStepFinished));
-        } else {
-          if (status == fmi1_status_ok) {
-            sendCommand(client, fmiDoStepOk, strlen(fmiDoStepOk));
-          } else if (status == fmi1_status_pending) {
-            /* ask the pending status from the FMU and print it as info */
-            fmi1_string_t str;
-            if (fmi1PendingStatusString(FMICSClient, &str) == fmi1_status_ok) {
-              logPrint(stdout, "INFO#%s\n", str);fflush(NULL);
-            }
-            /* tell the server that fmiDoStep is in pending state. */
-            sendCommand(client, fmiDoStepPending, strlen(fmiDoStepPending));
-          } else {
-            sendCommand(client, fmiDoStepError, strlen(fmiDoStepError));
-          }
-        }
-      } else if (strncmp(token, fmiDoStepStatus, strlen(fmiDoStepStatus)) == 0) {  // handle fmiDoStepStatus
-        fmi1_status_t status = fmi1_status_error;
-        fmi1DoStepStatus(FMICSClient, &status);
-        if (status == fmi1_status_ok) {
-          sendCommand(client, fmiDoStepOk, strlen(fmiDoStepOk));
-        } else if (status == fmi1_status_pending) {
-          /* ask the pending status from the FMU and print it as info */
-          fmi1_string_t str;
-          if (fmi1PendingStatusString(FMICSClient, &str) == fmi1_status_ok) {
-            logPrint(stdout, "INFO#%s\n", str);fflush(NULL);
-          }
-          /* tell the server that fmiDoStep is in pending state. */
-          sendCommand(client, fmiDoStepPending, strlen(fmiDoStepPending));
-        } else {
-          sendCommand(client, fmiDoStepError, strlen(fmiDoStepError));
-        }
-      } else if (strncmp(token, fmiTerminateSlave, strlen(fmiTerminateSlave)) == 0) {  // handle fmiTerminateSlave
-        destroyFMICoSimulationClient(FMICSClient);
-        lw_stream_close(client, lw_true);
-      } else {
-        debugPrint(debugFlag, stdout, "%s\n", token);fflush(NULL);
-      }
+      fmi1ClientOnData(FMICSClient, client, token);
     } else if (FMICSClient->version == fmi_version_2_0_enu) { // FMI 2.0
-
+      fmi2ClientOnData(FMICSClient, client, token);
     }
     token = strtok(NULL, "\n");
   }
   free(request);
+}
+
+void fmi1ClientOnData(FMICoSimulationClient *FMICSClient, lw_client client, const char* token) {
+  if (strncmp(token, fmiInstantiateSlave, strlen(fmiInitializeSlave)) == 0) {  /* Handle fmiInstantiateSlave */
+    jm_status_enu_t status = fmi1InstantiateSlaveWrapper(FMICSClient);
+    if (status == jm_status_success) {
+      sendCommand(client, fmiInstantiateSlaveSuccess, strlen(fmiInstantiateSlaveSuccess));
+    } else if (status == jm_status_warning) {
+      sendCommand(client, fmiInstantiateSlaveWarning, strlen(fmiInstantiateSlaveWarning));
+    } else {
+      sendCommand(client, fmiInstantiateSlaveError, strlen(fmiInstantiateSlaveError));
+    }
+  } else if (strncmp(token, fmiInitializeSlave, strlen(fmiInitializeSlave)) == 0) {  /* Handle fmiInitializeSlave */
+    fmi1_status_t status = fmi1InitializeSlaveWrapper(FMICSClient);
+    if (status == fmi1_status_ok) {
+      sendCommand(client, fmiInitializeSlaveOk, strlen(fmiInitializeSlaveOk));
+    } else {
+      sendCommand(client, fmiInitializeSlaveError, strlen(fmiInitializeSlaveError));
+    }
+  } else if (strncmp(token, setInitialValues, strlen(setInitialValues)) == 0) {  /* Handle fmiInitializeSlave */
+    fmi1SetInitialValues(FMICSClient);
+    sendCommand(client, setInitialValuesOk, strlen(setInitialValuesOk));
+  } else if (strncmp(token, fmiGetValue, strlen(fmiGetValue)) == 0) {  /* Handle fmiGetValue */
+    char value[50];
+    fmi1GetValue(FMICSClient, unparseIntResult(token, fmiGetValue, strlen(token)), value);
+    char cmd[50];
+    sprintf(cmd, "%s%s", fmiGetValueReturn, value);
+    sendCommand(client, cmd, strlen(cmd));
+  } else if (strncmp(token, fmiSetValueVr, strlen(fmiSetValueVr)) == 0) {  /* Handle fmiSetValueVr */
+    /* split the fmisetvalue on #. the data is of form fmiSetValueVr=1#fmiSetValue=2.1 */
+    char* fmiSetValueVrStr = strtok((char*)token, "#");
+    char* fmiSetValueStr = strtok(NULL, " ");
+    /* fetch the results */
+    int vr = unparseIntResult(fmiSetValueVrStr, fmiSetValueVr, strlen(fmiSetValueVrStr));
+    /* do fmi1_import_set_real, fmi1_import_set_integer etc. */
+    fmi1SetValue(FMICSClient, vr, fmiSetValueStr, fmiSetValue);
+    /* tell server we are done setting value */
+    sendCommand(client, fmiSetValueReturn, strlen(fmiSetValueReturn));
+  } else if (strncmp(token, fmiDoStep, strlen(fmiDoStep)) == 0) {  /* Handle fmiDoStep */
+    int finished = 0;
+    fmi1_status_t status = fmi1DoStep(FMICSClient, &finished);
+    if (finished) {
+      sendCommand(client, fmiDoStepFinished, strlen(fmiDoStepFinished));
+    } else {
+      if (status == fmi1_status_ok) {
+        sendCommand(client, fmiDoStepOk, strlen(fmiDoStepOk));
+      } else if (status == fmi1_status_pending) {
+        /* ask the pending status from the FMU and print it as info */
+        fmi1_string_t str;
+        if (fmi1PendingStatusString(FMICSClient, &str) == fmi1_status_ok) {
+          logPrint(stdout, "INFO#%s\n", str);fflush(NULL);
+        }
+        /* tell the server that fmiDoStep is in pending state. */
+        sendCommand(client, fmiDoStepPending, strlen(fmiDoStepPending));
+      } else {
+        sendCommand(client, fmiDoStepError, strlen(fmiDoStepError));
+      }
+    }
+  } else if (strncmp(token, fmiDoStepStatus, strlen(fmiDoStepStatus)) == 0) {  // handle fmiDoStepStatus
+    fmi1_status_t status = fmi1_status_error;
+    fmi1DoStepStatus(FMICSClient, &status);
+    if (status == fmi1_status_ok) {
+      sendCommand(client, fmiDoStepOk, strlen(fmiDoStepOk));
+    } else if (status == fmi1_status_pending) {
+      /* ask the pending status from the FMU and print it as info */
+      fmi1_string_t str;
+      if (fmi1PendingStatusString(FMICSClient, &str) == fmi1_status_ok) {
+        logPrint(stdout, "INFO#%s\n", str);fflush(NULL);
+      }
+      /* tell the server that fmiDoStep is in pending state. */
+      sendCommand(client, fmiDoStepPending, strlen(fmiDoStepPending));
+    } else {
+      sendCommand(client, fmiDoStepError, strlen(fmiDoStepError));
+    }
+  } else if (strncmp(token, fmiTerminateSlave, strlen(fmiTerminateSlave)) == 0) {  // handle fmiTerminateSlave
+    destroyFMICoSimulationClient(FMICSClient);
+    lw_stream_close(client, lw_true);
+  } else {
+    debugPrint(debugFlag, stdout, "%s\n", token);fflush(NULL);
+  }
+}
+
+void fmi2ClientOnData(FMICoSimulationClient *FMICSClient, lw_client client, const char* token) {
+  if (strncmp(token, fmiInstantiateSlave, strlen(fmiInitializeSlave)) == 0) {  /* Handle fmiInstantiateSlave */
+    jm_status_enu_t status = fmi2InstantiateSlaveWrapper(FMICSClient);
+    if (status == jm_status_success) {
+      sendCommand(client, fmiInstantiateSlaveSuccess, strlen(fmiInstantiateSlaveSuccess));
+    } else if (status == jm_status_warning) {
+      sendCommand(client, fmiInstantiateSlaveWarning, strlen(fmiInstantiateSlaveWarning));
+    } else {
+      sendCommand(client, fmiInstantiateSlaveError, strlen(fmiInstantiateSlaveError));
+    }
+//  } else if (strncmp(token, fmiInitializeSlave, strlen(fmiInitializeSlave)) == 0) {  /* Handle fmiInitializeSlave */
+//    fmi1_status_t status = fmi1InitializeSlaveWrapper(FMICSClient);
+//    if (status == fmi1_status_ok) {
+//      sendCommand(client, fmiInitializeSlaveOk, strlen(fmiInitializeSlaveOk));
+//    } else {
+//      sendCommand(client, fmiInitializeSlaveError, strlen(fmiInitializeSlaveError));
+//    }
+//  } else if (strncmp(token, setInitialValues, strlen(setInitialValues)) == 0) {  /* Handle fmiInitializeSlave */
+//    fmi1SetInitialValues(FMICSClient);
+//    sendCommand(client, setInitialValuesOk, strlen(setInitialValuesOk));
+//  } else if (strncmp(token, fmiGetValue, strlen(fmiGetValue)) == 0) {  /* Handle fmiGetValue */
+//    char value[50];
+//    fmi1GetValue(FMICSClient, unparseIntResult(token, fmiGetValue, strlen(token)), value);
+//    char cmd[50];
+//    sprintf(cmd, "%s%s", fmiGetValueReturn, value);
+//    sendCommand(client, cmd, strlen(cmd));
+//  } else if (strncmp(token, fmiSetValueVr, strlen(fmiSetValueVr)) == 0) {  /* Handle fmiSetValueVr */
+//    /* split the fmisetvalue on #. the data is of form fmiSetValueVr=1#fmiSetValue=2.1 */
+//    char* fmiSetValueVrStr = strtok((char*)token, "#");
+//    char* fmiSetValueStr = strtok(NULL, " ");
+//    /* fetch the results */
+//    int vr = unparseIntResult(fmiSetValueVrStr, fmiSetValueVr, strlen(fmiSetValueVrStr));
+//    /* do fmi1_import_set_real, fmi1_import_set_integer etc. */
+//    fmi1SetValue(FMICSClient, vr, fmiSetValueStr, fmiSetValue);
+//    /* tell server we are done setting value */
+//    sendCommand(client, fmiSetValueReturn, strlen(fmiSetValueReturn));
+//  } else if (strncmp(token, fmiDoStep, strlen(fmiDoStep)) == 0) {  /* Handle fmiDoStep */
+//    int finished = 0;
+//    fmi1_status_t status = fmi1DoStep(FMICSClient, &finished);
+//    if (finished) {
+//      sendCommand(client, fmiDoStepFinished, strlen(fmiDoStepFinished));
+//    } else {
+//      if (status == fmi1_status_ok) {
+//        sendCommand(client, fmiDoStepOk, strlen(fmiDoStepOk));
+//      } else if (status == fmi1_status_pending) {
+//        /* ask the pending status from the FMU and print it as info */
+//        fmi1_string_t str;
+//        if (fmi1PendingStatusString(FMICSClient, &str) == fmi1_status_ok) {
+//          logPrint(stdout, "INFO#%s\n", str);fflush(NULL);
+//        }
+//        /* tell the server that fmiDoStep is in pending state. */
+//        sendCommand(client, fmiDoStepPending, strlen(fmiDoStepPending));
+//      } else {
+//        sendCommand(client, fmiDoStepError, strlen(fmiDoStepError));
+//      }
+//    }
+//  } else if (strncmp(token, fmiDoStepStatus, strlen(fmiDoStepStatus)) == 0) {  // handle fmiDoStepStatus
+//    fmi1_status_t status = fmi1_status_error;
+//    fmi1DoStepStatus(FMICSClient, &status);
+//    if (status == fmi1_status_ok) {
+//      sendCommand(client, fmiDoStepOk, strlen(fmiDoStepOk));
+//    } else if (status == fmi1_status_pending) {
+//      /* ask the pending status from the FMU and print it as info */
+//      fmi1_string_t str;
+//      if (fmi1PendingStatusString(FMICSClient, &str) == fmi1_status_ok) {
+//        logPrint(stdout, "INFO#%s\n", str);fflush(NULL);
+//      }
+//      /* tell the server that fmiDoStep is in pending state. */
+//      sendCommand(client, fmiDoStepPending, strlen(fmiDoStepPending));
+//    } else {
+//      sendCommand(client, fmiDoStepError, strlen(fmiDoStepError));
+//    }
+//  } else if (strncmp(token, fmiTerminateSlave, strlen(fmiTerminateSlave)) == 0) {  // handle fmiTerminateSlave
+//    destroyFMICoSimulationClient(FMICSClient);
+//    lw_stream_close(client, lw_true);
+  } else {
+    debugPrint(debugFlag, stdout, "%s\n", token);fflush(NULL);
+  }
 }
 
 void clientOnDisconnect(lw_client client) {
