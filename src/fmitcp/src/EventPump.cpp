@@ -23,7 +23,6 @@ void EventPump::startEventLoop(){
 
 void EventPump::exitEventLoop(){
     if(!m_exiting){
-        printf("exitEventLoop()\n");
         lw_eventpump_post_eventloop_exit(m_pump);
         m_exiting = true;
     }

@@ -15,7 +15,7 @@ public:
 
     void onClientConnect(){
         printf("MyFMIServer::onConnect\n");
-        m_pump->exitEventLoop();
+        //m_pump->exitEventLoop();
     };
 
     void onClientDisconnect(){

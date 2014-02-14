@@ -1,5 +1,4 @@
 #include "Client.h"
-#include "fmitcp.pb.h"
 
 using namespace std;
 using namespace fmitcp;
@@ -7,7 +6,7 @@ using namespace fmitcp;
 void Client::onConnect(){}
 void Client::onDisconnect(){}
 void Client::onError(string err){}
-void Client::onDoStepResponse(){}
+void Client::onDoStepResponse(fmitcp_proto::fmi2_status_t status){}
 
 void clientOnConnect(lw_client c) {
     Client * client = (Client*)lw_stream_tag(c);
@@ -31,6 +30,19 @@ void Client::clientConnected(lw_client c){
 }
 
 void Client::clientData(lw_client c, const char* data, long size){
+
+    // Construct message
+    fmitcp_proto::fmitcp_message m;
+    m.ParseFromString(data);
+    fmitcp_proto::fmitcp_message_Type type = m.type();
+
+    if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_res){
+        printf("doStep response!\n");
+
+        fmitcp_proto::fmi2_import_do_step_res * res = m.mutable_fmi2_import_do_step_res();
+
+        onDoStepResponse(res->status());
+    }
 }
 
 void Client::clientDisconnected(lw_client c){
@@ -66,8 +78,6 @@ void Client::connect(string host, long port){
     lw_client_on_disconnect(m_client, clientOnDisconnect);
     lw_client_on_error(     m_client, clientOnError);
 
-    printf("Connecting to %s:%ld\n", host.c_str(), port);
-
     // connect the client to the server
     lw_client_connect(m_client, host.c_str(), port);
 }
@@ -85,9 +95,10 @@ void Client::fmi2_import_do_step(int message_id,
                                  double communicationStepSize,
                                  bool newStep){
     // Construct message
-    fmitcp_message m;
-    m.set_type(fmitcp_message_Type_type_fmi2_import_do_step_req);
-    fmi2_import_do_step_req * req = m.mutable_fmi2_import_do_step_req();
+    fmitcp_proto::fmitcp_message m;
+    m.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_req);
+
+    fmitcp_proto::fmi2_import_do_step_req * req = m.mutable_fmi2_import_do_step_req();
     req->set_message_id(message_id);
     req->set_fmuid(fmuId);
     req->set_currentcommunicationpoint(currentCommunicationPoint);

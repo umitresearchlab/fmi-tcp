@@ -25,7 +25,7 @@
 #include <google/protobuf/generated_message_reflection.h>
 // @@protoc_insertion_point(includes)
 
-namespace fmitcp {
+namespace fmitcp_proto {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_fmitcp_2eproto();
@@ -460,686 +460,686 @@ class fmitcp_message : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // required .fmitcp.fmitcp_message.Type type = 1;
+  // required .fmitcp_proto.fmitcp_message.Type type = 1;
   inline bool has_type() const;
   inline void clear_type();
   static const int kTypeFieldNumber = 1;
-  inline ::fmitcp::fmitcp_message_Type type() const;
-  inline void set_type(::fmitcp::fmitcp_message_Type value);
+  inline ::fmitcp_proto::fmitcp_message_Type type() const;
+  inline void set_type(::fmitcp_proto::fmitcp_message_Type value);
   
-  // optional .fmitcp.fmi2_import_instantiate_slave_req fmi2_import_instantiate_slave_req = 2;
+  // optional .fmitcp_proto.fmi2_import_instantiate_slave_req fmi2_import_instantiate_slave_req = 2;
   inline bool has_fmi2_import_instantiate_slave_req() const;
   inline void clear_fmi2_import_instantiate_slave_req();
   static const int kFmi2ImportInstantiateSlaveReqFieldNumber = 2;
-  inline const ::fmitcp::fmi2_import_instantiate_slave_req& fmi2_import_instantiate_slave_req() const;
-  inline ::fmitcp::fmi2_import_instantiate_slave_req* mutable_fmi2_import_instantiate_slave_req();
-  inline ::fmitcp::fmi2_import_instantiate_slave_req* release_fmi2_import_instantiate_slave_req();
+  inline const ::fmitcp_proto::fmi2_import_instantiate_slave_req& fmi2_import_instantiate_slave_req() const;
+  inline ::fmitcp_proto::fmi2_import_instantiate_slave_req* mutable_fmi2_import_instantiate_slave_req();
+  inline ::fmitcp_proto::fmi2_import_instantiate_slave_req* release_fmi2_import_instantiate_slave_req();
   
-  // optional .fmitcp.fmi2_import_instantiate_slave_res fmi2_import_instantiate_slave_res = 3;
+  // optional .fmitcp_proto.fmi2_import_instantiate_slave_res fmi2_import_instantiate_slave_res = 3;
   inline bool has_fmi2_import_instantiate_slave_res() const;
   inline void clear_fmi2_import_instantiate_slave_res();
   static const int kFmi2ImportInstantiateSlaveResFieldNumber = 3;
-  inline const ::fmitcp::fmi2_import_instantiate_slave_res& fmi2_import_instantiate_slave_res() const;
-  inline ::fmitcp::fmi2_import_instantiate_slave_res* mutable_fmi2_import_instantiate_slave_res();
-  inline ::fmitcp::fmi2_import_instantiate_slave_res* release_fmi2_import_instantiate_slave_res();
+  inline const ::fmitcp_proto::fmi2_import_instantiate_slave_res& fmi2_import_instantiate_slave_res() const;
+  inline ::fmitcp_proto::fmi2_import_instantiate_slave_res* mutable_fmi2_import_instantiate_slave_res();
+  inline ::fmitcp_proto::fmi2_import_instantiate_slave_res* release_fmi2_import_instantiate_slave_res();
   
-  // optional .fmitcp.fmi2_import_initialize_slave_req fmi2_import_initialize_slave_req = 4;
+  // optional .fmitcp_proto.fmi2_import_initialize_slave_req fmi2_import_initialize_slave_req = 4;
   inline bool has_fmi2_import_initialize_slave_req() const;
   inline void clear_fmi2_import_initialize_slave_req();
   static const int kFmi2ImportInitializeSlaveReqFieldNumber = 4;
-  inline const ::fmitcp::fmi2_import_initialize_slave_req& fmi2_import_initialize_slave_req() const;
-  inline ::fmitcp::fmi2_import_initialize_slave_req* mutable_fmi2_import_initialize_slave_req();
-  inline ::fmitcp::fmi2_import_initialize_slave_req* release_fmi2_import_initialize_slave_req();
+  inline const ::fmitcp_proto::fmi2_import_initialize_slave_req& fmi2_import_initialize_slave_req() const;
+  inline ::fmitcp_proto::fmi2_import_initialize_slave_req* mutable_fmi2_import_initialize_slave_req();
+  inline ::fmitcp_proto::fmi2_import_initialize_slave_req* release_fmi2_import_initialize_slave_req();
   
-  // optional .fmitcp.fmi2_import_initialize_slave_res fmi2_import_initialize_slave_res = 5;
+  // optional .fmitcp_proto.fmi2_import_initialize_slave_res fmi2_import_initialize_slave_res = 5;
   inline bool has_fmi2_import_initialize_slave_res() const;
   inline void clear_fmi2_import_initialize_slave_res();
   static const int kFmi2ImportInitializeSlaveResFieldNumber = 5;
-  inline const ::fmitcp::fmi2_import_initialize_slave_res& fmi2_import_initialize_slave_res() const;
-  inline ::fmitcp::fmi2_import_initialize_slave_res* mutable_fmi2_import_initialize_slave_res();
-  inline ::fmitcp::fmi2_import_initialize_slave_res* release_fmi2_import_initialize_slave_res();
+  inline const ::fmitcp_proto::fmi2_import_initialize_slave_res& fmi2_import_initialize_slave_res() const;
+  inline ::fmitcp_proto::fmi2_import_initialize_slave_res* mutable_fmi2_import_initialize_slave_res();
+  inline ::fmitcp_proto::fmi2_import_initialize_slave_res* release_fmi2_import_initialize_slave_res();
   
-  // optional .fmitcp.fmi2_import_terminate_slave_req fmi2_import_terminate_slave_req = 6;
+  // optional .fmitcp_proto.fmi2_import_terminate_slave_req fmi2_import_terminate_slave_req = 6;
   inline bool has_fmi2_import_terminate_slave_req() const;
   inline void clear_fmi2_import_terminate_slave_req();
   static const int kFmi2ImportTerminateSlaveReqFieldNumber = 6;
-  inline const ::fmitcp::fmi2_import_terminate_slave_req& fmi2_import_terminate_slave_req() const;
-  inline ::fmitcp::fmi2_import_terminate_slave_req* mutable_fmi2_import_terminate_slave_req();
-  inline ::fmitcp::fmi2_import_terminate_slave_req* release_fmi2_import_terminate_slave_req();
+  inline const ::fmitcp_proto::fmi2_import_terminate_slave_req& fmi2_import_terminate_slave_req() const;
+  inline ::fmitcp_proto::fmi2_import_terminate_slave_req* mutable_fmi2_import_terminate_slave_req();
+  inline ::fmitcp_proto::fmi2_import_terminate_slave_req* release_fmi2_import_terminate_slave_req();
   
-  // optional .fmitcp.fmi2_import_terminate_slave_res fmi2_import_terminate_slave_res = 7;
+  // optional .fmitcp_proto.fmi2_import_terminate_slave_res fmi2_import_terminate_slave_res = 7;
   inline bool has_fmi2_import_terminate_slave_res() const;
   inline void clear_fmi2_import_terminate_slave_res();
   static const int kFmi2ImportTerminateSlaveResFieldNumber = 7;
-  inline const ::fmitcp::fmi2_import_terminate_slave_res& fmi2_import_terminate_slave_res() const;
-  inline ::fmitcp::fmi2_import_terminate_slave_res* mutable_fmi2_import_terminate_slave_res();
-  inline ::fmitcp::fmi2_import_terminate_slave_res* release_fmi2_import_terminate_slave_res();
+  inline const ::fmitcp_proto::fmi2_import_terminate_slave_res& fmi2_import_terminate_slave_res() const;
+  inline ::fmitcp_proto::fmi2_import_terminate_slave_res* mutable_fmi2_import_terminate_slave_res();
+  inline ::fmitcp_proto::fmi2_import_terminate_slave_res* release_fmi2_import_terminate_slave_res();
   
-  // optional .fmitcp.fmi2_import_reset_slave_req fmi2_import_reset_slave_req = 8;
+  // optional .fmitcp_proto.fmi2_import_reset_slave_req fmi2_import_reset_slave_req = 8;
   inline bool has_fmi2_import_reset_slave_req() const;
   inline void clear_fmi2_import_reset_slave_req();
   static const int kFmi2ImportResetSlaveReqFieldNumber = 8;
-  inline const ::fmitcp::fmi2_import_reset_slave_req& fmi2_import_reset_slave_req() const;
-  inline ::fmitcp::fmi2_import_reset_slave_req* mutable_fmi2_import_reset_slave_req();
-  inline ::fmitcp::fmi2_import_reset_slave_req* release_fmi2_import_reset_slave_req();
+  inline const ::fmitcp_proto::fmi2_import_reset_slave_req& fmi2_import_reset_slave_req() const;
+  inline ::fmitcp_proto::fmi2_import_reset_slave_req* mutable_fmi2_import_reset_slave_req();
+  inline ::fmitcp_proto::fmi2_import_reset_slave_req* release_fmi2_import_reset_slave_req();
   
-  // optional .fmitcp.fmi2_import_reset_slave_res fmi2_import_reset_slave_res = 9;
+  // optional .fmitcp_proto.fmi2_import_reset_slave_res fmi2_import_reset_slave_res = 9;
   inline bool has_fmi2_import_reset_slave_res() const;
   inline void clear_fmi2_import_reset_slave_res();
   static const int kFmi2ImportResetSlaveResFieldNumber = 9;
-  inline const ::fmitcp::fmi2_import_reset_slave_res& fmi2_import_reset_slave_res() const;
-  inline ::fmitcp::fmi2_import_reset_slave_res* mutable_fmi2_import_reset_slave_res();
-  inline ::fmitcp::fmi2_import_reset_slave_res* release_fmi2_import_reset_slave_res();
+  inline const ::fmitcp_proto::fmi2_import_reset_slave_res& fmi2_import_reset_slave_res() const;
+  inline ::fmitcp_proto::fmi2_import_reset_slave_res* mutable_fmi2_import_reset_slave_res();
+  inline ::fmitcp_proto::fmi2_import_reset_slave_res* release_fmi2_import_reset_slave_res();
   
-  // optional .fmitcp.fmi2_import_free_slave_instance_req fmi2_import_free_slave_instance_req = 10;
+  // optional .fmitcp_proto.fmi2_import_free_slave_instance_req fmi2_import_free_slave_instance_req = 10;
   inline bool has_fmi2_import_free_slave_instance_req() const;
   inline void clear_fmi2_import_free_slave_instance_req();
   static const int kFmi2ImportFreeSlaveInstanceReqFieldNumber = 10;
-  inline const ::fmitcp::fmi2_import_free_slave_instance_req& fmi2_import_free_slave_instance_req() const;
-  inline ::fmitcp::fmi2_import_free_slave_instance_req* mutable_fmi2_import_free_slave_instance_req();
-  inline ::fmitcp::fmi2_import_free_slave_instance_req* release_fmi2_import_free_slave_instance_req();
+  inline const ::fmitcp_proto::fmi2_import_free_slave_instance_req& fmi2_import_free_slave_instance_req() const;
+  inline ::fmitcp_proto::fmi2_import_free_slave_instance_req* mutable_fmi2_import_free_slave_instance_req();
+  inline ::fmitcp_proto::fmi2_import_free_slave_instance_req* release_fmi2_import_free_slave_instance_req();
   
-  // optional .fmitcp.fmi2_import_free_slave_instance_res fmi2_import_free_slave_instance_res = 11;
+  // optional .fmitcp_proto.fmi2_import_free_slave_instance_res fmi2_import_free_slave_instance_res = 11;
   inline bool has_fmi2_import_free_slave_instance_res() const;
   inline void clear_fmi2_import_free_slave_instance_res();
   static const int kFmi2ImportFreeSlaveInstanceResFieldNumber = 11;
-  inline const ::fmitcp::fmi2_import_free_slave_instance_res& fmi2_import_free_slave_instance_res() const;
-  inline ::fmitcp::fmi2_import_free_slave_instance_res* mutable_fmi2_import_free_slave_instance_res();
-  inline ::fmitcp::fmi2_import_free_slave_instance_res* release_fmi2_import_free_slave_instance_res();
+  inline const ::fmitcp_proto::fmi2_import_free_slave_instance_res& fmi2_import_free_slave_instance_res() const;
+  inline ::fmitcp_proto::fmi2_import_free_slave_instance_res* mutable_fmi2_import_free_slave_instance_res();
+  inline ::fmitcp_proto::fmi2_import_free_slave_instance_res* release_fmi2_import_free_slave_instance_res();
   
-  // optional .fmitcp.fmi2_import_set_real_input_derivatives_req fmi2_import_set_real_input_derivatives_req = 12;
+  // optional .fmitcp_proto.fmi2_import_set_real_input_derivatives_req fmi2_import_set_real_input_derivatives_req = 12;
   inline bool has_fmi2_import_set_real_input_derivatives_req() const;
   inline void clear_fmi2_import_set_real_input_derivatives_req();
   static const int kFmi2ImportSetRealInputDerivativesReqFieldNumber = 12;
-  inline const ::fmitcp::fmi2_import_set_real_input_derivatives_req& fmi2_import_set_real_input_derivatives_req() const;
-  inline ::fmitcp::fmi2_import_set_real_input_derivatives_req* mutable_fmi2_import_set_real_input_derivatives_req();
-  inline ::fmitcp::fmi2_import_set_real_input_derivatives_req* release_fmi2_import_set_real_input_derivatives_req();
+  inline const ::fmitcp_proto::fmi2_import_set_real_input_derivatives_req& fmi2_import_set_real_input_derivatives_req() const;
+  inline ::fmitcp_proto::fmi2_import_set_real_input_derivatives_req* mutable_fmi2_import_set_real_input_derivatives_req();
+  inline ::fmitcp_proto::fmi2_import_set_real_input_derivatives_req* release_fmi2_import_set_real_input_derivatives_req();
   
-  // optional .fmitcp.fmi2_import_set_real_input_derivatives_res fmi2_import_set_real_input_derivatives_res = 13;
+  // optional .fmitcp_proto.fmi2_import_set_real_input_derivatives_res fmi2_import_set_real_input_derivatives_res = 13;
   inline bool has_fmi2_import_set_real_input_derivatives_res() const;
   inline void clear_fmi2_import_set_real_input_derivatives_res();
   static const int kFmi2ImportSetRealInputDerivativesResFieldNumber = 13;
-  inline const ::fmitcp::fmi2_import_set_real_input_derivatives_res& fmi2_import_set_real_input_derivatives_res() const;
-  inline ::fmitcp::fmi2_import_set_real_input_derivatives_res* mutable_fmi2_import_set_real_input_derivatives_res();
-  inline ::fmitcp::fmi2_import_set_real_input_derivatives_res* release_fmi2_import_set_real_input_derivatives_res();
+  inline const ::fmitcp_proto::fmi2_import_set_real_input_derivatives_res& fmi2_import_set_real_input_derivatives_res() const;
+  inline ::fmitcp_proto::fmi2_import_set_real_input_derivatives_res* mutable_fmi2_import_set_real_input_derivatives_res();
+  inline ::fmitcp_proto::fmi2_import_set_real_input_derivatives_res* release_fmi2_import_set_real_input_derivatives_res();
   
-  // optional .fmitcp.fmi2_import_get_real_output_derivatives_req fmi2_import_get_real_output_derivatives_req = 14;
+  // optional .fmitcp_proto.fmi2_import_get_real_output_derivatives_req fmi2_import_get_real_output_derivatives_req = 14;
   inline bool has_fmi2_import_get_real_output_derivatives_req() const;
   inline void clear_fmi2_import_get_real_output_derivatives_req();
   static const int kFmi2ImportGetRealOutputDerivativesReqFieldNumber = 14;
-  inline const ::fmitcp::fmi2_import_get_real_output_derivatives_req& fmi2_import_get_real_output_derivatives_req() const;
-  inline ::fmitcp::fmi2_import_get_real_output_derivatives_req* mutable_fmi2_import_get_real_output_derivatives_req();
-  inline ::fmitcp::fmi2_import_get_real_output_derivatives_req* release_fmi2_import_get_real_output_derivatives_req();
+  inline const ::fmitcp_proto::fmi2_import_get_real_output_derivatives_req& fmi2_import_get_real_output_derivatives_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_real_output_derivatives_req* mutable_fmi2_import_get_real_output_derivatives_req();
+  inline ::fmitcp_proto::fmi2_import_get_real_output_derivatives_req* release_fmi2_import_get_real_output_derivatives_req();
   
-  // optional .fmitcp.fmi2_import_get_real_output_derivatives_res fmi2_import_get_real_output_derivatives_res = 15;
+  // optional .fmitcp_proto.fmi2_import_get_real_output_derivatives_res fmi2_import_get_real_output_derivatives_res = 15;
   inline bool has_fmi2_import_get_real_output_derivatives_res() const;
   inline void clear_fmi2_import_get_real_output_derivatives_res();
   static const int kFmi2ImportGetRealOutputDerivativesResFieldNumber = 15;
-  inline const ::fmitcp::fmi2_import_get_real_output_derivatives_res& fmi2_import_get_real_output_derivatives_res() const;
-  inline ::fmitcp::fmi2_import_get_real_output_derivatives_res* mutable_fmi2_import_get_real_output_derivatives_res();
-  inline ::fmitcp::fmi2_import_get_real_output_derivatives_res* release_fmi2_import_get_real_output_derivatives_res();
+  inline const ::fmitcp_proto::fmi2_import_get_real_output_derivatives_res& fmi2_import_get_real_output_derivatives_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_real_output_derivatives_res* mutable_fmi2_import_get_real_output_derivatives_res();
+  inline ::fmitcp_proto::fmi2_import_get_real_output_derivatives_res* release_fmi2_import_get_real_output_derivatives_res();
   
-  // optional .fmitcp.fmi2_import_cancel_step_req fmi2_import_cancel_step_req = 16;
+  // optional .fmitcp_proto.fmi2_import_cancel_step_req fmi2_import_cancel_step_req = 16;
   inline bool has_fmi2_import_cancel_step_req() const;
   inline void clear_fmi2_import_cancel_step_req();
   static const int kFmi2ImportCancelStepReqFieldNumber = 16;
-  inline const ::fmitcp::fmi2_import_cancel_step_req& fmi2_import_cancel_step_req() const;
-  inline ::fmitcp::fmi2_import_cancel_step_req* mutable_fmi2_import_cancel_step_req();
-  inline ::fmitcp::fmi2_import_cancel_step_req* release_fmi2_import_cancel_step_req();
+  inline const ::fmitcp_proto::fmi2_import_cancel_step_req& fmi2_import_cancel_step_req() const;
+  inline ::fmitcp_proto::fmi2_import_cancel_step_req* mutable_fmi2_import_cancel_step_req();
+  inline ::fmitcp_proto::fmi2_import_cancel_step_req* release_fmi2_import_cancel_step_req();
   
-  // optional .fmitcp.fmi2_import_cancel_step_res fmi2_import_cancel_step_res = 17;
+  // optional .fmitcp_proto.fmi2_import_cancel_step_res fmi2_import_cancel_step_res = 17;
   inline bool has_fmi2_import_cancel_step_res() const;
   inline void clear_fmi2_import_cancel_step_res();
   static const int kFmi2ImportCancelStepResFieldNumber = 17;
-  inline const ::fmitcp::fmi2_import_cancel_step_res& fmi2_import_cancel_step_res() const;
-  inline ::fmitcp::fmi2_import_cancel_step_res* mutable_fmi2_import_cancel_step_res();
-  inline ::fmitcp::fmi2_import_cancel_step_res* release_fmi2_import_cancel_step_res();
+  inline const ::fmitcp_proto::fmi2_import_cancel_step_res& fmi2_import_cancel_step_res() const;
+  inline ::fmitcp_proto::fmi2_import_cancel_step_res* mutable_fmi2_import_cancel_step_res();
+  inline ::fmitcp_proto::fmi2_import_cancel_step_res* release_fmi2_import_cancel_step_res();
   
-  // optional .fmitcp.fmi2_import_do_step_req fmi2_import_do_step_req = 18;
+  // optional .fmitcp_proto.fmi2_import_do_step_req fmi2_import_do_step_req = 18;
   inline bool has_fmi2_import_do_step_req() const;
   inline void clear_fmi2_import_do_step_req();
   static const int kFmi2ImportDoStepReqFieldNumber = 18;
-  inline const ::fmitcp::fmi2_import_do_step_req& fmi2_import_do_step_req() const;
-  inline ::fmitcp::fmi2_import_do_step_req* mutable_fmi2_import_do_step_req();
-  inline ::fmitcp::fmi2_import_do_step_req* release_fmi2_import_do_step_req();
+  inline const ::fmitcp_proto::fmi2_import_do_step_req& fmi2_import_do_step_req() const;
+  inline ::fmitcp_proto::fmi2_import_do_step_req* mutable_fmi2_import_do_step_req();
+  inline ::fmitcp_proto::fmi2_import_do_step_req* release_fmi2_import_do_step_req();
   
-  // optional .fmitcp.fmi2_import_do_step_res fmi2_import_do_step_res = 19;
+  // optional .fmitcp_proto.fmi2_import_do_step_res fmi2_import_do_step_res = 19;
   inline bool has_fmi2_import_do_step_res() const;
   inline void clear_fmi2_import_do_step_res();
   static const int kFmi2ImportDoStepResFieldNumber = 19;
-  inline const ::fmitcp::fmi2_import_do_step_res& fmi2_import_do_step_res() const;
-  inline ::fmitcp::fmi2_import_do_step_res* mutable_fmi2_import_do_step_res();
-  inline ::fmitcp::fmi2_import_do_step_res* release_fmi2_import_do_step_res();
+  inline const ::fmitcp_proto::fmi2_import_do_step_res& fmi2_import_do_step_res() const;
+  inline ::fmitcp_proto::fmi2_import_do_step_res* mutable_fmi2_import_do_step_res();
+  inline ::fmitcp_proto::fmi2_import_do_step_res* release_fmi2_import_do_step_res();
   
-  // optional .fmitcp.fmi2_import_get_status_req fmi2_import_get_status_req = 20;
+  // optional .fmitcp_proto.fmi2_import_get_status_req fmi2_import_get_status_req = 20;
   inline bool has_fmi2_import_get_status_req() const;
   inline void clear_fmi2_import_get_status_req();
   static const int kFmi2ImportGetStatusReqFieldNumber = 20;
-  inline const ::fmitcp::fmi2_import_get_status_req& fmi2_import_get_status_req() const;
-  inline ::fmitcp::fmi2_import_get_status_req* mutable_fmi2_import_get_status_req();
-  inline ::fmitcp::fmi2_import_get_status_req* release_fmi2_import_get_status_req();
+  inline const ::fmitcp_proto::fmi2_import_get_status_req& fmi2_import_get_status_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_status_req* mutable_fmi2_import_get_status_req();
+  inline ::fmitcp_proto::fmi2_import_get_status_req* release_fmi2_import_get_status_req();
   
-  // optional .fmitcp.fmi2_import_get_status_res fmi2_import_get_status_res = 21;
+  // optional .fmitcp_proto.fmi2_import_get_status_res fmi2_import_get_status_res = 21;
   inline bool has_fmi2_import_get_status_res() const;
   inline void clear_fmi2_import_get_status_res();
   static const int kFmi2ImportGetStatusResFieldNumber = 21;
-  inline const ::fmitcp::fmi2_import_get_status_res& fmi2_import_get_status_res() const;
-  inline ::fmitcp::fmi2_import_get_status_res* mutable_fmi2_import_get_status_res();
-  inline ::fmitcp::fmi2_import_get_status_res* release_fmi2_import_get_status_res();
+  inline const ::fmitcp_proto::fmi2_import_get_status_res& fmi2_import_get_status_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_status_res* mutable_fmi2_import_get_status_res();
+  inline ::fmitcp_proto::fmi2_import_get_status_res* release_fmi2_import_get_status_res();
   
-  // optional .fmitcp.fmi2_import_get_real_status_req fmi2_import_get_real_status_req = 22;
+  // optional .fmitcp_proto.fmi2_import_get_real_status_req fmi2_import_get_real_status_req = 22;
   inline bool has_fmi2_import_get_real_status_req() const;
   inline void clear_fmi2_import_get_real_status_req();
   static const int kFmi2ImportGetRealStatusReqFieldNumber = 22;
-  inline const ::fmitcp::fmi2_import_get_real_status_req& fmi2_import_get_real_status_req() const;
-  inline ::fmitcp::fmi2_import_get_real_status_req* mutable_fmi2_import_get_real_status_req();
-  inline ::fmitcp::fmi2_import_get_real_status_req* release_fmi2_import_get_real_status_req();
+  inline const ::fmitcp_proto::fmi2_import_get_real_status_req& fmi2_import_get_real_status_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_real_status_req* mutable_fmi2_import_get_real_status_req();
+  inline ::fmitcp_proto::fmi2_import_get_real_status_req* release_fmi2_import_get_real_status_req();
   
-  // optional .fmitcp.fmi2_import_get_real_status_res fmi2_import_get_real_status_res = 23;
+  // optional .fmitcp_proto.fmi2_import_get_real_status_res fmi2_import_get_real_status_res = 23;
   inline bool has_fmi2_import_get_real_status_res() const;
   inline void clear_fmi2_import_get_real_status_res();
   static const int kFmi2ImportGetRealStatusResFieldNumber = 23;
-  inline const ::fmitcp::fmi2_import_get_real_status_res& fmi2_import_get_real_status_res() const;
-  inline ::fmitcp::fmi2_import_get_real_status_res* mutable_fmi2_import_get_real_status_res();
-  inline ::fmitcp::fmi2_import_get_real_status_res* release_fmi2_import_get_real_status_res();
+  inline const ::fmitcp_proto::fmi2_import_get_real_status_res& fmi2_import_get_real_status_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_real_status_res* mutable_fmi2_import_get_real_status_res();
+  inline ::fmitcp_proto::fmi2_import_get_real_status_res* release_fmi2_import_get_real_status_res();
   
-  // optional .fmitcp.fmi2_import_get_integer_status_req fmi2_import_get_integer_status_req = 24;
+  // optional .fmitcp_proto.fmi2_import_get_integer_status_req fmi2_import_get_integer_status_req = 24;
   inline bool has_fmi2_import_get_integer_status_req() const;
   inline void clear_fmi2_import_get_integer_status_req();
   static const int kFmi2ImportGetIntegerStatusReqFieldNumber = 24;
-  inline const ::fmitcp::fmi2_import_get_integer_status_req& fmi2_import_get_integer_status_req() const;
-  inline ::fmitcp::fmi2_import_get_integer_status_req* mutable_fmi2_import_get_integer_status_req();
-  inline ::fmitcp::fmi2_import_get_integer_status_req* release_fmi2_import_get_integer_status_req();
+  inline const ::fmitcp_proto::fmi2_import_get_integer_status_req& fmi2_import_get_integer_status_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_integer_status_req* mutable_fmi2_import_get_integer_status_req();
+  inline ::fmitcp_proto::fmi2_import_get_integer_status_req* release_fmi2_import_get_integer_status_req();
   
-  // optional .fmitcp.fmi2_import_get_integer_status_res fmi2_import_get_integer_status_res = 25;
+  // optional .fmitcp_proto.fmi2_import_get_integer_status_res fmi2_import_get_integer_status_res = 25;
   inline bool has_fmi2_import_get_integer_status_res() const;
   inline void clear_fmi2_import_get_integer_status_res();
   static const int kFmi2ImportGetIntegerStatusResFieldNumber = 25;
-  inline const ::fmitcp::fmi2_import_get_integer_status_res& fmi2_import_get_integer_status_res() const;
-  inline ::fmitcp::fmi2_import_get_integer_status_res* mutable_fmi2_import_get_integer_status_res();
-  inline ::fmitcp::fmi2_import_get_integer_status_res* release_fmi2_import_get_integer_status_res();
+  inline const ::fmitcp_proto::fmi2_import_get_integer_status_res& fmi2_import_get_integer_status_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_integer_status_res* mutable_fmi2_import_get_integer_status_res();
+  inline ::fmitcp_proto::fmi2_import_get_integer_status_res* release_fmi2_import_get_integer_status_res();
   
-  // optional .fmitcp.fmi2_import_get_boolean_status_req fmi2_import_get_boolean_status_req = 26;
+  // optional .fmitcp_proto.fmi2_import_get_boolean_status_req fmi2_import_get_boolean_status_req = 26;
   inline bool has_fmi2_import_get_boolean_status_req() const;
   inline void clear_fmi2_import_get_boolean_status_req();
   static const int kFmi2ImportGetBooleanStatusReqFieldNumber = 26;
-  inline const ::fmitcp::fmi2_import_get_boolean_status_req& fmi2_import_get_boolean_status_req() const;
-  inline ::fmitcp::fmi2_import_get_boolean_status_req* mutable_fmi2_import_get_boolean_status_req();
-  inline ::fmitcp::fmi2_import_get_boolean_status_req* release_fmi2_import_get_boolean_status_req();
+  inline const ::fmitcp_proto::fmi2_import_get_boolean_status_req& fmi2_import_get_boolean_status_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_boolean_status_req* mutable_fmi2_import_get_boolean_status_req();
+  inline ::fmitcp_proto::fmi2_import_get_boolean_status_req* release_fmi2_import_get_boolean_status_req();
   
-  // optional .fmitcp.fmi2_import_get_boolean_status_res fmi2_import_get_boolean_status_res = 27;
+  // optional .fmitcp_proto.fmi2_import_get_boolean_status_res fmi2_import_get_boolean_status_res = 27;
   inline bool has_fmi2_import_get_boolean_status_res() const;
   inline void clear_fmi2_import_get_boolean_status_res();
   static const int kFmi2ImportGetBooleanStatusResFieldNumber = 27;
-  inline const ::fmitcp::fmi2_import_get_boolean_status_res& fmi2_import_get_boolean_status_res() const;
-  inline ::fmitcp::fmi2_import_get_boolean_status_res* mutable_fmi2_import_get_boolean_status_res();
-  inline ::fmitcp::fmi2_import_get_boolean_status_res* release_fmi2_import_get_boolean_status_res();
+  inline const ::fmitcp_proto::fmi2_import_get_boolean_status_res& fmi2_import_get_boolean_status_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_boolean_status_res* mutable_fmi2_import_get_boolean_status_res();
+  inline ::fmitcp_proto::fmi2_import_get_boolean_status_res* release_fmi2_import_get_boolean_status_res();
   
-  // optional .fmitcp.fmi2_import_get_string_status_req fmi2_import_get_string_status_req = 28;
+  // optional .fmitcp_proto.fmi2_import_get_string_status_req fmi2_import_get_string_status_req = 28;
   inline bool has_fmi2_import_get_string_status_req() const;
   inline void clear_fmi2_import_get_string_status_req();
   static const int kFmi2ImportGetStringStatusReqFieldNumber = 28;
-  inline const ::fmitcp::fmi2_import_get_string_status_req& fmi2_import_get_string_status_req() const;
-  inline ::fmitcp::fmi2_import_get_string_status_req* mutable_fmi2_import_get_string_status_req();
-  inline ::fmitcp::fmi2_import_get_string_status_req* release_fmi2_import_get_string_status_req();
+  inline const ::fmitcp_proto::fmi2_import_get_string_status_req& fmi2_import_get_string_status_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_string_status_req* mutable_fmi2_import_get_string_status_req();
+  inline ::fmitcp_proto::fmi2_import_get_string_status_req* release_fmi2_import_get_string_status_req();
   
-  // optional .fmitcp.fmi2_import_get_string_status_res fmi2_import_get_string_status_res = 29;
+  // optional .fmitcp_proto.fmi2_import_get_string_status_res fmi2_import_get_string_status_res = 29;
   inline bool has_fmi2_import_get_string_status_res() const;
   inline void clear_fmi2_import_get_string_status_res();
   static const int kFmi2ImportGetStringStatusResFieldNumber = 29;
-  inline const ::fmitcp::fmi2_import_get_string_status_res& fmi2_import_get_string_status_res() const;
-  inline ::fmitcp::fmi2_import_get_string_status_res* mutable_fmi2_import_get_string_status_res();
-  inline ::fmitcp::fmi2_import_get_string_status_res* release_fmi2_import_get_string_status_res();
+  inline const ::fmitcp_proto::fmi2_import_get_string_status_res& fmi2_import_get_string_status_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_string_status_res* mutable_fmi2_import_get_string_status_res();
+  inline ::fmitcp_proto::fmi2_import_get_string_status_res* release_fmi2_import_get_string_status_res();
   
-  // optional .fmitcp.fmi2_import_instantiate_model_req fmi2_import_instantiate_model_req = 30;
+  // optional .fmitcp_proto.fmi2_import_instantiate_model_req fmi2_import_instantiate_model_req = 30;
   inline bool has_fmi2_import_instantiate_model_req() const;
   inline void clear_fmi2_import_instantiate_model_req();
   static const int kFmi2ImportInstantiateModelReqFieldNumber = 30;
-  inline const ::fmitcp::fmi2_import_instantiate_model_req& fmi2_import_instantiate_model_req() const;
-  inline ::fmitcp::fmi2_import_instantiate_model_req* mutable_fmi2_import_instantiate_model_req();
-  inline ::fmitcp::fmi2_import_instantiate_model_req* release_fmi2_import_instantiate_model_req();
+  inline const ::fmitcp_proto::fmi2_import_instantiate_model_req& fmi2_import_instantiate_model_req() const;
+  inline ::fmitcp_proto::fmi2_import_instantiate_model_req* mutable_fmi2_import_instantiate_model_req();
+  inline ::fmitcp_proto::fmi2_import_instantiate_model_req* release_fmi2_import_instantiate_model_req();
   
-  // optional .fmitcp.fmi2_import_instantiate_model_res fmi2_import_instantiate_model_res = 31;
+  // optional .fmitcp_proto.fmi2_import_instantiate_model_res fmi2_import_instantiate_model_res = 31;
   inline bool has_fmi2_import_instantiate_model_res() const;
   inline void clear_fmi2_import_instantiate_model_res();
   static const int kFmi2ImportInstantiateModelResFieldNumber = 31;
-  inline const ::fmitcp::fmi2_import_instantiate_model_res& fmi2_import_instantiate_model_res() const;
-  inline ::fmitcp::fmi2_import_instantiate_model_res* mutable_fmi2_import_instantiate_model_res();
-  inline ::fmitcp::fmi2_import_instantiate_model_res* release_fmi2_import_instantiate_model_res();
+  inline const ::fmitcp_proto::fmi2_import_instantiate_model_res& fmi2_import_instantiate_model_res() const;
+  inline ::fmitcp_proto::fmi2_import_instantiate_model_res* mutable_fmi2_import_instantiate_model_res();
+  inline ::fmitcp_proto::fmi2_import_instantiate_model_res* release_fmi2_import_instantiate_model_res();
   
-  // optional .fmitcp.fmi2_import_free_model_instance_req fmi2_import_free_model_instance_req = 32;
+  // optional .fmitcp_proto.fmi2_import_free_model_instance_req fmi2_import_free_model_instance_req = 32;
   inline bool has_fmi2_import_free_model_instance_req() const;
   inline void clear_fmi2_import_free_model_instance_req();
   static const int kFmi2ImportFreeModelInstanceReqFieldNumber = 32;
-  inline const ::fmitcp::fmi2_import_free_model_instance_req& fmi2_import_free_model_instance_req() const;
-  inline ::fmitcp::fmi2_import_free_model_instance_req* mutable_fmi2_import_free_model_instance_req();
-  inline ::fmitcp::fmi2_import_free_model_instance_req* release_fmi2_import_free_model_instance_req();
+  inline const ::fmitcp_proto::fmi2_import_free_model_instance_req& fmi2_import_free_model_instance_req() const;
+  inline ::fmitcp_proto::fmi2_import_free_model_instance_req* mutable_fmi2_import_free_model_instance_req();
+  inline ::fmitcp_proto::fmi2_import_free_model_instance_req* release_fmi2_import_free_model_instance_req();
   
-  // optional .fmitcp.fmi2_import_free_model_instance_res fmi2_import_free_model_instance_res = 33;
+  // optional .fmitcp_proto.fmi2_import_free_model_instance_res fmi2_import_free_model_instance_res = 33;
   inline bool has_fmi2_import_free_model_instance_res() const;
   inline void clear_fmi2_import_free_model_instance_res();
   static const int kFmi2ImportFreeModelInstanceResFieldNumber = 33;
-  inline const ::fmitcp::fmi2_import_free_model_instance_res& fmi2_import_free_model_instance_res() const;
-  inline ::fmitcp::fmi2_import_free_model_instance_res* mutable_fmi2_import_free_model_instance_res();
-  inline ::fmitcp::fmi2_import_free_model_instance_res* release_fmi2_import_free_model_instance_res();
+  inline const ::fmitcp_proto::fmi2_import_free_model_instance_res& fmi2_import_free_model_instance_res() const;
+  inline ::fmitcp_proto::fmi2_import_free_model_instance_res* mutable_fmi2_import_free_model_instance_res();
+  inline ::fmitcp_proto::fmi2_import_free_model_instance_res* release_fmi2_import_free_model_instance_res();
   
-  // optional .fmitcp.fmi2_import_set_time_req fmi2_import_set_time_req = 34;
+  // optional .fmitcp_proto.fmi2_import_set_time_req fmi2_import_set_time_req = 34;
   inline bool has_fmi2_import_set_time_req() const;
   inline void clear_fmi2_import_set_time_req();
   static const int kFmi2ImportSetTimeReqFieldNumber = 34;
-  inline const ::fmitcp::fmi2_import_set_time_req& fmi2_import_set_time_req() const;
-  inline ::fmitcp::fmi2_import_set_time_req* mutable_fmi2_import_set_time_req();
-  inline ::fmitcp::fmi2_import_set_time_req* release_fmi2_import_set_time_req();
+  inline const ::fmitcp_proto::fmi2_import_set_time_req& fmi2_import_set_time_req() const;
+  inline ::fmitcp_proto::fmi2_import_set_time_req* mutable_fmi2_import_set_time_req();
+  inline ::fmitcp_proto::fmi2_import_set_time_req* release_fmi2_import_set_time_req();
   
-  // optional .fmitcp.fmi2_import_set_time_res fmi2_import_set_time_res = 35;
+  // optional .fmitcp_proto.fmi2_import_set_time_res fmi2_import_set_time_res = 35;
   inline bool has_fmi2_import_set_time_res() const;
   inline void clear_fmi2_import_set_time_res();
   static const int kFmi2ImportSetTimeResFieldNumber = 35;
-  inline const ::fmitcp::fmi2_import_set_time_res& fmi2_import_set_time_res() const;
-  inline ::fmitcp::fmi2_import_set_time_res* mutable_fmi2_import_set_time_res();
-  inline ::fmitcp::fmi2_import_set_time_res* release_fmi2_import_set_time_res();
+  inline const ::fmitcp_proto::fmi2_import_set_time_res& fmi2_import_set_time_res() const;
+  inline ::fmitcp_proto::fmi2_import_set_time_res* mutable_fmi2_import_set_time_res();
+  inline ::fmitcp_proto::fmi2_import_set_time_res* release_fmi2_import_set_time_res();
   
-  // optional .fmitcp.fmi2_import_set_continuous_states_req fmi2_import_set_continuous_states_req = 36;
+  // optional .fmitcp_proto.fmi2_import_set_continuous_states_req fmi2_import_set_continuous_states_req = 36;
   inline bool has_fmi2_import_set_continuous_states_req() const;
   inline void clear_fmi2_import_set_continuous_states_req();
   static const int kFmi2ImportSetContinuousStatesReqFieldNumber = 36;
-  inline const ::fmitcp::fmi2_import_set_continuous_states_req& fmi2_import_set_continuous_states_req() const;
-  inline ::fmitcp::fmi2_import_set_continuous_states_req* mutable_fmi2_import_set_continuous_states_req();
-  inline ::fmitcp::fmi2_import_set_continuous_states_req* release_fmi2_import_set_continuous_states_req();
+  inline const ::fmitcp_proto::fmi2_import_set_continuous_states_req& fmi2_import_set_continuous_states_req() const;
+  inline ::fmitcp_proto::fmi2_import_set_continuous_states_req* mutable_fmi2_import_set_continuous_states_req();
+  inline ::fmitcp_proto::fmi2_import_set_continuous_states_req* release_fmi2_import_set_continuous_states_req();
   
-  // optional .fmitcp.fmi2_import_set_continuous_states_res fmi2_import_set_continuous_states_res = 37;
+  // optional .fmitcp_proto.fmi2_import_set_continuous_states_res fmi2_import_set_continuous_states_res = 37;
   inline bool has_fmi2_import_set_continuous_states_res() const;
   inline void clear_fmi2_import_set_continuous_states_res();
   static const int kFmi2ImportSetContinuousStatesResFieldNumber = 37;
-  inline const ::fmitcp::fmi2_import_set_continuous_states_res& fmi2_import_set_continuous_states_res() const;
-  inline ::fmitcp::fmi2_import_set_continuous_states_res* mutable_fmi2_import_set_continuous_states_res();
-  inline ::fmitcp::fmi2_import_set_continuous_states_res* release_fmi2_import_set_continuous_states_res();
+  inline const ::fmitcp_proto::fmi2_import_set_continuous_states_res& fmi2_import_set_continuous_states_res() const;
+  inline ::fmitcp_proto::fmi2_import_set_continuous_states_res* mutable_fmi2_import_set_continuous_states_res();
+  inline ::fmitcp_proto::fmi2_import_set_continuous_states_res* release_fmi2_import_set_continuous_states_res();
   
-  // optional .fmitcp.fmi2_import_completed_integrator_step_req fmi2_import_completed_integrator_step_req = 38;
+  // optional .fmitcp_proto.fmi2_import_completed_integrator_step_req fmi2_import_completed_integrator_step_req = 38;
   inline bool has_fmi2_import_completed_integrator_step_req() const;
   inline void clear_fmi2_import_completed_integrator_step_req();
   static const int kFmi2ImportCompletedIntegratorStepReqFieldNumber = 38;
-  inline const ::fmitcp::fmi2_import_completed_integrator_step_req& fmi2_import_completed_integrator_step_req() const;
-  inline ::fmitcp::fmi2_import_completed_integrator_step_req* mutable_fmi2_import_completed_integrator_step_req();
-  inline ::fmitcp::fmi2_import_completed_integrator_step_req* release_fmi2_import_completed_integrator_step_req();
+  inline const ::fmitcp_proto::fmi2_import_completed_integrator_step_req& fmi2_import_completed_integrator_step_req() const;
+  inline ::fmitcp_proto::fmi2_import_completed_integrator_step_req* mutable_fmi2_import_completed_integrator_step_req();
+  inline ::fmitcp_proto::fmi2_import_completed_integrator_step_req* release_fmi2_import_completed_integrator_step_req();
   
-  // optional .fmitcp.fmi2_import_completed_integrator_step_res fmi2_import_completed_integrator_step_res = 39;
+  // optional .fmitcp_proto.fmi2_import_completed_integrator_step_res fmi2_import_completed_integrator_step_res = 39;
   inline bool has_fmi2_import_completed_integrator_step_res() const;
   inline void clear_fmi2_import_completed_integrator_step_res();
   static const int kFmi2ImportCompletedIntegratorStepResFieldNumber = 39;
-  inline const ::fmitcp::fmi2_import_completed_integrator_step_res& fmi2_import_completed_integrator_step_res() const;
-  inline ::fmitcp::fmi2_import_completed_integrator_step_res* mutable_fmi2_import_completed_integrator_step_res();
-  inline ::fmitcp::fmi2_import_completed_integrator_step_res* release_fmi2_import_completed_integrator_step_res();
+  inline const ::fmitcp_proto::fmi2_import_completed_integrator_step_res& fmi2_import_completed_integrator_step_res() const;
+  inline ::fmitcp_proto::fmi2_import_completed_integrator_step_res* mutable_fmi2_import_completed_integrator_step_res();
+  inline ::fmitcp_proto::fmi2_import_completed_integrator_step_res* release_fmi2_import_completed_integrator_step_res();
   
-  // optional .fmitcp.fmi2_import_initialize_model_req fmi2_import_initialize_model_req = 40;
+  // optional .fmitcp_proto.fmi2_import_initialize_model_req fmi2_import_initialize_model_req = 40;
   inline bool has_fmi2_import_initialize_model_req() const;
   inline void clear_fmi2_import_initialize_model_req();
   static const int kFmi2ImportInitializeModelReqFieldNumber = 40;
-  inline const ::fmitcp::fmi2_import_initialize_model_req& fmi2_import_initialize_model_req() const;
-  inline ::fmitcp::fmi2_import_initialize_model_req* mutable_fmi2_import_initialize_model_req();
-  inline ::fmitcp::fmi2_import_initialize_model_req* release_fmi2_import_initialize_model_req();
+  inline const ::fmitcp_proto::fmi2_import_initialize_model_req& fmi2_import_initialize_model_req() const;
+  inline ::fmitcp_proto::fmi2_import_initialize_model_req* mutable_fmi2_import_initialize_model_req();
+  inline ::fmitcp_proto::fmi2_import_initialize_model_req* release_fmi2_import_initialize_model_req();
   
-  // optional .fmitcp.fmi2_import_initialize_model_res fmi2_import_initialize_model_res = 41;
+  // optional .fmitcp_proto.fmi2_import_initialize_model_res fmi2_import_initialize_model_res = 41;
   inline bool has_fmi2_import_initialize_model_res() const;
   inline void clear_fmi2_import_initialize_model_res();
   static const int kFmi2ImportInitializeModelResFieldNumber = 41;
-  inline const ::fmitcp::fmi2_import_initialize_model_res& fmi2_import_initialize_model_res() const;
-  inline ::fmitcp::fmi2_import_initialize_model_res* mutable_fmi2_import_initialize_model_res();
-  inline ::fmitcp::fmi2_import_initialize_model_res* release_fmi2_import_initialize_model_res();
+  inline const ::fmitcp_proto::fmi2_import_initialize_model_res& fmi2_import_initialize_model_res() const;
+  inline ::fmitcp_proto::fmi2_import_initialize_model_res* mutable_fmi2_import_initialize_model_res();
+  inline ::fmitcp_proto::fmi2_import_initialize_model_res* release_fmi2_import_initialize_model_res();
   
-  // optional .fmitcp.fmi2_import_get_derivatives_req fmi2_import_get_derivatives_req = 42;
+  // optional .fmitcp_proto.fmi2_import_get_derivatives_req fmi2_import_get_derivatives_req = 42;
   inline bool has_fmi2_import_get_derivatives_req() const;
   inline void clear_fmi2_import_get_derivatives_req();
   static const int kFmi2ImportGetDerivativesReqFieldNumber = 42;
-  inline const ::fmitcp::fmi2_import_get_derivatives_req& fmi2_import_get_derivatives_req() const;
-  inline ::fmitcp::fmi2_import_get_derivatives_req* mutable_fmi2_import_get_derivatives_req();
-  inline ::fmitcp::fmi2_import_get_derivatives_req* release_fmi2_import_get_derivatives_req();
+  inline const ::fmitcp_proto::fmi2_import_get_derivatives_req& fmi2_import_get_derivatives_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_derivatives_req* mutable_fmi2_import_get_derivatives_req();
+  inline ::fmitcp_proto::fmi2_import_get_derivatives_req* release_fmi2_import_get_derivatives_req();
   
-  // optional .fmitcp.fmi2_import_get_derivatives_res fmi2_import_get_derivatives_res = 43;
+  // optional .fmitcp_proto.fmi2_import_get_derivatives_res fmi2_import_get_derivatives_res = 43;
   inline bool has_fmi2_import_get_derivatives_res() const;
   inline void clear_fmi2_import_get_derivatives_res();
   static const int kFmi2ImportGetDerivativesResFieldNumber = 43;
-  inline const ::fmitcp::fmi2_import_get_derivatives_res& fmi2_import_get_derivatives_res() const;
-  inline ::fmitcp::fmi2_import_get_derivatives_res* mutable_fmi2_import_get_derivatives_res();
-  inline ::fmitcp::fmi2_import_get_derivatives_res* release_fmi2_import_get_derivatives_res();
+  inline const ::fmitcp_proto::fmi2_import_get_derivatives_res& fmi2_import_get_derivatives_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_derivatives_res* mutable_fmi2_import_get_derivatives_res();
+  inline ::fmitcp_proto::fmi2_import_get_derivatives_res* release_fmi2_import_get_derivatives_res();
   
-  // optional .fmitcp.fmi2_import_get_event_indicators_req fmi2_import_get_event_indicators_req = 44;
+  // optional .fmitcp_proto.fmi2_import_get_event_indicators_req fmi2_import_get_event_indicators_req = 44;
   inline bool has_fmi2_import_get_event_indicators_req() const;
   inline void clear_fmi2_import_get_event_indicators_req();
   static const int kFmi2ImportGetEventIndicatorsReqFieldNumber = 44;
-  inline const ::fmitcp::fmi2_import_get_event_indicators_req& fmi2_import_get_event_indicators_req() const;
-  inline ::fmitcp::fmi2_import_get_event_indicators_req* mutable_fmi2_import_get_event_indicators_req();
-  inline ::fmitcp::fmi2_import_get_event_indicators_req* release_fmi2_import_get_event_indicators_req();
+  inline const ::fmitcp_proto::fmi2_import_get_event_indicators_req& fmi2_import_get_event_indicators_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_event_indicators_req* mutable_fmi2_import_get_event_indicators_req();
+  inline ::fmitcp_proto::fmi2_import_get_event_indicators_req* release_fmi2_import_get_event_indicators_req();
   
-  // optional .fmitcp.fmi2_import_get_event_indicators_res fmi2_import_get_event_indicators_res = 45;
+  // optional .fmitcp_proto.fmi2_import_get_event_indicators_res fmi2_import_get_event_indicators_res = 45;
   inline bool has_fmi2_import_get_event_indicators_res() const;
   inline void clear_fmi2_import_get_event_indicators_res();
   static const int kFmi2ImportGetEventIndicatorsResFieldNumber = 45;
-  inline const ::fmitcp::fmi2_import_get_event_indicators_res& fmi2_import_get_event_indicators_res() const;
-  inline ::fmitcp::fmi2_import_get_event_indicators_res* mutable_fmi2_import_get_event_indicators_res();
-  inline ::fmitcp::fmi2_import_get_event_indicators_res* release_fmi2_import_get_event_indicators_res();
+  inline const ::fmitcp_proto::fmi2_import_get_event_indicators_res& fmi2_import_get_event_indicators_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_event_indicators_res* mutable_fmi2_import_get_event_indicators_res();
+  inline ::fmitcp_proto::fmi2_import_get_event_indicators_res* release_fmi2_import_get_event_indicators_res();
   
-  // optional .fmitcp.fmi2_import_eventUpdate_req fmi2_import_eventUpdate_req = 46;
+  // optional .fmitcp_proto.fmi2_import_eventUpdate_req fmi2_import_eventUpdate_req = 46;
   inline bool has_fmi2_import_eventupdate_req() const;
   inline void clear_fmi2_import_eventupdate_req();
   static const int kFmi2ImportEventUpdateReqFieldNumber = 46;
-  inline const ::fmitcp::fmi2_import_eventUpdate_req& fmi2_import_eventupdate_req() const;
-  inline ::fmitcp::fmi2_import_eventUpdate_req* mutable_fmi2_import_eventupdate_req();
-  inline ::fmitcp::fmi2_import_eventUpdate_req* release_fmi2_import_eventupdate_req();
+  inline const ::fmitcp_proto::fmi2_import_eventUpdate_req& fmi2_import_eventupdate_req() const;
+  inline ::fmitcp_proto::fmi2_import_eventUpdate_req* mutable_fmi2_import_eventupdate_req();
+  inline ::fmitcp_proto::fmi2_import_eventUpdate_req* release_fmi2_import_eventupdate_req();
   
-  // optional .fmitcp.fmi2_import_eventUpdate_res fmi2_import_eventUpdate_res = 47;
+  // optional .fmitcp_proto.fmi2_import_eventUpdate_res fmi2_import_eventUpdate_res = 47;
   inline bool has_fmi2_import_eventupdate_res() const;
   inline void clear_fmi2_import_eventupdate_res();
   static const int kFmi2ImportEventUpdateResFieldNumber = 47;
-  inline const ::fmitcp::fmi2_import_eventUpdate_res& fmi2_import_eventupdate_res() const;
-  inline ::fmitcp::fmi2_import_eventUpdate_res* mutable_fmi2_import_eventupdate_res();
-  inline ::fmitcp::fmi2_import_eventUpdate_res* release_fmi2_import_eventupdate_res();
+  inline const ::fmitcp_proto::fmi2_import_eventUpdate_res& fmi2_import_eventupdate_res() const;
+  inline ::fmitcp_proto::fmi2_import_eventUpdate_res* mutable_fmi2_import_eventupdate_res();
+  inline ::fmitcp_proto::fmi2_import_eventUpdate_res* release_fmi2_import_eventupdate_res();
   
-  // optional .fmitcp.fmi2_import_completed_event_iteration_req fmi2_import_completed_event_iteration_req = 48;
+  // optional .fmitcp_proto.fmi2_import_completed_event_iteration_req fmi2_import_completed_event_iteration_req = 48;
   inline bool has_fmi2_import_completed_event_iteration_req() const;
   inline void clear_fmi2_import_completed_event_iteration_req();
   static const int kFmi2ImportCompletedEventIterationReqFieldNumber = 48;
-  inline const ::fmitcp::fmi2_import_completed_event_iteration_req& fmi2_import_completed_event_iteration_req() const;
-  inline ::fmitcp::fmi2_import_completed_event_iteration_req* mutable_fmi2_import_completed_event_iteration_req();
-  inline ::fmitcp::fmi2_import_completed_event_iteration_req* release_fmi2_import_completed_event_iteration_req();
+  inline const ::fmitcp_proto::fmi2_import_completed_event_iteration_req& fmi2_import_completed_event_iteration_req() const;
+  inline ::fmitcp_proto::fmi2_import_completed_event_iteration_req* mutable_fmi2_import_completed_event_iteration_req();
+  inline ::fmitcp_proto::fmi2_import_completed_event_iteration_req* release_fmi2_import_completed_event_iteration_req();
   
-  // optional .fmitcp.fmi2_import_completed_event_iteration_res fmi2_import_completed_event_iteration_res = 49;
+  // optional .fmitcp_proto.fmi2_import_completed_event_iteration_res fmi2_import_completed_event_iteration_res = 49;
   inline bool has_fmi2_import_completed_event_iteration_res() const;
   inline void clear_fmi2_import_completed_event_iteration_res();
   static const int kFmi2ImportCompletedEventIterationResFieldNumber = 49;
-  inline const ::fmitcp::fmi2_import_completed_event_iteration_res& fmi2_import_completed_event_iteration_res() const;
-  inline ::fmitcp::fmi2_import_completed_event_iteration_res* mutable_fmi2_import_completed_event_iteration_res();
-  inline ::fmitcp::fmi2_import_completed_event_iteration_res* release_fmi2_import_completed_event_iteration_res();
+  inline const ::fmitcp_proto::fmi2_import_completed_event_iteration_res& fmi2_import_completed_event_iteration_res() const;
+  inline ::fmitcp_proto::fmi2_import_completed_event_iteration_res* mutable_fmi2_import_completed_event_iteration_res();
+  inline ::fmitcp_proto::fmi2_import_completed_event_iteration_res* release_fmi2_import_completed_event_iteration_res();
   
-  // optional .fmitcp.fmi2_import_get_continuous_states_req fmi2_import_get_continuous_states_req = 50;
+  // optional .fmitcp_proto.fmi2_import_get_continuous_states_req fmi2_import_get_continuous_states_req = 50;
   inline bool has_fmi2_import_get_continuous_states_req() const;
   inline void clear_fmi2_import_get_continuous_states_req();
   static const int kFmi2ImportGetContinuousStatesReqFieldNumber = 50;
-  inline const ::fmitcp::fmi2_import_get_continuous_states_req& fmi2_import_get_continuous_states_req() const;
-  inline ::fmitcp::fmi2_import_get_continuous_states_req* mutable_fmi2_import_get_continuous_states_req();
-  inline ::fmitcp::fmi2_import_get_continuous_states_req* release_fmi2_import_get_continuous_states_req();
+  inline const ::fmitcp_proto::fmi2_import_get_continuous_states_req& fmi2_import_get_continuous_states_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_continuous_states_req* mutable_fmi2_import_get_continuous_states_req();
+  inline ::fmitcp_proto::fmi2_import_get_continuous_states_req* release_fmi2_import_get_continuous_states_req();
   
-  // optional .fmitcp.fmi2_import_get_continuous_states_res fmi2_import_get_continuous_states_res = 51;
+  // optional .fmitcp_proto.fmi2_import_get_continuous_states_res fmi2_import_get_continuous_states_res = 51;
   inline bool has_fmi2_import_get_continuous_states_res() const;
   inline void clear_fmi2_import_get_continuous_states_res();
   static const int kFmi2ImportGetContinuousStatesResFieldNumber = 51;
-  inline const ::fmitcp::fmi2_import_get_continuous_states_res& fmi2_import_get_continuous_states_res() const;
-  inline ::fmitcp::fmi2_import_get_continuous_states_res* mutable_fmi2_import_get_continuous_states_res();
-  inline ::fmitcp::fmi2_import_get_continuous_states_res* release_fmi2_import_get_continuous_states_res();
+  inline const ::fmitcp_proto::fmi2_import_get_continuous_states_res& fmi2_import_get_continuous_states_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_continuous_states_res* mutable_fmi2_import_get_continuous_states_res();
+  inline ::fmitcp_proto::fmi2_import_get_continuous_states_res* release_fmi2_import_get_continuous_states_res();
   
-  // optional .fmitcp.fmi2_import_get_nominal_continuous_states_req fmi2_import_get_nominal_continuous_states_req = 52;
+  // optional .fmitcp_proto.fmi2_import_get_nominal_continuous_states_req fmi2_import_get_nominal_continuous_states_req = 52;
   inline bool has_fmi2_import_get_nominal_continuous_states_req() const;
   inline void clear_fmi2_import_get_nominal_continuous_states_req();
   static const int kFmi2ImportGetNominalContinuousStatesReqFieldNumber = 52;
-  inline const ::fmitcp::fmi2_import_get_nominal_continuous_states_req& fmi2_import_get_nominal_continuous_states_req() const;
-  inline ::fmitcp::fmi2_import_get_nominal_continuous_states_req* mutable_fmi2_import_get_nominal_continuous_states_req();
-  inline ::fmitcp::fmi2_import_get_nominal_continuous_states_req* release_fmi2_import_get_nominal_continuous_states_req();
+  inline const ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_req& fmi2_import_get_nominal_continuous_states_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_req* mutable_fmi2_import_get_nominal_continuous_states_req();
+  inline ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_req* release_fmi2_import_get_nominal_continuous_states_req();
   
-  // optional .fmitcp.fmi2_import_get_nominal_continuous_states_res fmi2_import_get_nominal_continuous_states_res = 53;
+  // optional .fmitcp_proto.fmi2_import_get_nominal_continuous_states_res fmi2_import_get_nominal_continuous_states_res = 53;
   inline bool has_fmi2_import_get_nominal_continuous_states_res() const;
   inline void clear_fmi2_import_get_nominal_continuous_states_res();
   static const int kFmi2ImportGetNominalContinuousStatesResFieldNumber = 53;
-  inline const ::fmitcp::fmi2_import_get_nominal_continuous_states_res& fmi2_import_get_nominal_continuous_states_res() const;
-  inline ::fmitcp::fmi2_import_get_nominal_continuous_states_res* mutable_fmi2_import_get_nominal_continuous_states_res();
-  inline ::fmitcp::fmi2_import_get_nominal_continuous_states_res* release_fmi2_import_get_nominal_continuous_states_res();
+  inline const ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_res& fmi2_import_get_nominal_continuous_states_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_res* mutable_fmi2_import_get_nominal_continuous_states_res();
+  inline ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_res* release_fmi2_import_get_nominal_continuous_states_res();
   
-  // optional .fmitcp.fmi2_import_terminate_req fmi2_import_terminate_req = 54;
+  // optional .fmitcp_proto.fmi2_import_terminate_req fmi2_import_terminate_req = 54;
   inline bool has_fmi2_import_terminate_req() const;
   inline void clear_fmi2_import_terminate_req();
   static const int kFmi2ImportTerminateReqFieldNumber = 54;
-  inline const ::fmitcp::fmi2_import_terminate_req& fmi2_import_terminate_req() const;
-  inline ::fmitcp::fmi2_import_terminate_req* mutable_fmi2_import_terminate_req();
-  inline ::fmitcp::fmi2_import_terminate_req* release_fmi2_import_terminate_req();
+  inline const ::fmitcp_proto::fmi2_import_terminate_req& fmi2_import_terminate_req() const;
+  inline ::fmitcp_proto::fmi2_import_terminate_req* mutable_fmi2_import_terminate_req();
+  inline ::fmitcp_proto::fmi2_import_terminate_req* release_fmi2_import_terminate_req();
   
-  // optional .fmitcp.fmi2_import_terminate_res fmi2_import_terminate_res = 55;
+  // optional .fmitcp_proto.fmi2_import_terminate_res fmi2_import_terminate_res = 55;
   inline bool has_fmi2_import_terminate_res() const;
   inline void clear_fmi2_import_terminate_res();
   static const int kFmi2ImportTerminateResFieldNumber = 55;
-  inline const ::fmitcp::fmi2_import_terminate_res& fmi2_import_terminate_res() const;
-  inline ::fmitcp::fmi2_import_terminate_res* mutable_fmi2_import_terminate_res();
-  inline ::fmitcp::fmi2_import_terminate_res* release_fmi2_import_terminate_res();
+  inline const ::fmitcp_proto::fmi2_import_terminate_res& fmi2_import_terminate_res() const;
+  inline ::fmitcp_proto::fmi2_import_terminate_res* mutable_fmi2_import_terminate_res();
+  inline ::fmitcp_proto::fmi2_import_terminate_res* release_fmi2_import_terminate_res();
   
-  // optional .fmitcp.fmi2_import_get_version_req fmi2_import_get_version_req = 56;
+  // optional .fmitcp_proto.fmi2_import_get_version_req fmi2_import_get_version_req = 56;
   inline bool has_fmi2_import_get_version_req() const;
   inline void clear_fmi2_import_get_version_req();
   static const int kFmi2ImportGetVersionReqFieldNumber = 56;
-  inline const ::fmitcp::fmi2_import_get_version_req& fmi2_import_get_version_req() const;
-  inline ::fmitcp::fmi2_import_get_version_req* mutable_fmi2_import_get_version_req();
-  inline ::fmitcp::fmi2_import_get_version_req* release_fmi2_import_get_version_req();
+  inline const ::fmitcp_proto::fmi2_import_get_version_req& fmi2_import_get_version_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_version_req* mutable_fmi2_import_get_version_req();
+  inline ::fmitcp_proto::fmi2_import_get_version_req* release_fmi2_import_get_version_req();
   
-  // optional .fmitcp.fmi2_import_get_version_res fmi2_import_get_version_res = 57;
+  // optional .fmitcp_proto.fmi2_import_get_version_res fmi2_import_get_version_res = 57;
   inline bool has_fmi2_import_get_version_res() const;
   inline void clear_fmi2_import_get_version_res();
   static const int kFmi2ImportGetVersionResFieldNumber = 57;
-  inline const ::fmitcp::fmi2_import_get_version_res& fmi2_import_get_version_res() const;
-  inline ::fmitcp::fmi2_import_get_version_res* mutable_fmi2_import_get_version_res();
-  inline ::fmitcp::fmi2_import_get_version_res* release_fmi2_import_get_version_res();
+  inline const ::fmitcp_proto::fmi2_import_get_version_res& fmi2_import_get_version_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_version_res* mutable_fmi2_import_get_version_res();
+  inline ::fmitcp_proto::fmi2_import_get_version_res* release_fmi2_import_get_version_res();
   
-  // optional .fmitcp.fmi2_import_set_debug_logging_req fmi2_import_set_debug_logging_req = 58;
+  // optional .fmitcp_proto.fmi2_import_set_debug_logging_req fmi2_import_set_debug_logging_req = 58;
   inline bool has_fmi2_import_set_debug_logging_req() const;
   inline void clear_fmi2_import_set_debug_logging_req();
   static const int kFmi2ImportSetDebugLoggingReqFieldNumber = 58;
-  inline const ::fmitcp::fmi2_import_set_debug_logging_req& fmi2_import_set_debug_logging_req() const;
-  inline ::fmitcp::fmi2_import_set_debug_logging_req* mutable_fmi2_import_set_debug_logging_req();
-  inline ::fmitcp::fmi2_import_set_debug_logging_req* release_fmi2_import_set_debug_logging_req();
+  inline const ::fmitcp_proto::fmi2_import_set_debug_logging_req& fmi2_import_set_debug_logging_req() const;
+  inline ::fmitcp_proto::fmi2_import_set_debug_logging_req* mutable_fmi2_import_set_debug_logging_req();
+  inline ::fmitcp_proto::fmi2_import_set_debug_logging_req* release_fmi2_import_set_debug_logging_req();
   
-  // optional .fmitcp.fmi2_import_set_debug_logging_res fmi2_import_set_debug_logging_res = 59;
+  // optional .fmitcp_proto.fmi2_import_set_debug_logging_res fmi2_import_set_debug_logging_res = 59;
   inline bool has_fmi2_import_set_debug_logging_res() const;
   inline void clear_fmi2_import_set_debug_logging_res();
   static const int kFmi2ImportSetDebugLoggingResFieldNumber = 59;
-  inline const ::fmitcp::fmi2_import_set_debug_logging_res& fmi2_import_set_debug_logging_res() const;
-  inline ::fmitcp::fmi2_import_set_debug_logging_res* mutable_fmi2_import_set_debug_logging_res();
-  inline ::fmitcp::fmi2_import_set_debug_logging_res* release_fmi2_import_set_debug_logging_res();
+  inline const ::fmitcp_proto::fmi2_import_set_debug_logging_res& fmi2_import_set_debug_logging_res() const;
+  inline ::fmitcp_proto::fmi2_import_set_debug_logging_res* mutable_fmi2_import_set_debug_logging_res();
+  inline ::fmitcp_proto::fmi2_import_set_debug_logging_res* release_fmi2_import_set_debug_logging_res();
   
-  // optional .fmitcp.fmi2_import_set_real_req fmi2_import_set_real_req = 60;
+  // optional .fmitcp_proto.fmi2_import_set_real_req fmi2_import_set_real_req = 60;
   inline bool has_fmi2_import_set_real_req() const;
   inline void clear_fmi2_import_set_real_req();
   static const int kFmi2ImportSetRealReqFieldNumber = 60;
-  inline const ::fmitcp::fmi2_import_set_real_req& fmi2_import_set_real_req() const;
-  inline ::fmitcp::fmi2_import_set_real_req* mutable_fmi2_import_set_real_req();
-  inline ::fmitcp::fmi2_import_set_real_req* release_fmi2_import_set_real_req();
+  inline const ::fmitcp_proto::fmi2_import_set_real_req& fmi2_import_set_real_req() const;
+  inline ::fmitcp_proto::fmi2_import_set_real_req* mutable_fmi2_import_set_real_req();
+  inline ::fmitcp_proto::fmi2_import_set_real_req* release_fmi2_import_set_real_req();
   
-  // optional .fmitcp.fmi2_import_set_real_res fmi2_import_set_real_res = 61;
+  // optional .fmitcp_proto.fmi2_import_set_real_res fmi2_import_set_real_res = 61;
   inline bool has_fmi2_import_set_real_res() const;
   inline void clear_fmi2_import_set_real_res();
   static const int kFmi2ImportSetRealResFieldNumber = 61;
-  inline const ::fmitcp::fmi2_import_set_real_res& fmi2_import_set_real_res() const;
-  inline ::fmitcp::fmi2_import_set_real_res* mutable_fmi2_import_set_real_res();
-  inline ::fmitcp::fmi2_import_set_real_res* release_fmi2_import_set_real_res();
+  inline const ::fmitcp_proto::fmi2_import_set_real_res& fmi2_import_set_real_res() const;
+  inline ::fmitcp_proto::fmi2_import_set_real_res* mutable_fmi2_import_set_real_res();
+  inline ::fmitcp_proto::fmi2_import_set_real_res* release_fmi2_import_set_real_res();
   
-  // optional .fmitcp.fmi2_import_set_integer_req fmi2_import_set_integer_req = 62;
+  // optional .fmitcp_proto.fmi2_import_set_integer_req fmi2_import_set_integer_req = 62;
   inline bool has_fmi2_import_set_integer_req() const;
   inline void clear_fmi2_import_set_integer_req();
   static const int kFmi2ImportSetIntegerReqFieldNumber = 62;
-  inline const ::fmitcp::fmi2_import_set_integer_req& fmi2_import_set_integer_req() const;
-  inline ::fmitcp::fmi2_import_set_integer_req* mutable_fmi2_import_set_integer_req();
-  inline ::fmitcp::fmi2_import_set_integer_req* release_fmi2_import_set_integer_req();
+  inline const ::fmitcp_proto::fmi2_import_set_integer_req& fmi2_import_set_integer_req() const;
+  inline ::fmitcp_proto::fmi2_import_set_integer_req* mutable_fmi2_import_set_integer_req();
+  inline ::fmitcp_proto::fmi2_import_set_integer_req* release_fmi2_import_set_integer_req();
   
-  // optional .fmitcp.fmi2_import_set_integer_res fmi2_import_set_integer_res = 63;
+  // optional .fmitcp_proto.fmi2_import_set_integer_res fmi2_import_set_integer_res = 63;
   inline bool has_fmi2_import_set_integer_res() const;
   inline void clear_fmi2_import_set_integer_res();
   static const int kFmi2ImportSetIntegerResFieldNumber = 63;
-  inline const ::fmitcp::fmi2_import_set_integer_res& fmi2_import_set_integer_res() const;
-  inline ::fmitcp::fmi2_import_set_integer_res* mutable_fmi2_import_set_integer_res();
-  inline ::fmitcp::fmi2_import_set_integer_res* release_fmi2_import_set_integer_res();
+  inline const ::fmitcp_proto::fmi2_import_set_integer_res& fmi2_import_set_integer_res() const;
+  inline ::fmitcp_proto::fmi2_import_set_integer_res* mutable_fmi2_import_set_integer_res();
+  inline ::fmitcp_proto::fmi2_import_set_integer_res* release_fmi2_import_set_integer_res();
   
-  // optional .fmitcp.fmi2_import_set_boolean_req fmi2_import_set_boolean_req = 64;
+  // optional .fmitcp_proto.fmi2_import_set_boolean_req fmi2_import_set_boolean_req = 64;
   inline bool has_fmi2_import_set_boolean_req() const;
   inline void clear_fmi2_import_set_boolean_req();
   static const int kFmi2ImportSetBooleanReqFieldNumber = 64;
-  inline const ::fmitcp::fmi2_import_set_boolean_req& fmi2_import_set_boolean_req() const;
-  inline ::fmitcp::fmi2_import_set_boolean_req* mutable_fmi2_import_set_boolean_req();
-  inline ::fmitcp::fmi2_import_set_boolean_req* release_fmi2_import_set_boolean_req();
+  inline const ::fmitcp_proto::fmi2_import_set_boolean_req& fmi2_import_set_boolean_req() const;
+  inline ::fmitcp_proto::fmi2_import_set_boolean_req* mutable_fmi2_import_set_boolean_req();
+  inline ::fmitcp_proto::fmi2_import_set_boolean_req* release_fmi2_import_set_boolean_req();
   
-  // optional .fmitcp.fmi2_import_set_boolean_res fmi2_import_set_boolean_res = 65;
+  // optional .fmitcp_proto.fmi2_import_set_boolean_res fmi2_import_set_boolean_res = 65;
   inline bool has_fmi2_import_set_boolean_res() const;
   inline void clear_fmi2_import_set_boolean_res();
   static const int kFmi2ImportSetBooleanResFieldNumber = 65;
-  inline const ::fmitcp::fmi2_import_set_boolean_res& fmi2_import_set_boolean_res() const;
-  inline ::fmitcp::fmi2_import_set_boolean_res* mutable_fmi2_import_set_boolean_res();
-  inline ::fmitcp::fmi2_import_set_boolean_res* release_fmi2_import_set_boolean_res();
+  inline const ::fmitcp_proto::fmi2_import_set_boolean_res& fmi2_import_set_boolean_res() const;
+  inline ::fmitcp_proto::fmi2_import_set_boolean_res* mutable_fmi2_import_set_boolean_res();
+  inline ::fmitcp_proto::fmi2_import_set_boolean_res* release_fmi2_import_set_boolean_res();
   
-  // optional .fmitcp.fmi2_import_set_string_req fmi2_import_set_string_req = 66;
+  // optional .fmitcp_proto.fmi2_import_set_string_req fmi2_import_set_string_req = 66;
   inline bool has_fmi2_import_set_string_req() const;
   inline void clear_fmi2_import_set_string_req();
   static const int kFmi2ImportSetStringReqFieldNumber = 66;
-  inline const ::fmitcp::fmi2_import_set_string_req& fmi2_import_set_string_req() const;
-  inline ::fmitcp::fmi2_import_set_string_req* mutable_fmi2_import_set_string_req();
-  inline ::fmitcp::fmi2_import_set_string_req* release_fmi2_import_set_string_req();
+  inline const ::fmitcp_proto::fmi2_import_set_string_req& fmi2_import_set_string_req() const;
+  inline ::fmitcp_proto::fmi2_import_set_string_req* mutable_fmi2_import_set_string_req();
+  inline ::fmitcp_proto::fmi2_import_set_string_req* release_fmi2_import_set_string_req();
   
-  // optional .fmitcp.fmi2_import_set_string_res fmi2_import_set_string_res = 67;
+  // optional .fmitcp_proto.fmi2_import_set_string_res fmi2_import_set_string_res = 67;
   inline bool has_fmi2_import_set_string_res() const;
   inline void clear_fmi2_import_set_string_res();
   static const int kFmi2ImportSetStringResFieldNumber = 67;
-  inline const ::fmitcp::fmi2_import_set_string_res& fmi2_import_set_string_res() const;
-  inline ::fmitcp::fmi2_import_set_string_res* mutable_fmi2_import_set_string_res();
-  inline ::fmitcp::fmi2_import_set_string_res* release_fmi2_import_set_string_res();
+  inline const ::fmitcp_proto::fmi2_import_set_string_res& fmi2_import_set_string_res() const;
+  inline ::fmitcp_proto::fmi2_import_set_string_res* mutable_fmi2_import_set_string_res();
+  inline ::fmitcp_proto::fmi2_import_set_string_res* release_fmi2_import_set_string_res();
   
-  // optional .fmitcp.fmi2_import_get_real_req fmi2_import_get_real_req = 68;
+  // optional .fmitcp_proto.fmi2_import_get_real_req fmi2_import_get_real_req = 68;
   inline bool has_fmi2_import_get_real_req() const;
   inline void clear_fmi2_import_get_real_req();
   static const int kFmi2ImportGetRealReqFieldNumber = 68;
-  inline const ::fmitcp::fmi2_import_get_real_req& fmi2_import_get_real_req() const;
-  inline ::fmitcp::fmi2_import_get_real_req* mutable_fmi2_import_get_real_req();
-  inline ::fmitcp::fmi2_import_get_real_req* release_fmi2_import_get_real_req();
+  inline const ::fmitcp_proto::fmi2_import_get_real_req& fmi2_import_get_real_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_real_req* mutable_fmi2_import_get_real_req();
+  inline ::fmitcp_proto::fmi2_import_get_real_req* release_fmi2_import_get_real_req();
   
-  // optional .fmitcp.fmi2_import_get_real_res fmi2_import_get_real_res = 69;
+  // optional .fmitcp_proto.fmi2_import_get_real_res fmi2_import_get_real_res = 69;
   inline bool has_fmi2_import_get_real_res() const;
   inline void clear_fmi2_import_get_real_res();
   static const int kFmi2ImportGetRealResFieldNumber = 69;
-  inline const ::fmitcp::fmi2_import_get_real_res& fmi2_import_get_real_res() const;
-  inline ::fmitcp::fmi2_import_get_real_res* mutable_fmi2_import_get_real_res();
-  inline ::fmitcp::fmi2_import_get_real_res* release_fmi2_import_get_real_res();
+  inline const ::fmitcp_proto::fmi2_import_get_real_res& fmi2_import_get_real_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_real_res* mutable_fmi2_import_get_real_res();
+  inline ::fmitcp_proto::fmi2_import_get_real_res* release_fmi2_import_get_real_res();
   
-  // optional .fmitcp.fmi2_import_get_integer_req fmi2_import_get_integer_req = 70;
+  // optional .fmitcp_proto.fmi2_import_get_integer_req fmi2_import_get_integer_req = 70;
   inline bool has_fmi2_import_get_integer_req() const;
   inline void clear_fmi2_import_get_integer_req();
   static const int kFmi2ImportGetIntegerReqFieldNumber = 70;
-  inline const ::fmitcp::fmi2_import_get_integer_req& fmi2_import_get_integer_req() const;
-  inline ::fmitcp::fmi2_import_get_integer_req* mutable_fmi2_import_get_integer_req();
-  inline ::fmitcp::fmi2_import_get_integer_req* release_fmi2_import_get_integer_req();
+  inline const ::fmitcp_proto::fmi2_import_get_integer_req& fmi2_import_get_integer_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_integer_req* mutable_fmi2_import_get_integer_req();
+  inline ::fmitcp_proto::fmi2_import_get_integer_req* release_fmi2_import_get_integer_req();
   
-  // optional .fmitcp.fmi2_import_get_integer_res fmi2_import_get_integer_res = 71;
+  // optional .fmitcp_proto.fmi2_import_get_integer_res fmi2_import_get_integer_res = 71;
   inline bool has_fmi2_import_get_integer_res() const;
   inline void clear_fmi2_import_get_integer_res();
   static const int kFmi2ImportGetIntegerResFieldNumber = 71;
-  inline const ::fmitcp::fmi2_import_get_integer_res& fmi2_import_get_integer_res() const;
-  inline ::fmitcp::fmi2_import_get_integer_res* mutable_fmi2_import_get_integer_res();
-  inline ::fmitcp::fmi2_import_get_integer_res* release_fmi2_import_get_integer_res();
+  inline const ::fmitcp_proto::fmi2_import_get_integer_res& fmi2_import_get_integer_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_integer_res* mutable_fmi2_import_get_integer_res();
+  inline ::fmitcp_proto::fmi2_import_get_integer_res* release_fmi2_import_get_integer_res();
   
-  // optional .fmitcp.fmi2_import_get_boolean_req fmi2_import_get_boolean_req = 72;
+  // optional .fmitcp_proto.fmi2_import_get_boolean_req fmi2_import_get_boolean_req = 72;
   inline bool has_fmi2_import_get_boolean_req() const;
   inline void clear_fmi2_import_get_boolean_req();
   static const int kFmi2ImportGetBooleanReqFieldNumber = 72;
-  inline const ::fmitcp::fmi2_import_get_boolean_req& fmi2_import_get_boolean_req() const;
-  inline ::fmitcp::fmi2_import_get_boolean_req* mutable_fmi2_import_get_boolean_req();
-  inline ::fmitcp::fmi2_import_get_boolean_req* release_fmi2_import_get_boolean_req();
+  inline const ::fmitcp_proto::fmi2_import_get_boolean_req& fmi2_import_get_boolean_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_boolean_req* mutable_fmi2_import_get_boolean_req();
+  inline ::fmitcp_proto::fmi2_import_get_boolean_req* release_fmi2_import_get_boolean_req();
   
-  // optional .fmitcp.fmi2_import_get_boolean_res fmi2_import_get_boolean_res = 73;
+  // optional .fmitcp_proto.fmi2_import_get_boolean_res fmi2_import_get_boolean_res = 73;
   inline bool has_fmi2_import_get_boolean_res() const;
   inline void clear_fmi2_import_get_boolean_res();
   static const int kFmi2ImportGetBooleanResFieldNumber = 73;
-  inline const ::fmitcp::fmi2_import_get_boolean_res& fmi2_import_get_boolean_res() const;
-  inline ::fmitcp::fmi2_import_get_boolean_res* mutable_fmi2_import_get_boolean_res();
-  inline ::fmitcp::fmi2_import_get_boolean_res* release_fmi2_import_get_boolean_res();
+  inline const ::fmitcp_proto::fmi2_import_get_boolean_res& fmi2_import_get_boolean_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_boolean_res* mutable_fmi2_import_get_boolean_res();
+  inline ::fmitcp_proto::fmi2_import_get_boolean_res* release_fmi2_import_get_boolean_res();
   
-  // optional .fmitcp.fmi2_import_get_string_req fmi2_import_get_string_req = 74;
+  // optional .fmitcp_proto.fmi2_import_get_string_req fmi2_import_get_string_req = 74;
   inline bool has_fmi2_import_get_string_req() const;
   inline void clear_fmi2_import_get_string_req();
   static const int kFmi2ImportGetStringReqFieldNumber = 74;
-  inline const ::fmitcp::fmi2_import_get_string_req& fmi2_import_get_string_req() const;
-  inline ::fmitcp::fmi2_import_get_string_req* mutable_fmi2_import_get_string_req();
-  inline ::fmitcp::fmi2_import_get_string_req* release_fmi2_import_get_string_req();
+  inline const ::fmitcp_proto::fmi2_import_get_string_req& fmi2_import_get_string_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_string_req* mutable_fmi2_import_get_string_req();
+  inline ::fmitcp_proto::fmi2_import_get_string_req* release_fmi2_import_get_string_req();
   
-  // optional .fmitcp.fmi2_import_get_string_res fmi2_import_get_string_res = 75;
+  // optional .fmitcp_proto.fmi2_import_get_string_res fmi2_import_get_string_res = 75;
   inline bool has_fmi2_import_get_string_res() const;
   inline void clear_fmi2_import_get_string_res();
   static const int kFmi2ImportGetStringResFieldNumber = 75;
-  inline const ::fmitcp::fmi2_import_get_string_res& fmi2_import_get_string_res() const;
-  inline ::fmitcp::fmi2_import_get_string_res* mutable_fmi2_import_get_string_res();
-  inline ::fmitcp::fmi2_import_get_string_res* release_fmi2_import_get_string_res();
+  inline const ::fmitcp_proto::fmi2_import_get_string_res& fmi2_import_get_string_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_string_res* mutable_fmi2_import_get_string_res();
+  inline ::fmitcp_proto::fmi2_import_get_string_res* release_fmi2_import_get_string_res();
   
-  // optional .fmitcp.fmi2_import_get_fmu_state_req fmi2_import_get_fmu_state_req = 76;
+  // optional .fmitcp_proto.fmi2_import_get_fmu_state_req fmi2_import_get_fmu_state_req = 76;
   inline bool has_fmi2_import_get_fmu_state_req() const;
   inline void clear_fmi2_import_get_fmu_state_req();
   static const int kFmi2ImportGetFmuStateReqFieldNumber = 76;
-  inline const ::fmitcp::fmi2_import_get_fmu_state_req& fmi2_import_get_fmu_state_req() const;
-  inline ::fmitcp::fmi2_import_get_fmu_state_req* mutable_fmi2_import_get_fmu_state_req();
-  inline ::fmitcp::fmi2_import_get_fmu_state_req* release_fmi2_import_get_fmu_state_req();
+  inline const ::fmitcp_proto::fmi2_import_get_fmu_state_req& fmi2_import_get_fmu_state_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_fmu_state_req* mutable_fmi2_import_get_fmu_state_req();
+  inline ::fmitcp_proto::fmi2_import_get_fmu_state_req* release_fmi2_import_get_fmu_state_req();
   
-  // optional .fmitcp.fmi2_import_get_fmu_state_res fmi2_import_get_fmu_state_res = 77;
+  // optional .fmitcp_proto.fmi2_import_get_fmu_state_res fmi2_import_get_fmu_state_res = 77;
   inline bool has_fmi2_import_get_fmu_state_res() const;
   inline void clear_fmi2_import_get_fmu_state_res();
   static const int kFmi2ImportGetFmuStateResFieldNumber = 77;
-  inline const ::fmitcp::fmi2_import_get_fmu_state_res& fmi2_import_get_fmu_state_res() const;
-  inline ::fmitcp::fmi2_import_get_fmu_state_res* mutable_fmi2_import_get_fmu_state_res();
-  inline ::fmitcp::fmi2_import_get_fmu_state_res* release_fmi2_import_get_fmu_state_res();
+  inline const ::fmitcp_proto::fmi2_import_get_fmu_state_res& fmi2_import_get_fmu_state_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_fmu_state_res* mutable_fmi2_import_get_fmu_state_res();
+  inline ::fmitcp_proto::fmi2_import_get_fmu_state_res* release_fmi2_import_get_fmu_state_res();
   
-  // optional .fmitcp.fmi2_import_set_fmu_state_req fmi2_import_set_fmu_state_req = 78;
+  // optional .fmitcp_proto.fmi2_import_set_fmu_state_req fmi2_import_set_fmu_state_req = 78;
   inline bool has_fmi2_import_set_fmu_state_req() const;
   inline void clear_fmi2_import_set_fmu_state_req();
   static const int kFmi2ImportSetFmuStateReqFieldNumber = 78;
-  inline const ::fmitcp::fmi2_import_set_fmu_state_req& fmi2_import_set_fmu_state_req() const;
-  inline ::fmitcp::fmi2_import_set_fmu_state_req* mutable_fmi2_import_set_fmu_state_req();
-  inline ::fmitcp::fmi2_import_set_fmu_state_req* release_fmi2_import_set_fmu_state_req();
+  inline const ::fmitcp_proto::fmi2_import_set_fmu_state_req& fmi2_import_set_fmu_state_req() const;
+  inline ::fmitcp_proto::fmi2_import_set_fmu_state_req* mutable_fmi2_import_set_fmu_state_req();
+  inline ::fmitcp_proto::fmi2_import_set_fmu_state_req* release_fmi2_import_set_fmu_state_req();
   
-  // optional .fmitcp.fmi2_import_set_fmu_state_res fmi2_import_set_fmu_state_res = 79;
+  // optional .fmitcp_proto.fmi2_import_set_fmu_state_res fmi2_import_set_fmu_state_res = 79;
   inline bool has_fmi2_import_set_fmu_state_res() const;
   inline void clear_fmi2_import_set_fmu_state_res();
   static const int kFmi2ImportSetFmuStateResFieldNumber = 79;
-  inline const ::fmitcp::fmi2_import_set_fmu_state_res& fmi2_import_set_fmu_state_res() const;
-  inline ::fmitcp::fmi2_import_set_fmu_state_res* mutable_fmi2_import_set_fmu_state_res();
-  inline ::fmitcp::fmi2_import_set_fmu_state_res* release_fmi2_import_set_fmu_state_res();
+  inline const ::fmitcp_proto::fmi2_import_set_fmu_state_res& fmi2_import_set_fmu_state_res() const;
+  inline ::fmitcp_proto::fmi2_import_set_fmu_state_res* mutable_fmi2_import_set_fmu_state_res();
+  inline ::fmitcp_proto::fmi2_import_set_fmu_state_res* release_fmi2_import_set_fmu_state_res();
   
-  // optional .fmitcp.fmi2_import_free_fmu_state_req fmi2_import_free_fmu_state_req = 80;
+  // optional .fmitcp_proto.fmi2_import_free_fmu_state_req fmi2_import_free_fmu_state_req = 80;
   inline bool has_fmi2_import_free_fmu_state_req() const;
   inline void clear_fmi2_import_free_fmu_state_req();
   static const int kFmi2ImportFreeFmuStateReqFieldNumber = 80;
-  inline const ::fmitcp::fmi2_import_free_fmu_state_req& fmi2_import_free_fmu_state_req() const;
-  inline ::fmitcp::fmi2_import_free_fmu_state_req* mutable_fmi2_import_free_fmu_state_req();
-  inline ::fmitcp::fmi2_import_free_fmu_state_req* release_fmi2_import_free_fmu_state_req();
+  inline const ::fmitcp_proto::fmi2_import_free_fmu_state_req& fmi2_import_free_fmu_state_req() const;
+  inline ::fmitcp_proto::fmi2_import_free_fmu_state_req* mutable_fmi2_import_free_fmu_state_req();
+  inline ::fmitcp_proto::fmi2_import_free_fmu_state_req* release_fmi2_import_free_fmu_state_req();
   
-  // optional .fmitcp.fmi2_import_free_fmu_state_res fmi2_import_free_fmu_state_res = 81;
+  // optional .fmitcp_proto.fmi2_import_free_fmu_state_res fmi2_import_free_fmu_state_res = 81;
   inline bool has_fmi2_import_free_fmu_state_res() const;
   inline void clear_fmi2_import_free_fmu_state_res();
   static const int kFmi2ImportFreeFmuStateResFieldNumber = 81;
-  inline const ::fmitcp::fmi2_import_free_fmu_state_res& fmi2_import_free_fmu_state_res() const;
-  inline ::fmitcp::fmi2_import_free_fmu_state_res* mutable_fmi2_import_free_fmu_state_res();
-  inline ::fmitcp::fmi2_import_free_fmu_state_res* release_fmi2_import_free_fmu_state_res();
+  inline const ::fmitcp_proto::fmi2_import_free_fmu_state_res& fmi2_import_free_fmu_state_res() const;
+  inline ::fmitcp_proto::fmi2_import_free_fmu_state_res* mutable_fmi2_import_free_fmu_state_res();
+  inline ::fmitcp_proto::fmi2_import_free_fmu_state_res* release_fmi2_import_free_fmu_state_res();
   
-  // optional .fmitcp.fmi2_import_get_directional_derivative_req fmi2_import_get_directional_derivative_req = 88;
+  // optional .fmitcp_proto.fmi2_import_get_directional_derivative_req fmi2_import_get_directional_derivative_req = 88;
   inline bool has_fmi2_import_get_directional_derivative_req() const;
   inline void clear_fmi2_import_get_directional_derivative_req();
   static const int kFmi2ImportGetDirectionalDerivativeReqFieldNumber = 88;
-  inline const ::fmitcp::fmi2_import_get_directional_derivative_req& fmi2_import_get_directional_derivative_req() const;
-  inline ::fmitcp::fmi2_import_get_directional_derivative_req* mutable_fmi2_import_get_directional_derivative_req();
-  inline ::fmitcp::fmi2_import_get_directional_derivative_req* release_fmi2_import_get_directional_derivative_req();
+  inline const ::fmitcp_proto::fmi2_import_get_directional_derivative_req& fmi2_import_get_directional_derivative_req() const;
+  inline ::fmitcp_proto::fmi2_import_get_directional_derivative_req* mutable_fmi2_import_get_directional_derivative_req();
+  inline ::fmitcp_proto::fmi2_import_get_directional_derivative_req* release_fmi2_import_get_directional_derivative_req();
   
-  // optional .fmitcp.fmi2_import_get_directional_derivative_res fmi2_import_get_directional_derivative_res = 89;
+  // optional .fmitcp_proto.fmi2_import_get_directional_derivative_res fmi2_import_get_directional_derivative_res = 89;
   inline bool has_fmi2_import_get_directional_derivative_res() const;
   inline void clear_fmi2_import_get_directional_derivative_res();
   static const int kFmi2ImportGetDirectionalDerivativeResFieldNumber = 89;
-  inline const ::fmitcp::fmi2_import_get_directional_derivative_res& fmi2_import_get_directional_derivative_res() const;
-  inline ::fmitcp::fmi2_import_get_directional_derivative_res* mutable_fmi2_import_get_directional_derivative_res();
-  inline ::fmitcp::fmi2_import_get_directional_derivative_res* release_fmi2_import_get_directional_derivative_res();
+  inline const ::fmitcp_proto::fmi2_import_get_directional_derivative_res& fmi2_import_get_directional_derivative_res() const;
+  inline ::fmitcp_proto::fmi2_import_get_directional_derivative_res* mutable_fmi2_import_get_directional_derivative_res();
+  inline ::fmitcp_proto::fmi2_import_get_directional_derivative_res* release_fmi2_import_get_directional_derivative_res();
   
-  // optional .fmitcp.get_xml_req get_xml_req = 90;
+  // optional .fmitcp_proto.get_xml_req get_xml_req = 90;
   inline bool has_get_xml_req() const;
   inline void clear_get_xml_req();
   static const int kGetXmlReqFieldNumber = 90;
-  inline const ::fmitcp::get_xml_req& get_xml_req() const;
-  inline ::fmitcp::get_xml_req* mutable_get_xml_req();
-  inline ::fmitcp::get_xml_req* release_get_xml_req();
+  inline const ::fmitcp_proto::get_xml_req& get_xml_req() const;
+  inline ::fmitcp_proto::get_xml_req* mutable_get_xml_req();
+  inline ::fmitcp_proto::get_xml_req* release_get_xml_req();
   
-  // optional .fmitcp.get_xml_res get_xml_res = 91;
+  // optional .fmitcp_proto.get_xml_res get_xml_res = 91;
   inline bool has_get_xml_res() const;
   inline void clear_get_xml_res();
   static const int kGetXmlResFieldNumber = 91;
-  inline const ::fmitcp::get_xml_res& get_xml_res() const;
-  inline ::fmitcp::get_xml_res* mutable_get_xml_res();
-  inline ::fmitcp::get_xml_res* release_get_xml_res();
+  inline const ::fmitcp_proto::get_xml_res& get_xml_res() const;
+  inline ::fmitcp_proto::get_xml_res* mutable_get_xml_res();
+  inline ::fmitcp_proto::get_xml_res* release_get_xml_res();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmitcp_message)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmitcp_message)
  private:
   inline void set_has_type();
   inline void clear_has_type();
@@ -1314,90 +1314,90 @@ class fmitcp_message : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::fmitcp::fmi2_import_instantiate_slave_req* fmi2_import_instantiate_slave_req_;
-  ::fmitcp::fmi2_import_instantiate_slave_res* fmi2_import_instantiate_slave_res_;
-  ::fmitcp::fmi2_import_initialize_slave_req* fmi2_import_initialize_slave_req_;
-  ::fmitcp::fmi2_import_initialize_slave_res* fmi2_import_initialize_slave_res_;
-  ::fmitcp::fmi2_import_terminate_slave_req* fmi2_import_terminate_slave_req_;
-  ::fmitcp::fmi2_import_terminate_slave_res* fmi2_import_terminate_slave_res_;
-  ::fmitcp::fmi2_import_reset_slave_req* fmi2_import_reset_slave_req_;
-  ::fmitcp::fmi2_import_reset_slave_res* fmi2_import_reset_slave_res_;
-  ::fmitcp::fmi2_import_free_slave_instance_req* fmi2_import_free_slave_instance_req_;
-  ::fmitcp::fmi2_import_free_slave_instance_res* fmi2_import_free_slave_instance_res_;
-  ::fmitcp::fmi2_import_set_real_input_derivatives_req* fmi2_import_set_real_input_derivatives_req_;
-  ::fmitcp::fmi2_import_set_real_input_derivatives_res* fmi2_import_set_real_input_derivatives_res_;
-  ::fmitcp::fmi2_import_get_real_output_derivatives_req* fmi2_import_get_real_output_derivatives_req_;
-  ::fmitcp::fmi2_import_get_real_output_derivatives_res* fmi2_import_get_real_output_derivatives_res_;
-  ::fmitcp::fmi2_import_cancel_step_req* fmi2_import_cancel_step_req_;
-  ::fmitcp::fmi2_import_cancel_step_res* fmi2_import_cancel_step_res_;
-  ::fmitcp::fmi2_import_do_step_req* fmi2_import_do_step_req_;
-  ::fmitcp::fmi2_import_do_step_res* fmi2_import_do_step_res_;
-  ::fmitcp::fmi2_import_get_status_req* fmi2_import_get_status_req_;
-  ::fmitcp::fmi2_import_get_status_res* fmi2_import_get_status_res_;
-  ::fmitcp::fmi2_import_get_real_status_req* fmi2_import_get_real_status_req_;
-  ::fmitcp::fmi2_import_get_real_status_res* fmi2_import_get_real_status_res_;
-  ::fmitcp::fmi2_import_get_integer_status_req* fmi2_import_get_integer_status_req_;
-  ::fmitcp::fmi2_import_get_integer_status_res* fmi2_import_get_integer_status_res_;
-  ::fmitcp::fmi2_import_get_boolean_status_req* fmi2_import_get_boolean_status_req_;
-  ::fmitcp::fmi2_import_get_boolean_status_res* fmi2_import_get_boolean_status_res_;
-  ::fmitcp::fmi2_import_get_string_status_req* fmi2_import_get_string_status_req_;
-  ::fmitcp::fmi2_import_get_string_status_res* fmi2_import_get_string_status_res_;
-  ::fmitcp::fmi2_import_instantiate_model_req* fmi2_import_instantiate_model_req_;
-  ::fmitcp::fmi2_import_instantiate_model_res* fmi2_import_instantiate_model_res_;
-  ::fmitcp::fmi2_import_free_model_instance_req* fmi2_import_free_model_instance_req_;
-  ::fmitcp::fmi2_import_free_model_instance_res* fmi2_import_free_model_instance_res_;
-  ::fmitcp::fmi2_import_set_time_req* fmi2_import_set_time_req_;
-  ::fmitcp::fmi2_import_set_time_res* fmi2_import_set_time_res_;
-  ::fmitcp::fmi2_import_set_continuous_states_req* fmi2_import_set_continuous_states_req_;
-  ::fmitcp::fmi2_import_set_continuous_states_res* fmi2_import_set_continuous_states_res_;
-  ::fmitcp::fmi2_import_completed_integrator_step_req* fmi2_import_completed_integrator_step_req_;
-  ::fmitcp::fmi2_import_completed_integrator_step_res* fmi2_import_completed_integrator_step_res_;
-  ::fmitcp::fmi2_import_initialize_model_req* fmi2_import_initialize_model_req_;
-  ::fmitcp::fmi2_import_initialize_model_res* fmi2_import_initialize_model_res_;
-  ::fmitcp::fmi2_import_get_derivatives_req* fmi2_import_get_derivatives_req_;
-  ::fmitcp::fmi2_import_get_derivatives_res* fmi2_import_get_derivatives_res_;
-  ::fmitcp::fmi2_import_get_event_indicators_req* fmi2_import_get_event_indicators_req_;
-  ::fmitcp::fmi2_import_get_event_indicators_res* fmi2_import_get_event_indicators_res_;
-  ::fmitcp::fmi2_import_eventUpdate_req* fmi2_import_eventupdate_req_;
-  ::fmitcp::fmi2_import_eventUpdate_res* fmi2_import_eventupdate_res_;
-  ::fmitcp::fmi2_import_completed_event_iteration_req* fmi2_import_completed_event_iteration_req_;
-  ::fmitcp::fmi2_import_completed_event_iteration_res* fmi2_import_completed_event_iteration_res_;
-  ::fmitcp::fmi2_import_get_continuous_states_req* fmi2_import_get_continuous_states_req_;
-  ::fmitcp::fmi2_import_get_continuous_states_res* fmi2_import_get_continuous_states_res_;
-  ::fmitcp::fmi2_import_get_nominal_continuous_states_req* fmi2_import_get_nominal_continuous_states_req_;
-  ::fmitcp::fmi2_import_get_nominal_continuous_states_res* fmi2_import_get_nominal_continuous_states_res_;
-  ::fmitcp::fmi2_import_terminate_req* fmi2_import_terminate_req_;
-  ::fmitcp::fmi2_import_terminate_res* fmi2_import_terminate_res_;
-  ::fmitcp::fmi2_import_get_version_req* fmi2_import_get_version_req_;
-  ::fmitcp::fmi2_import_get_version_res* fmi2_import_get_version_res_;
-  ::fmitcp::fmi2_import_set_debug_logging_req* fmi2_import_set_debug_logging_req_;
-  ::fmitcp::fmi2_import_set_debug_logging_res* fmi2_import_set_debug_logging_res_;
-  ::fmitcp::fmi2_import_set_real_req* fmi2_import_set_real_req_;
-  ::fmitcp::fmi2_import_set_real_res* fmi2_import_set_real_res_;
-  ::fmitcp::fmi2_import_set_integer_req* fmi2_import_set_integer_req_;
-  ::fmitcp::fmi2_import_set_integer_res* fmi2_import_set_integer_res_;
-  ::fmitcp::fmi2_import_set_boolean_req* fmi2_import_set_boolean_req_;
-  ::fmitcp::fmi2_import_set_boolean_res* fmi2_import_set_boolean_res_;
-  ::fmitcp::fmi2_import_set_string_req* fmi2_import_set_string_req_;
-  ::fmitcp::fmi2_import_set_string_res* fmi2_import_set_string_res_;
-  ::fmitcp::fmi2_import_get_real_req* fmi2_import_get_real_req_;
-  ::fmitcp::fmi2_import_get_real_res* fmi2_import_get_real_res_;
-  ::fmitcp::fmi2_import_get_integer_req* fmi2_import_get_integer_req_;
-  ::fmitcp::fmi2_import_get_integer_res* fmi2_import_get_integer_res_;
-  ::fmitcp::fmi2_import_get_boolean_req* fmi2_import_get_boolean_req_;
-  ::fmitcp::fmi2_import_get_boolean_res* fmi2_import_get_boolean_res_;
-  ::fmitcp::fmi2_import_get_string_req* fmi2_import_get_string_req_;
-  ::fmitcp::fmi2_import_get_string_res* fmi2_import_get_string_res_;
-  ::fmitcp::fmi2_import_get_fmu_state_req* fmi2_import_get_fmu_state_req_;
-  ::fmitcp::fmi2_import_get_fmu_state_res* fmi2_import_get_fmu_state_res_;
-  ::fmitcp::fmi2_import_set_fmu_state_req* fmi2_import_set_fmu_state_req_;
-  ::fmitcp::fmi2_import_set_fmu_state_res* fmi2_import_set_fmu_state_res_;
-  ::fmitcp::fmi2_import_free_fmu_state_req* fmi2_import_free_fmu_state_req_;
-  ::fmitcp::fmi2_import_free_fmu_state_res* fmi2_import_free_fmu_state_res_;
-  ::fmitcp::fmi2_import_get_directional_derivative_req* fmi2_import_get_directional_derivative_req_;
-  ::fmitcp::fmi2_import_get_directional_derivative_res* fmi2_import_get_directional_derivative_res_;
-  ::fmitcp::get_xml_req* get_xml_req_;
-  ::fmitcp::get_xml_res* get_xml_res_;
+  ::fmitcp_proto::fmi2_import_instantiate_slave_req* fmi2_import_instantiate_slave_req_;
+  ::fmitcp_proto::fmi2_import_instantiate_slave_res* fmi2_import_instantiate_slave_res_;
+  ::fmitcp_proto::fmi2_import_initialize_slave_req* fmi2_import_initialize_slave_req_;
+  ::fmitcp_proto::fmi2_import_initialize_slave_res* fmi2_import_initialize_slave_res_;
+  ::fmitcp_proto::fmi2_import_terminate_slave_req* fmi2_import_terminate_slave_req_;
+  ::fmitcp_proto::fmi2_import_terminate_slave_res* fmi2_import_terminate_slave_res_;
+  ::fmitcp_proto::fmi2_import_reset_slave_req* fmi2_import_reset_slave_req_;
+  ::fmitcp_proto::fmi2_import_reset_slave_res* fmi2_import_reset_slave_res_;
+  ::fmitcp_proto::fmi2_import_free_slave_instance_req* fmi2_import_free_slave_instance_req_;
+  ::fmitcp_proto::fmi2_import_free_slave_instance_res* fmi2_import_free_slave_instance_res_;
+  ::fmitcp_proto::fmi2_import_set_real_input_derivatives_req* fmi2_import_set_real_input_derivatives_req_;
+  ::fmitcp_proto::fmi2_import_set_real_input_derivatives_res* fmi2_import_set_real_input_derivatives_res_;
+  ::fmitcp_proto::fmi2_import_get_real_output_derivatives_req* fmi2_import_get_real_output_derivatives_req_;
+  ::fmitcp_proto::fmi2_import_get_real_output_derivatives_res* fmi2_import_get_real_output_derivatives_res_;
+  ::fmitcp_proto::fmi2_import_cancel_step_req* fmi2_import_cancel_step_req_;
+  ::fmitcp_proto::fmi2_import_cancel_step_res* fmi2_import_cancel_step_res_;
+  ::fmitcp_proto::fmi2_import_do_step_req* fmi2_import_do_step_req_;
+  ::fmitcp_proto::fmi2_import_do_step_res* fmi2_import_do_step_res_;
+  ::fmitcp_proto::fmi2_import_get_status_req* fmi2_import_get_status_req_;
+  ::fmitcp_proto::fmi2_import_get_status_res* fmi2_import_get_status_res_;
+  ::fmitcp_proto::fmi2_import_get_real_status_req* fmi2_import_get_real_status_req_;
+  ::fmitcp_proto::fmi2_import_get_real_status_res* fmi2_import_get_real_status_res_;
+  ::fmitcp_proto::fmi2_import_get_integer_status_req* fmi2_import_get_integer_status_req_;
+  ::fmitcp_proto::fmi2_import_get_integer_status_res* fmi2_import_get_integer_status_res_;
+  ::fmitcp_proto::fmi2_import_get_boolean_status_req* fmi2_import_get_boolean_status_req_;
+  ::fmitcp_proto::fmi2_import_get_boolean_status_res* fmi2_import_get_boolean_status_res_;
+  ::fmitcp_proto::fmi2_import_get_string_status_req* fmi2_import_get_string_status_req_;
+  ::fmitcp_proto::fmi2_import_get_string_status_res* fmi2_import_get_string_status_res_;
+  ::fmitcp_proto::fmi2_import_instantiate_model_req* fmi2_import_instantiate_model_req_;
+  ::fmitcp_proto::fmi2_import_instantiate_model_res* fmi2_import_instantiate_model_res_;
+  ::fmitcp_proto::fmi2_import_free_model_instance_req* fmi2_import_free_model_instance_req_;
+  ::fmitcp_proto::fmi2_import_free_model_instance_res* fmi2_import_free_model_instance_res_;
+  ::fmitcp_proto::fmi2_import_set_time_req* fmi2_import_set_time_req_;
+  ::fmitcp_proto::fmi2_import_set_time_res* fmi2_import_set_time_res_;
+  ::fmitcp_proto::fmi2_import_set_continuous_states_req* fmi2_import_set_continuous_states_req_;
+  ::fmitcp_proto::fmi2_import_set_continuous_states_res* fmi2_import_set_continuous_states_res_;
+  ::fmitcp_proto::fmi2_import_completed_integrator_step_req* fmi2_import_completed_integrator_step_req_;
+  ::fmitcp_proto::fmi2_import_completed_integrator_step_res* fmi2_import_completed_integrator_step_res_;
+  ::fmitcp_proto::fmi2_import_initialize_model_req* fmi2_import_initialize_model_req_;
+  ::fmitcp_proto::fmi2_import_initialize_model_res* fmi2_import_initialize_model_res_;
+  ::fmitcp_proto::fmi2_import_get_derivatives_req* fmi2_import_get_derivatives_req_;
+  ::fmitcp_proto::fmi2_import_get_derivatives_res* fmi2_import_get_derivatives_res_;
+  ::fmitcp_proto::fmi2_import_get_event_indicators_req* fmi2_import_get_event_indicators_req_;
+  ::fmitcp_proto::fmi2_import_get_event_indicators_res* fmi2_import_get_event_indicators_res_;
+  ::fmitcp_proto::fmi2_import_eventUpdate_req* fmi2_import_eventupdate_req_;
+  ::fmitcp_proto::fmi2_import_eventUpdate_res* fmi2_import_eventupdate_res_;
+  ::fmitcp_proto::fmi2_import_completed_event_iteration_req* fmi2_import_completed_event_iteration_req_;
+  ::fmitcp_proto::fmi2_import_completed_event_iteration_res* fmi2_import_completed_event_iteration_res_;
+  ::fmitcp_proto::fmi2_import_get_continuous_states_req* fmi2_import_get_continuous_states_req_;
+  ::fmitcp_proto::fmi2_import_get_continuous_states_res* fmi2_import_get_continuous_states_res_;
+  ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_req* fmi2_import_get_nominal_continuous_states_req_;
+  ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_res* fmi2_import_get_nominal_continuous_states_res_;
+  ::fmitcp_proto::fmi2_import_terminate_req* fmi2_import_terminate_req_;
+  ::fmitcp_proto::fmi2_import_terminate_res* fmi2_import_terminate_res_;
+  ::fmitcp_proto::fmi2_import_get_version_req* fmi2_import_get_version_req_;
+  ::fmitcp_proto::fmi2_import_get_version_res* fmi2_import_get_version_res_;
+  ::fmitcp_proto::fmi2_import_set_debug_logging_req* fmi2_import_set_debug_logging_req_;
+  ::fmitcp_proto::fmi2_import_set_debug_logging_res* fmi2_import_set_debug_logging_res_;
+  ::fmitcp_proto::fmi2_import_set_real_req* fmi2_import_set_real_req_;
+  ::fmitcp_proto::fmi2_import_set_real_res* fmi2_import_set_real_res_;
+  ::fmitcp_proto::fmi2_import_set_integer_req* fmi2_import_set_integer_req_;
+  ::fmitcp_proto::fmi2_import_set_integer_res* fmi2_import_set_integer_res_;
+  ::fmitcp_proto::fmi2_import_set_boolean_req* fmi2_import_set_boolean_req_;
+  ::fmitcp_proto::fmi2_import_set_boolean_res* fmi2_import_set_boolean_res_;
+  ::fmitcp_proto::fmi2_import_set_string_req* fmi2_import_set_string_req_;
+  ::fmitcp_proto::fmi2_import_set_string_res* fmi2_import_set_string_res_;
+  ::fmitcp_proto::fmi2_import_get_real_req* fmi2_import_get_real_req_;
+  ::fmitcp_proto::fmi2_import_get_real_res* fmi2_import_get_real_res_;
+  ::fmitcp_proto::fmi2_import_get_integer_req* fmi2_import_get_integer_req_;
+  ::fmitcp_proto::fmi2_import_get_integer_res* fmi2_import_get_integer_res_;
+  ::fmitcp_proto::fmi2_import_get_boolean_req* fmi2_import_get_boolean_req_;
+  ::fmitcp_proto::fmi2_import_get_boolean_res* fmi2_import_get_boolean_res_;
+  ::fmitcp_proto::fmi2_import_get_string_req* fmi2_import_get_string_req_;
+  ::fmitcp_proto::fmi2_import_get_string_res* fmi2_import_get_string_res_;
+  ::fmitcp_proto::fmi2_import_get_fmu_state_req* fmi2_import_get_fmu_state_req_;
+  ::fmitcp_proto::fmi2_import_get_fmu_state_res* fmi2_import_get_fmu_state_res_;
+  ::fmitcp_proto::fmi2_import_set_fmu_state_req* fmi2_import_set_fmu_state_req_;
+  ::fmitcp_proto::fmi2_import_set_fmu_state_res* fmi2_import_set_fmu_state_res_;
+  ::fmitcp_proto::fmi2_import_free_fmu_state_req* fmi2_import_free_fmu_state_req_;
+  ::fmitcp_proto::fmi2_import_free_fmu_state_res* fmi2_import_free_fmu_state_res_;
+  ::fmitcp_proto::fmi2_import_get_directional_derivative_req* fmi2_import_get_directional_derivative_req_;
+  ::fmitcp_proto::fmi2_import_get_directional_derivative_res* fmi2_import_get_directional_derivative_res_;
+  ::fmitcp_proto::get_xml_req* get_xml_req_;
+  ::fmitcp_proto::get_xml_res* get_xml_res_;
   int type_;
   
   mutable int _cached_size_;
@@ -1508,7 +1508,7 @@ class fmi2_event_info_t : public ::google::protobuf::Message {
   inline double nexteventtime() const;
   inline void set_nexteventtime(double value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_event_info_t)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_event_info_t)
  private:
   inline void set_has_iterationconverged();
   inline void clear_has_iterationconverged();
@@ -1641,7 +1641,7 @@ class fmi2_import_instantiate_slave_req : public ::google::protobuf::Message {
   inline bool visible() const;
   inline void set_visible(bool value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_instantiate_slave_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_instantiate_slave_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -1742,14 +1742,14 @@ class fmi2_import_instantiate_slave_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // required .fmitcp.jm_status_enu_t status = 3;
+  // required .fmitcp_proto.jm_status_enu_t status = 3;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 3;
-  inline fmitcp::jm_status_enu_t status() const;
-  inline void set_status(fmitcp::jm_status_enu_t value);
+  inline fmitcp_proto::jm_status_enu_t status() const;
+  inline void set_status(fmitcp_proto::jm_status_enu_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_instantiate_slave_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_instantiate_slave_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -1865,7 +1865,7 @@ class fmi2_import_initialize_slave_req : public ::google::protobuf::Message {
   inline double tstop() const;
   inline void set_tstop(double value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_initialize_slave_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_initialize_slave_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -1959,14 +1959,14 @@ class fmi2_import_initialize_slave_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_initialize_slave_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_initialize_slave_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -2058,7 +2058,7 @@ class fmi2_import_terminate_slave_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_terminate_slave_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_terminate_slave_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -2143,7 +2143,7 @@ class fmi2_import_terminate_slave_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_terminate_slave_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_terminate_slave_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -2232,7 +2232,7 @@ class fmi2_import_reset_slave_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_reset_slave_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_reset_slave_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -2317,14 +2317,14 @@ class fmi2_import_reset_slave_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_reset_slave_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_reset_slave_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -2416,7 +2416,7 @@ class fmi2_import_free_slave_instance_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_free_slave_instance_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_free_slave_instance_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -2501,7 +2501,7 @@ class fmi2_import_free_slave_instance_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_free_slave_instance_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_free_slave_instance_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -2614,7 +2614,7 @@ class fmi2_import_set_real_input_derivatives_req : public ::google::protobuf::Me
   inline ::google::protobuf::RepeatedField< double >*
       mutable_values();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_real_input_derivatives_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_real_input_derivatives_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -2701,14 +2701,14 @@ class fmi2_import_set_real_input_derivatives_res : public ::google::protobuf::Me
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_real_input_derivatives_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_real_input_derivatives_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -2824,7 +2824,7 @@ class fmi2_import_get_real_output_derivatives_req : public ::google::protobuf::M
   inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_orders();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_real_output_derivatives_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_real_output_derivatives_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -2911,12 +2911,12 @@ class fmi2_import_get_real_output_derivatives_res : public ::google::protobuf::M
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
   // repeated double values = 3;
   inline int values_size() const;
@@ -2930,7 +2930,7 @@ class fmi2_import_get_real_output_derivatives_res : public ::google::protobuf::M
   inline ::google::protobuf::RepeatedField< double >*
       mutable_values();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_real_output_derivatives_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_real_output_derivatives_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -3023,7 +3023,7 @@ class fmi2_import_cancel_step_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_cancel_step_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_cancel_step_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -3108,14 +3108,14 @@ class fmi2_import_cancel_step_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_cancel_step_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_cancel_step_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -3228,7 +3228,7 @@ class fmi2_import_do_step_req : public ::google::protobuf::Message {
   inline bool newstep() const;
   inline void set_newstep(bool value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_do_step_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_do_step_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -3322,14 +3322,14 @@ class fmi2_import_do_step_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_do_step_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_do_step_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -3421,14 +3421,14 @@ class fmi2_import_get_status_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_kind_t status = 3;
+  // required .fmitcp_proto.fmi2_status_kind_t status = 3;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 3;
-  inline fmitcp::fmi2_status_kind_t status() const;
-  inline void set_status(fmitcp::fmi2_status_kind_t value);
+  inline fmitcp_proto::fmi2_status_kind_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_kind_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_status_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_status_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -3523,14 +3523,14 @@ class fmi2_import_get_status_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t value = 3;
+  // required .fmitcp_proto.fmi2_status_t value = 3;
   inline bool has_value() const;
   inline void clear_value();
   static const int kValueFieldNumber = 3;
-  inline fmitcp::fmi2_status_t value() const;
-  inline void set_value(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t value() const;
+  inline void set_value(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_status_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_status_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -3625,14 +3625,14 @@ class fmi2_import_get_real_status_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_kind_t kind = 3;
+  // required .fmitcp_proto.fmi2_status_kind_t kind = 3;
   inline bool has_kind() const;
   inline void clear_kind();
   static const int kKindFieldNumber = 3;
-  inline fmitcp::fmi2_status_kind_t kind() const;
-  inline void set_kind(fmitcp::fmi2_status_kind_t value);
+  inline fmitcp_proto::fmi2_status_kind_t kind() const;
+  inline void set_kind(fmitcp_proto::fmi2_status_kind_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_real_status_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_real_status_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -3727,7 +3727,7 @@ class fmi2_import_get_real_status_res : public ::google::protobuf::Message {
   inline double value() const;
   inline void set_value(double value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_real_status_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_real_status_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -3819,14 +3819,14 @@ class fmi2_import_get_integer_status_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_kind_t kind = 3;
+  // required .fmitcp_proto.fmi2_status_kind_t kind = 3;
   inline bool has_kind() const;
   inline void clear_kind();
   static const int kKindFieldNumber = 3;
-  inline fmitcp::fmi2_status_kind_t kind() const;
-  inline void set_kind(fmitcp::fmi2_status_kind_t value);
+  inline fmitcp_proto::fmi2_status_kind_t kind() const;
+  inline void set_kind(fmitcp_proto::fmi2_status_kind_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_integer_status_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_integer_status_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -3921,7 +3921,7 @@ class fmi2_import_get_integer_status_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 value() const;
   inline void set_value(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_integer_status_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_integer_status_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -4013,14 +4013,14 @@ class fmi2_import_get_boolean_status_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_kind_t kind = 3;
+  // required .fmitcp_proto.fmi2_status_kind_t kind = 3;
   inline bool has_kind() const;
   inline void clear_kind();
   static const int kKindFieldNumber = 3;
-  inline fmitcp::fmi2_status_kind_t kind() const;
-  inline void set_kind(fmitcp::fmi2_status_kind_t value);
+  inline fmitcp_proto::fmi2_status_kind_t kind() const;
+  inline void set_kind(fmitcp_proto::fmi2_status_kind_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_boolean_status_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_boolean_status_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -4115,7 +4115,7 @@ class fmi2_import_get_boolean_status_res : public ::google::protobuf::Message {
   inline bool value() const;
   inline void set_value(bool value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_boolean_status_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_boolean_status_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -4207,14 +4207,14 @@ class fmi2_import_get_string_status_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_kind_t kind = 3;
+  // required .fmitcp_proto.fmi2_status_kind_t kind = 3;
   inline bool has_kind() const;
   inline void clear_kind();
   static const int kKindFieldNumber = 3;
-  inline fmitcp::fmi2_status_kind_t kind() const;
-  inline void set_kind(fmitcp::fmi2_status_kind_t value);
+  inline fmitcp_proto::fmi2_status_kind_t kind() const;
+  inline void set_kind(fmitcp_proto::fmi2_status_kind_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_string_status_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_string_status_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -4313,7 +4313,7 @@ class fmi2_import_get_string_status_res : public ::google::protobuf::Message {
   inline ::std::string* mutable_value();
   inline ::std::string* release_value();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_string_status_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_string_status_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -4427,7 +4427,7 @@ class fmi2_import_instantiate_model_req : public ::google::protobuf::Message {
   inline ::std::string* mutable_resourcelocation();
   inline ::std::string* release_resourcelocation();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_instantiate_model_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_instantiate_model_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -4518,14 +4518,14 @@ class fmi2_import_instantiate_model_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.jm_status_enu_t status = 2;
+  // required .fmitcp_proto.jm_status_enu_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::jm_status_enu_t status() const;
-  inline void set_status(fmitcp::jm_status_enu_t value);
+  inline fmitcp_proto::jm_status_enu_t status() const;
+  inline void set_status(fmitcp_proto::jm_status_enu_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_instantiate_model_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_instantiate_model_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -4617,7 +4617,7 @@ class fmi2_import_free_model_instance_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_free_model_instance_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_free_model_instance_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -4702,7 +4702,7 @@ class fmi2_import_free_model_instance_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_free_model_instance_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_free_model_instance_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -4798,7 +4798,7 @@ class fmi2_import_set_time_req : public ::google::protobuf::Message {
   inline double time() const;
   inline void set_time(double value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_time_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_time_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -4886,14 +4886,14 @@ class fmi2_import_set_time_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_time_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_time_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -4997,7 +4997,7 @@ class fmi2_import_set_continuous_states_req : public ::google::protobuf::Message
   inline ::google::protobuf::RepeatedField< double >*
       mutable_x();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_continuous_states_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_continuous_states_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -5083,14 +5083,14 @@ class fmi2_import_set_continuous_states_res : public ::google::protobuf::Message
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_continuous_states_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_continuous_states_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -5182,7 +5182,7 @@ class fmi2_import_completed_integrator_step_req : public ::google::protobuf::Mes
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_completed_integrator_step_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_completed_integrator_step_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -5274,14 +5274,14 @@ class fmi2_import_completed_integrator_step_res : public ::google::protobuf::Mes
   inline bool calleventupdate() const;
   inline void set_calleventupdate(bool value);
   
-  // required .fmitcp.fmi2_status_t status = 3;
+  // required .fmitcp_proto.fmi2_status_t status = 3;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 3;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_completed_integrator_step_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_completed_integrator_step_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -5390,7 +5390,7 @@ class fmi2_import_initialize_model_req : public ::google::protobuf::Message {
   inline double relativetolerance() const;
   inline void set_relativetolerance(double value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_initialize_model_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_initialize_model_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -5481,22 +5481,22 @@ class fmi2_import_initialize_model_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_event_info_t eventInfo = 2;
+  // required .fmitcp_proto.fmi2_event_info_t eventInfo = 2;
   inline bool has_eventinfo() const;
   inline void clear_eventinfo();
   static const int kEventInfoFieldNumber = 2;
-  inline const ::fmitcp::fmi2_event_info_t& eventinfo() const;
-  inline ::fmitcp::fmi2_event_info_t* mutable_eventinfo();
-  inline ::fmitcp::fmi2_event_info_t* release_eventinfo();
+  inline const ::fmitcp_proto::fmi2_event_info_t& eventinfo() const;
+  inline ::fmitcp_proto::fmi2_event_info_t* mutable_eventinfo();
+  inline ::fmitcp_proto::fmi2_event_info_t* release_eventinfo();
   
-  // required .fmitcp.fmi2_status_t status = 3;
+  // required .fmitcp_proto.fmi2_status_t status = 3;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 3;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_initialize_model_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_initialize_model_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -5507,7 +5507,7 @@ class fmi2_import_initialize_model_res : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::fmitcp::fmi2_event_info_t* eventinfo_;
+  ::fmitcp_proto::fmi2_event_info_t* eventinfo_;
   ::google::protobuf::int32 message_id_;
   int status_;
   
@@ -5591,7 +5591,7 @@ class fmi2_import_get_derivatives_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_derivatives_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_derivatives_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -5688,14 +5688,14 @@ class fmi2_import_get_derivatives_res : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< double >*
       mutable_derivatives();
   
-  // required .fmitcp.fmi2_status_t status = 3;
+  // required .fmitcp_proto.fmi2_status_t status = 3;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 3;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_derivatives_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_derivatives_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -5788,7 +5788,7 @@ class fmi2_import_get_event_indicators_req : public ::google::protobuf::Message 
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_event_indicators_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_event_indicators_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -5885,14 +5885,14 @@ class fmi2_import_get_event_indicators_res : public ::google::protobuf::Message 
   inline ::google::protobuf::RepeatedField< double >*
       mutable_eventindicators();
   
-  // required .fmitcp.fmi2_status_t status = 3;
+  // required .fmitcp_proto.fmi2_status_t status = 3;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 3;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_event_indicators_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_event_indicators_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -5992,7 +5992,7 @@ class fmi2_import_eventUpdate_req : public ::google::protobuf::Message {
   inline bool intermediateresults() const;
   inline void set_intermediateresults(bool value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_eventUpdate_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_eventUpdate_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -6080,22 +6080,22 @@ class fmi2_import_eventUpdate_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_event_info_t eventInfo = 2;
+  // required .fmitcp_proto.fmi2_event_info_t eventInfo = 2;
   inline bool has_eventinfo() const;
   inline void clear_eventinfo();
   static const int kEventInfoFieldNumber = 2;
-  inline const ::fmitcp::fmi2_event_info_t& eventinfo() const;
-  inline ::fmitcp::fmi2_event_info_t* mutable_eventinfo();
-  inline ::fmitcp::fmi2_event_info_t* release_eventinfo();
+  inline const ::fmitcp_proto::fmi2_event_info_t& eventinfo() const;
+  inline ::fmitcp_proto::fmi2_event_info_t* mutable_eventinfo();
+  inline ::fmitcp_proto::fmi2_event_info_t* release_eventinfo();
   
-  // required .fmitcp.fmi2_status_t status = 3;
+  // required .fmitcp_proto.fmi2_status_t status = 3;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 3;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_eventUpdate_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_eventUpdate_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -6106,7 +6106,7 @@ class fmi2_import_eventUpdate_res : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::fmitcp::fmi2_event_info_t* eventinfo_;
+  ::fmitcp_proto::fmi2_event_info_t* eventinfo_;
   ::google::protobuf::int32 message_id_;
   int status_;
   
@@ -6190,7 +6190,7 @@ class fmi2_import_completed_event_iteration_req : public ::google::protobuf::Mes
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_completed_event_iteration_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_completed_event_iteration_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -6275,14 +6275,14 @@ class fmi2_import_completed_event_iteration_res : public ::google::protobuf::Mes
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_completed_event_iteration_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_completed_event_iteration_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -6374,7 +6374,7 @@ class fmi2_import_get_continuous_states_req : public ::google::protobuf::Message
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_continuous_states_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_continuous_states_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -6471,14 +6471,14 @@ class fmi2_import_get_continuous_states_res : public ::google::protobuf::Message
   inline ::google::protobuf::RepeatedField< double >*
       mutable_states();
   
-  // required .fmitcp.fmi2_status_t status = 3;
+  // required .fmitcp_proto.fmi2_status_t status = 3;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 3;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_continuous_states_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_continuous_states_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -6571,7 +6571,7 @@ class fmi2_import_get_nominal_continuous_states_req : public ::google::protobuf:
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_nominal_continuous_states_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_nominal_continuous_states_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -6668,14 +6668,14 @@ class fmi2_import_get_nominal_continuous_states_res : public ::google::protobuf:
   inline ::google::protobuf::RepeatedField< double >*
       mutable_nominal();
   
-  // required .fmitcp.fmi2_status_t status = 3;
+  // required .fmitcp_proto.fmi2_status_t status = 3;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 3;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_nominal_continuous_states_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_nominal_continuous_states_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -6768,7 +6768,7 @@ class fmi2_import_terminate_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_terminate_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_terminate_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -6853,14 +6853,14 @@ class fmi2_import_terminate_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_terminate_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_terminate_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -6952,7 +6952,7 @@ class fmi2_import_get_version_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_version_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_version_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -7048,7 +7048,7 @@ class fmi2_import_get_version_res : public ::google::protobuf::Message {
   inline ::std::string* mutable_version();
   inline ::std::string* release_version();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_version_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_version_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -7159,7 +7159,7 @@ class fmi2_import_set_debug_logging_req : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_categories();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_debug_logging_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_debug_logging_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -7248,14 +7248,14 @@ class fmi2_import_set_debug_logging_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_debug_logging_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_debug_logging_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -7371,7 +7371,7 @@ class fmi2_import_set_real_req : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< double >*
       mutable_values();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_real_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_real_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -7458,14 +7458,14 @@ class fmi2_import_set_real_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_real_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_real_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -7581,7 +7581,7 @@ class fmi2_import_set_integer_req : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_values();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_integer_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_integer_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -7668,14 +7668,14 @@ class fmi2_import_set_integer_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_integer_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_integer_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -7791,7 +7791,7 @@ class fmi2_import_set_boolean_req : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< bool >*
       mutable_values();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_boolean_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_boolean_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -7878,14 +7878,14 @@ class fmi2_import_set_boolean_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_boolean_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_boolean_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -8005,7 +8005,7 @@ class fmi2_import_set_string_req : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& values() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_values();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_string_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_string_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -8092,14 +8092,14 @@ class fmi2_import_set_string_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_string_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_string_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -8203,7 +8203,7 @@ class fmi2_import_get_real_req : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_valuereferences();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_real_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_real_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -8301,14 +8301,14 @@ class fmi2_import_get_real_res : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< double >*
       mutable_values();
   
-  // required .fmitcp.fmi2_status_t status = 3;
+  // required .fmitcp_proto.fmi2_status_t status = 3;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 3;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_real_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_real_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -8413,7 +8413,7 @@ class fmi2_import_get_integer_req : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_valuereferences();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_integer_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_integer_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -8511,14 +8511,14 @@ class fmi2_import_get_integer_res : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< double >*
       mutable_values();
   
-  // required .fmitcp.fmi2_status_t status = 3;
+  // required .fmitcp_proto.fmi2_status_t status = 3;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 3;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_integer_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_integer_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -8623,7 +8623,7 @@ class fmi2_import_get_boolean_req : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_valuereferences();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_boolean_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_boolean_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -8721,14 +8721,14 @@ class fmi2_import_get_boolean_res : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< bool >*
       mutable_values();
   
-  // required .fmitcp.fmi2_status_t status = 3;
+  // required .fmitcp_proto.fmi2_status_t status = 3;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 3;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_boolean_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_boolean_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -8833,7 +8833,7 @@ class fmi2_import_get_string_req : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_valuereferences();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_string_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_string_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -8935,14 +8935,14 @@ class fmi2_import_get_string_res : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& values() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_values();
   
-  // required .fmitcp.fmi2_status_t status = 3;
+  // required .fmitcp_proto.fmi2_status_t status = 3;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 3;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_string_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_string_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -9021,7 +9021,7 @@ class char_req : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // @@protoc_insertion_point(class_scope:fmitcp.char_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.char_req)
  private:
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -9093,7 +9093,7 @@ class char_res : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // @@protoc_insertion_point(class_scope:fmitcp.char_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.char_res)
  private:
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -9179,7 +9179,7 @@ class fmi2_import_get_fmu_state_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_fmu_state_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_fmu_state_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -9271,7 +9271,7 @@ class fmi2_import_get_fmu_state_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 stateid() const;
   inline void set_stateid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_fmu_state_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_fmu_state_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -9370,7 +9370,7 @@ class fmi2_import_set_fmu_state_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 stateid() const;
   inline void set_stateid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_fmu_state_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_fmu_state_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -9458,14 +9458,14 @@ class fmi2_import_set_fmu_state_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_set_fmu_state_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_fmu_state_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -9557,7 +9557,7 @@ class fmi2_import_free_fmu_state_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 stateid() const;
   inline void set_stateid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_free_fmu_state_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_free_fmu_state_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -9642,14 +9642,14 @@ class fmi2_import_free_fmu_state_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required .fmitcp.fmi2_status_t status = 2;
+  // required .fmitcp_proto.fmi2_status_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 2;
-  inline fmitcp::fmi2_status_t status() const;
-  inline void set_status(fmitcp::fmi2_status_t value);
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_free_fmu_state_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_free_fmu_state_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -9770,7 +9770,7 @@ class fmi2_import_get_directional_derivative_req : public ::google::protobuf::Me
   inline ::google::protobuf::RepeatedField< double >*
       mutable_dv();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_directional_derivative_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_directional_derivative_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -9867,7 +9867,7 @@ class fmi2_import_get_directional_derivative_res : public ::google::protobuf::Me
   inline ::google::protobuf::RepeatedField< double >*
       mutable_dz();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.fmi2_import_get_directional_derivative_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_directional_derivative_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -9957,7 +9957,7 @@ class get_xml_req : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 fmuid() const;
   inline void set_fmuid(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:fmitcp.get_xml_req)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.get_xml_req)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -10053,7 +10053,7 @@ class get_xml_res : public ::google::protobuf::Message {
   inline ::std::string* mutable_xml();
   inline ::std::string* release_xml();
   
-  // @@protoc_insertion_point(class_scope:fmitcp.get_xml_res)
+  // @@protoc_insertion_point(class_scope:fmitcp_proto.get_xml_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
@@ -10082,7 +10082,7 @@ class get_xml_res : public ::google::protobuf::Message {
 
 // fmitcp_message
 
-// required .fmitcp.fmitcp_message.Type type = 1;
+// required .fmitcp_proto.fmitcp_message.Type type = 1;
 inline bool fmitcp_message::has_type() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -10096,16 +10096,16 @@ inline void fmitcp_message::clear_type() {
   type_ = 1;
   clear_has_type();
 }
-inline ::fmitcp::fmitcp_message_Type fmitcp_message::type() const {
-  return static_cast< ::fmitcp::fmitcp_message_Type >(type_);
+inline ::fmitcp_proto::fmitcp_message_Type fmitcp_message::type() const {
+  return static_cast< ::fmitcp_proto::fmitcp_message_Type >(type_);
 }
-inline void fmitcp_message::set_type(::fmitcp::fmitcp_message_Type value) {
-  GOOGLE_DCHECK(::fmitcp::fmitcp_message_Type_IsValid(value));
+inline void fmitcp_message::set_type(::fmitcp_proto::fmitcp_message_Type value) {
+  GOOGLE_DCHECK(::fmitcp_proto::fmitcp_message_Type_IsValid(value));
   set_has_type();
   type_ = value;
 }
 
-// optional .fmitcp.fmi2_import_instantiate_slave_req fmi2_import_instantiate_slave_req = 2;
+// optional .fmitcp_proto.fmi2_import_instantiate_slave_req fmi2_import_instantiate_slave_req = 2;
 inline bool fmitcp_message::has_fmi2_import_instantiate_slave_req() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -10116,25 +10116,25 @@ inline void fmitcp_message::clear_has_fmi2_import_instantiate_slave_req() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void fmitcp_message::clear_fmi2_import_instantiate_slave_req() {
-  if (fmi2_import_instantiate_slave_req_ != NULL) fmi2_import_instantiate_slave_req_->::fmitcp::fmi2_import_instantiate_slave_req::Clear();
+  if (fmi2_import_instantiate_slave_req_ != NULL) fmi2_import_instantiate_slave_req_->::fmitcp_proto::fmi2_import_instantiate_slave_req::Clear();
   clear_has_fmi2_import_instantiate_slave_req();
 }
-inline const ::fmitcp::fmi2_import_instantiate_slave_req& fmitcp_message::fmi2_import_instantiate_slave_req() const {
+inline const ::fmitcp_proto::fmi2_import_instantiate_slave_req& fmitcp_message::fmi2_import_instantiate_slave_req() const {
   return fmi2_import_instantiate_slave_req_ != NULL ? *fmi2_import_instantiate_slave_req_ : *default_instance_->fmi2_import_instantiate_slave_req_;
 }
-inline ::fmitcp::fmi2_import_instantiate_slave_req* fmitcp_message::mutable_fmi2_import_instantiate_slave_req() {
+inline ::fmitcp_proto::fmi2_import_instantiate_slave_req* fmitcp_message::mutable_fmi2_import_instantiate_slave_req() {
   set_has_fmi2_import_instantiate_slave_req();
-  if (fmi2_import_instantiate_slave_req_ == NULL) fmi2_import_instantiate_slave_req_ = new ::fmitcp::fmi2_import_instantiate_slave_req;
+  if (fmi2_import_instantiate_slave_req_ == NULL) fmi2_import_instantiate_slave_req_ = new ::fmitcp_proto::fmi2_import_instantiate_slave_req;
   return fmi2_import_instantiate_slave_req_;
 }
-inline ::fmitcp::fmi2_import_instantiate_slave_req* fmitcp_message::release_fmi2_import_instantiate_slave_req() {
+inline ::fmitcp_proto::fmi2_import_instantiate_slave_req* fmitcp_message::release_fmi2_import_instantiate_slave_req() {
   clear_has_fmi2_import_instantiate_slave_req();
-  ::fmitcp::fmi2_import_instantiate_slave_req* temp = fmi2_import_instantiate_slave_req_;
+  ::fmitcp_proto::fmi2_import_instantiate_slave_req* temp = fmi2_import_instantiate_slave_req_;
   fmi2_import_instantiate_slave_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_instantiate_slave_res fmi2_import_instantiate_slave_res = 3;
+// optional .fmitcp_proto.fmi2_import_instantiate_slave_res fmi2_import_instantiate_slave_res = 3;
 inline bool fmitcp_message::has_fmi2_import_instantiate_slave_res() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -10145,25 +10145,25 @@ inline void fmitcp_message::clear_has_fmi2_import_instantiate_slave_res() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void fmitcp_message::clear_fmi2_import_instantiate_slave_res() {
-  if (fmi2_import_instantiate_slave_res_ != NULL) fmi2_import_instantiate_slave_res_->::fmitcp::fmi2_import_instantiate_slave_res::Clear();
+  if (fmi2_import_instantiate_slave_res_ != NULL) fmi2_import_instantiate_slave_res_->::fmitcp_proto::fmi2_import_instantiate_slave_res::Clear();
   clear_has_fmi2_import_instantiate_slave_res();
 }
-inline const ::fmitcp::fmi2_import_instantiate_slave_res& fmitcp_message::fmi2_import_instantiate_slave_res() const {
+inline const ::fmitcp_proto::fmi2_import_instantiate_slave_res& fmitcp_message::fmi2_import_instantiate_slave_res() const {
   return fmi2_import_instantiate_slave_res_ != NULL ? *fmi2_import_instantiate_slave_res_ : *default_instance_->fmi2_import_instantiate_slave_res_;
 }
-inline ::fmitcp::fmi2_import_instantiate_slave_res* fmitcp_message::mutable_fmi2_import_instantiate_slave_res() {
+inline ::fmitcp_proto::fmi2_import_instantiate_slave_res* fmitcp_message::mutable_fmi2_import_instantiate_slave_res() {
   set_has_fmi2_import_instantiate_slave_res();
-  if (fmi2_import_instantiate_slave_res_ == NULL) fmi2_import_instantiate_slave_res_ = new ::fmitcp::fmi2_import_instantiate_slave_res;
+  if (fmi2_import_instantiate_slave_res_ == NULL) fmi2_import_instantiate_slave_res_ = new ::fmitcp_proto::fmi2_import_instantiate_slave_res;
   return fmi2_import_instantiate_slave_res_;
 }
-inline ::fmitcp::fmi2_import_instantiate_slave_res* fmitcp_message::release_fmi2_import_instantiate_slave_res() {
+inline ::fmitcp_proto::fmi2_import_instantiate_slave_res* fmitcp_message::release_fmi2_import_instantiate_slave_res() {
   clear_has_fmi2_import_instantiate_slave_res();
-  ::fmitcp::fmi2_import_instantiate_slave_res* temp = fmi2_import_instantiate_slave_res_;
+  ::fmitcp_proto::fmi2_import_instantiate_slave_res* temp = fmi2_import_instantiate_slave_res_;
   fmi2_import_instantiate_slave_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_initialize_slave_req fmi2_import_initialize_slave_req = 4;
+// optional .fmitcp_proto.fmi2_import_initialize_slave_req fmi2_import_initialize_slave_req = 4;
 inline bool fmitcp_message::has_fmi2_import_initialize_slave_req() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -10174,25 +10174,25 @@ inline void fmitcp_message::clear_has_fmi2_import_initialize_slave_req() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void fmitcp_message::clear_fmi2_import_initialize_slave_req() {
-  if (fmi2_import_initialize_slave_req_ != NULL) fmi2_import_initialize_slave_req_->::fmitcp::fmi2_import_initialize_slave_req::Clear();
+  if (fmi2_import_initialize_slave_req_ != NULL) fmi2_import_initialize_slave_req_->::fmitcp_proto::fmi2_import_initialize_slave_req::Clear();
   clear_has_fmi2_import_initialize_slave_req();
 }
-inline const ::fmitcp::fmi2_import_initialize_slave_req& fmitcp_message::fmi2_import_initialize_slave_req() const {
+inline const ::fmitcp_proto::fmi2_import_initialize_slave_req& fmitcp_message::fmi2_import_initialize_slave_req() const {
   return fmi2_import_initialize_slave_req_ != NULL ? *fmi2_import_initialize_slave_req_ : *default_instance_->fmi2_import_initialize_slave_req_;
 }
-inline ::fmitcp::fmi2_import_initialize_slave_req* fmitcp_message::mutable_fmi2_import_initialize_slave_req() {
+inline ::fmitcp_proto::fmi2_import_initialize_slave_req* fmitcp_message::mutable_fmi2_import_initialize_slave_req() {
   set_has_fmi2_import_initialize_slave_req();
-  if (fmi2_import_initialize_slave_req_ == NULL) fmi2_import_initialize_slave_req_ = new ::fmitcp::fmi2_import_initialize_slave_req;
+  if (fmi2_import_initialize_slave_req_ == NULL) fmi2_import_initialize_slave_req_ = new ::fmitcp_proto::fmi2_import_initialize_slave_req;
   return fmi2_import_initialize_slave_req_;
 }
-inline ::fmitcp::fmi2_import_initialize_slave_req* fmitcp_message::release_fmi2_import_initialize_slave_req() {
+inline ::fmitcp_proto::fmi2_import_initialize_slave_req* fmitcp_message::release_fmi2_import_initialize_slave_req() {
   clear_has_fmi2_import_initialize_slave_req();
-  ::fmitcp::fmi2_import_initialize_slave_req* temp = fmi2_import_initialize_slave_req_;
+  ::fmitcp_proto::fmi2_import_initialize_slave_req* temp = fmi2_import_initialize_slave_req_;
   fmi2_import_initialize_slave_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_initialize_slave_res fmi2_import_initialize_slave_res = 5;
+// optional .fmitcp_proto.fmi2_import_initialize_slave_res fmi2_import_initialize_slave_res = 5;
 inline bool fmitcp_message::has_fmi2_import_initialize_slave_res() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
@@ -10203,25 +10203,25 @@ inline void fmitcp_message::clear_has_fmi2_import_initialize_slave_res() {
   _has_bits_[0] &= ~0x00000010u;
 }
 inline void fmitcp_message::clear_fmi2_import_initialize_slave_res() {
-  if (fmi2_import_initialize_slave_res_ != NULL) fmi2_import_initialize_slave_res_->::fmitcp::fmi2_import_initialize_slave_res::Clear();
+  if (fmi2_import_initialize_slave_res_ != NULL) fmi2_import_initialize_slave_res_->::fmitcp_proto::fmi2_import_initialize_slave_res::Clear();
   clear_has_fmi2_import_initialize_slave_res();
 }
-inline const ::fmitcp::fmi2_import_initialize_slave_res& fmitcp_message::fmi2_import_initialize_slave_res() const {
+inline const ::fmitcp_proto::fmi2_import_initialize_slave_res& fmitcp_message::fmi2_import_initialize_slave_res() const {
   return fmi2_import_initialize_slave_res_ != NULL ? *fmi2_import_initialize_slave_res_ : *default_instance_->fmi2_import_initialize_slave_res_;
 }
-inline ::fmitcp::fmi2_import_initialize_slave_res* fmitcp_message::mutable_fmi2_import_initialize_slave_res() {
+inline ::fmitcp_proto::fmi2_import_initialize_slave_res* fmitcp_message::mutable_fmi2_import_initialize_slave_res() {
   set_has_fmi2_import_initialize_slave_res();
-  if (fmi2_import_initialize_slave_res_ == NULL) fmi2_import_initialize_slave_res_ = new ::fmitcp::fmi2_import_initialize_slave_res;
+  if (fmi2_import_initialize_slave_res_ == NULL) fmi2_import_initialize_slave_res_ = new ::fmitcp_proto::fmi2_import_initialize_slave_res;
   return fmi2_import_initialize_slave_res_;
 }
-inline ::fmitcp::fmi2_import_initialize_slave_res* fmitcp_message::release_fmi2_import_initialize_slave_res() {
+inline ::fmitcp_proto::fmi2_import_initialize_slave_res* fmitcp_message::release_fmi2_import_initialize_slave_res() {
   clear_has_fmi2_import_initialize_slave_res();
-  ::fmitcp::fmi2_import_initialize_slave_res* temp = fmi2_import_initialize_slave_res_;
+  ::fmitcp_proto::fmi2_import_initialize_slave_res* temp = fmi2_import_initialize_slave_res_;
   fmi2_import_initialize_slave_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_terminate_slave_req fmi2_import_terminate_slave_req = 6;
+// optional .fmitcp_proto.fmi2_import_terminate_slave_req fmi2_import_terminate_slave_req = 6;
 inline bool fmitcp_message::has_fmi2_import_terminate_slave_req() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
@@ -10232,25 +10232,25 @@ inline void fmitcp_message::clear_has_fmi2_import_terminate_slave_req() {
   _has_bits_[0] &= ~0x00000020u;
 }
 inline void fmitcp_message::clear_fmi2_import_terminate_slave_req() {
-  if (fmi2_import_terminate_slave_req_ != NULL) fmi2_import_terminate_slave_req_->::fmitcp::fmi2_import_terminate_slave_req::Clear();
+  if (fmi2_import_terminate_slave_req_ != NULL) fmi2_import_terminate_slave_req_->::fmitcp_proto::fmi2_import_terminate_slave_req::Clear();
   clear_has_fmi2_import_terminate_slave_req();
 }
-inline const ::fmitcp::fmi2_import_terminate_slave_req& fmitcp_message::fmi2_import_terminate_slave_req() const {
+inline const ::fmitcp_proto::fmi2_import_terminate_slave_req& fmitcp_message::fmi2_import_terminate_slave_req() const {
   return fmi2_import_terminate_slave_req_ != NULL ? *fmi2_import_terminate_slave_req_ : *default_instance_->fmi2_import_terminate_slave_req_;
 }
-inline ::fmitcp::fmi2_import_terminate_slave_req* fmitcp_message::mutable_fmi2_import_terminate_slave_req() {
+inline ::fmitcp_proto::fmi2_import_terminate_slave_req* fmitcp_message::mutable_fmi2_import_terminate_slave_req() {
   set_has_fmi2_import_terminate_slave_req();
-  if (fmi2_import_terminate_slave_req_ == NULL) fmi2_import_terminate_slave_req_ = new ::fmitcp::fmi2_import_terminate_slave_req;
+  if (fmi2_import_terminate_slave_req_ == NULL) fmi2_import_terminate_slave_req_ = new ::fmitcp_proto::fmi2_import_terminate_slave_req;
   return fmi2_import_terminate_slave_req_;
 }
-inline ::fmitcp::fmi2_import_terminate_slave_req* fmitcp_message::release_fmi2_import_terminate_slave_req() {
+inline ::fmitcp_proto::fmi2_import_terminate_slave_req* fmitcp_message::release_fmi2_import_terminate_slave_req() {
   clear_has_fmi2_import_terminate_slave_req();
-  ::fmitcp::fmi2_import_terminate_slave_req* temp = fmi2_import_terminate_slave_req_;
+  ::fmitcp_proto::fmi2_import_terminate_slave_req* temp = fmi2_import_terminate_slave_req_;
   fmi2_import_terminate_slave_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_terminate_slave_res fmi2_import_terminate_slave_res = 7;
+// optional .fmitcp_proto.fmi2_import_terminate_slave_res fmi2_import_terminate_slave_res = 7;
 inline bool fmitcp_message::has_fmi2_import_terminate_slave_res() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
@@ -10261,25 +10261,25 @@ inline void fmitcp_message::clear_has_fmi2_import_terminate_slave_res() {
   _has_bits_[0] &= ~0x00000040u;
 }
 inline void fmitcp_message::clear_fmi2_import_terminate_slave_res() {
-  if (fmi2_import_terminate_slave_res_ != NULL) fmi2_import_terminate_slave_res_->::fmitcp::fmi2_import_terminate_slave_res::Clear();
+  if (fmi2_import_terminate_slave_res_ != NULL) fmi2_import_terminate_slave_res_->::fmitcp_proto::fmi2_import_terminate_slave_res::Clear();
   clear_has_fmi2_import_terminate_slave_res();
 }
-inline const ::fmitcp::fmi2_import_terminate_slave_res& fmitcp_message::fmi2_import_terminate_slave_res() const {
+inline const ::fmitcp_proto::fmi2_import_terminate_slave_res& fmitcp_message::fmi2_import_terminate_slave_res() const {
   return fmi2_import_terminate_slave_res_ != NULL ? *fmi2_import_terminate_slave_res_ : *default_instance_->fmi2_import_terminate_slave_res_;
 }
-inline ::fmitcp::fmi2_import_terminate_slave_res* fmitcp_message::mutable_fmi2_import_terminate_slave_res() {
+inline ::fmitcp_proto::fmi2_import_terminate_slave_res* fmitcp_message::mutable_fmi2_import_terminate_slave_res() {
   set_has_fmi2_import_terminate_slave_res();
-  if (fmi2_import_terminate_slave_res_ == NULL) fmi2_import_terminate_slave_res_ = new ::fmitcp::fmi2_import_terminate_slave_res;
+  if (fmi2_import_terminate_slave_res_ == NULL) fmi2_import_terminate_slave_res_ = new ::fmitcp_proto::fmi2_import_terminate_slave_res;
   return fmi2_import_terminate_slave_res_;
 }
-inline ::fmitcp::fmi2_import_terminate_slave_res* fmitcp_message::release_fmi2_import_terminate_slave_res() {
+inline ::fmitcp_proto::fmi2_import_terminate_slave_res* fmitcp_message::release_fmi2_import_terminate_slave_res() {
   clear_has_fmi2_import_terminate_slave_res();
-  ::fmitcp::fmi2_import_terminate_slave_res* temp = fmi2_import_terminate_slave_res_;
+  ::fmitcp_proto::fmi2_import_terminate_slave_res* temp = fmi2_import_terminate_slave_res_;
   fmi2_import_terminate_slave_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_reset_slave_req fmi2_import_reset_slave_req = 8;
+// optional .fmitcp_proto.fmi2_import_reset_slave_req fmi2_import_reset_slave_req = 8;
 inline bool fmitcp_message::has_fmi2_import_reset_slave_req() const {
   return (_has_bits_[0] & 0x00000080u) != 0;
 }
@@ -10290,25 +10290,25 @@ inline void fmitcp_message::clear_has_fmi2_import_reset_slave_req() {
   _has_bits_[0] &= ~0x00000080u;
 }
 inline void fmitcp_message::clear_fmi2_import_reset_slave_req() {
-  if (fmi2_import_reset_slave_req_ != NULL) fmi2_import_reset_slave_req_->::fmitcp::fmi2_import_reset_slave_req::Clear();
+  if (fmi2_import_reset_slave_req_ != NULL) fmi2_import_reset_slave_req_->::fmitcp_proto::fmi2_import_reset_slave_req::Clear();
   clear_has_fmi2_import_reset_slave_req();
 }
-inline const ::fmitcp::fmi2_import_reset_slave_req& fmitcp_message::fmi2_import_reset_slave_req() const {
+inline const ::fmitcp_proto::fmi2_import_reset_slave_req& fmitcp_message::fmi2_import_reset_slave_req() const {
   return fmi2_import_reset_slave_req_ != NULL ? *fmi2_import_reset_slave_req_ : *default_instance_->fmi2_import_reset_slave_req_;
 }
-inline ::fmitcp::fmi2_import_reset_slave_req* fmitcp_message::mutable_fmi2_import_reset_slave_req() {
+inline ::fmitcp_proto::fmi2_import_reset_slave_req* fmitcp_message::mutable_fmi2_import_reset_slave_req() {
   set_has_fmi2_import_reset_slave_req();
-  if (fmi2_import_reset_slave_req_ == NULL) fmi2_import_reset_slave_req_ = new ::fmitcp::fmi2_import_reset_slave_req;
+  if (fmi2_import_reset_slave_req_ == NULL) fmi2_import_reset_slave_req_ = new ::fmitcp_proto::fmi2_import_reset_slave_req;
   return fmi2_import_reset_slave_req_;
 }
-inline ::fmitcp::fmi2_import_reset_slave_req* fmitcp_message::release_fmi2_import_reset_slave_req() {
+inline ::fmitcp_proto::fmi2_import_reset_slave_req* fmitcp_message::release_fmi2_import_reset_slave_req() {
   clear_has_fmi2_import_reset_slave_req();
-  ::fmitcp::fmi2_import_reset_slave_req* temp = fmi2_import_reset_slave_req_;
+  ::fmitcp_proto::fmi2_import_reset_slave_req* temp = fmi2_import_reset_slave_req_;
   fmi2_import_reset_slave_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_reset_slave_res fmi2_import_reset_slave_res = 9;
+// optional .fmitcp_proto.fmi2_import_reset_slave_res fmi2_import_reset_slave_res = 9;
 inline bool fmitcp_message::has_fmi2_import_reset_slave_res() const {
   return (_has_bits_[0] & 0x00000100u) != 0;
 }
@@ -10319,25 +10319,25 @@ inline void fmitcp_message::clear_has_fmi2_import_reset_slave_res() {
   _has_bits_[0] &= ~0x00000100u;
 }
 inline void fmitcp_message::clear_fmi2_import_reset_slave_res() {
-  if (fmi2_import_reset_slave_res_ != NULL) fmi2_import_reset_slave_res_->::fmitcp::fmi2_import_reset_slave_res::Clear();
+  if (fmi2_import_reset_slave_res_ != NULL) fmi2_import_reset_slave_res_->::fmitcp_proto::fmi2_import_reset_slave_res::Clear();
   clear_has_fmi2_import_reset_slave_res();
 }
-inline const ::fmitcp::fmi2_import_reset_slave_res& fmitcp_message::fmi2_import_reset_slave_res() const {
+inline const ::fmitcp_proto::fmi2_import_reset_slave_res& fmitcp_message::fmi2_import_reset_slave_res() const {
   return fmi2_import_reset_slave_res_ != NULL ? *fmi2_import_reset_slave_res_ : *default_instance_->fmi2_import_reset_slave_res_;
 }
-inline ::fmitcp::fmi2_import_reset_slave_res* fmitcp_message::mutable_fmi2_import_reset_slave_res() {
+inline ::fmitcp_proto::fmi2_import_reset_slave_res* fmitcp_message::mutable_fmi2_import_reset_slave_res() {
   set_has_fmi2_import_reset_slave_res();
-  if (fmi2_import_reset_slave_res_ == NULL) fmi2_import_reset_slave_res_ = new ::fmitcp::fmi2_import_reset_slave_res;
+  if (fmi2_import_reset_slave_res_ == NULL) fmi2_import_reset_slave_res_ = new ::fmitcp_proto::fmi2_import_reset_slave_res;
   return fmi2_import_reset_slave_res_;
 }
-inline ::fmitcp::fmi2_import_reset_slave_res* fmitcp_message::release_fmi2_import_reset_slave_res() {
+inline ::fmitcp_proto::fmi2_import_reset_slave_res* fmitcp_message::release_fmi2_import_reset_slave_res() {
   clear_has_fmi2_import_reset_slave_res();
-  ::fmitcp::fmi2_import_reset_slave_res* temp = fmi2_import_reset_slave_res_;
+  ::fmitcp_proto::fmi2_import_reset_slave_res* temp = fmi2_import_reset_slave_res_;
   fmi2_import_reset_slave_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_free_slave_instance_req fmi2_import_free_slave_instance_req = 10;
+// optional .fmitcp_proto.fmi2_import_free_slave_instance_req fmi2_import_free_slave_instance_req = 10;
 inline bool fmitcp_message::has_fmi2_import_free_slave_instance_req() const {
   return (_has_bits_[0] & 0x00000200u) != 0;
 }
@@ -10348,25 +10348,25 @@ inline void fmitcp_message::clear_has_fmi2_import_free_slave_instance_req() {
   _has_bits_[0] &= ~0x00000200u;
 }
 inline void fmitcp_message::clear_fmi2_import_free_slave_instance_req() {
-  if (fmi2_import_free_slave_instance_req_ != NULL) fmi2_import_free_slave_instance_req_->::fmitcp::fmi2_import_free_slave_instance_req::Clear();
+  if (fmi2_import_free_slave_instance_req_ != NULL) fmi2_import_free_slave_instance_req_->::fmitcp_proto::fmi2_import_free_slave_instance_req::Clear();
   clear_has_fmi2_import_free_slave_instance_req();
 }
-inline const ::fmitcp::fmi2_import_free_slave_instance_req& fmitcp_message::fmi2_import_free_slave_instance_req() const {
+inline const ::fmitcp_proto::fmi2_import_free_slave_instance_req& fmitcp_message::fmi2_import_free_slave_instance_req() const {
   return fmi2_import_free_slave_instance_req_ != NULL ? *fmi2_import_free_slave_instance_req_ : *default_instance_->fmi2_import_free_slave_instance_req_;
 }
-inline ::fmitcp::fmi2_import_free_slave_instance_req* fmitcp_message::mutable_fmi2_import_free_slave_instance_req() {
+inline ::fmitcp_proto::fmi2_import_free_slave_instance_req* fmitcp_message::mutable_fmi2_import_free_slave_instance_req() {
   set_has_fmi2_import_free_slave_instance_req();
-  if (fmi2_import_free_slave_instance_req_ == NULL) fmi2_import_free_slave_instance_req_ = new ::fmitcp::fmi2_import_free_slave_instance_req;
+  if (fmi2_import_free_slave_instance_req_ == NULL) fmi2_import_free_slave_instance_req_ = new ::fmitcp_proto::fmi2_import_free_slave_instance_req;
   return fmi2_import_free_slave_instance_req_;
 }
-inline ::fmitcp::fmi2_import_free_slave_instance_req* fmitcp_message::release_fmi2_import_free_slave_instance_req() {
+inline ::fmitcp_proto::fmi2_import_free_slave_instance_req* fmitcp_message::release_fmi2_import_free_slave_instance_req() {
   clear_has_fmi2_import_free_slave_instance_req();
-  ::fmitcp::fmi2_import_free_slave_instance_req* temp = fmi2_import_free_slave_instance_req_;
+  ::fmitcp_proto::fmi2_import_free_slave_instance_req* temp = fmi2_import_free_slave_instance_req_;
   fmi2_import_free_slave_instance_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_free_slave_instance_res fmi2_import_free_slave_instance_res = 11;
+// optional .fmitcp_proto.fmi2_import_free_slave_instance_res fmi2_import_free_slave_instance_res = 11;
 inline bool fmitcp_message::has_fmi2_import_free_slave_instance_res() const {
   return (_has_bits_[0] & 0x00000400u) != 0;
 }
@@ -10377,25 +10377,25 @@ inline void fmitcp_message::clear_has_fmi2_import_free_slave_instance_res() {
   _has_bits_[0] &= ~0x00000400u;
 }
 inline void fmitcp_message::clear_fmi2_import_free_slave_instance_res() {
-  if (fmi2_import_free_slave_instance_res_ != NULL) fmi2_import_free_slave_instance_res_->::fmitcp::fmi2_import_free_slave_instance_res::Clear();
+  if (fmi2_import_free_slave_instance_res_ != NULL) fmi2_import_free_slave_instance_res_->::fmitcp_proto::fmi2_import_free_slave_instance_res::Clear();
   clear_has_fmi2_import_free_slave_instance_res();
 }
-inline const ::fmitcp::fmi2_import_free_slave_instance_res& fmitcp_message::fmi2_import_free_slave_instance_res() const {
+inline const ::fmitcp_proto::fmi2_import_free_slave_instance_res& fmitcp_message::fmi2_import_free_slave_instance_res() const {
   return fmi2_import_free_slave_instance_res_ != NULL ? *fmi2_import_free_slave_instance_res_ : *default_instance_->fmi2_import_free_slave_instance_res_;
 }
-inline ::fmitcp::fmi2_import_free_slave_instance_res* fmitcp_message::mutable_fmi2_import_free_slave_instance_res() {
+inline ::fmitcp_proto::fmi2_import_free_slave_instance_res* fmitcp_message::mutable_fmi2_import_free_slave_instance_res() {
   set_has_fmi2_import_free_slave_instance_res();
-  if (fmi2_import_free_slave_instance_res_ == NULL) fmi2_import_free_slave_instance_res_ = new ::fmitcp::fmi2_import_free_slave_instance_res;
+  if (fmi2_import_free_slave_instance_res_ == NULL) fmi2_import_free_slave_instance_res_ = new ::fmitcp_proto::fmi2_import_free_slave_instance_res;
   return fmi2_import_free_slave_instance_res_;
 }
-inline ::fmitcp::fmi2_import_free_slave_instance_res* fmitcp_message::release_fmi2_import_free_slave_instance_res() {
+inline ::fmitcp_proto::fmi2_import_free_slave_instance_res* fmitcp_message::release_fmi2_import_free_slave_instance_res() {
   clear_has_fmi2_import_free_slave_instance_res();
-  ::fmitcp::fmi2_import_free_slave_instance_res* temp = fmi2_import_free_slave_instance_res_;
+  ::fmitcp_proto::fmi2_import_free_slave_instance_res* temp = fmi2_import_free_slave_instance_res_;
   fmi2_import_free_slave_instance_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_real_input_derivatives_req fmi2_import_set_real_input_derivatives_req = 12;
+// optional .fmitcp_proto.fmi2_import_set_real_input_derivatives_req fmi2_import_set_real_input_derivatives_req = 12;
 inline bool fmitcp_message::has_fmi2_import_set_real_input_derivatives_req() const {
   return (_has_bits_[0] & 0x00000800u) != 0;
 }
@@ -10406,25 +10406,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_real_input_derivatives_req
   _has_bits_[0] &= ~0x00000800u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_real_input_derivatives_req() {
-  if (fmi2_import_set_real_input_derivatives_req_ != NULL) fmi2_import_set_real_input_derivatives_req_->::fmitcp::fmi2_import_set_real_input_derivatives_req::Clear();
+  if (fmi2_import_set_real_input_derivatives_req_ != NULL) fmi2_import_set_real_input_derivatives_req_->::fmitcp_proto::fmi2_import_set_real_input_derivatives_req::Clear();
   clear_has_fmi2_import_set_real_input_derivatives_req();
 }
-inline const ::fmitcp::fmi2_import_set_real_input_derivatives_req& fmitcp_message::fmi2_import_set_real_input_derivatives_req() const {
+inline const ::fmitcp_proto::fmi2_import_set_real_input_derivatives_req& fmitcp_message::fmi2_import_set_real_input_derivatives_req() const {
   return fmi2_import_set_real_input_derivatives_req_ != NULL ? *fmi2_import_set_real_input_derivatives_req_ : *default_instance_->fmi2_import_set_real_input_derivatives_req_;
 }
-inline ::fmitcp::fmi2_import_set_real_input_derivatives_req* fmitcp_message::mutable_fmi2_import_set_real_input_derivatives_req() {
+inline ::fmitcp_proto::fmi2_import_set_real_input_derivatives_req* fmitcp_message::mutable_fmi2_import_set_real_input_derivatives_req() {
   set_has_fmi2_import_set_real_input_derivatives_req();
-  if (fmi2_import_set_real_input_derivatives_req_ == NULL) fmi2_import_set_real_input_derivatives_req_ = new ::fmitcp::fmi2_import_set_real_input_derivatives_req;
+  if (fmi2_import_set_real_input_derivatives_req_ == NULL) fmi2_import_set_real_input_derivatives_req_ = new ::fmitcp_proto::fmi2_import_set_real_input_derivatives_req;
   return fmi2_import_set_real_input_derivatives_req_;
 }
-inline ::fmitcp::fmi2_import_set_real_input_derivatives_req* fmitcp_message::release_fmi2_import_set_real_input_derivatives_req() {
+inline ::fmitcp_proto::fmi2_import_set_real_input_derivatives_req* fmitcp_message::release_fmi2_import_set_real_input_derivatives_req() {
   clear_has_fmi2_import_set_real_input_derivatives_req();
-  ::fmitcp::fmi2_import_set_real_input_derivatives_req* temp = fmi2_import_set_real_input_derivatives_req_;
+  ::fmitcp_proto::fmi2_import_set_real_input_derivatives_req* temp = fmi2_import_set_real_input_derivatives_req_;
   fmi2_import_set_real_input_derivatives_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_real_input_derivatives_res fmi2_import_set_real_input_derivatives_res = 13;
+// optional .fmitcp_proto.fmi2_import_set_real_input_derivatives_res fmi2_import_set_real_input_derivatives_res = 13;
 inline bool fmitcp_message::has_fmi2_import_set_real_input_derivatives_res() const {
   return (_has_bits_[0] & 0x00001000u) != 0;
 }
@@ -10435,25 +10435,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_real_input_derivatives_res
   _has_bits_[0] &= ~0x00001000u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_real_input_derivatives_res() {
-  if (fmi2_import_set_real_input_derivatives_res_ != NULL) fmi2_import_set_real_input_derivatives_res_->::fmitcp::fmi2_import_set_real_input_derivatives_res::Clear();
+  if (fmi2_import_set_real_input_derivatives_res_ != NULL) fmi2_import_set_real_input_derivatives_res_->::fmitcp_proto::fmi2_import_set_real_input_derivatives_res::Clear();
   clear_has_fmi2_import_set_real_input_derivatives_res();
 }
-inline const ::fmitcp::fmi2_import_set_real_input_derivatives_res& fmitcp_message::fmi2_import_set_real_input_derivatives_res() const {
+inline const ::fmitcp_proto::fmi2_import_set_real_input_derivatives_res& fmitcp_message::fmi2_import_set_real_input_derivatives_res() const {
   return fmi2_import_set_real_input_derivatives_res_ != NULL ? *fmi2_import_set_real_input_derivatives_res_ : *default_instance_->fmi2_import_set_real_input_derivatives_res_;
 }
-inline ::fmitcp::fmi2_import_set_real_input_derivatives_res* fmitcp_message::mutable_fmi2_import_set_real_input_derivatives_res() {
+inline ::fmitcp_proto::fmi2_import_set_real_input_derivatives_res* fmitcp_message::mutable_fmi2_import_set_real_input_derivatives_res() {
   set_has_fmi2_import_set_real_input_derivatives_res();
-  if (fmi2_import_set_real_input_derivatives_res_ == NULL) fmi2_import_set_real_input_derivatives_res_ = new ::fmitcp::fmi2_import_set_real_input_derivatives_res;
+  if (fmi2_import_set_real_input_derivatives_res_ == NULL) fmi2_import_set_real_input_derivatives_res_ = new ::fmitcp_proto::fmi2_import_set_real_input_derivatives_res;
   return fmi2_import_set_real_input_derivatives_res_;
 }
-inline ::fmitcp::fmi2_import_set_real_input_derivatives_res* fmitcp_message::release_fmi2_import_set_real_input_derivatives_res() {
+inline ::fmitcp_proto::fmi2_import_set_real_input_derivatives_res* fmitcp_message::release_fmi2_import_set_real_input_derivatives_res() {
   clear_has_fmi2_import_set_real_input_derivatives_res();
-  ::fmitcp::fmi2_import_set_real_input_derivatives_res* temp = fmi2_import_set_real_input_derivatives_res_;
+  ::fmitcp_proto::fmi2_import_set_real_input_derivatives_res* temp = fmi2_import_set_real_input_derivatives_res_;
   fmi2_import_set_real_input_derivatives_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_real_output_derivatives_req fmi2_import_get_real_output_derivatives_req = 14;
+// optional .fmitcp_proto.fmi2_import_get_real_output_derivatives_req fmi2_import_get_real_output_derivatives_req = 14;
 inline bool fmitcp_message::has_fmi2_import_get_real_output_derivatives_req() const {
   return (_has_bits_[0] & 0x00002000u) != 0;
 }
@@ -10464,25 +10464,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_real_output_derivatives_re
   _has_bits_[0] &= ~0x00002000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_real_output_derivatives_req() {
-  if (fmi2_import_get_real_output_derivatives_req_ != NULL) fmi2_import_get_real_output_derivatives_req_->::fmitcp::fmi2_import_get_real_output_derivatives_req::Clear();
+  if (fmi2_import_get_real_output_derivatives_req_ != NULL) fmi2_import_get_real_output_derivatives_req_->::fmitcp_proto::fmi2_import_get_real_output_derivatives_req::Clear();
   clear_has_fmi2_import_get_real_output_derivatives_req();
 }
-inline const ::fmitcp::fmi2_import_get_real_output_derivatives_req& fmitcp_message::fmi2_import_get_real_output_derivatives_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_real_output_derivatives_req& fmitcp_message::fmi2_import_get_real_output_derivatives_req() const {
   return fmi2_import_get_real_output_derivatives_req_ != NULL ? *fmi2_import_get_real_output_derivatives_req_ : *default_instance_->fmi2_import_get_real_output_derivatives_req_;
 }
-inline ::fmitcp::fmi2_import_get_real_output_derivatives_req* fmitcp_message::mutable_fmi2_import_get_real_output_derivatives_req() {
+inline ::fmitcp_proto::fmi2_import_get_real_output_derivatives_req* fmitcp_message::mutable_fmi2_import_get_real_output_derivatives_req() {
   set_has_fmi2_import_get_real_output_derivatives_req();
-  if (fmi2_import_get_real_output_derivatives_req_ == NULL) fmi2_import_get_real_output_derivatives_req_ = new ::fmitcp::fmi2_import_get_real_output_derivatives_req;
+  if (fmi2_import_get_real_output_derivatives_req_ == NULL) fmi2_import_get_real_output_derivatives_req_ = new ::fmitcp_proto::fmi2_import_get_real_output_derivatives_req;
   return fmi2_import_get_real_output_derivatives_req_;
 }
-inline ::fmitcp::fmi2_import_get_real_output_derivatives_req* fmitcp_message::release_fmi2_import_get_real_output_derivatives_req() {
+inline ::fmitcp_proto::fmi2_import_get_real_output_derivatives_req* fmitcp_message::release_fmi2_import_get_real_output_derivatives_req() {
   clear_has_fmi2_import_get_real_output_derivatives_req();
-  ::fmitcp::fmi2_import_get_real_output_derivatives_req* temp = fmi2_import_get_real_output_derivatives_req_;
+  ::fmitcp_proto::fmi2_import_get_real_output_derivatives_req* temp = fmi2_import_get_real_output_derivatives_req_;
   fmi2_import_get_real_output_derivatives_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_real_output_derivatives_res fmi2_import_get_real_output_derivatives_res = 15;
+// optional .fmitcp_proto.fmi2_import_get_real_output_derivatives_res fmi2_import_get_real_output_derivatives_res = 15;
 inline bool fmitcp_message::has_fmi2_import_get_real_output_derivatives_res() const {
   return (_has_bits_[0] & 0x00004000u) != 0;
 }
@@ -10493,25 +10493,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_real_output_derivatives_re
   _has_bits_[0] &= ~0x00004000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_real_output_derivatives_res() {
-  if (fmi2_import_get_real_output_derivatives_res_ != NULL) fmi2_import_get_real_output_derivatives_res_->::fmitcp::fmi2_import_get_real_output_derivatives_res::Clear();
+  if (fmi2_import_get_real_output_derivatives_res_ != NULL) fmi2_import_get_real_output_derivatives_res_->::fmitcp_proto::fmi2_import_get_real_output_derivatives_res::Clear();
   clear_has_fmi2_import_get_real_output_derivatives_res();
 }
-inline const ::fmitcp::fmi2_import_get_real_output_derivatives_res& fmitcp_message::fmi2_import_get_real_output_derivatives_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_real_output_derivatives_res& fmitcp_message::fmi2_import_get_real_output_derivatives_res() const {
   return fmi2_import_get_real_output_derivatives_res_ != NULL ? *fmi2_import_get_real_output_derivatives_res_ : *default_instance_->fmi2_import_get_real_output_derivatives_res_;
 }
-inline ::fmitcp::fmi2_import_get_real_output_derivatives_res* fmitcp_message::mutable_fmi2_import_get_real_output_derivatives_res() {
+inline ::fmitcp_proto::fmi2_import_get_real_output_derivatives_res* fmitcp_message::mutable_fmi2_import_get_real_output_derivatives_res() {
   set_has_fmi2_import_get_real_output_derivatives_res();
-  if (fmi2_import_get_real_output_derivatives_res_ == NULL) fmi2_import_get_real_output_derivatives_res_ = new ::fmitcp::fmi2_import_get_real_output_derivatives_res;
+  if (fmi2_import_get_real_output_derivatives_res_ == NULL) fmi2_import_get_real_output_derivatives_res_ = new ::fmitcp_proto::fmi2_import_get_real_output_derivatives_res;
   return fmi2_import_get_real_output_derivatives_res_;
 }
-inline ::fmitcp::fmi2_import_get_real_output_derivatives_res* fmitcp_message::release_fmi2_import_get_real_output_derivatives_res() {
+inline ::fmitcp_proto::fmi2_import_get_real_output_derivatives_res* fmitcp_message::release_fmi2_import_get_real_output_derivatives_res() {
   clear_has_fmi2_import_get_real_output_derivatives_res();
-  ::fmitcp::fmi2_import_get_real_output_derivatives_res* temp = fmi2_import_get_real_output_derivatives_res_;
+  ::fmitcp_proto::fmi2_import_get_real_output_derivatives_res* temp = fmi2_import_get_real_output_derivatives_res_;
   fmi2_import_get_real_output_derivatives_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_cancel_step_req fmi2_import_cancel_step_req = 16;
+// optional .fmitcp_proto.fmi2_import_cancel_step_req fmi2_import_cancel_step_req = 16;
 inline bool fmitcp_message::has_fmi2_import_cancel_step_req() const {
   return (_has_bits_[0] & 0x00008000u) != 0;
 }
@@ -10522,25 +10522,25 @@ inline void fmitcp_message::clear_has_fmi2_import_cancel_step_req() {
   _has_bits_[0] &= ~0x00008000u;
 }
 inline void fmitcp_message::clear_fmi2_import_cancel_step_req() {
-  if (fmi2_import_cancel_step_req_ != NULL) fmi2_import_cancel_step_req_->::fmitcp::fmi2_import_cancel_step_req::Clear();
+  if (fmi2_import_cancel_step_req_ != NULL) fmi2_import_cancel_step_req_->::fmitcp_proto::fmi2_import_cancel_step_req::Clear();
   clear_has_fmi2_import_cancel_step_req();
 }
-inline const ::fmitcp::fmi2_import_cancel_step_req& fmitcp_message::fmi2_import_cancel_step_req() const {
+inline const ::fmitcp_proto::fmi2_import_cancel_step_req& fmitcp_message::fmi2_import_cancel_step_req() const {
   return fmi2_import_cancel_step_req_ != NULL ? *fmi2_import_cancel_step_req_ : *default_instance_->fmi2_import_cancel_step_req_;
 }
-inline ::fmitcp::fmi2_import_cancel_step_req* fmitcp_message::mutable_fmi2_import_cancel_step_req() {
+inline ::fmitcp_proto::fmi2_import_cancel_step_req* fmitcp_message::mutable_fmi2_import_cancel_step_req() {
   set_has_fmi2_import_cancel_step_req();
-  if (fmi2_import_cancel_step_req_ == NULL) fmi2_import_cancel_step_req_ = new ::fmitcp::fmi2_import_cancel_step_req;
+  if (fmi2_import_cancel_step_req_ == NULL) fmi2_import_cancel_step_req_ = new ::fmitcp_proto::fmi2_import_cancel_step_req;
   return fmi2_import_cancel_step_req_;
 }
-inline ::fmitcp::fmi2_import_cancel_step_req* fmitcp_message::release_fmi2_import_cancel_step_req() {
+inline ::fmitcp_proto::fmi2_import_cancel_step_req* fmitcp_message::release_fmi2_import_cancel_step_req() {
   clear_has_fmi2_import_cancel_step_req();
-  ::fmitcp::fmi2_import_cancel_step_req* temp = fmi2_import_cancel_step_req_;
+  ::fmitcp_proto::fmi2_import_cancel_step_req* temp = fmi2_import_cancel_step_req_;
   fmi2_import_cancel_step_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_cancel_step_res fmi2_import_cancel_step_res = 17;
+// optional .fmitcp_proto.fmi2_import_cancel_step_res fmi2_import_cancel_step_res = 17;
 inline bool fmitcp_message::has_fmi2_import_cancel_step_res() const {
   return (_has_bits_[0] & 0x00010000u) != 0;
 }
@@ -10551,25 +10551,25 @@ inline void fmitcp_message::clear_has_fmi2_import_cancel_step_res() {
   _has_bits_[0] &= ~0x00010000u;
 }
 inline void fmitcp_message::clear_fmi2_import_cancel_step_res() {
-  if (fmi2_import_cancel_step_res_ != NULL) fmi2_import_cancel_step_res_->::fmitcp::fmi2_import_cancel_step_res::Clear();
+  if (fmi2_import_cancel_step_res_ != NULL) fmi2_import_cancel_step_res_->::fmitcp_proto::fmi2_import_cancel_step_res::Clear();
   clear_has_fmi2_import_cancel_step_res();
 }
-inline const ::fmitcp::fmi2_import_cancel_step_res& fmitcp_message::fmi2_import_cancel_step_res() const {
+inline const ::fmitcp_proto::fmi2_import_cancel_step_res& fmitcp_message::fmi2_import_cancel_step_res() const {
   return fmi2_import_cancel_step_res_ != NULL ? *fmi2_import_cancel_step_res_ : *default_instance_->fmi2_import_cancel_step_res_;
 }
-inline ::fmitcp::fmi2_import_cancel_step_res* fmitcp_message::mutable_fmi2_import_cancel_step_res() {
+inline ::fmitcp_proto::fmi2_import_cancel_step_res* fmitcp_message::mutable_fmi2_import_cancel_step_res() {
   set_has_fmi2_import_cancel_step_res();
-  if (fmi2_import_cancel_step_res_ == NULL) fmi2_import_cancel_step_res_ = new ::fmitcp::fmi2_import_cancel_step_res;
+  if (fmi2_import_cancel_step_res_ == NULL) fmi2_import_cancel_step_res_ = new ::fmitcp_proto::fmi2_import_cancel_step_res;
   return fmi2_import_cancel_step_res_;
 }
-inline ::fmitcp::fmi2_import_cancel_step_res* fmitcp_message::release_fmi2_import_cancel_step_res() {
+inline ::fmitcp_proto::fmi2_import_cancel_step_res* fmitcp_message::release_fmi2_import_cancel_step_res() {
   clear_has_fmi2_import_cancel_step_res();
-  ::fmitcp::fmi2_import_cancel_step_res* temp = fmi2_import_cancel_step_res_;
+  ::fmitcp_proto::fmi2_import_cancel_step_res* temp = fmi2_import_cancel_step_res_;
   fmi2_import_cancel_step_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_do_step_req fmi2_import_do_step_req = 18;
+// optional .fmitcp_proto.fmi2_import_do_step_req fmi2_import_do_step_req = 18;
 inline bool fmitcp_message::has_fmi2_import_do_step_req() const {
   return (_has_bits_[0] & 0x00020000u) != 0;
 }
@@ -10580,25 +10580,25 @@ inline void fmitcp_message::clear_has_fmi2_import_do_step_req() {
   _has_bits_[0] &= ~0x00020000u;
 }
 inline void fmitcp_message::clear_fmi2_import_do_step_req() {
-  if (fmi2_import_do_step_req_ != NULL) fmi2_import_do_step_req_->::fmitcp::fmi2_import_do_step_req::Clear();
+  if (fmi2_import_do_step_req_ != NULL) fmi2_import_do_step_req_->::fmitcp_proto::fmi2_import_do_step_req::Clear();
   clear_has_fmi2_import_do_step_req();
 }
-inline const ::fmitcp::fmi2_import_do_step_req& fmitcp_message::fmi2_import_do_step_req() const {
+inline const ::fmitcp_proto::fmi2_import_do_step_req& fmitcp_message::fmi2_import_do_step_req() const {
   return fmi2_import_do_step_req_ != NULL ? *fmi2_import_do_step_req_ : *default_instance_->fmi2_import_do_step_req_;
 }
-inline ::fmitcp::fmi2_import_do_step_req* fmitcp_message::mutable_fmi2_import_do_step_req() {
+inline ::fmitcp_proto::fmi2_import_do_step_req* fmitcp_message::mutable_fmi2_import_do_step_req() {
   set_has_fmi2_import_do_step_req();
-  if (fmi2_import_do_step_req_ == NULL) fmi2_import_do_step_req_ = new ::fmitcp::fmi2_import_do_step_req;
+  if (fmi2_import_do_step_req_ == NULL) fmi2_import_do_step_req_ = new ::fmitcp_proto::fmi2_import_do_step_req;
   return fmi2_import_do_step_req_;
 }
-inline ::fmitcp::fmi2_import_do_step_req* fmitcp_message::release_fmi2_import_do_step_req() {
+inline ::fmitcp_proto::fmi2_import_do_step_req* fmitcp_message::release_fmi2_import_do_step_req() {
   clear_has_fmi2_import_do_step_req();
-  ::fmitcp::fmi2_import_do_step_req* temp = fmi2_import_do_step_req_;
+  ::fmitcp_proto::fmi2_import_do_step_req* temp = fmi2_import_do_step_req_;
   fmi2_import_do_step_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_do_step_res fmi2_import_do_step_res = 19;
+// optional .fmitcp_proto.fmi2_import_do_step_res fmi2_import_do_step_res = 19;
 inline bool fmitcp_message::has_fmi2_import_do_step_res() const {
   return (_has_bits_[0] & 0x00040000u) != 0;
 }
@@ -10609,25 +10609,25 @@ inline void fmitcp_message::clear_has_fmi2_import_do_step_res() {
   _has_bits_[0] &= ~0x00040000u;
 }
 inline void fmitcp_message::clear_fmi2_import_do_step_res() {
-  if (fmi2_import_do_step_res_ != NULL) fmi2_import_do_step_res_->::fmitcp::fmi2_import_do_step_res::Clear();
+  if (fmi2_import_do_step_res_ != NULL) fmi2_import_do_step_res_->::fmitcp_proto::fmi2_import_do_step_res::Clear();
   clear_has_fmi2_import_do_step_res();
 }
-inline const ::fmitcp::fmi2_import_do_step_res& fmitcp_message::fmi2_import_do_step_res() const {
+inline const ::fmitcp_proto::fmi2_import_do_step_res& fmitcp_message::fmi2_import_do_step_res() const {
   return fmi2_import_do_step_res_ != NULL ? *fmi2_import_do_step_res_ : *default_instance_->fmi2_import_do_step_res_;
 }
-inline ::fmitcp::fmi2_import_do_step_res* fmitcp_message::mutable_fmi2_import_do_step_res() {
+inline ::fmitcp_proto::fmi2_import_do_step_res* fmitcp_message::mutable_fmi2_import_do_step_res() {
   set_has_fmi2_import_do_step_res();
-  if (fmi2_import_do_step_res_ == NULL) fmi2_import_do_step_res_ = new ::fmitcp::fmi2_import_do_step_res;
+  if (fmi2_import_do_step_res_ == NULL) fmi2_import_do_step_res_ = new ::fmitcp_proto::fmi2_import_do_step_res;
   return fmi2_import_do_step_res_;
 }
-inline ::fmitcp::fmi2_import_do_step_res* fmitcp_message::release_fmi2_import_do_step_res() {
+inline ::fmitcp_proto::fmi2_import_do_step_res* fmitcp_message::release_fmi2_import_do_step_res() {
   clear_has_fmi2_import_do_step_res();
-  ::fmitcp::fmi2_import_do_step_res* temp = fmi2_import_do_step_res_;
+  ::fmitcp_proto::fmi2_import_do_step_res* temp = fmi2_import_do_step_res_;
   fmi2_import_do_step_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_status_req fmi2_import_get_status_req = 20;
+// optional .fmitcp_proto.fmi2_import_get_status_req fmi2_import_get_status_req = 20;
 inline bool fmitcp_message::has_fmi2_import_get_status_req() const {
   return (_has_bits_[0] & 0x00080000u) != 0;
 }
@@ -10638,25 +10638,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_status_req() {
   _has_bits_[0] &= ~0x00080000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_status_req() {
-  if (fmi2_import_get_status_req_ != NULL) fmi2_import_get_status_req_->::fmitcp::fmi2_import_get_status_req::Clear();
+  if (fmi2_import_get_status_req_ != NULL) fmi2_import_get_status_req_->::fmitcp_proto::fmi2_import_get_status_req::Clear();
   clear_has_fmi2_import_get_status_req();
 }
-inline const ::fmitcp::fmi2_import_get_status_req& fmitcp_message::fmi2_import_get_status_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_status_req& fmitcp_message::fmi2_import_get_status_req() const {
   return fmi2_import_get_status_req_ != NULL ? *fmi2_import_get_status_req_ : *default_instance_->fmi2_import_get_status_req_;
 }
-inline ::fmitcp::fmi2_import_get_status_req* fmitcp_message::mutable_fmi2_import_get_status_req() {
+inline ::fmitcp_proto::fmi2_import_get_status_req* fmitcp_message::mutable_fmi2_import_get_status_req() {
   set_has_fmi2_import_get_status_req();
-  if (fmi2_import_get_status_req_ == NULL) fmi2_import_get_status_req_ = new ::fmitcp::fmi2_import_get_status_req;
+  if (fmi2_import_get_status_req_ == NULL) fmi2_import_get_status_req_ = new ::fmitcp_proto::fmi2_import_get_status_req;
   return fmi2_import_get_status_req_;
 }
-inline ::fmitcp::fmi2_import_get_status_req* fmitcp_message::release_fmi2_import_get_status_req() {
+inline ::fmitcp_proto::fmi2_import_get_status_req* fmitcp_message::release_fmi2_import_get_status_req() {
   clear_has_fmi2_import_get_status_req();
-  ::fmitcp::fmi2_import_get_status_req* temp = fmi2_import_get_status_req_;
+  ::fmitcp_proto::fmi2_import_get_status_req* temp = fmi2_import_get_status_req_;
   fmi2_import_get_status_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_status_res fmi2_import_get_status_res = 21;
+// optional .fmitcp_proto.fmi2_import_get_status_res fmi2_import_get_status_res = 21;
 inline bool fmitcp_message::has_fmi2_import_get_status_res() const {
   return (_has_bits_[0] & 0x00100000u) != 0;
 }
@@ -10667,25 +10667,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_status_res() {
   _has_bits_[0] &= ~0x00100000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_status_res() {
-  if (fmi2_import_get_status_res_ != NULL) fmi2_import_get_status_res_->::fmitcp::fmi2_import_get_status_res::Clear();
+  if (fmi2_import_get_status_res_ != NULL) fmi2_import_get_status_res_->::fmitcp_proto::fmi2_import_get_status_res::Clear();
   clear_has_fmi2_import_get_status_res();
 }
-inline const ::fmitcp::fmi2_import_get_status_res& fmitcp_message::fmi2_import_get_status_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_status_res& fmitcp_message::fmi2_import_get_status_res() const {
   return fmi2_import_get_status_res_ != NULL ? *fmi2_import_get_status_res_ : *default_instance_->fmi2_import_get_status_res_;
 }
-inline ::fmitcp::fmi2_import_get_status_res* fmitcp_message::mutable_fmi2_import_get_status_res() {
+inline ::fmitcp_proto::fmi2_import_get_status_res* fmitcp_message::mutable_fmi2_import_get_status_res() {
   set_has_fmi2_import_get_status_res();
-  if (fmi2_import_get_status_res_ == NULL) fmi2_import_get_status_res_ = new ::fmitcp::fmi2_import_get_status_res;
+  if (fmi2_import_get_status_res_ == NULL) fmi2_import_get_status_res_ = new ::fmitcp_proto::fmi2_import_get_status_res;
   return fmi2_import_get_status_res_;
 }
-inline ::fmitcp::fmi2_import_get_status_res* fmitcp_message::release_fmi2_import_get_status_res() {
+inline ::fmitcp_proto::fmi2_import_get_status_res* fmitcp_message::release_fmi2_import_get_status_res() {
   clear_has_fmi2_import_get_status_res();
-  ::fmitcp::fmi2_import_get_status_res* temp = fmi2_import_get_status_res_;
+  ::fmitcp_proto::fmi2_import_get_status_res* temp = fmi2_import_get_status_res_;
   fmi2_import_get_status_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_real_status_req fmi2_import_get_real_status_req = 22;
+// optional .fmitcp_proto.fmi2_import_get_real_status_req fmi2_import_get_real_status_req = 22;
 inline bool fmitcp_message::has_fmi2_import_get_real_status_req() const {
   return (_has_bits_[0] & 0x00200000u) != 0;
 }
@@ -10696,25 +10696,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_real_status_req() {
   _has_bits_[0] &= ~0x00200000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_real_status_req() {
-  if (fmi2_import_get_real_status_req_ != NULL) fmi2_import_get_real_status_req_->::fmitcp::fmi2_import_get_real_status_req::Clear();
+  if (fmi2_import_get_real_status_req_ != NULL) fmi2_import_get_real_status_req_->::fmitcp_proto::fmi2_import_get_real_status_req::Clear();
   clear_has_fmi2_import_get_real_status_req();
 }
-inline const ::fmitcp::fmi2_import_get_real_status_req& fmitcp_message::fmi2_import_get_real_status_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_real_status_req& fmitcp_message::fmi2_import_get_real_status_req() const {
   return fmi2_import_get_real_status_req_ != NULL ? *fmi2_import_get_real_status_req_ : *default_instance_->fmi2_import_get_real_status_req_;
 }
-inline ::fmitcp::fmi2_import_get_real_status_req* fmitcp_message::mutable_fmi2_import_get_real_status_req() {
+inline ::fmitcp_proto::fmi2_import_get_real_status_req* fmitcp_message::mutable_fmi2_import_get_real_status_req() {
   set_has_fmi2_import_get_real_status_req();
-  if (fmi2_import_get_real_status_req_ == NULL) fmi2_import_get_real_status_req_ = new ::fmitcp::fmi2_import_get_real_status_req;
+  if (fmi2_import_get_real_status_req_ == NULL) fmi2_import_get_real_status_req_ = new ::fmitcp_proto::fmi2_import_get_real_status_req;
   return fmi2_import_get_real_status_req_;
 }
-inline ::fmitcp::fmi2_import_get_real_status_req* fmitcp_message::release_fmi2_import_get_real_status_req() {
+inline ::fmitcp_proto::fmi2_import_get_real_status_req* fmitcp_message::release_fmi2_import_get_real_status_req() {
   clear_has_fmi2_import_get_real_status_req();
-  ::fmitcp::fmi2_import_get_real_status_req* temp = fmi2_import_get_real_status_req_;
+  ::fmitcp_proto::fmi2_import_get_real_status_req* temp = fmi2_import_get_real_status_req_;
   fmi2_import_get_real_status_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_real_status_res fmi2_import_get_real_status_res = 23;
+// optional .fmitcp_proto.fmi2_import_get_real_status_res fmi2_import_get_real_status_res = 23;
 inline bool fmitcp_message::has_fmi2_import_get_real_status_res() const {
   return (_has_bits_[0] & 0x00400000u) != 0;
 }
@@ -10725,25 +10725,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_real_status_res() {
   _has_bits_[0] &= ~0x00400000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_real_status_res() {
-  if (fmi2_import_get_real_status_res_ != NULL) fmi2_import_get_real_status_res_->::fmitcp::fmi2_import_get_real_status_res::Clear();
+  if (fmi2_import_get_real_status_res_ != NULL) fmi2_import_get_real_status_res_->::fmitcp_proto::fmi2_import_get_real_status_res::Clear();
   clear_has_fmi2_import_get_real_status_res();
 }
-inline const ::fmitcp::fmi2_import_get_real_status_res& fmitcp_message::fmi2_import_get_real_status_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_real_status_res& fmitcp_message::fmi2_import_get_real_status_res() const {
   return fmi2_import_get_real_status_res_ != NULL ? *fmi2_import_get_real_status_res_ : *default_instance_->fmi2_import_get_real_status_res_;
 }
-inline ::fmitcp::fmi2_import_get_real_status_res* fmitcp_message::mutable_fmi2_import_get_real_status_res() {
+inline ::fmitcp_proto::fmi2_import_get_real_status_res* fmitcp_message::mutable_fmi2_import_get_real_status_res() {
   set_has_fmi2_import_get_real_status_res();
-  if (fmi2_import_get_real_status_res_ == NULL) fmi2_import_get_real_status_res_ = new ::fmitcp::fmi2_import_get_real_status_res;
+  if (fmi2_import_get_real_status_res_ == NULL) fmi2_import_get_real_status_res_ = new ::fmitcp_proto::fmi2_import_get_real_status_res;
   return fmi2_import_get_real_status_res_;
 }
-inline ::fmitcp::fmi2_import_get_real_status_res* fmitcp_message::release_fmi2_import_get_real_status_res() {
+inline ::fmitcp_proto::fmi2_import_get_real_status_res* fmitcp_message::release_fmi2_import_get_real_status_res() {
   clear_has_fmi2_import_get_real_status_res();
-  ::fmitcp::fmi2_import_get_real_status_res* temp = fmi2_import_get_real_status_res_;
+  ::fmitcp_proto::fmi2_import_get_real_status_res* temp = fmi2_import_get_real_status_res_;
   fmi2_import_get_real_status_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_integer_status_req fmi2_import_get_integer_status_req = 24;
+// optional .fmitcp_proto.fmi2_import_get_integer_status_req fmi2_import_get_integer_status_req = 24;
 inline bool fmitcp_message::has_fmi2_import_get_integer_status_req() const {
   return (_has_bits_[0] & 0x00800000u) != 0;
 }
@@ -10754,25 +10754,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_integer_status_req() {
   _has_bits_[0] &= ~0x00800000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_integer_status_req() {
-  if (fmi2_import_get_integer_status_req_ != NULL) fmi2_import_get_integer_status_req_->::fmitcp::fmi2_import_get_integer_status_req::Clear();
+  if (fmi2_import_get_integer_status_req_ != NULL) fmi2_import_get_integer_status_req_->::fmitcp_proto::fmi2_import_get_integer_status_req::Clear();
   clear_has_fmi2_import_get_integer_status_req();
 }
-inline const ::fmitcp::fmi2_import_get_integer_status_req& fmitcp_message::fmi2_import_get_integer_status_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_integer_status_req& fmitcp_message::fmi2_import_get_integer_status_req() const {
   return fmi2_import_get_integer_status_req_ != NULL ? *fmi2_import_get_integer_status_req_ : *default_instance_->fmi2_import_get_integer_status_req_;
 }
-inline ::fmitcp::fmi2_import_get_integer_status_req* fmitcp_message::mutable_fmi2_import_get_integer_status_req() {
+inline ::fmitcp_proto::fmi2_import_get_integer_status_req* fmitcp_message::mutable_fmi2_import_get_integer_status_req() {
   set_has_fmi2_import_get_integer_status_req();
-  if (fmi2_import_get_integer_status_req_ == NULL) fmi2_import_get_integer_status_req_ = new ::fmitcp::fmi2_import_get_integer_status_req;
+  if (fmi2_import_get_integer_status_req_ == NULL) fmi2_import_get_integer_status_req_ = new ::fmitcp_proto::fmi2_import_get_integer_status_req;
   return fmi2_import_get_integer_status_req_;
 }
-inline ::fmitcp::fmi2_import_get_integer_status_req* fmitcp_message::release_fmi2_import_get_integer_status_req() {
+inline ::fmitcp_proto::fmi2_import_get_integer_status_req* fmitcp_message::release_fmi2_import_get_integer_status_req() {
   clear_has_fmi2_import_get_integer_status_req();
-  ::fmitcp::fmi2_import_get_integer_status_req* temp = fmi2_import_get_integer_status_req_;
+  ::fmitcp_proto::fmi2_import_get_integer_status_req* temp = fmi2_import_get_integer_status_req_;
   fmi2_import_get_integer_status_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_integer_status_res fmi2_import_get_integer_status_res = 25;
+// optional .fmitcp_proto.fmi2_import_get_integer_status_res fmi2_import_get_integer_status_res = 25;
 inline bool fmitcp_message::has_fmi2_import_get_integer_status_res() const {
   return (_has_bits_[0] & 0x01000000u) != 0;
 }
@@ -10783,25 +10783,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_integer_status_res() {
   _has_bits_[0] &= ~0x01000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_integer_status_res() {
-  if (fmi2_import_get_integer_status_res_ != NULL) fmi2_import_get_integer_status_res_->::fmitcp::fmi2_import_get_integer_status_res::Clear();
+  if (fmi2_import_get_integer_status_res_ != NULL) fmi2_import_get_integer_status_res_->::fmitcp_proto::fmi2_import_get_integer_status_res::Clear();
   clear_has_fmi2_import_get_integer_status_res();
 }
-inline const ::fmitcp::fmi2_import_get_integer_status_res& fmitcp_message::fmi2_import_get_integer_status_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_integer_status_res& fmitcp_message::fmi2_import_get_integer_status_res() const {
   return fmi2_import_get_integer_status_res_ != NULL ? *fmi2_import_get_integer_status_res_ : *default_instance_->fmi2_import_get_integer_status_res_;
 }
-inline ::fmitcp::fmi2_import_get_integer_status_res* fmitcp_message::mutable_fmi2_import_get_integer_status_res() {
+inline ::fmitcp_proto::fmi2_import_get_integer_status_res* fmitcp_message::mutable_fmi2_import_get_integer_status_res() {
   set_has_fmi2_import_get_integer_status_res();
-  if (fmi2_import_get_integer_status_res_ == NULL) fmi2_import_get_integer_status_res_ = new ::fmitcp::fmi2_import_get_integer_status_res;
+  if (fmi2_import_get_integer_status_res_ == NULL) fmi2_import_get_integer_status_res_ = new ::fmitcp_proto::fmi2_import_get_integer_status_res;
   return fmi2_import_get_integer_status_res_;
 }
-inline ::fmitcp::fmi2_import_get_integer_status_res* fmitcp_message::release_fmi2_import_get_integer_status_res() {
+inline ::fmitcp_proto::fmi2_import_get_integer_status_res* fmitcp_message::release_fmi2_import_get_integer_status_res() {
   clear_has_fmi2_import_get_integer_status_res();
-  ::fmitcp::fmi2_import_get_integer_status_res* temp = fmi2_import_get_integer_status_res_;
+  ::fmitcp_proto::fmi2_import_get_integer_status_res* temp = fmi2_import_get_integer_status_res_;
   fmi2_import_get_integer_status_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_boolean_status_req fmi2_import_get_boolean_status_req = 26;
+// optional .fmitcp_proto.fmi2_import_get_boolean_status_req fmi2_import_get_boolean_status_req = 26;
 inline bool fmitcp_message::has_fmi2_import_get_boolean_status_req() const {
   return (_has_bits_[0] & 0x02000000u) != 0;
 }
@@ -10812,25 +10812,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_boolean_status_req() {
   _has_bits_[0] &= ~0x02000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_boolean_status_req() {
-  if (fmi2_import_get_boolean_status_req_ != NULL) fmi2_import_get_boolean_status_req_->::fmitcp::fmi2_import_get_boolean_status_req::Clear();
+  if (fmi2_import_get_boolean_status_req_ != NULL) fmi2_import_get_boolean_status_req_->::fmitcp_proto::fmi2_import_get_boolean_status_req::Clear();
   clear_has_fmi2_import_get_boolean_status_req();
 }
-inline const ::fmitcp::fmi2_import_get_boolean_status_req& fmitcp_message::fmi2_import_get_boolean_status_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_boolean_status_req& fmitcp_message::fmi2_import_get_boolean_status_req() const {
   return fmi2_import_get_boolean_status_req_ != NULL ? *fmi2_import_get_boolean_status_req_ : *default_instance_->fmi2_import_get_boolean_status_req_;
 }
-inline ::fmitcp::fmi2_import_get_boolean_status_req* fmitcp_message::mutable_fmi2_import_get_boolean_status_req() {
+inline ::fmitcp_proto::fmi2_import_get_boolean_status_req* fmitcp_message::mutable_fmi2_import_get_boolean_status_req() {
   set_has_fmi2_import_get_boolean_status_req();
-  if (fmi2_import_get_boolean_status_req_ == NULL) fmi2_import_get_boolean_status_req_ = new ::fmitcp::fmi2_import_get_boolean_status_req;
+  if (fmi2_import_get_boolean_status_req_ == NULL) fmi2_import_get_boolean_status_req_ = new ::fmitcp_proto::fmi2_import_get_boolean_status_req;
   return fmi2_import_get_boolean_status_req_;
 }
-inline ::fmitcp::fmi2_import_get_boolean_status_req* fmitcp_message::release_fmi2_import_get_boolean_status_req() {
+inline ::fmitcp_proto::fmi2_import_get_boolean_status_req* fmitcp_message::release_fmi2_import_get_boolean_status_req() {
   clear_has_fmi2_import_get_boolean_status_req();
-  ::fmitcp::fmi2_import_get_boolean_status_req* temp = fmi2_import_get_boolean_status_req_;
+  ::fmitcp_proto::fmi2_import_get_boolean_status_req* temp = fmi2_import_get_boolean_status_req_;
   fmi2_import_get_boolean_status_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_boolean_status_res fmi2_import_get_boolean_status_res = 27;
+// optional .fmitcp_proto.fmi2_import_get_boolean_status_res fmi2_import_get_boolean_status_res = 27;
 inline bool fmitcp_message::has_fmi2_import_get_boolean_status_res() const {
   return (_has_bits_[0] & 0x04000000u) != 0;
 }
@@ -10841,25 +10841,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_boolean_status_res() {
   _has_bits_[0] &= ~0x04000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_boolean_status_res() {
-  if (fmi2_import_get_boolean_status_res_ != NULL) fmi2_import_get_boolean_status_res_->::fmitcp::fmi2_import_get_boolean_status_res::Clear();
+  if (fmi2_import_get_boolean_status_res_ != NULL) fmi2_import_get_boolean_status_res_->::fmitcp_proto::fmi2_import_get_boolean_status_res::Clear();
   clear_has_fmi2_import_get_boolean_status_res();
 }
-inline const ::fmitcp::fmi2_import_get_boolean_status_res& fmitcp_message::fmi2_import_get_boolean_status_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_boolean_status_res& fmitcp_message::fmi2_import_get_boolean_status_res() const {
   return fmi2_import_get_boolean_status_res_ != NULL ? *fmi2_import_get_boolean_status_res_ : *default_instance_->fmi2_import_get_boolean_status_res_;
 }
-inline ::fmitcp::fmi2_import_get_boolean_status_res* fmitcp_message::mutable_fmi2_import_get_boolean_status_res() {
+inline ::fmitcp_proto::fmi2_import_get_boolean_status_res* fmitcp_message::mutable_fmi2_import_get_boolean_status_res() {
   set_has_fmi2_import_get_boolean_status_res();
-  if (fmi2_import_get_boolean_status_res_ == NULL) fmi2_import_get_boolean_status_res_ = new ::fmitcp::fmi2_import_get_boolean_status_res;
+  if (fmi2_import_get_boolean_status_res_ == NULL) fmi2_import_get_boolean_status_res_ = new ::fmitcp_proto::fmi2_import_get_boolean_status_res;
   return fmi2_import_get_boolean_status_res_;
 }
-inline ::fmitcp::fmi2_import_get_boolean_status_res* fmitcp_message::release_fmi2_import_get_boolean_status_res() {
+inline ::fmitcp_proto::fmi2_import_get_boolean_status_res* fmitcp_message::release_fmi2_import_get_boolean_status_res() {
   clear_has_fmi2_import_get_boolean_status_res();
-  ::fmitcp::fmi2_import_get_boolean_status_res* temp = fmi2_import_get_boolean_status_res_;
+  ::fmitcp_proto::fmi2_import_get_boolean_status_res* temp = fmi2_import_get_boolean_status_res_;
   fmi2_import_get_boolean_status_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_string_status_req fmi2_import_get_string_status_req = 28;
+// optional .fmitcp_proto.fmi2_import_get_string_status_req fmi2_import_get_string_status_req = 28;
 inline bool fmitcp_message::has_fmi2_import_get_string_status_req() const {
   return (_has_bits_[0] & 0x08000000u) != 0;
 }
@@ -10870,25 +10870,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_string_status_req() {
   _has_bits_[0] &= ~0x08000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_string_status_req() {
-  if (fmi2_import_get_string_status_req_ != NULL) fmi2_import_get_string_status_req_->::fmitcp::fmi2_import_get_string_status_req::Clear();
+  if (fmi2_import_get_string_status_req_ != NULL) fmi2_import_get_string_status_req_->::fmitcp_proto::fmi2_import_get_string_status_req::Clear();
   clear_has_fmi2_import_get_string_status_req();
 }
-inline const ::fmitcp::fmi2_import_get_string_status_req& fmitcp_message::fmi2_import_get_string_status_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_string_status_req& fmitcp_message::fmi2_import_get_string_status_req() const {
   return fmi2_import_get_string_status_req_ != NULL ? *fmi2_import_get_string_status_req_ : *default_instance_->fmi2_import_get_string_status_req_;
 }
-inline ::fmitcp::fmi2_import_get_string_status_req* fmitcp_message::mutable_fmi2_import_get_string_status_req() {
+inline ::fmitcp_proto::fmi2_import_get_string_status_req* fmitcp_message::mutable_fmi2_import_get_string_status_req() {
   set_has_fmi2_import_get_string_status_req();
-  if (fmi2_import_get_string_status_req_ == NULL) fmi2_import_get_string_status_req_ = new ::fmitcp::fmi2_import_get_string_status_req;
+  if (fmi2_import_get_string_status_req_ == NULL) fmi2_import_get_string_status_req_ = new ::fmitcp_proto::fmi2_import_get_string_status_req;
   return fmi2_import_get_string_status_req_;
 }
-inline ::fmitcp::fmi2_import_get_string_status_req* fmitcp_message::release_fmi2_import_get_string_status_req() {
+inline ::fmitcp_proto::fmi2_import_get_string_status_req* fmitcp_message::release_fmi2_import_get_string_status_req() {
   clear_has_fmi2_import_get_string_status_req();
-  ::fmitcp::fmi2_import_get_string_status_req* temp = fmi2_import_get_string_status_req_;
+  ::fmitcp_proto::fmi2_import_get_string_status_req* temp = fmi2_import_get_string_status_req_;
   fmi2_import_get_string_status_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_string_status_res fmi2_import_get_string_status_res = 29;
+// optional .fmitcp_proto.fmi2_import_get_string_status_res fmi2_import_get_string_status_res = 29;
 inline bool fmitcp_message::has_fmi2_import_get_string_status_res() const {
   return (_has_bits_[0] & 0x10000000u) != 0;
 }
@@ -10899,25 +10899,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_string_status_res() {
   _has_bits_[0] &= ~0x10000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_string_status_res() {
-  if (fmi2_import_get_string_status_res_ != NULL) fmi2_import_get_string_status_res_->::fmitcp::fmi2_import_get_string_status_res::Clear();
+  if (fmi2_import_get_string_status_res_ != NULL) fmi2_import_get_string_status_res_->::fmitcp_proto::fmi2_import_get_string_status_res::Clear();
   clear_has_fmi2_import_get_string_status_res();
 }
-inline const ::fmitcp::fmi2_import_get_string_status_res& fmitcp_message::fmi2_import_get_string_status_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_string_status_res& fmitcp_message::fmi2_import_get_string_status_res() const {
   return fmi2_import_get_string_status_res_ != NULL ? *fmi2_import_get_string_status_res_ : *default_instance_->fmi2_import_get_string_status_res_;
 }
-inline ::fmitcp::fmi2_import_get_string_status_res* fmitcp_message::mutable_fmi2_import_get_string_status_res() {
+inline ::fmitcp_proto::fmi2_import_get_string_status_res* fmitcp_message::mutable_fmi2_import_get_string_status_res() {
   set_has_fmi2_import_get_string_status_res();
-  if (fmi2_import_get_string_status_res_ == NULL) fmi2_import_get_string_status_res_ = new ::fmitcp::fmi2_import_get_string_status_res;
+  if (fmi2_import_get_string_status_res_ == NULL) fmi2_import_get_string_status_res_ = new ::fmitcp_proto::fmi2_import_get_string_status_res;
   return fmi2_import_get_string_status_res_;
 }
-inline ::fmitcp::fmi2_import_get_string_status_res* fmitcp_message::release_fmi2_import_get_string_status_res() {
+inline ::fmitcp_proto::fmi2_import_get_string_status_res* fmitcp_message::release_fmi2_import_get_string_status_res() {
   clear_has_fmi2_import_get_string_status_res();
-  ::fmitcp::fmi2_import_get_string_status_res* temp = fmi2_import_get_string_status_res_;
+  ::fmitcp_proto::fmi2_import_get_string_status_res* temp = fmi2_import_get_string_status_res_;
   fmi2_import_get_string_status_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_instantiate_model_req fmi2_import_instantiate_model_req = 30;
+// optional .fmitcp_proto.fmi2_import_instantiate_model_req fmi2_import_instantiate_model_req = 30;
 inline bool fmitcp_message::has_fmi2_import_instantiate_model_req() const {
   return (_has_bits_[0] & 0x20000000u) != 0;
 }
@@ -10928,25 +10928,25 @@ inline void fmitcp_message::clear_has_fmi2_import_instantiate_model_req() {
   _has_bits_[0] &= ~0x20000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_instantiate_model_req() {
-  if (fmi2_import_instantiate_model_req_ != NULL) fmi2_import_instantiate_model_req_->::fmitcp::fmi2_import_instantiate_model_req::Clear();
+  if (fmi2_import_instantiate_model_req_ != NULL) fmi2_import_instantiate_model_req_->::fmitcp_proto::fmi2_import_instantiate_model_req::Clear();
   clear_has_fmi2_import_instantiate_model_req();
 }
-inline const ::fmitcp::fmi2_import_instantiate_model_req& fmitcp_message::fmi2_import_instantiate_model_req() const {
+inline const ::fmitcp_proto::fmi2_import_instantiate_model_req& fmitcp_message::fmi2_import_instantiate_model_req() const {
   return fmi2_import_instantiate_model_req_ != NULL ? *fmi2_import_instantiate_model_req_ : *default_instance_->fmi2_import_instantiate_model_req_;
 }
-inline ::fmitcp::fmi2_import_instantiate_model_req* fmitcp_message::mutable_fmi2_import_instantiate_model_req() {
+inline ::fmitcp_proto::fmi2_import_instantiate_model_req* fmitcp_message::mutable_fmi2_import_instantiate_model_req() {
   set_has_fmi2_import_instantiate_model_req();
-  if (fmi2_import_instantiate_model_req_ == NULL) fmi2_import_instantiate_model_req_ = new ::fmitcp::fmi2_import_instantiate_model_req;
+  if (fmi2_import_instantiate_model_req_ == NULL) fmi2_import_instantiate_model_req_ = new ::fmitcp_proto::fmi2_import_instantiate_model_req;
   return fmi2_import_instantiate_model_req_;
 }
-inline ::fmitcp::fmi2_import_instantiate_model_req* fmitcp_message::release_fmi2_import_instantiate_model_req() {
+inline ::fmitcp_proto::fmi2_import_instantiate_model_req* fmitcp_message::release_fmi2_import_instantiate_model_req() {
   clear_has_fmi2_import_instantiate_model_req();
-  ::fmitcp::fmi2_import_instantiate_model_req* temp = fmi2_import_instantiate_model_req_;
+  ::fmitcp_proto::fmi2_import_instantiate_model_req* temp = fmi2_import_instantiate_model_req_;
   fmi2_import_instantiate_model_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_instantiate_model_res fmi2_import_instantiate_model_res = 31;
+// optional .fmitcp_proto.fmi2_import_instantiate_model_res fmi2_import_instantiate_model_res = 31;
 inline bool fmitcp_message::has_fmi2_import_instantiate_model_res() const {
   return (_has_bits_[0] & 0x40000000u) != 0;
 }
@@ -10957,25 +10957,25 @@ inline void fmitcp_message::clear_has_fmi2_import_instantiate_model_res() {
   _has_bits_[0] &= ~0x40000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_instantiate_model_res() {
-  if (fmi2_import_instantiate_model_res_ != NULL) fmi2_import_instantiate_model_res_->::fmitcp::fmi2_import_instantiate_model_res::Clear();
+  if (fmi2_import_instantiate_model_res_ != NULL) fmi2_import_instantiate_model_res_->::fmitcp_proto::fmi2_import_instantiate_model_res::Clear();
   clear_has_fmi2_import_instantiate_model_res();
 }
-inline const ::fmitcp::fmi2_import_instantiate_model_res& fmitcp_message::fmi2_import_instantiate_model_res() const {
+inline const ::fmitcp_proto::fmi2_import_instantiate_model_res& fmitcp_message::fmi2_import_instantiate_model_res() const {
   return fmi2_import_instantiate_model_res_ != NULL ? *fmi2_import_instantiate_model_res_ : *default_instance_->fmi2_import_instantiate_model_res_;
 }
-inline ::fmitcp::fmi2_import_instantiate_model_res* fmitcp_message::mutable_fmi2_import_instantiate_model_res() {
+inline ::fmitcp_proto::fmi2_import_instantiate_model_res* fmitcp_message::mutable_fmi2_import_instantiate_model_res() {
   set_has_fmi2_import_instantiate_model_res();
-  if (fmi2_import_instantiate_model_res_ == NULL) fmi2_import_instantiate_model_res_ = new ::fmitcp::fmi2_import_instantiate_model_res;
+  if (fmi2_import_instantiate_model_res_ == NULL) fmi2_import_instantiate_model_res_ = new ::fmitcp_proto::fmi2_import_instantiate_model_res;
   return fmi2_import_instantiate_model_res_;
 }
-inline ::fmitcp::fmi2_import_instantiate_model_res* fmitcp_message::release_fmi2_import_instantiate_model_res() {
+inline ::fmitcp_proto::fmi2_import_instantiate_model_res* fmitcp_message::release_fmi2_import_instantiate_model_res() {
   clear_has_fmi2_import_instantiate_model_res();
-  ::fmitcp::fmi2_import_instantiate_model_res* temp = fmi2_import_instantiate_model_res_;
+  ::fmitcp_proto::fmi2_import_instantiate_model_res* temp = fmi2_import_instantiate_model_res_;
   fmi2_import_instantiate_model_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_free_model_instance_req fmi2_import_free_model_instance_req = 32;
+// optional .fmitcp_proto.fmi2_import_free_model_instance_req fmi2_import_free_model_instance_req = 32;
 inline bool fmitcp_message::has_fmi2_import_free_model_instance_req() const {
   return (_has_bits_[0] & 0x80000000u) != 0;
 }
@@ -10986,25 +10986,25 @@ inline void fmitcp_message::clear_has_fmi2_import_free_model_instance_req() {
   _has_bits_[0] &= ~0x80000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_free_model_instance_req() {
-  if (fmi2_import_free_model_instance_req_ != NULL) fmi2_import_free_model_instance_req_->::fmitcp::fmi2_import_free_model_instance_req::Clear();
+  if (fmi2_import_free_model_instance_req_ != NULL) fmi2_import_free_model_instance_req_->::fmitcp_proto::fmi2_import_free_model_instance_req::Clear();
   clear_has_fmi2_import_free_model_instance_req();
 }
-inline const ::fmitcp::fmi2_import_free_model_instance_req& fmitcp_message::fmi2_import_free_model_instance_req() const {
+inline const ::fmitcp_proto::fmi2_import_free_model_instance_req& fmitcp_message::fmi2_import_free_model_instance_req() const {
   return fmi2_import_free_model_instance_req_ != NULL ? *fmi2_import_free_model_instance_req_ : *default_instance_->fmi2_import_free_model_instance_req_;
 }
-inline ::fmitcp::fmi2_import_free_model_instance_req* fmitcp_message::mutable_fmi2_import_free_model_instance_req() {
+inline ::fmitcp_proto::fmi2_import_free_model_instance_req* fmitcp_message::mutable_fmi2_import_free_model_instance_req() {
   set_has_fmi2_import_free_model_instance_req();
-  if (fmi2_import_free_model_instance_req_ == NULL) fmi2_import_free_model_instance_req_ = new ::fmitcp::fmi2_import_free_model_instance_req;
+  if (fmi2_import_free_model_instance_req_ == NULL) fmi2_import_free_model_instance_req_ = new ::fmitcp_proto::fmi2_import_free_model_instance_req;
   return fmi2_import_free_model_instance_req_;
 }
-inline ::fmitcp::fmi2_import_free_model_instance_req* fmitcp_message::release_fmi2_import_free_model_instance_req() {
+inline ::fmitcp_proto::fmi2_import_free_model_instance_req* fmitcp_message::release_fmi2_import_free_model_instance_req() {
   clear_has_fmi2_import_free_model_instance_req();
-  ::fmitcp::fmi2_import_free_model_instance_req* temp = fmi2_import_free_model_instance_req_;
+  ::fmitcp_proto::fmi2_import_free_model_instance_req* temp = fmi2_import_free_model_instance_req_;
   fmi2_import_free_model_instance_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_free_model_instance_res fmi2_import_free_model_instance_res = 33;
+// optional .fmitcp_proto.fmi2_import_free_model_instance_res fmi2_import_free_model_instance_res = 33;
 inline bool fmitcp_message::has_fmi2_import_free_model_instance_res() const {
   return (_has_bits_[1] & 0x00000001u) != 0;
 }
@@ -11015,25 +11015,25 @@ inline void fmitcp_message::clear_has_fmi2_import_free_model_instance_res() {
   _has_bits_[1] &= ~0x00000001u;
 }
 inline void fmitcp_message::clear_fmi2_import_free_model_instance_res() {
-  if (fmi2_import_free_model_instance_res_ != NULL) fmi2_import_free_model_instance_res_->::fmitcp::fmi2_import_free_model_instance_res::Clear();
+  if (fmi2_import_free_model_instance_res_ != NULL) fmi2_import_free_model_instance_res_->::fmitcp_proto::fmi2_import_free_model_instance_res::Clear();
   clear_has_fmi2_import_free_model_instance_res();
 }
-inline const ::fmitcp::fmi2_import_free_model_instance_res& fmitcp_message::fmi2_import_free_model_instance_res() const {
+inline const ::fmitcp_proto::fmi2_import_free_model_instance_res& fmitcp_message::fmi2_import_free_model_instance_res() const {
   return fmi2_import_free_model_instance_res_ != NULL ? *fmi2_import_free_model_instance_res_ : *default_instance_->fmi2_import_free_model_instance_res_;
 }
-inline ::fmitcp::fmi2_import_free_model_instance_res* fmitcp_message::mutable_fmi2_import_free_model_instance_res() {
+inline ::fmitcp_proto::fmi2_import_free_model_instance_res* fmitcp_message::mutable_fmi2_import_free_model_instance_res() {
   set_has_fmi2_import_free_model_instance_res();
-  if (fmi2_import_free_model_instance_res_ == NULL) fmi2_import_free_model_instance_res_ = new ::fmitcp::fmi2_import_free_model_instance_res;
+  if (fmi2_import_free_model_instance_res_ == NULL) fmi2_import_free_model_instance_res_ = new ::fmitcp_proto::fmi2_import_free_model_instance_res;
   return fmi2_import_free_model_instance_res_;
 }
-inline ::fmitcp::fmi2_import_free_model_instance_res* fmitcp_message::release_fmi2_import_free_model_instance_res() {
+inline ::fmitcp_proto::fmi2_import_free_model_instance_res* fmitcp_message::release_fmi2_import_free_model_instance_res() {
   clear_has_fmi2_import_free_model_instance_res();
-  ::fmitcp::fmi2_import_free_model_instance_res* temp = fmi2_import_free_model_instance_res_;
+  ::fmitcp_proto::fmi2_import_free_model_instance_res* temp = fmi2_import_free_model_instance_res_;
   fmi2_import_free_model_instance_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_time_req fmi2_import_set_time_req = 34;
+// optional .fmitcp_proto.fmi2_import_set_time_req fmi2_import_set_time_req = 34;
 inline bool fmitcp_message::has_fmi2_import_set_time_req() const {
   return (_has_bits_[1] & 0x00000002u) != 0;
 }
@@ -11044,25 +11044,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_time_req() {
   _has_bits_[1] &= ~0x00000002u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_time_req() {
-  if (fmi2_import_set_time_req_ != NULL) fmi2_import_set_time_req_->::fmitcp::fmi2_import_set_time_req::Clear();
+  if (fmi2_import_set_time_req_ != NULL) fmi2_import_set_time_req_->::fmitcp_proto::fmi2_import_set_time_req::Clear();
   clear_has_fmi2_import_set_time_req();
 }
-inline const ::fmitcp::fmi2_import_set_time_req& fmitcp_message::fmi2_import_set_time_req() const {
+inline const ::fmitcp_proto::fmi2_import_set_time_req& fmitcp_message::fmi2_import_set_time_req() const {
   return fmi2_import_set_time_req_ != NULL ? *fmi2_import_set_time_req_ : *default_instance_->fmi2_import_set_time_req_;
 }
-inline ::fmitcp::fmi2_import_set_time_req* fmitcp_message::mutable_fmi2_import_set_time_req() {
+inline ::fmitcp_proto::fmi2_import_set_time_req* fmitcp_message::mutable_fmi2_import_set_time_req() {
   set_has_fmi2_import_set_time_req();
-  if (fmi2_import_set_time_req_ == NULL) fmi2_import_set_time_req_ = new ::fmitcp::fmi2_import_set_time_req;
+  if (fmi2_import_set_time_req_ == NULL) fmi2_import_set_time_req_ = new ::fmitcp_proto::fmi2_import_set_time_req;
   return fmi2_import_set_time_req_;
 }
-inline ::fmitcp::fmi2_import_set_time_req* fmitcp_message::release_fmi2_import_set_time_req() {
+inline ::fmitcp_proto::fmi2_import_set_time_req* fmitcp_message::release_fmi2_import_set_time_req() {
   clear_has_fmi2_import_set_time_req();
-  ::fmitcp::fmi2_import_set_time_req* temp = fmi2_import_set_time_req_;
+  ::fmitcp_proto::fmi2_import_set_time_req* temp = fmi2_import_set_time_req_;
   fmi2_import_set_time_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_time_res fmi2_import_set_time_res = 35;
+// optional .fmitcp_proto.fmi2_import_set_time_res fmi2_import_set_time_res = 35;
 inline bool fmitcp_message::has_fmi2_import_set_time_res() const {
   return (_has_bits_[1] & 0x00000004u) != 0;
 }
@@ -11073,25 +11073,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_time_res() {
   _has_bits_[1] &= ~0x00000004u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_time_res() {
-  if (fmi2_import_set_time_res_ != NULL) fmi2_import_set_time_res_->::fmitcp::fmi2_import_set_time_res::Clear();
+  if (fmi2_import_set_time_res_ != NULL) fmi2_import_set_time_res_->::fmitcp_proto::fmi2_import_set_time_res::Clear();
   clear_has_fmi2_import_set_time_res();
 }
-inline const ::fmitcp::fmi2_import_set_time_res& fmitcp_message::fmi2_import_set_time_res() const {
+inline const ::fmitcp_proto::fmi2_import_set_time_res& fmitcp_message::fmi2_import_set_time_res() const {
   return fmi2_import_set_time_res_ != NULL ? *fmi2_import_set_time_res_ : *default_instance_->fmi2_import_set_time_res_;
 }
-inline ::fmitcp::fmi2_import_set_time_res* fmitcp_message::mutable_fmi2_import_set_time_res() {
+inline ::fmitcp_proto::fmi2_import_set_time_res* fmitcp_message::mutable_fmi2_import_set_time_res() {
   set_has_fmi2_import_set_time_res();
-  if (fmi2_import_set_time_res_ == NULL) fmi2_import_set_time_res_ = new ::fmitcp::fmi2_import_set_time_res;
+  if (fmi2_import_set_time_res_ == NULL) fmi2_import_set_time_res_ = new ::fmitcp_proto::fmi2_import_set_time_res;
   return fmi2_import_set_time_res_;
 }
-inline ::fmitcp::fmi2_import_set_time_res* fmitcp_message::release_fmi2_import_set_time_res() {
+inline ::fmitcp_proto::fmi2_import_set_time_res* fmitcp_message::release_fmi2_import_set_time_res() {
   clear_has_fmi2_import_set_time_res();
-  ::fmitcp::fmi2_import_set_time_res* temp = fmi2_import_set_time_res_;
+  ::fmitcp_proto::fmi2_import_set_time_res* temp = fmi2_import_set_time_res_;
   fmi2_import_set_time_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_continuous_states_req fmi2_import_set_continuous_states_req = 36;
+// optional .fmitcp_proto.fmi2_import_set_continuous_states_req fmi2_import_set_continuous_states_req = 36;
 inline bool fmitcp_message::has_fmi2_import_set_continuous_states_req() const {
   return (_has_bits_[1] & 0x00000008u) != 0;
 }
@@ -11102,25 +11102,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_continuous_states_req() {
   _has_bits_[1] &= ~0x00000008u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_continuous_states_req() {
-  if (fmi2_import_set_continuous_states_req_ != NULL) fmi2_import_set_continuous_states_req_->::fmitcp::fmi2_import_set_continuous_states_req::Clear();
+  if (fmi2_import_set_continuous_states_req_ != NULL) fmi2_import_set_continuous_states_req_->::fmitcp_proto::fmi2_import_set_continuous_states_req::Clear();
   clear_has_fmi2_import_set_continuous_states_req();
 }
-inline const ::fmitcp::fmi2_import_set_continuous_states_req& fmitcp_message::fmi2_import_set_continuous_states_req() const {
+inline const ::fmitcp_proto::fmi2_import_set_continuous_states_req& fmitcp_message::fmi2_import_set_continuous_states_req() const {
   return fmi2_import_set_continuous_states_req_ != NULL ? *fmi2_import_set_continuous_states_req_ : *default_instance_->fmi2_import_set_continuous_states_req_;
 }
-inline ::fmitcp::fmi2_import_set_continuous_states_req* fmitcp_message::mutable_fmi2_import_set_continuous_states_req() {
+inline ::fmitcp_proto::fmi2_import_set_continuous_states_req* fmitcp_message::mutable_fmi2_import_set_continuous_states_req() {
   set_has_fmi2_import_set_continuous_states_req();
-  if (fmi2_import_set_continuous_states_req_ == NULL) fmi2_import_set_continuous_states_req_ = new ::fmitcp::fmi2_import_set_continuous_states_req;
+  if (fmi2_import_set_continuous_states_req_ == NULL) fmi2_import_set_continuous_states_req_ = new ::fmitcp_proto::fmi2_import_set_continuous_states_req;
   return fmi2_import_set_continuous_states_req_;
 }
-inline ::fmitcp::fmi2_import_set_continuous_states_req* fmitcp_message::release_fmi2_import_set_continuous_states_req() {
+inline ::fmitcp_proto::fmi2_import_set_continuous_states_req* fmitcp_message::release_fmi2_import_set_continuous_states_req() {
   clear_has_fmi2_import_set_continuous_states_req();
-  ::fmitcp::fmi2_import_set_continuous_states_req* temp = fmi2_import_set_continuous_states_req_;
+  ::fmitcp_proto::fmi2_import_set_continuous_states_req* temp = fmi2_import_set_continuous_states_req_;
   fmi2_import_set_continuous_states_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_continuous_states_res fmi2_import_set_continuous_states_res = 37;
+// optional .fmitcp_proto.fmi2_import_set_continuous_states_res fmi2_import_set_continuous_states_res = 37;
 inline bool fmitcp_message::has_fmi2_import_set_continuous_states_res() const {
   return (_has_bits_[1] & 0x00000010u) != 0;
 }
@@ -11131,25 +11131,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_continuous_states_res() {
   _has_bits_[1] &= ~0x00000010u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_continuous_states_res() {
-  if (fmi2_import_set_continuous_states_res_ != NULL) fmi2_import_set_continuous_states_res_->::fmitcp::fmi2_import_set_continuous_states_res::Clear();
+  if (fmi2_import_set_continuous_states_res_ != NULL) fmi2_import_set_continuous_states_res_->::fmitcp_proto::fmi2_import_set_continuous_states_res::Clear();
   clear_has_fmi2_import_set_continuous_states_res();
 }
-inline const ::fmitcp::fmi2_import_set_continuous_states_res& fmitcp_message::fmi2_import_set_continuous_states_res() const {
+inline const ::fmitcp_proto::fmi2_import_set_continuous_states_res& fmitcp_message::fmi2_import_set_continuous_states_res() const {
   return fmi2_import_set_continuous_states_res_ != NULL ? *fmi2_import_set_continuous_states_res_ : *default_instance_->fmi2_import_set_continuous_states_res_;
 }
-inline ::fmitcp::fmi2_import_set_continuous_states_res* fmitcp_message::mutable_fmi2_import_set_continuous_states_res() {
+inline ::fmitcp_proto::fmi2_import_set_continuous_states_res* fmitcp_message::mutable_fmi2_import_set_continuous_states_res() {
   set_has_fmi2_import_set_continuous_states_res();
-  if (fmi2_import_set_continuous_states_res_ == NULL) fmi2_import_set_continuous_states_res_ = new ::fmitcp::fmi2_import_set_continuous_states_res;
+  if (fmi2_import_set_continuous_states_res_ == NULL) fmi2_import_set_continuous_states_res_ = new ::fmitcp_proto::fmi2_import_set_continuous_states_res;
   return fmi2_import_set_continuous_states_res_;
 }
-inline ::fmitcp::fmi2_import_set_continuous_states_res* fmitcp_message::release_fmi2_import_set_continuous_states_res() {
+inline ::fmitcp_proto::fmi2_import_set_continuous_states_res* fmitcp_message::release_fmi2_import_set_continuous_states_res() {
   clear_has_fmi2_import_set_continuous_states_res();
-  ::fmitcp::fmi2_import_set_continuous_states_res* temp = fmi2_import_set_continuous_states_res_;
+  ::fmitcp_proto::fmi2_import_set_continuous_states_res* temp = fmi2_import_set_continuous_states_res_;
   fmi2_import_set_continuous_states_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_completed_integrator_step_req fmi2_import_completed_integrator_step_req = 38;
+// optional .fmitcp_proto.fmi2_import_completed_integrator_step_req fmi2_import_completed_integrator_step_req = 38;
 inline bool fmitcp_message::has_fmi2_import_completed_integrator_step_req() const {
   return (_has_bits_[1] & 0x00000020u) != 0;
 }
@@ -11160,25 +11160,25 @@ inline void fmitcp_message::clear_has_fmi2_import_completed_integrator_step_req(
   _has_bits_[1] &= ~0x00000020u;
 }
 inline void fmitcp_message::clear_fmi2_import_completed_integrator_step_req() {
-  if (fmi2_import_completed_integrator_step_req_ != NULL) fmi2_import_completed_integrator_step_req_->::fmitcp::fmi2_import_completed_integrator_step_req::Clear();
+  if (fmi2_import_completed_integrator_step_req_ != NULL) fmi2_import_completed_integrator_step_req_->::fmitcp_proto::fmi2_import_completed_integrator_step_req::Clear();
   clear_has_fmi2_import_completed_integrator_step_req();
 }
-inline const ::fmitcp::fmi2_import_completed_integrator_step_req& fmitcp_message::fmi2_import_completed_integrator_step_req() const {
+inline const ::fmitcp_proto::fmi2_import_completed_integrator_step_req& fmitcp_message::fmi2_import_completed_integrator_step_req() const {
   return fmi2_import_completed_integrator_step_req_ != NULL ? *fmi2_import_completed_integrator_step_req_ : *default_instance_->fmi2_import_completed_integrator_step_req_;
 }
-inline ::fmitcp::fmi2_import_completed_integrator_step_req* fmitcp_message::mutable_fmi2_import_completed_integrator_step_req() {
+inline ::fmitcp_proto::fmi2_import_completed_integrator_step_req* fmitcp_message::mutable_fmi2_import_completed_integrator_step_req() {
   set_has_fmi2_import_completed_integrator_step_req();
-  if (fmi2_import_completed_integrator_step_req_ == NULL) fmi2_import_completed_integrator_step_req_ = new ::fmitcp::fmi2_import_completed_integrator_step_req;
+  if (fmi2_import_completed_integrator_step_req_ == NULL) fmi2_import_completed_integrator_step_req_ = new ::fmitcp_proto::fmi2_import_completed_integrator_step_req;
   return fmi2_import_completed_integrator_step_req_;
 }
-inline ::fmitcp::fmi2_import_completed_integrator_step_req* fmitcp_message::release_fmi2_import_completed_integrator_step_req() {
+inline ::fmitcp_proto::fmi2_import_completed_integrator_step_req* fmitcp_message::release_fmi2_import_completed_integrator_step_req() {
   clear_has_fmi2_import_completed_integrator_step_req();
-  ::fmitcp::fmi2_import_completed_integrator_step_req* temp = fmi2_import_completed_integrator_step_req_;
+  ::fmitcp_proto::fmi2_import_completed_integrator_step_req* temp = fmi2_import_completed_integrator_step_req_;
   fmi2_import_completed_integrator_step_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_completed_integrator_step_res fmi2_import_completed_integrator_step_res = 39;
+// optional .fmitcp_proto.fmi2_import_completed_integrator_step_res fmi2_import_completed_integrator_step_res = 39;
 inline bool fmitcp_message::has_fmi2_import_completed_integrator_step_res() const {
   return (_has_bits_[1] & 0x00000040u) != 0;
 }
@@ -11189,25 +11189,25 @@ inline void fmitcp_message::clear_has_fmi2_import_completed_integrator_step_res(
   _has_bits_[1] &= ~0x00000040u;
 }
 inline void fmitcp_message::clear_fmi2_import_completed_integrator_step_res() {
-  if (fmi2_import_completed_integrator_step_res_ != NULL) fmi2_import_completed_integrator_step_res_->::fmitcp::fmi2_import_completed_integrator_step_res::Clear();
+  if (fmi2_import_completed_integrator_step_res_ != NULL) fmi2_import_completed_integrator_step_res_->::fmitcp_proto::fmi2_import_completed_integrator_step_res::Clear();
   clear_has_fmi2_import_completed_integrator_step_res();
 }
-inline const ::fmitcp::fmi2_import_completed_integrator_step_res& fmitcp_message::fmi2_import_completed_integrator_step_res() const {
+inline const ::fmitcp_proto::fmi2_import_completed_integrator_step_res& fmitcp_message::fmi2_import_completed_integrator_step_res() const {
   return fmi2_import_completed_integrator_step_res_ != NULL ? *fmi2_import_completed_integrator_step_res_ : *default_instance_->fmi2_import_completed_integrator_step_res_;
 }
-inline ::fmitcp::fmi2_import_completed_integrator_step_res* fmitcp_message::mutable_fmi2_import_completed_integrator_step_res() {
+inline ::fmitcp_proto::fmi2_import_completed_integrator_step_res* fmitcp_message::mutable_fmi2_import_completed_integrator_step_res() {
   set_has_fmi2_import_completed_integrator_step_res();
-  if (fmi2_import_completed_integrator_step_res_ == NULL) fmi2_import_completed_integrator_step_res_ = new ::fmitcp::fmi2_import_completed_integrator_step_res;
+  if (fmi2_import_completed_integrator_step_res_ == NULL) fmi2_import_completed_integrator_step_res_ = new ::fmitcp_proto::fmi2_import_completed_integrator_step_res;
   return fmi2_import_completed_integrator_step_res_;
 }
-inline ::fmitcp::fmi2_import_completed_integrator_step_res* fmitcp_message::release_fmi2_import_completed_integrator_step_res() {
+inline ::fmitcp_proto::fmi2_import_completed_integrator_step_res* fmitcp_message::release_fmi2_import_completed_integrator_step_res() {
   clear_has_fmi2_import_completed_integrator_step_res();
-  ::fmitcp::fmi2_import_completed_integrator_step_res* temp = fmi2_import_completed_integrator_step_res_;
+  ::fmitcp_proto::fmi2_import_completed_integrator_step_res* temp = fmi2_import_completed_integrator_step_res_;
   fmi2_import_completed_integrator_step_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_initialize_model_req fmi2_import_initialize_model_req = 40;
+// optional .fmitcp_proto.fmi2_import_initialize_model_req fmi2_import_initialize_model_req = 40;
 inline bool fmitcp_message::has_fmi2_import_initialize_model_req() const {
   return (_has_bits_[1] & 0x00000080u) != 0;
 }
@@ -11218,25 +11218,25 @@ inline void fmitcp_message::clear_has_fmi2_import_initialize_model_req() {
   _has_bits_[1] &= ~0x00000080u;
 }
 inline void fmitcp_message::clear_fmi2_import_initialize_model_req() {
-  if (fmi2_import_initialize_model_req_ != NULL) fmi2_import_initialize_model_req_->::fmitcp::fmi2_import_initialize_model_req::Clear();
+  if (fmi2_import_initialize_model_req_ != NULL) fmi2_import_initialize_model_req_->::fmitcp_proto::fmi2_import_initialize_model_req::Clear();
   clear_has_fmi2_import_initialize_model_req();
 }
-inline const ::fmitcp::fmi2_import_initialize_model_req& fmitcp_message::fmi2_import_initialize_model_req() const {
+inline const ::fmitcp_proto::fmi2_import_initialize_model_req& fmitcp_message::fmi2_import_initialize_model_req() const {
   return fmi2_import_initialize_model_req_ != NULL ? *fmi2_import_initialize_model_req_ : *default_instance_->fmi2_import_initialize_model_req_;
 }
-inline ::fmitcp::fmi2_import_initialize_model_req* fmitcp_message::mutable_fmi2_import_initialize_model_req() {
+inline ::fmitcp_proto::fmi2_import_initialize_model_req* fmitcp_message::mutable_fmi2_import_initialize_model_req() {
   set_has_fmi2_import_initialize_model_req();
-  if (fmi2_import_initialize_model_req_ == NULL) fmi2_import_initialize_model_req_ = new ::fmitcp::fmi2_import_initialize_model_req;
+  if (fmi2_import_initialize_model_req_ == NULL) fmi2_import_initialize_model_req_ = new ::fmitcp_proto::fmi2_import_initialize_model_req;
   return fmi2_import_initialize_model_req_;
 }
-inline ::fmitcp::fmi2_import_initialize_model_req* fmitcp_message::release_fmi2_import_initialize_model_req() {
+inline ::fmitcp_proto::fmi2_import_initialize_model_req* fmitcp_message::release_fmi2_import_initialize_model_req() {
   clear_has_fmi2_import_initialize_model_req();
-  ::fmitcp::fmi2_import_initialize_model_req* temp = fmi2_import_initialize_model_req_;
+  ::fmitcp_proto::fmi2_import_initialize_model_req* temp = fmi2_import_initialize_model_req_;
   fmi2_import_initialize_model_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_initialize_model_res fmi2_import_initialize_model_res = 41;
+// optional .fmitcp_proto.fmi2_import_initialize_model_res fmi2_import_initialize_model_res = 41;
 inline bool fmitcp_message::has_fmi2_import_initialize_model_res() const {
   return (_has_bits_[1] & 0x00000100u) != 0;
 }
@@ -11247,25 +11247,25 @@ inline void fmitcp_message::clear_has_fmi2_import_initialize_model_res() {
   _has_bits_[1] &= ~0x00000100u;
 }
 inline void fmitcp_message::clear_fmi2_import_initialize_model_res() {
-  if (fmi2_import_initialize_model_res_ != NULL) fmi2_import_initialize_model_res_->::fmitcp::fmi2_import_initialize_model_res::Clear();
+  if (fmi2_import_initialize_model_res_ != NULL) fmi2_import_initialize_model_res_->::fmitcp_proto::fmi2_import_initialize_model_res::Clear();
   clear_has_fmi2_import_initialize_model_res();
 }
-inline const ::fmitcp::fmi2_import_initialize_model_res& fmitcp_message::fmi2_import_initialize_model_res() const {
+inline const ::fmitcp_proto::fmi2_import_initialize_model_res& fmitcp_message::fmi2_import_initialize_model_res() const {
   return fmi2_import_initialize_model_res_ != NULL ? *fmi2_import_initialize_model_res_ : *default_instance_->fmi2_import_initialize_model_res_;
 }
-inline ::fmitcp::fmi2_import_initialize_model_res* fmitcp_message::mutable_fmi2_import_initialize_model_res() {
+inline ::fmitcp_proto::fmi2_import_initialize_model_res* fmitcp_message::mutable_fmi2_import_initialize_model_res() {
   set_has_fmi2_import_initialize_model_res();
-  if (fmi2_import_initialize_model_res_ == NULL) fmi2_import_initialize_model_res_ = new ::fmitcp::fmi2_import_initialize_model_res;
+  if (fmi2_import_initialize_model_res_ == NULL) fmi2_import_initialize_model_res_ = new ::fmitcp_proto::fmi2_import_initialize_model_res;
   return fmi2_import_initialize_model_res_;
 }
-inline ::fmitcp::fmi2_import_initialize_model_res* fmitcp_message::release_fmi2_import_initialize_model_res() {
+inline ::fmitcp_proto::fmi2_import_initialize_model_res* fmitcp_message::release_fmi2_import_initialize_model_res() {
   clear_has_fmi2_import_initialize_model_res();
-  ::fmitcp::fmi2_import_initialize_model_res* temp = fmi2_import_initialize_model_res_;
+  ::fmitcp_proto::fmi2_import_initialize_model_res* temp = fmi2_import_initialize_model_res_;
   fmi2_import_initialize_model_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_derivatives_req fmi2_import_get_derivatives_req = 42;
+// optional .fmitcp_proto.fmi2_import_get_derivatives_req fmi2_import_get_derivatives_req = 42;
 inline bool fmitcp_message::has_fmi2_import_get_derivatives_req() const {
   return (_has_bits_[1] & 0x00000200u) != 0;
 }
@@ -11276,25 +11276,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_derivatives_req() {
   _has_bits_[1] &= ~0x00000200u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_derivatives_req() {
-  if (fmi2_import_get_derivatives_req_ != NULL) fmi2_import_get_derivatives_req_->::fmitcp::fmi2_import_get_derivatives_req::Clear();
+  if (fmi2_import_get_derivatives_req_ != NULL) fmi2_import_get_derivatives_req_->::fmitcp_proto::fmi2_import_get_derivatives_req::Clear();
   clear_has_fmi2_import_get_derivatives_req();
 }
-inline const ::fmitcp::fmi2_import_get_derivatives_req& fmitcp_message::fmi2_import_get_derivatives_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_derivatives_req& fmitcp_message::fmi2_import_get_derivatives_req() const {
   return fmi2_import_get_derivatives_req_ != NULL ? *fmi2_import_get_derivatives_req_ : *default_instance_->fmi2_import_get_derivatives_req_;
 }
-inline ::fmitcp::fmi2_import_get_derivatives_req* fmitcp_message::mutable_fmi2_import_get_derivatives_req() {
+inline ::fmitcp_proto::fmi2_import_get_derivatives_req* fmitcp_message::mutable_fmi2_import_get_derivatives_req() {
   set_has_fmi2_import_get_derivatives_req();
-  if (fmi2_import_get_derivatives_req_ == NULL) fmi2_import_get_derivatives_req_ = new ::fmitcp::fmi2_import_get_derivatives_req;
+  if (fmi2_import_get_derivatives_req_ == NULL) fmi2_import_get_derivatives_req_ = new ::fmitcp_proto::fmi2_import_get_derivatives_req;
   return fmi2_import_get_derivatives_req_;
 }
-inline ::fmitcp::fmi2_import_get_derivatives_req* fmitcp_message::release_fmi2_import_get_derivatives_req() {
+inline ::fmitcp_proto::fmi2_import_get_derivatives_req* fmitcp_message::release_fmi2_import_get_derivatives_req() {
   clear_has_fmi2_import_get_derivatives_req();
-  ::fmitcp::fmi2_import_get_derivatives_req* temp = fmi2_import_get_derivatives_req_;
+  ::fmitcp_proto::fmi2_import_get_derivatives_req* temp = fmi2_import_get_derivatives_req_;
   fmi2_import_get_derivatives_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_derivatives_res fmi2_import_get_derivatives_res = 43;
+// optional .fmitcp_proto.fmi2_import_get_derivatives_res fmi2_import_get_derivatives_res = 43;
 inline bool fmitcp_message::has_fmi2_import_get_derivatives_res() const {
   return (_has_bits_[1] & 0x00000400u) != 0;
 }
@@ -11305,25 +11305,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_derivatives_res() {
   _has_bits_[1] &= ~0x00000400u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_derivatives_res() {
-  if (fmi2_import_get_derivatives_res_ != NULL) fmi2_import_get_derivatives_res_->::fmitcp::fmi2_import_get_derivatives_res::Clear();
+  if (fmi2_import_get_derivatives_res_ != NULL) fmi2_import_get_derivatives_res_->::fmitcp_proto::fmi2_import_get_derivatives_res::Clear();
   clear_has_fmi2_import_get_derivatives_res();
 }
-inline const ::fmitcp::fmi2_import_get_derivatives_res& fmitcp_message::fmi2_import_get_derivatives_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_derivatives_res& fmitcp_message::fmi2_import_get_derivatives_res() const {
   return fmi2_import_get_derivatives_res_ != NULL ? *fmi2_import_get_derivatives_res_ : *default_instance_->fmi2_import_get_derivatives_res_;
 }
-inline ::fmitcp::fmi2_import_get_derivatives_res* fmitcp_message::mutable_fmi2_import_get_derivatives_res() {
+inline ::fmitcp_proto::fmi2_import_get_derivatives_res* fmitcp_message::mutable_fmi2_import_get_derivatives_res() {
   set_has_fmi2_import_get_derivatives_res();
-  if (fmi2_import_get_derivatives_res_ == NULL) fmi2_import_get_derivatives_res_ = new ::fmitcp::fmi2_import_get_derivatives_res;
+  if (fmi2_import_get_derivatives_res_ == NULL) fmi2_import_get_derivatives_res_ = new ::fmitcp_proto::fmi2_import_get_derivatives_res;
   return fmi2_import_get_derivatives_res_;
 }
-inline ::fmitcp::fmi2_import_get_derivatives_res* fmitcp_message::release_fmi2_import_get_derivatives_res() {
+inline ::fmitcp_proto::fmi2_import_get_derivatives_res* fmitcp_message::release_fmi2_import_get_derivatives_res() {
   clear_has_fmi2_import_get_derivatives_res();
-  ::fmitcp::fmi2_import_get_derivatives_res* temp = fmi2_import_get_derivatives_res_;
+  ::fmitcp_proto::fmi2_import_get_derivatives_res* temp = fmi2_import_get_derivatives_res_;
   fmi2_import_get_derivatives_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_event_indicators_req fmi2_import_get_event_indicators_req = 44;
+// optional .fmitcp_proto.fmi2_import_get_event_indicators_req fmi2_import_get_event_indicators_req = 44;
 inline bool fmitcp_message::has_fmi2_import_get_event_indicators_req() const {
   return (_has_bits_[1] & 0x00000800u) != 0;
 }
@@ -11334,25 +11334,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_event_indicators_req() {
   _has_bits_[1] &= ~0x00000800u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_event_indicators_req() {
-  if (fmi2_import_get_event_indicators_req_ != NULL) fmi2_import_get_event_indicators_req_->::fmitcp::fmi2_import_get_event_indicators_req::Clear();
+  if (fmi2_import_get_event_indicators_req_ != NULL) fmi2_import_get_event_indicators_req_->::fmitcp_proto::fmi2_import_get_event_indicators_req::Clear();
   clear_has_fmi2_import_get_event_indicators_req();
 }
-inline const ::fmitcp::fmi2_import_get_event_indicators_req& fmitcp_message::fmi2_import_get_event_indicators_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_event_indicators_req& fmitcp_message::fmi2_import_get_event_indicators_req() const {
   return fmi2_import_get_event_indicators_req_ != NULL ? *fmi2_import_get_event_indicators_req_ : *default_instance_->fmi2_import_get_event_indicators_req_;
 }
-inline ::fmitcp::fmi2_import_get_event_indicators_req* fmitcp_message::mutable_fmi2_import_get_event_indicators_req() {
+inline ::fmitcp_proto::fmi2_import_get_event_indicators_req* fmitcp_message::mutable_fmi2_import_get_event_indicators_req() {
   set_has_fmi2_import_get_event_indicators_req();
-  if (fmi2_import_get_event_indicators_req_ == NULL) fmi2_import_get_event_indicators_req_ = new ::fmitcp::fmi2_import_get_event_indicators_req;
+  if (fmi2_import_get_event_indicators_req_ == NULL) fmi2_import_get_event_indicators_req_ = new ::fmitcp_proto::fmi2_import_get_event_indicators_req;
   return fmi2_import_get_event_indicators_req_;
 }
-inline ::fmitcp::fmi2_import_get_event_indicators_req* fmitcp_message::release_fmi2_import_get_event_indicators_req() {
+inline ::fmitcp_proto::fmi2_import_get_event_indicators_req* fmitcp_message::release_fmi2_import_get_event_indicators_req() {
   clear_has_fmi2_import_get_event_indicators_req();
-  ::fmitcp::fmi2_import_get_event_indicators_req* temp = fmi2_import_get_event_indicators_req_;
+  ::fmitcp_proto::fmi2_import_get_event_indicators_req* temp = fmi2_import_get_event_indicators_req_;
   fmi2_import_get_event_indicators_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_event_indicators_res fmi2_import_get_event_indicators_res = 45;
+// optional .fmitcp_proto.fmi2_import_get_event_indicators_res fmi2_import_get_event_indicators_res = 45;
 inline bool fmitcp_message::has_fmi2_import_get_event_indicators_res() const {
   return (_has_bits_[1] & 0x00001000u) != 0;
 }
@@ -11363,25 +11363,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_event_indicators_res() {
   _has_bits_[1] &= ~0x00001000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_event_indicators_res() {
-  if (fmi2_import_get_event_indicators_res_ != NULL) fmi2_import_get_event_indicators_res_->::fmitcp::fmi2_import_get_event_indicators_res::Clear();
+  if (fmi2_import_get_event_indicators_res_ != NULL) fmi2_import_get_event_indicators_res_->::fmitcp_proto::fmi2_import_get_event_indicators_res::Clear();
   clear_has_fmi2_import_get_event_indicators_res();
 }
-inline const ::fmitcp::fmi2_import_get_event_indicators_res& fmitcp_message::fmi2_import_get_event_indicators_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_event_indicators_res& fmitcp_message::fmi2_import_get_event_indicators_res() const {
   return fmi2_import_get_event_indicators_res_ != NULL ? *fmi2_import_get_event_indicators_res_ : *default_instance_->fmi2_import_get_event_indicators_res_;
 }
-inline ::fmitcp::fmi2_import_get_event_indicators_res* fmitcp_message::mutable_fmi2_import_get_event_indicators_res() {
+inline ::fmitcp_proto::fmi2_import_get_event_indicators_res* fmitcp_message::mutable_fmi2_import_get_event_indicators_res() {
   set_has_fmi2_import_get_event_indicators_res();
-  if (fmi2_import_get_event_indicators_res_ == NULL) fmi2_import_get_event_indicators_res_ = new ::fmitcp::fmi2_import_get_event_indicators_res;
+  if (fmi2_import_get_event_indicators_res_ == NULL) fmi2_import_get_event_indicators_res_ = new ::fmitcp_proto::fmi2_import_get_event_indicators_res;
   return fmi2_import_get_event_indicators_res_;
 }
-inline ::fmitcp::fmi2_import_get_event_indicators_res* fmitcp_message::release_fmi2_import_get_event_indicators_res() {
+inline ::fmitcp_proto::fmi2_import_get_event_indicators_res* fmitcp_message::release_fmi2_import_get_event_indicators_res() {
   clear_has_fmi2_import_get_event_indicators_res();
-  ::fmitcp::fmi2_import_get_event_indicators_res* temp = fmi2_import_get_event_indicators_res_;
+  ::fmitcp_proto::fmi2_import_get_event_indicators_res* temp = fmi2_import_get_event_indicators_res_;
   fmi2_import_get_event_indicators_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_eventUpdate_req fmi2_import_eventUpdate_req = 46;
+// optional .fmitcp_proto.fmi2_import_eventUpdate_req fmi2_import_eventUpdate_req = 46;
 inline bool fmitcp_message::has_fmi2_import_eventupdate_req() const {
   return (_has_bits_[1] & 0x00002000u) != 0;
 }
@@ -11392,25 +11392,25 @@ inline void fmitcp_message::clear_has_fmi2_import_eventupdate_req() {
   _has_bits_[1] &= ~0x00002000u;
 }
 inline void fmitcp_message::clear_fmi2_import_eventupdate_req() {
-  if (fmi2_import_eventupdate_req_ != NULL) fmi2_import_eventupdate_req_->::fmitcp::fmi2_import_eventUpdate_req::Clear();
+  if (fmi2_import_eventupdate_req_ != NULL) fmi2_import_eventupdate_req_->::fmitcp_proto::fmi2_import_eventUpdate_req::Clear();
   clear_has_fmi2_import_eventupdate_req();
 }
-inline const ::fmitcp::fmi2_import_eventUpdate_req& fmitcp_message::fmi2_import_eventupdate_req() const {
+inline const ::fmitcp_proto::fmi2_import_eventUpdate_req& fmitcp_message::fmi2_import_eventupdate_req() const {
   return fmi2_import_eventupdate_req_ != NULL ? *fmi2_import_eventupdate_req_ : *default_instance_->fmi2_import_eventupdate_req_;
 }
-inline ::fmitcp::fmi2_import_eventUpdate_req* fmitcp_message::mutable_fmi2_import_eventupdate_req() {
+inline ::fmitcp_proto::fmi2_import_eventUpdate_req* fmitcp_message::mutable_fmi2_import_eventupdate_req() {
   set_has_fmi2_import_eventupdate_req();
-  if (fmi2_import_eventupdate_req_ == NULL) fmi2_import_eventupdate_req_ = new ::fmitcp::fmi2_import_eventUpdate_req;
+  if (fmi2_import_eventupdate_req_ == NULL) fmi2_import_eventupdate_req_ = new ::fmitcp_proto::fmi2_import_eventUpdate_req;
   return fmi2_import_eventupdate_req_;
 }
-inline ::fmitcp::fmi2_import_eventUpdate_req* fmitcp_message::release_fmi2_import_eventupdate_req() {
+inline ::fmitcp_proto::fmi2_import_eventUpdate_req* fmitcp_message::release_fmi2_import_eventupdate_req() {
   clear_has_fmi2_import_eventupdate_req();
-  ::fmitcp::fmi2_import_eventUpdate_req* temp = fmi2_import_eventupdate_req_;
+  ::fmitcp_proto::fmi2_import_eventUpdate_req* temp = fmi2_import_eventupdate_req_;
   fmi2_import_eventupdate_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_eventUpdate_res fmi2_import_eventUpdate_res = 47;
+// optional .fmitcp_proto.fmi2_import_eventUpdate_res fmi2_import_eventUpdate_res = 47;
 inline bool fmitcp_message::has_fmi2_import_eventupdate_res() const {
   return (_has_bits_[1] & 0x00004000u) != 0;
 }
@@ -11421,25 +11421,25 @@ inline void fmitcp_message::clear_has_fmi2_import_eventupdate_res() {
   _has_bits_[1] &= ~0x00004000u;
 }
 inline void fmitcp_message::clear_fmi2_import_eventupdate_res() {
-  if (fmi2_import_eventupdate_res_ != NULL) fmi2_import_eventupdate_res_->::fmitcp::fmi2_import_eventUpdate_res::Clear();
+  if (fmi2_import_eventupdate_res_ != NULL) fmi2_import_eventupdate_res_->::fmitcp_proto::fmi2_import_eventUpdate_res::Clear();
   clear_has_fmi2_import_eventupdate_res();
 }
-inline const ::fmitcp::fmi2_import_eventUpdate_res& fmitcp_message::fmi2_import_eventupdate_res() const {
+inline const ::fmitcp_proto::fmi2_import_eventUpdate_res& fmitcp_message::fmi2_import_eventupdate_res() const {
   return fmi2_import_eventupdate_res_ != NULL ? *fmi2_import_eventupdate_res_ : *default_instance_->fmi2_import_eventupdate_res_;
 }
-inline ::fmitcp::fmi2_import_eventUpdate_res* fmitcp_message::mutable_fmi2_import_eventupdate_res() {
+inline ::fmitcp_proto::fmi2_import_eventUpdate_res* fmitcp_message::mutable_fmi2_import_eventupdate_res() {
   set_has_fmi2_import_eventupdate_res();
-  if (fmi2_import_eventupdate_res_ == NULL) fmi2_import_eventupdate_res_ = new ::fmitcp::fmi2_import_eventUpdate_res;
+  if (fmi2_import_eventupdate_res_ == NULL) fmi2_import_eventupdate_res_ = new ::fmitcp_proto::fmi2_import_eventUpdate_res;
   return fmi2_import_eventupdate_res_;
 }
-inline ::fmitcp::fmi2_import_eventUpdate_res* fmitcp_message::release_fmi2_import_eventupdate_res() {
+inline ::fmitcp_proto::fmi2_import_eventUpdate_res* fmitcp_message::release_fmi2_import_eventupdate_res() {
   clear_has_fmi2_import_eventupdate_res();
-  ::fmitcp::fmi2_import_eventUpdate_res* temp = fmi2_import_eventupdate_res_;
+  ::fmitcp_proto::fmi2_import_eventUpdate_res* temp = fmi2_import_eventupdate_res_;
   fmi2_import_eventupdate_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_completed_event_iteration_req fmi2_import_completed_event_iteration_req = 48;
+// optional .fmitcp_proto.fmi2_import_completed_event_iteration_req fmi2_import_completed_event_iteration_req = 48;
 inline bool fmitcp_message::has_fmi2_import_completed_event_iteration_req() const {
   return (_has_bits_[1] & 0x00008000u) != 0;
 }
@@ -11450,25 +11450,25 @@ inline void fmitcp_message::clear_has_fmi2_import_completed_event_iteration_req(
   _has_bits_[1] &= ~0x00008000u;
 }
 inline void fmitcp_message::clear_fmi2_import_completed_event_iteration_req() {
-  if (fmi2_import_completed_event_iteration_req_ != NULL) fmi2_import_completed_event_iteration_req_->::fmitcp::fmi2_import_completed_event_iteration_req::Clear();
+  if (fmi2_import_completed_event_iteration_req_ != NULL) fmi2_import_completed_event_iteration_req_->::fmitcp_proto::fmi2_import_completed_event_iteration_req::Clear();
   clear_has_fmi2_import_completed_event_iteration_req();
 }
-inline const ::fmitcp::fmi2_import_completed_event_iteration_req& fmitcp_message::fmi2_import_completed_event_iteration_req() const {
+inline const ::fmitcp_proto::fmi2_import_completed_event_iteration_req& fmitcp_message::fmi2_import_completed_event_iteration_req() const {
   return fmi2_import_completed_event_iteration_req_ != NULL ? *fmi2_import_completed_event_iteration_req_ : *default_instance_->fmi2_import_completed_event_iteration_req_;
 }
-inline ::fmitcp::fmi2_import_completed_event_iteration_req* fmitcp_message::mutable_fmi2_import_completed_event_iteration_req() {
+inline ::fmitcp_proto::fmi2_import_completed_event_iteration_req* fmitcp_message::mutable_fmi2_import_completed_event_iteration_req() {
   set_has_fmi2_import_completed_event_iteration_req();
-  if (fmi2_import_completed_event_iteration_req_ == NULL) fmi2_import_completed_event_iteration_req_ = new ::fmitcp::fmi2_import_completed_event_iteration_req;
+  if (fmi2_import_completed_event_iteration_req_ == NULL) fmi2_import_completed_event_iteration_req_ = new ::fmitcp_proto::fmi2_import_completed_event_iteration_req;
   return fmi2_import_completed_event_iteration_req_;
 }
-inline ::fmitcp::fmi2_import_completed_event_iteration_req* fmitcp_message::release_fmi2_import_completed_event_iteration_req() {
+inline ::fmitcp_proto::fmi2_import_completed_event_iteration_req* fmitcp_message::release_fmi2_import_completed_event_iteration_req() {
   clear_has_fmi2_import_completed_event_iteration_req();
-  ::fmitcp::fmi2_import_completed_event_iteration_req* temp = fmi2_import_completed_event_iteration_req_;
+  ::fmitcp_proto::fmi2_import_completed_event_iteration_req* temp = fmi2_import_completed_event_iteration_req_;
   fmi2_import_completed_event_iteration_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_completed_event_iteration_res fmi2_import_completed_event_iteration_res = 49;
+// optional .fmitcp_proto.fmi2_import_completed_event_iteration_res fmi2_import_completed_event_iteration_res = 49;
 inline bool fmitcp_message::has_fmi2_import_completed_event_iteration_res() const {
   return (_has_bits_[1] & 0x00010000u) != 0;
 }
@@ -11479,25 +11479,25 @@ inline void fmitcp_message::clear_has_fmi2_import_completed_event_iteration_res(
   _has_bits_[1] &= ~0x00010000u;
 }
 inline void fmitcp_message::clear_fmi2_import_completed_event_iteration_res() {
-  if (fmi2_import_completed_event_iteration_res_ != NULL) fmi2_import_completed_event_iteration_res_->::fmitcp::fmi2_import_completed_event_iteration_res::Clear();
+  if (fmi2_import_completed_event_iteration_res_ != NULL) fmi2_import_completed_event_iteration_res_->::fmitcp_proto::fmi2_import_completed_event_iteration_res::Clear();
   clear_has_fmi2_import_completed_event_iteration_res();
 }
-inline const ::fmitcp::fmi2_import_completed_event_iteration_res& fmitcp_message::fmi2_import_completed_event_iteration_res() const {
+inline const ::fmitcp_proto::fmi2_import_completed_event_iteration_res& fmitcp_message::fmi2_import_completed_event_iteration_res() const {
   return fmi2_import_completed_event_iteration_res_ != NULL ? *fmi2_import_completed_event_iteration_res_ : *default_instance_->fmi2_import_completed_event_iteration_res_;
 }
-inline ::fmitcp::fmi2_import_completed_event_iteration_res* fmitcp_message::mutable_fmi2_import_completed_event_iteration_res() {
+inline ::fmitcp_proto::fmi2_import_completed_event_iteration_res* fmitcp_message::mutable_fmi2_import_completed_event_iteration_res() {
   set_has_fmi2_import_completed_event_iteration_res();
-  if (fmi2_import_completed_event_iteration_res_ == NULL) fmi2_import_completed_event_iteration_res_ = new ::fmitcp::fmi2_import_completed_event_iteration_res;
+  if (fmi2_import_completed_event_iteration_res_ == NULL) fmi2_import_completed_event_iteration_res_ = new ::fmitcp_proto::fmi2_import_completed_event_iteration_res;
   return fmi2_import_completed_event_iteration_res_;
 }
-inline ::fmitcp::fmi2_import_completed_event_iteration_res* fmitcp_message::release_fmi2_import_completed_event_iteration_res() {
+inline ::fmitcp_proto::fmi2_import_completed_event_iteration_res* fmitcp_message::release_fmi2_import_completed_event_iteration_res() {
   clear_has_fmi2_import_completed_event_iteration_res();
-  ::fmitcp::fmi2_import_completed_event_iteration_res* temp = fmi2_import_completed_event_iteration_res_;
+  ::fmitcp_proto::fmi2_import_completed_event_iteration_res* temp = fmi2_import_completed_event_iteration_res_;
   fmi2_import_completed_event_iteration_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_continuous_states_req fmi2_import_get_continuous_states_req = 50;
+// optional .fmitcp_proto.fmi2_import_get_continuous_states_req fmi2_import_get_continuous_states_req = 50;
 inline bool fmitcp_message::has_fmi2_import_get_continuous_states_req() const {
   return (_has_bits_[1] & 0x00020000u) != 0;
 }
@@ -11508,25 +11508,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_continuous_states_req() {
   _has_bits_[1] &= ~0x00020000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_continuous_states_req() {
-  if (fmi2_import_get_continuous_states_req_ != NULL) fmi2_import_get_continuous_states_req_->::fmitcp::fmi2_import_get_continuous_states_req::Clear();
+  if (fmi2_import_get_continuous_states_req_ != NULL) fmi2_import_get_continuous_states_req_->::fmitcp_proto::fmi2_import_get_continuous_states_req::Clear();
   clear_has_fmi2_import_get_continuous_states_req();
 }
-inline const ::fmitcp::fmi2_import_get_continuous_states_req& fmitcp_message::fmi2_import_get_continuous_states_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_continuous_states_req& fmitcp_message::fmi2_import_get_continuous_states_req() const {
   return fmi2_import_get_continuous_states_req_ != NULL ? *fmi2_import_get_continuous_states_req_ : *default_instance_->fmi2_import_get_continuous_states_req_;
 }
-inline ::fmitcp::fmi2_import_get_continuous_states_req* fmitcp_message::mutable_fmi2_import_get_continuous_states_req() {
+inline ::fmitcp_proto::fmi2_import_get_continuous_states_req* fmitcp_message::mutable_fmi2_import_get_continuous_states_req() {
   set_has_fmi2_import_get_continuous_states_req();
-  if (fmi2_import_get_continuous_states_req_ == NULL) fmi2_import_get_continuous_states_req_ = new ::fmitcp::fmi2_import_get_continuous_states_req;
+  if (fmi2_import_get_continuous_states_req_ == NULL) fmi2_import_get_continuous_states_req_ = new ::fmitcp_proto::fmi2_import_get_continuous_states_req;
   return fmi2_import_get_continuous_states_req_;
 }
-inline ::fmitcp::fmi2_import_get_continuous_states_req* fmitcp_message::release_fmi2_import_get_continuous_states_req() {
+inline ::fmitcp_proto::fmi2_import_get_continuous_states_req* fmitcp_message::release_fmi2_import_get_continuous_states_req() {
   clear_has_fmi2_import_get_continuous_states_req();
-  ::fmitcp::fmi2_import_get_continuous_states_req* temp = fmi2_import_get_continuous_states_req_;
+  ::fmitcp_proto::fmi2_import_get_continuous_states_req* temp = fmi2_import_get_continuous_states_req_;
   fmi2_import_get_continuous_states_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_continuous_states_res fmi2_import_get_continuous_states_res = 51;
+// optional .fmitcp_proto.fmi2_import_get_continuous_states_res fmi2_import_get_continuous_states_res = 51;
 inline bool fmitcp_message::has_fmi2_import_get_continuous_states_res() const {
   return (_has_bits_[1] & 0x00040000u) != 0;
 }
@@ -11537,25 +11537,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_continuous_states_res() {
   _has_bits_[1] &= ~0x00040000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_continuous_states_res() {
-  if (fmi2_import_get_continuous_states_res_ != NULL) fmi2_import_get_continuous_states_res_->::fmitcp::fmi2_import_get_continuous_states_res::Clear();
+  if (fmi2_import_get_continuous_states_res_ != NULL) fmi2_import_get_continuous_states_res_->::fmitcp_proto::fmi2_import_get_continuous_states_res::Clear();
   clear_has_fmi2_import_get_continuous_states_res();
 }
-inline const ::fmitcp::fmi2_import_get_continuous_states_res& fmitcp_message::fmi2_import_get_continuous_states_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_continuous_states_res& fmitcp_message::fmi2_import_get_continuous_states_res() const {
   return fmi2_import_get_continuous_states_res_ != NULL ? *fmi2_import_get_continuous_states_res_ : *default_instance_->fmi2_import_get_continuous_states_res_;
 }
-inline ::fmitcp::fmi2_import_get_continuous_states_res* fmitcp_message::mutable_fmi2_import_get_continuous_states_res() {
+inline ::fmitcp_proto::fmi2_import_get_continuous_states_res* fmitcp_message::mutable_fmi2_import_get_continuous_states_res() {
   set_has_fmi2_import_get_continuous_states_res();
-  if (fmi2_import_get_continuous_states_res_ == NULL) fmi2_import_get_continuous_states_res_ = new ::fmitcp::fmi2_import_get_continuous_states_res;
+  if (fmi2_import_get_continuous_states_res_ == NULL) fmi2_import_get_continuous_states_res_ = new ::fmitcp_proto::fmi2_import_get_continuous_states_res;
   return fmi2_import_get_continuous_states_res_;
 }
-inline ::fmitcp::fmi2_import_get_continuous_states_res* fmitcp_message::release_fmi2_import_get_continuous_states_res() {
+inline ::fmitcp_proto::fmi2_import_get_continuous_states_res* fmitcp_message::release_fmi2_import_get_continuous_states_res() {
   clear_has_fmi2_import_get_continuous_states_res();
-  ::fmitcp::fmi2_import_get_continuous_states_res* temp = fmi2_import_get_continuous_states_res_;
+  ::fmitcp_proto::fmi2_import_get_continuous_states_res* temp = fmi2_import_get_continuous_states_res_;
   fmi2_import_get_continuous_states_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_nominal_continuous_states_req fmi2_import_get_nominal_continuous_states_req = 52;
+// optional .fmitcp_proto.fmi2_import_get_nominal_continuous_states_req fmi2_import_get_nominal_continuous_states_req = 52;
 inline bool fmitcp_message::has_fmi2_import_get_nominal_continuous_states_req() const {
   return (_has_bits_[1] & 0x00080000u) != 0;
 }
@@ -11566,25 +11566,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_nominal_continuous_states_
   _has_bits_[1] &= ~0x00080000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_nominal_continuous_states_req() {
-  if (fmi2_import_get_nominal_continuous_states_req_ != NULL) fmi2_import_get_nominal_continuous_states_req_->::fmitcp::fmi2_import_get_nominal_continuous_states_req::Clear();
+  if (fmi2_import_get_nominal_continuous_states_req_ != NULL) fmi2_import_get_nominal_continuous_states_req_->::fmitcp_proto::fmi2_import_get_nominal_continuous_states_req::Clear();
   clear_has_fmi2_import_get_nominal_continuous_states_req();
 }
-inline const ::fmitcp::fmi2_import_get_nominal_continuous_states_req& fmitcp_message::fmi2_import_get_nominal_continuous_states_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_req& fmitcp_message::fmi2_import_get_nominal_continuous_states_req() const {
   return fmi2_import_get_nominal_continuous_states_req_ != NULL ? *fmi2_import_get_nominal_continuous_states_req_ : *default_instance_->fmi2_import_get_nominal_continuous_states_req_;
 }
-inline ::fmitcp::fmi2_import_get_nominal_continuous_states_req* fmitcp_message::mutable_fmi2_import_get_nominal_continuous_states_req() {
+inline ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_req* fmitcp_message::mutable_fmi2_import_get_nominal_continuous_states_req() {
   set_has_fmi2_import_get_nominal_continuous_states_req();
-  if (fmi2_import_get_nominal_continuous_states_req_ == NULL) fmi2_import_get_nominal_continuous_states_req_ = new ::fmitcp::fmi2_import_get_nominal_continuous_states_req;
+  if (fmi2_import_get_nominal_continuous_states_req_ == NULL) fmi2_import_get_nominal_continuous_states_req_ = new ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_req;
   return fmi2_import_get_nominal_continuous_states_req_;
 }
-inline ::fmitcp::fmi2_import_get_nominal_continuous_states_req* fmitcp_message::release_fmi2_import_get_nominal_continuous_states_req() {
+inline ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_req* fmitcp_message::release_fmi2_import_get_nominal_continuous_states_req() {
   clear_has_fmi2_import_get_nominal_continuous_states_req();
-  ::fmitcp::fmi2_import_get_nominal_continuous_states_req* temp = fmi2_import_get_nominal_continuous_states_req_;
+  ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_req* temp = fmi2_import_get_nominal_continuous_states_req_;
   fmi2_import_get_nominal_continuous_states_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_nominal_continuous_states_res fmi2_import_get_nominal_continuous_states_res = 53;
+// optional .fmitcp_proto.fmi2_import_get_nominal_continuous_states_res fmi2_import_get_nominal_continuous_states_res = 53;
 inline bool fmitcp_message::has_fmi2_import_get_nominal_continuous_states_res() const {
   return (_has_bits_[1] & 0x00100000u) != 0;
 }
@@ -11595,25 +11595,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_nominal_continuous_states_
   _has_bits_[1] &= ~0x00100000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_nominal_continuous_states_res() {
-  if (fmi2_import_get_nominal_continuous_states_res_ != NULL) fmi2_import_get_nominal_continuous_states_res_->::fmitcp::fmi2_import_get_nominal_continuous_states_res::Clear();
+  if (fmi2_import_get_nominal_continuous_states_res_ != NULL) fmi2_import_get_nominal_continuous_states_res_->::fmitcp_proto::fmi2_import_get_nominal_continuous_states_res::Clear();
   clear_has_fmi2_import_get_nominal_continuous_states_res();
 }
-inline const ::fmitcp::fmi2_import_get_nominal_continuous_states_res& fmitcp_message::fmi2_import_get_nominal_continuous_states_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_res& fmitcp_message::fmi2_import_get_nominal_continuous_states_res() const {
   return fmi2_import_get_nominal_continuous_states_res_ != NULL ? *fmi2_import_get_nominal_continuous_states_res_ : *default_instance_->fmi2_import_get_nominal_continuous_states_res_;
 }
-inline ::fmitcp::fmi2_import_get_nominal_continuous_states_res* fmitcp_message::mutable_fmi2_import_get_nominal_continuous_states_res() {
+inline ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_res* fmitcp_message::mutable_fmi2_import_get_nominal_continuous_states_res() {
   set_has_fmi2_import_get_nominal_continuous_states_res();
-  if (fmi2_import_get_nominal_continuous_states_res_ == NULL) fmi2_import_get_nominal_continuous_states_res_ = new ::fmitcp::fmi2_import_get_nominal_continuous_states_res;
+  if (fmi2_import_get_nominal_continuous_states_res_ == NULL) fmi2_import_get_nominal_continuous_states_res_ = new ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_res;
   return fmi2_import_get_nominal_continuous_states_res_;
 }
-inline ::fmitcp::fmi2_import_get_nominal_continuous_states_res* fmitcp_message::release_fmi2_import_get_nominal_continuous_states_res() {
+inline ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_res* fmitcp_message::release_fmi2_import_get_nominal_continuous_states_res() {
   clear_has_fmi2_import_get_nominal_continuous_states_res();
-  ::fmitcp::fmi2_import_get_nominal_continuous_states_res* temp = fmi2_import_get_nominal_continuous_states_res_;
+  ::fmitcp_proto::fmi2_import_get_nominal_continuous_states_res* temp = fmi2_import_get_nominal_continuous_states_res_;
   fmi2_import_get_nominal_continuous_states_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_terminate_req fmi2_import_terminate_req = 54;
+// optional .fmitcp_proto.fmi2_import_terminate_req fmi2_import_terminate_req = 54;
 inline bool fmitcp_message::has_fmi2_import_terminate_req() const {
   return (_has_bits_[1] & 0x00200000u) != 0;
 }
@@ -11624,25 +11624,25 @@ inline void fmitcp_message::clear_has_fmi2_import_terminate_req() {
   _has_bits_[1] &= ~0x00200000u;
 }
 inline void fmitcp_message::clear_fmi2_import_terminate_req() {
-  if (fmi2_import_terminate_req_ != NULL) fmi2_import_terminate_req_->::fmitcp::fmi2_import_terminate_req::Clear();
+  if (fmi2_import_terminate_req_ != NULL) fmi2_import_terminate_req_->::fmitcp_proto::fmi2_import_terminate_req::Clear();
   clear_has_fmi2_import_terminate_req();
 }
-inline const ::fmitcp::fmi2_import_terminate_req& fmitcp_message::fmi2_import_terminate_req() const {
+inline const ::fmitcp_proto::fmi2_import_terminate_req& fmitcp_message::fmi2_import_terminate_req() const {
   return fmi2_import_terminate_req_ != NULL ? *fmi2_import_terminate_req_ : *default_instance_->fmi2_import_terminate_req_;
 }
-inline ::fmitcp::fmi2_import_terminate_req* fmitcp_message::mutable_fmi2_import_terminate_req() {
+inline ::fmitcp_proto::fmi2_import_terminate_req* fmitcp_message::mutable_fmi2_import_terminate_req() {
   set_has_fmi2_import_terminate_req();
-  if (fmi2_import_terminate_req_ == NULL) fmi2_import_terminate_req_ = new ::fmitcp::fmi2_import_terminate_req;
+  if (fmi2_import_terminate_req_ == NULL) fmi2_import_terminate_req_ = new ::fmitcp_proto::fmi2_import_terminate_req;
   return fmi2_import_terminate_req_;
 }
-inline ::fmitcp::fmi2_import_terminate_req* fmitcp_message::release_fmi2_import_terminate_req() {
+inline ::fmitcp_proto::fmi2_import_terminate_req* fmitcp_message::release_fmi2_import_terminate_req() {
   clear_has_fmi2_import_terminate_req();
-  ::fmitcp::fmi2_import_terminate_req* temp = fmi2_import_terminate_req_;
+  ::fmitcp_proto::fmi2_import_terminate_req* temp = fmi2_import_terminate_req_;
   fmi2_import_terminate_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_terminate_res fmi2_import_terminate_res = 55;
+// optional .fmitcp_proto.fmi2_import_terminate_res fmi2_import_terminate_res = 55;
 inline bool fmitcp_message::has_fmi2_import_terminate_res() const {
   return (_has_bits_[1] & 0x00400000u) != 0;
 }
@@ -11653,25 +11653,25 @@ inline void fmitcp_message::clear_has_fmi2_import_terminate_res() {
   _has_bits_[1] &= ~0x00400000u;
 }
 inline void fmitcp_message::clear_fmi2_import_terminate_res() {
-  if (fmi2_import_terminate_res_ != NULL) fmi2_import_terminate_res_->::fmitcp::fmi2_import_terminate_res::Clear();
+  if (fmi2_import_terminate_res_ != NULL) fmi2_import_terminate_res_->::fmitcp_proto::fmi2_import_terminate_res::Clear();
   clear_has_fmi2_import_terminate_res();
 }
-inline const ::fmitcp::fmi2_import_terminate_res& fmitcp_message::fmi2_import_terminate_res() const {
+inline const ::fmitcp_proto::fmi2_import_terminate_res& fmitcp_message::fmi2_import_terminate_res() const {
   return fmi2_import_terminate_res_ != NULL ? *fmi2_import_terminate_res_ : *default_instance_->fmi2_import_terminate_res_;
 }
-inline ::fmitcp::fmi2_import_terminate_res* fmitcp_message::mutable_fmi2_import_terminate_res() {
+inline ::fmitcp_proto::fmi2_import_terminate_res* fmitcp_message::mutable_fmi2_import_terminate_res() {
   set_has_fmi2_import_terminate_res();
-  if (fmi2_import_terminate_res_ == NULL) fmi2_import_terminate_res_ = new ::fmitcp::fmi2_import_terminate_res;
+  if (fmi2_import_terminate_res_ == NULL) fmi2_import_terminate_res_ = new ::fmitcp_proto::fmi2_import_terminate_res;
   return fmi2_import_terminate_res_;
 }
-inline ::fmitcp::fmi2_import_terminate_res* fmitcp_message::release_fmi2_import_terminate_res() {
+inline ::fmitcp_proto::fmi2_import_terminate_res* fmitcp_message::release_fmi2_import_terminate_res() {
   clear_has_fmi2_import_terminate_res();
-  ::fmitcp::fmi2_import_terminate_res* temp = fmi2_import_terminate_res_;
+  ::fmitcp_proto::fmi2_import_terminate_res* temp = fmi2_import_terminate_res_;
   fmi2_import_terminate_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_version_req fmi2_import_get_version_req = 56;
+// optional .fmitcp_proto.fmi2_import_get_version_req fmi2_import_get_version_req = 56;
 inline bool fmitcp_message::has_fmi2_import_get_version_req() const {
   return (_has_bits_[1] & 0x00800000u) != 0;
 }
@@ -11682,25 +11682,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_version_req() {
   _has_bits_[1] &= ~0x00800000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_version_req() {
-  if (fmi2_import_get_version_req_ != NULL) fmi2_import_get_version_req_->::fmitcp::fmi2_import_get_version_req::Clear();
+  if (fmi2_import_get_version_req_ != NULL) fmi2_import_get_version_req_->::fmitcp_proto::fmi2_import_get_version_req::Clear();
   clear_has_fmi2_import_get_version_req();
 }
-inline const ::fmitcp::fmi2_import_get_version_req& fmitcp_message::fmi2_import_get_version_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_version_req& fmitcp_message::fmi2_import_get_version_req() const {
   return fmi2_import_get_version_req_ != NULL ? *fmi2_import_get_version_req_ : *default_instance_->fmi2_import_get_version_req_;
 }
-inline ::fmitcp::fmi2_import_get_version_req* fmitcp_message::mutable_fmi2_import_get_version_req() {
+inline ::fmitcp_proto::fmi2_import_get_version_req* fmitcp_message::mutable_fmi2_import_get_version_req() {
   set_has_fmi2_import_get_version_req();
-  if (fmi2_import_get_version_req_ == NULL) fmi2_import_get_version_req_ = new ::fmitcp::fmi2_import_get_version_req;
+  if (fmi2_import_get_version_req_ == NULL) fmi2_import_get_version_req_ = new ::fmitcp_proto::fmi2_import_get_version_req;
   return fmi2_import_get_version_req_;
 }
-inline ::fmitcp::fmi2_import_get_version_req* fmitcp_message::release_fmi2_import_get_version_req() {
+inline ::fmitcp_proto::fmi2_import_get_version_req* fmitcp_message::release_fmi2_import_get_version_req() {
   clear_has_fmi2_import_get_version_req();
-  ::fmitcp::fmi2_import_get_version_req* temp = fmi2_import_get_version_req_;
+  ::fmitcp_proto::fmi2_import_get_version_req* temp = fmi2_import_get_version_req_;
   fmi2_import_get_version_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_version_res fmi2_import_get_version_res = 57;
+// optional .fmitcp_proto.fmi2_import_get_version_res fmi2_import_get_version_res = 57;
 inline bool fmitcp_message::has_fmi2_import_get_version_res() const {
   return (_has_bits_[1] & 0x01000000u) != 0;
 }
@@ -11711,25 +11711,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_version_res() {
   _has_bits_[1] &= ~0x01000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_version_res() {
-  if (fmi2_import_get_version_res_ != NULL) fmi2_import_get_version_res_->::fmitcp::fmi2_import_get_version_res::Clear();
+  if (fmi2_import_get_version_res_ != NULL) fmi2_import_get_version_res_->::fmitcp_proto::fmi2_import_get_version_res::Clear();
   clear_has_fmi2_import_get_version_res();
 }
-inline const ::fmitcp::fmi2_import_get_version_res& fmitcp_message::fmi2_import_get_version_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_version_res& fmitcp_message::fmi2_import_get_version_res() const {
   return fmi2_import_get_version_res_ != NULL ? *fmi2_import_get_version_res_ : *default_instance_->fmi2_import_get_version_res_;
 }
-inline ::fmitcp::fmi2_import_get_version_res* fmitcp_message::mutable_fmi2_import_get_version_res() {
+inline ::fmitcp_proto::fmi2_import_get_version_res* fmitcp_message::mutable_fmi2_import_get_version_res() {
   set_has_fmi2_import_get_version_res();
-  if (fmi2_import_get_version_res_ == NULL) fmi2_import_get_version_res_ = new ::fmitcp::fmi2_import_get_version_res;
+  if (fmi2_import_get_version_res_ == NULL) fmi2_import_get_version_res_ = new ::fmitcp_proto::fmi2_import_get_version_res;
   return fmi2_import_get_version_res_;
 }
-inline ::fmitcp::fmi2_import_get_version_res* fmitcp_message::release_fmi2_import_get_version_res() {
+inline ::fmitcp_proto::fmi2_import_get_version_res* fmitcp_message::release_fmi2_import_get_version_res() {
   clear_has_fmi2_import_get_version_res();
-  ::fmitcp::fmi2_import_get_version_res* temp = fmi2_import_get_version_res_;
+  ::fmitcp_proto::fmi2_import_get_version_res* temp = fmi2_import_get_version_res_;
   fmi2_import_get_version_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_debug_logging_req fmi2_import_set_debug_logging_req = 58;
+// optional .fmitcp_proto.fmi2_import_set_debug_logging_req fmi2_import_set_debug_logging_req = 58;
 inline bool fmitcp_message::has_fmi2_import_set_debug_logging_req() const {
   return (_has_bits_[1] & 0x02000000u) != 0;
 }
@@ -11740,25 +11740,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_debug_logging_req() {
   _has_bits_[1] &= ~0x02000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_debug_logging_req() {
-  if (fmi2_import_set_debug_logging_req_ != NULL) fmi2_import_set_debug_logging_req_->::fmitcp::fmi2_import_set_debug_logging_req::Clear();
+  if (fmi2_import_set_debug_logging_req_ != NULL) fmi2_import_set_debug_logging_req_->::fmitcp_proto::fmi2_import_set_debug_logging_req::Clear();
   clear_has_fmi2_import_set_debug_logging_req();
 }
-inline const ::fmitcp::fmi2_import_set_debug_logging_req& fmitcp_message::fmi2_import_set_debug_logging_req() const {
+inline const ::fmitcp_proto::fmi2_import_set_debug_logging_req& fmitcp_message::fmi2_import_set_debug_logging_req() const {
   return fmi2_import_set_debug_logging_req_ != NULL ? *fmi2_import_set_debug_logging_req_ : *default_instance_->fmi2_import_set_debug_logging_req_;
 }
-inline ::fmitcp::fmi2_import_set_debug_logging_req* fmitcp_message::mutable_fmi2_import_set_debug_logging_req() {
+inline ::fmitcp_proto::fmi2_import_set_debug_logging_req* fmitcp_message::mutable_fmi2_import_set_debug_logging_req() {
   set_has_fmi2_import_set_debug_logging_req();
-  if (fmi2_import_set_debug_logging_req_ == NULL) fmi2_import_set_debug_logging_req_ = new ::fmitcp::fmi2_import_set_debug_logging_req;
+  if (fmi2_import_set_debug_logging_req_ == NULL) fmi2_import_set_debug_logging_req_ = new ::fmitcp_proto::fmi2_import_set_debug_logging_req;
   return fmi2_import_set_debug_logging_req_;
 }
-inline ::fmitcp::fmi2_import_set_debug_logging_req* fmitcp_message::release_fmi2_import_set_debug_logging_req() {
+inline ::fmitcp_proto::fmi2_import_set_debug_logging_req* fmitcp_message::release_fmi2_import_set_debug_logging_req() {
   clear_has_fmi2_import_set_debug_logging_req();
-  ::fmitcp::fmi2_import_set_debug_logging_req* temp = fmi2_import_set_debug_logging_req_;
+  ::fmitcp_proto::fmi2_import_set_debug_logging_req* temp = fmi2_import_set_debug_logging_req_;
   fmi2_import_set_debug_logging_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_debug_logging_res fmi2_import_set_debug_logging_res = 59;
+// optional .fmitcp_proto.fmi2_import_set_debug_logging_res fmi2_import_set_debug_logging_res = 59;
 inline bool fmitcp_message::has_fmi2_import_set_debug_logging_res() const {
   return (_has_bits_[1] & 0x04000000u) != 0;
 }
@@ -11769,25 +11769,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_debug_logging_res() {
   _has_bits_[1] &= ~0x04000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_debug_logging_res() {
-  if (fmi2_import_set_debug_logging_res_ != NULL) fmi2_import_set_debug_logging_res_->::fmitcp::fmi2_import_set_debug_logging_res::Clear();
+  if (fmi2_import_set_debug_logging_res_ != NULL) fmi2_import_set_debug_logging_res_->::fmitcp_proto::fmi2_import_set_debug_logging_res::Clear();
   clear_has_fmi2_import_set_debug_logging_res();
 }
-inline const ::fmitcp::fmi2_import_set_debug_logging_res& fmitcp_message::fmi2_import_set_debug_logging_res() const {
+inline const ::fmitcp_proto::fmi2_import_set_debug_logging_res& fmitcp_message::fmi2_import_set_debug_logging_res() const {
   return fmi2_import_set_debug_logging_res_ != NULL ? *fmi2_import_set_debug_logging_res_ : *default_instance_->fmi2_import_set_debug_logging_res_;
 }
-inline ::fmitcp::fmi2_import_set_debug_logging_res* fmitcp_message::mutable_fmi2_import_set_debug_logging_res() {
+inline ::fmitcp_proto::fmi2_import_set_debug_logging_res* fmitcp_message::mutable_fmi2_import_set_debug_logging_res() {
   set_has_fmi2_import_set_debug_logging_res();
-  if (fmi2_import_set_debug_logging_res_ == NULL) fmi2_import_set_debug_logging_res_ = new ::fmitcp::fmi2_import_set_debug_logging_res;
+  if (fmi2_import_set_debug_logging_res_ == NULL) fmi2_import_set_debug_logging_res_ = new ::fmitcp_proto::fmi2_import_set_debug_logging_res;
   return fmi2_import_set_debug_logging_res_;
 }
-inline ::fmitcp::fmi2_import_set_debug_logging_res* fmitcp_message::release_fmi2_import_set_debug_logging_res() {
+inline ::fmitcp_proto::fmi2_import_set_debug_logging_res* fmitcp_message::release_fmi2_import_set_debug_logging_res() {
   clear_has_fmi2_import_set_debug_logging_res();
-  ::fmitcp::fmi2_import_set_debug_logging_res* temp = fmi2_import_set_debug_logging_res_;
+  ::fmitcp_proto::fmi2_import_set_debug_logging_res* temp = fmi2_import_set_debug_logging_res_;
   fmi2_import_set_debug_logging_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_real_req fmi2_import_set_real_req = 60;
+// optional .fmitcp_proto.fmi2_import_set_real_req fmi2_import_set_real_req = 60;
 inline bool fmitcp_message::has_fmi2_import_set_real_req() const {
   return (_has_bits_[1] & 0x08000000u) != 0;
 }
@@ -11798,25 +11798,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_real_req() {
   _has_bits_[1] &= ~0x08000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_real_req() {
-  if (fmi2_import_set_real_req_ != NULL) fmi2_import_set_real_req_->::fmitcp::fmi2_import_set_real_req::Clear();
+  if (fmi2_import_set_real_req_ != NULL) fmi2_import_set_real_req_->::fmitcp_proto::fmi2_import_set_real_req::Clear();
   clear_has_fmi2_import_set_real_req();
 }
-inline const ::fmitcp::fmi2_import_set_real_req& fmitcp_message::fmi2_import_set_real_req() const {
+inline const ::fmitcp_proto::fmi2_import_set_real_req& fmitcp_message::fmi2_import_set_real_req() const {
   return fmi2_import_set_real_req_ != NULL ? *fmi2_import_set_real_req_ : *default_instance_->fmi2_import_set_real_req_;
 }
-inline ::fmitcp::fmi2_import_set_real_req* fmitcp_message::mutable_fmi2_import_set_real_req() {
+inline ::fmitcp_proto::fmi2_import_set_real_req* fmitcp_message::mutable_fmi2_import_set_real_req() {
   set_has_fmi2_import_set_real_req();
-  if (fmi2_import_set_real_req_ == NULL) fmi2_import_set_real_req_ = new ::fmitcp::fmi2_import_set_real_req;
+  if (fmi2_import_set_real_req_ == NULL) fmi2_import_set_real_req_ = new ::fmitcp_proto::fmi2_import_set_real_req;
   return fmi2_import_set_real_req_;
 }
-inline ::fmitcp::fmi2_import_set_real_req* fmitcp_message::release_fmi2_import_set_real_req() {
+inline ::fmitcp_proto::fmi2_import_set_real_req* fmitcp_message::release_fmi2_import_set_real_req() {
   clear_has_fmi2_import_set_real_req();
-  ::fmitcp::fmi2_import_set_real_req* temp = fmi2_import_set_real_req_;
+  ::fmitcp_proto::fmi2_import_set_real_req* temp = fmi2_import_set_real_req_;
   fmi2_import_set_real_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_real_res fmi2_import_set_real_res = 61;
+// optional .fmitcp_proto.fmi2_import_set_real_res fmi2_import_set_real_res = 61;
 inline bool fmitcp_message::has_fmi2_import_set_real_res() const {
   return (_has_bits_[1] & 0x10000000u) != 0;
 }
@@ -11827,25 +11827,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_real_res() {
   _has_bits_[1] &= ~0x10000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_real_res() {
-  if (fmi2_import_set_real_res_ != NULL) fmi2_import_set_real_res_->::fmitcp::fmi2_import_set_real_res::Clear();
+  if (fmi2_import_set_real_res_ != NULL) fmi2_import_set_real_res_->::fmitcp_proto::fmi2_import_set_real_res::Clear();
   clear_has_fmi2_import_set_real_res();
 }
-inline const ::fmitcp::fmi2_import_set_real_res& fmitcp_message::fmi2_import_set_real_res() const {
+inline const ::fmitcp_proto::fmi2_import_set_real_res& fmitcp_message::fmi2_import_set_real_res() const {
   return fmi2_import_set_real_res_ != NULL ? *fmi2_import_set_real_res_ : *default_instance_->fmi2_import_set_real_res_;
 }
-inline ::fmitcp::fmi2_import_set_real_res* fmitcp_message::mutable_fmi2_import_set_real_res() {
+inline ::fmitcp_proto::fmi2_import_set_real_res* fmitcp_message::mutable_fmi2_import_set_real_res() {
   set_has_fmi2_import_set_real_res();
-  if (fmi2_import_set_real_res_ == NULL) fmi2_import_set_real_res_ = new ::fmitcp::fmi2_import_set_real_res;
+  if (fmi2_import_set_real_res_ == NULL) fmi2_import_set_real_res_ = new ::fmitcp_proto::fmi2_import_set_real_res;
   return fmi2_import_set_real_res_;
 }
-inline ::fmitcp::fmi2_import_set_real_res* fmitcp_message::release_fmi2_import_set_real_res() {
+inline ::fmitcp_proto::fmi2_import_set_real_res* fmitcp_message::release_fmi2_import_set_real_res() {
   clear_has_fmi2_import_set_real_res();
-  ::fmitcp::fmi2_import_set_real_res* temp = fmi2_import_set_real_res_;
+  ::fmitcp_proto::fmi2_import_set_real_res* temp = fmi2_import_set_real_res_;
   fmi2_import_set_real_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_integer_req fmi2_import_set_integer_req = 62;
+// optional .fmitcp_proto.fmi2_import_set_integer_req fmi2_import_set_integer_req = 62;
 inline bool fmitcp_message::has_fmi2_import_set_integer_req() const {
   return (_has_bits_[1] & 0x20000000u) != 0;
 }
@@ -11856,25 +11856,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_integer_req() {
   _has_bits_[1] &= ~0x20000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_integer_req() {
-  if (fmi2_import_set_integer_req_ != NULL) fmi2_import_set_integer_req_->::fmitcp::fmi2_import_set_integer_req::Clear();
+  if (fmi2_import_set_integer_req_ != NULL) fmi2_import_set_integer_req_->::fmitcp_proto::fmi2_import_set_integer_req::Clear();
   clear_has_fmi2_import_set_integer_req();
 }
-inline const ::fmitcp::fmi2_import_set_integer_req& fmitcp_message::fmi2_import_set_integer_req() const {
+inline const ::fmitcp_proto::fmi2_import_set_integer_req& fmitcp_message::fmi2_import_set_integer_req() const {
   return fmi2_import_set_integer_req_ != NULL ? *fmi2_import_set_integer_req_ : *default_instance_->fmi2_import_set_integer_req_;
 }
-inline ::fmitcp::fmi2_import_set_integer_req* fmitcp_message::mutable_fmi2_import_set_integer_req() {
+inline ::fmitcp_proto::fmi2_import_set_integer_req* fmitcp_message::mutable_fmi2_import_set_integer_req() {
   set_has_fmi2_import_set_integer_req();
-  if (fmi2_import_set_integer_req_ == NULL) fmi2_import_set_integer_req_ = new ::fmitcp::fmi2_import_set_integer_req;
+  if (fmi2_import_set_integer_req_ == NULL) fmi2_import_set_integer_req_ = new ::fmitcp_proto::fmi2_import_set_integer_req;
   return fmi2_import_set_integer_req_;
 }
-inline ::fmitcp::fmi2_import_set_integer_req* fmitcp_message::release_fmi2_import_set_integer_req() {
+inline ::fmitcp_proto::fmi2_import_set_integer_req* fmitcp_message::release_fmi2_import_set_integer_req() {
   clear_has_fmi2_import_set_integer_req();
-  ::fmitcp::fmi2_import_set_integer_req* temp = fmi2_import_set_integer_req_;
+  ::fmitcp_proto::fmi2_import_set_integer_req* temp = fmi2_import_set_integer_req_;
   fmi2_import_set_integer_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_integer_res fmi2_import_set_integer_res = 63;
+// optional .fmitcp_proto.fmi2_import_set_integer_res fmi2_import_set_integer_res = 63;
 inline bool fmitcp_message::has_fmi2_import_set_integer_res() const {
   return (_has_bits_[1] & 0x40000000u) != 0;
 }
@@ -11885,25 +11885,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_integer_res() {
   _has_bits_[1] &= ~0x40000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_integer_res() {
-  if (fmi2_import_set_integer_res_ != NULL) fmi2_import_set_integer_res_->::fmitcp::fmi2_import_set_integer_res::Clear();
+  if (fmi2_import_set_integer_res_ != NULL) fmi2_import_set_integer_res_->::fmitcp_proto::fmi2_import_set_integer_res::Clear();
   clear_has_fmi2_import_set_integer_res();
 }
-inline const ::fmitcp::fmi2_import_set_integer_res& fmitcp_message::fmi2_import_set_integer_res() const {
+inline const ::fmitcp_proto::fmi2_import_set_integer_res& fmitcp_message::fmi2_import_set_integer_res() const {
   return fmi2_import_set_integer_res_ != NULL ? *fmi2_import_set_integer_res_ : *default_instance_->fmi2_import_set_integer_res_;
 }
-inline ::fmitcp::fmi2_import_set_integer_res* fmitcp_message::mutable_fmi2_import_set_integer_res() {
+inline ::fmitcp_proto::fmi2_import_set_integer_res* fmitcp_message::mutable_fmi2_import_set_integer_res() {
   set_has_fmi2_import_set_integer_res();
-  if (fmi2_import_set_integer_res_ == NULL) fmi2_import_set_integer_res_ = new ::fmitcp::fmi2_import_set_integer_res;
+  if (fmi2_import_set_integer_res_ == NULL) fmi2_import_set_integer_res_ = new ::fmitcp_proto::fmi2_import_set_integer_res;
   return fmi2_import_set_integer_res_;
 }
-inline ::fmitcp::fmi2_import_set_integer_res* fmitcp_message::release_fmi2_import_set_integer_res() {
+inline ::fmitcp_proto::fmi2_import_set_integer_res* fmitcp_message::release_fmi2_import_set_integer_res() {
   clear_has_fmi2_import_set_integer_res();
-  ::fmitcp::fmi2_import_set_integer_res* temp = fmi2_import_set_integer_res_;
+  ::fmitcp_proto::fmi2_import_set_integer_res* temp = fmi2_import_set_integer_res_;
   fmi2_import_set_integer_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_boolean_req fmi2_import_set_boolean_req = 64;
+// optional .fmitcp_proto.fmi2_import_set_boolean_req fmi2_import_set_boolean_req = 64;
 inline bool fmitcp_message::has_fmi2_import_set_boolean_req() const {
   return (_has_bits_[1] & 0x80000000u) != 0;
 }
@@ -11914,25 +11914,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_boolean_req() {
   _has_bits_[1] &= ~0x80000000u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_boolean_req() {
-  if (fmi2_import_set_boolean_req_ != NULL) fmi2_import_set_boolean_req_->::fmitcp::fmi2_import_set_boolean_req::Clear();
+  if (fmi2_import_set_boolean_req_ != NULL) fmi2_import_set_boolean_req_->::fmitcp_proto::fmi2_import_set_boolean_req::Clear();
   clear_has_fmi2_import_set_boolean_req();
 }
-inline const ::fmitcp::fmi2_import_set_boolean_req& fmitcp_message::fmi2_import_set_boolean_req() const {
+inline const ::fmitcp_proto::fmi2_import_set_boolean_req& fmitcp_message::fmi2_import_set_boolean_req() const {
   return fmi2_import_set_boolean_req_ != NULL ? *fmi2_import_set_boolean_req_ : *default_instance_->fmi2_import_set_boolean_req_;
 }
-inline ::fmitcp::fmi2_import_set_boolean_req* fmitcp_message::mutable_fmi2_import_set_boolean_req() {
+inline ::fmitcp_proto::fmi2_import_set_boolean_req* fmitcp_message::mutable_fmi2_import_set_boolean_req() {
   set_has_fmi2_import_set_boolean_req();
-  if (fmi2_import_set_boolean_req_ == NULL) fmi2_import_set_boolean_req_ = new ::fmitcp::fmi2_import_set_boolean_req;
+  if (fmi2_import_set_boolean_req_ == NULL) fmi2_import_set_boolean_req_ = new ::fmitcp_proto::fmi2_import_set_boolean_req;
   return fmi2_import_set_boolean_req_;
 }
-inline ::fmitcp::fmi2_import_set_boolean_req* fmitcp_message::release_fmi2_import_set_boolean_req() {
+inline ::fmitcp_proto::fmi2_import_set_boolean_req* fmitcp_message::release_fmi2_import_set_boolean_req() {
   clear_has_fmi2_import_set_boolean_req();
-  ::fmitcp::fmi2_import_set_boolean_req* temp = fmi2_import_set_boolean_req_;
+  ::fmitcp_proto::fmi2_import_set_boolean_req* temp = fmi2_import_set_boolean_req_;
   fmi2_import_set_boolean_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_boolean_res fmi2_import_set_boolean_res = 65;
+// optional .fmitcp_proto.fmi2_import_set_boolean_res fmi2_import_set_boolean_res = 65;
 inline bool fmitcp_message::has_fmi2_import_set_boolean_res() const {
   return (_has_bits_[2] & 0x00000001u) != 0;
 }
@@ -11943,25 +11943,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_boolean_res() {
   _has_bits_[2] &= ~0x00000001u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_boolean_res() {
-  if (fmi2_import_set_boolean_res_ != NULL) fmi2_import_set_boolean_res_->::fmitcp::fmi2_import_set_boolean_res::Clear();
+  if (fmi2_import_set_boolean_res_ != NULL) fmi2_import_set_boolean_res_->::fmitcp_proto::fmi2_import_set_boolean_res::Clear();
   clear_has_fmi2_import_set_boolean_res();
 }
-inline const ::fmitcp::fmi2_import_set_boolean_res& fmitcp_message::fmi2_import_set_boolean_res() const {
+inline const ::fmitcp_proto::fmi2_import_set_boolean_res& fmitcp_message::fmi2_import_set_boolean_res() const {
   return fmi2_import_set_boolean_res_ != NULL ? *fmi2_import_set_boolean_res_ : *default_instance_->fmi2_import_set_boolean_res_;
 }
-inline ::fmitcp::fmi2_import_set_boolean_res* fmitcp_message::mutable_fmi2_import_set_boolean_res() {
+inline ::fmitcp_proto::fmi2_import_set_boolean_res* fmitcp_message::mutable_fmi2_import_set_boolean_res() {
   set_has_fmi2_import_set_boolean_res();
-  if (fmi2_import_set_boolean_res_ == NULL) fmi2_import_set_boolean_res_ = new ::fmitcp::fmi2_import_set_boolean_res;
+  if (fmi2_import_set_boolean_res_ == NULL) fmi2_import_set_boolean_res_ = new ::fmitcp_proto::fmi2_import_set_boolean_res;
   return fmi2_import_set_boolean_res_;
 }
-inline ::fmitcp::fmi2_import_set_boolean_res* fmitcp_message::release_fmi2_import_set_boolean_res() {
+inline ::fmitcp_proto::fmi2_import_set_boolean_res* fmitcp_message::release_fmi2_import_set_boolean_res() {
   clear_has_fmi2_import_set_boolean_res();
-  ::fmitcp::fmi2_import_set_boolean_res* temp = fmi2_import_set_boolean_res_;
+  ::fmitcp_proto::fmi2_import_set_boolean_res* temp = fmi2_import_set_boolean_res_;
   fmi2_import_set_boolean_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_string_req fmi2_import_set_string_req = 66;
+// optional .fmitcp_proto.fmi2_import_set_string_req fmi2_import_set_string_req = 66;
 inline bool fmitcp_message::has_fmi2_import_set_string_req() const {
   return (_has_bits_[2] & 0x00000002u) != 0;
 }
@@ -11972,25 +11972,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_string_req() {
   _has_bits_[2] &= ~0x00000002u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_string_req() {
-  if (fmi2_import_set_string_req_ != NULL) fmi2_import_set_string_req_->::fmitcp::fmi2_import_set_string_req::Clear();
+  if (fmi2_import_set_string_req_ != NULL) fmi2_import_set_string_req_->::fmitcp_proto::fmi2_import_set_string_req::Clear();
   clear_has_fmi2_import_set_string_req();
 }
-inline const ::fmitcp::fmi2_import_set_string_req& fmitcp_message::fmi2_import_set_string_req() const {
+inline const ::fmitcp_proto::fmi2_import_set_string_req& fmitcp_message::fmi2_import_set_string_req() const {
   return fmi2_import_set_string_req_ != NULL ? *fmi2_import_set_string_req_ : *default_instance_->fmi2_import_set_string_req_;
 }
-inline ::fmitcp::fmi2_import_set_string_req* fmitcp_message::mutable_fmi2_import_set_string_req() {
+inline ::fmitcp_proto::fmi2_import_set_string_req* fmitcp_message::mutable_fmi2_import_set_string_req() {
   set_has_fmi2_import_set_string_req();
-  if (fmi2_import_set_string_req_ == NULL) fmi2_import_set_string_req_ = new ::fmitcp::fmi2_import_set_string_req;
+  if (fmi2_import_set_string_req_ == NULL) fmi2_import_set_string_req_ = new ::fmitcp_proto::fmi2_import_set_string_req;
   return fmi2_import_set_string_req_;
 }
-inline ::fmitcp::fmi2_import_set_string_req* fmitcp_message::release_fmi2_import_set_string_req() {
+inline ::fmitcp_proto::fmi2_import_set_string_req* fmitcp_message::release_fmi2_import_set_string_req() {
   clear_has_fmi2_import_set_string_req();
-  ::fmitcp::fmi2_import_set_string_req* temp = fmi2_import_set_string_req_;
+  ::fmitcp_proto::fmi2_import_set_string_req* temp = fmi2_import_set_string_req_;
   fmi2_import_set_string_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_string_res fmi2_import_set_string_res = 67;
+// optional .fmitcp_proto.fmi2_import_set_string_res fmi2_import_set_string_res = 67;
 inline bool fmitcp_message::has_fmi2_import_set_string_res() const {
   return (_has_bits_[2] & 0x00000004u) != 0;
 }
@@ -12001,25 +12001,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_string_res() {
   _has_bits_[2] &= ~0x00000004u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_string_res() {
-  if (fmi2_import_set_string_res_ != NULL) fmi2_import_set_string_res_->::fmitcp::fmi2_import_set_string_res::Clear();
+  if (fmi2_import_set_string_res_ != NULL) fmi2_import_set_string_res_->::fmitcp_proto::fmi2_import_set_string_res::Clear();
   clear_has_fmi2_import_set_string_res();
 }
-inline const ::fmitcp::fmi2_import_set_string_res& fmitcp_message::fmi2_import_set_string_res() const {
+inline const ::fmitcp_proto::fmi2_import_set_string_res& fmitcp_message::fmi2_import_set_string_res() const {
   return fmi2_import_set_string_res_ != NULL ? *fmi2_import_set_string_res_ : *default_instance_->fmi2_import_set_string_res_;
 }
-inline ::fmitcp::fmi2_import_set_string_res* fmitcp_message::mutable_fmi2_import_set_string_res() {
+inline ::fmitcp_proto::fmi2_import_set_string_res* fmitcp_message::mutable_fmi2_import_set_string_res() {
   set_has_fmi2_import_set_string_res();
-  if (fmi2_import_set_string_res_ == NULL) fmi2_import_set_string_res_ = new ::fmitcp::fmi2_import_set_string_res;
+  if (fmi2_import_set_string_res_ == NULL) fmi2_import_set_string_res_ = new ::fmitcp_proto::fmi2_import_set_string_res;
   return fmi2_import_set_string_res_;
 }
-inline ::fmitcp::fmi2_import_set_string_res* fmitcp_message::release_fmi2_import_set_string_res() {
+inline ::fmitcp_proto::fmi2_import_set_string_res* fmitcp_message::release_fmi2_import_set_string_res() {
   clear_has_fmi2_import_set_string_res();
-  ::fmitcp::fmi2_import_set_string_res* temp = fmi2_import_set_string_res_;
+  ::fmitcp_proto::fmi2_import_set_string_res* temp = fmi2_import_set_string_res_;
   fmi2_import_set_string_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_real_req fmi2_import_get_real_req = 68;
+// optional .fmitcp_proto.fmi2_import_get_real_req fmi2_import_get_real_req = 68;
 inline bool fmitcp_message::has_fmi2_import_get_real_req() const {
   return (_has_bits_[2] & 0x00000008u) != 0;
 }
@@ -12030,25 +12030,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_real_req() {
   _has_bits_[2] &= ~0x00000008u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_real_req() {
-  if (fmi2_import_get_real_req_ != NULL) fmi2_import_get_real_req_->::fmitcp::fmi2_import_get_real_req::Clear();
+  if (fmi2_import_get_real_req_ != NULL) fmi2_import_get_real_req_->::fmitcp_proto::fmi2_import_get_real_req::Clear();
   clear_has_fmi2_import_get_real_req();
 }
-inline const ::fmitcp::fmi2_import_get_real_req& fmitcp_message::fmi2_import_get_real_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_real_req& fmitcp_message::fmi2_import_get_real_req() const {
   return fmi2_import_get_real_req_ != NULL ? *fmi2_import_get_real_req_ : *default_instance_->fmi2_import_get_real_req_;
 }
-inline ::fmitcp::fmi2_import_get_real_req* fmitcp_message::mutable_fmi2_import_get_real_req() {
+inline ::fmitcp_proto::fmi2_import_get_real_req* fmitcp_message::mutable_fmi2_import_get_real_req() {
   set_has_fmi2_import_get_real_req();
-  if (fmi2_import_get_real_req_ == NULL) fmi2_import_get_real_req_ = new ::fmitcp::fmi2_import_get_real_req;
+  if (fmi2_import_get_real_req_ == NULL) fmi2_import_get_real_req_ = new ::fmitcp_proto::fmi2_import_get_real_req;
   return fmi2_import_get_real_req_;
 }
-inline ::fmitcp::fmi2_import_get_real_req* fmitcp_message::release_fmi2_import_get_real_req() {
+inline ::fmitcp_proto::fmi2_import_get_real_req* fmitcp_message::release_fmi2_import_get_real_req() {
   clear_has_fmi2_import_get_real_req();
-  ::fmitcp::fmi2_import_get_real_req* temp = fmi2_import_get_real_req_;
+  ::fmitcp_proto::fmi2_import_get_real_req* temp = fmi2_import_get_real_req_;
   fmi2_import_get_real_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_real_res fmi2_import_get_real_res = 69;
+// optional .fmitcp_proto.fmi2_import_get_real_res fmi2_import_get_real_res = 69;
 inline bool fmitcp_message::has_fmi2_import_get_real_res() const {
   return (_has_bits_[2] & 0x00000010u) != 0;
 }
@@ -12059,25 +12059,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_real_res() {
   _has_bits_[2] &= ~0x00000010u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_real_res() {
-  if (fmi2_import_get_real_res_ != NULL) fmi2_import_get_real_res_->::fmitcp::fmi2_import_get_real_res::Clear();
+  if (fmi2_import_get_real_res_ != NULL) fmi2_import_get_real_res_->::fmitcp_proto::fmi2_import_get_real_res::Clear();
   clear_has_fmi2_import_get_real_res();
 }
-inline const ::fmitcp::fmi2_import_get_real_res& fmitcp_message::fmi2_import_get_real_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_real_res& fmitcp_message::fmi2_import_get_real_res() const {
   return fmi2_import_get_real_res_ != NULL ? *fmi2_import_get_real_res_ : *default_instance_->fmi2_import_get_real_res_;
 }
-inline ::fmitcp::fmi2_import_get_real_res* fmitcp_message::mutable_fmi2_import_get_real_res() {
+inline ::fmitcp_proto::fmi2_import_get_real_res* fmitcp_message::mutable_fmi2_import_get_real_res() {
   set_has_fmi2_import_get_real_res();
-  if (fmi2_import_get_real_res_ == NULL) fmi2_import_get_real_res_ = new ::fmitcp::fmi2_import_get_real_res;
+  if (fmi2_import_get_real_res_ == NULL) fmi2_import_get_real_res_ = new ::fmitcp_proto::fmi2_import_get_real_res;
   return fmi2_import_get_real_res_;
 }
-inline ::fmitcp::fmi2_import_get_real_res* fmitcp_message::release_fmi2_import_get_real_res() {
+inline ::fmitcp_proto::fmi2_import_get_real_res* fmitcp_message::release_fmi2_import_get_real_res() {
   clear_has_fmi2_import_get_real_res();
-  ::fmitcp::fmi2_import_get_real_res* temp = fmi2_import_get_real_res_;
+  ::fmitcp_proto::fmi2_import_get_real_res* temp = fmi2_import_get_real_res_;
   fmi2_import_get_real_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_integer_req fmi2_import_get_integer_req = 70;
+// optional .fmitcp_proto.fmi2_import_get_integer_req fmi2_import_get_integer_req = 70;
 inline bool fmitcp_message::has_fmi2_import_get_integer_req() const {
   return (_has_bits_[2] & 0x00000020u) != 0;
 }
@@ -12088,25 +12088,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_integer_req() {
   _has_bits_[2] &= ~0x00000020u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_integer_req() {
-  if (fmi2_import_get_integer_req_ != NULL) fmi2_import_get_integer_req_->::fmitcp::fmi2_import_get_integer_req::Clear();
+  if (fmi2_import_get_integer_req_ != NULL) fmi2_import_get_integer_req_->::fmitcp_proto::fmi2_import_get_integer_req::Clear();
   clear_has_fmi2_import_get_integer_req();
 }
-inline const ::fmitcp::fmi2_import_get_integer_req& fmitcp_message::fmi2_import_get_integer_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_integer_req& fmitcp_message::fmi2_import_get_integer_req() const {
   return fmi2_import_get_integer_req_ != NULL ? *fmi2_import_get_integer_req_ : *default_instance_->fmi2_import_get_integer_req_;
 }
-inline ::fmitcp::fmi2_import_get_integer_req* fmitcp_message::mutable_fmi2_import_get_integer_req() {
+inline ::fmitcp_proto::fmi2_import_get_integer_req* fmitcp_message::mutable_fmi2_import_get_integer_req() {
   set_has_fmi2_import_get_integer_req();
-  if (fmi2_import_get_integer_req_ == NULL) fmi2_import_get_integer_req_ = new ::fmitcp::fmi2_import_get_integer_req;
+  if (fmi2_import_get_integer_req_ == NULL) fmi2_import_get_integer_req_ = new ::fmitcp_proto::fmi2_import_get_integer_req;
   return fmi2_import_get_integer_req_;
 }
-inline ::fmitcp::fmi2_import_get_integer_req* fmitcp_message::release_fmi2_import_get_integer_req() {
+inline ::fmitcp_proto::fmi2_import_get_integer_req* fmitcp_message::release_fmi2_import_get_integer_req() {
   clear_has_fmi2_import_get_integer_req();
-  ::fmitcp::fmi2_import_get_integer_req* temp = fmi2_import_get_integer_req_;
+  ::fmitcp_proto::fmi2_import_get_integer_req* temp = fmi2_import_get_integer_req_;
   fmi2_import_get_integer_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_integer_res fmi2_import_get_integer_res = 71;
+// optional .fmitcp_proto.fmi2_import_get_integer_res fmi2_import_get_integer_res = 71;
 inline bool fmitcp_message::has_fmi2_import_get_integer_res() const {
   return (_has_bits_[2] & 0x00000040u) != 0;
 }
@@ -12117,25 +12117,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_integer_res() {
   _has_bits_[2] &= ~0x00000040u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_integer_res() {
-  if (fmi2_import_get_integer_res_ != NULL) fmi2_import_get_integer_res_->::fmitcp::fmi2_import_get_integer_res::Clear();
+  if (fmi2_import_get_integer_res_ != NULL) fmi2_import_get_integer_res_->::fmitcp_proto::fmi2_import_get_integer_res::Clear();
   clear_has_fmi2_import_get_integer_res();
 }
-inline const ::fmitcp::fmi2_import_get_integer_res& fmitcp_message::fmi2_import_get_integer_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_integer_res& fmitcp_message::fmi2_import_get_integer_res() const {
   return fmi2_import_get_integer_res_ != NULL ? *fmi2_import_get_integer_res_ : *default_instance_->fmi2_import_get_integer_res_;
 }
-inline ::fmitcp::fmi2_import_get_integer_res* fmitcp_message::mutable_fmi2_import_get_integer_res() {
+inline ::fmitcp_proto::fmi2_import_get_integer_res* fmitcp_message::mutable_fmi2_import_get_integer_res() {
   set_has_fmi2_import_get_integer_res();
-  if (fmi2_import_get_integer_res_ == NULL) fmi2_import_get_integer_res_ = new ::fmitcp::fmi2_import_get_integer_res;
+  if (fmi2_import_get_integer_res_ == NULL) fmi2_import_get_integer_res_ = new ::fmitcp_proto::fmi2_import_get_integer_res;
   return fmi2_import_get_integer_res_;
 }
-inline ::fmitcp::fmi2_import_get_integer_res* fmitcp_message::release_fmi2_import_get_integer_res() {
+inline ::fmitcp_proto::fmi2_import_get_integer_res* fmitcp_message::release_fmi2_import_get_integer_res() {
   clear_has_fmi2_import_get_integer_res();
-  ::fmitcp::fmi2_import_get_integer_res* temp = fmi2_import_get_integer_res_;
+  ::fmitcp_proto::fmi2_import_get_integer_res* temp = fmi2_import_get_integer_res_;
   fmi2_import_get_integer_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_boolean_req fmi2_import_get_boolean_req = 72;
+// optional .fmitcp_proto.fmi2_import_get_boolean_req fmi2_import_get_boolean_req = 72;
 inline bool fmitcp_message::has_fmi2_import_get_boolean_req() const {
   return (_has_bits_[2] & 0x00000080u) != 0;
 }
@@ -12146,25 +12146,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_boolean_req() {
   _has_bits_[2] &= ~0x00000080u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_boolean_req() {
-  if (fmi2_import_get_boolean_req_ != NULL) fmi2_import_get_boolean_req_->::fmitcp::fmi2_import_get_boolean_req::Clear();
+  if (fmi2_import_get_boolean_req_ != NULL) fmi2_import_get_boolean_req_->::fmitcp_proto::fmi2_import_get_boolean_req::Clear();
   clear_has_fmi2_import_get_boolean_req();
 }
-inline const ::fmitcp::fmi2_import_get_boolean_req& fmitcp_message::fmi2_import_get_boolean_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_boolean_req& fmitcp_message::fmi2_import_get_boolean_req() const {
   return fmi2_import_get_boolean_req_ != NULL ? *fmi2_import_get_boolean_req_ : *default_instance_->fmi2_import_get_boolean_req_;
 }
-inline ::fmitcp::fmi2_import_get_boolean_req* fmitcp_message::mutable_fmi2_import_get_boolean_req() {
+inline ::fmitcp_proto::fmi2_import_get_boolean_req* fmitcp_message::mutable_fmi2_import_get_boolean_req() {
   set_has_fmi2_import_get_boolean_req();
-  if (fmi2_import_get_boolean_req_ == NULL) fmi2_import_get_boolean_req_ = new ::fmitcp::fmi2_import_get_boolean_req;
+  if (fmi2_import_get_boolean_req_ == NULL) fmi2_import_get_boolean_req_ = new ::fmitcp_proto::fmi2_import_get_boolean_req;
   return fmi2_import_get_boolean_req_;
 }
-inline ::fmitcp::fmi2_import_get_boolean_req* fmitcp_message::release_fmi2_import_get_boolean_req() {
+inline ::fmitcp_proto::fmi2_import_get_boolean_req* fmitcp_message::release_fmi2_import_get_boolean_req() {
   clear_has_fmi2_import_get_boolean_req();
-  ::fmitcp::fmi2_import_get_boolean_req* temp = fmi2_import_get_boolean_req_;
+  ::fmitcp_proto::fmi2_import_get_boolean_req* temp = fmi2_import_get_boolean_req_;
   fmi2_import_get_boolean_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_boolean_res fmi2_import_get_boolean_res = 73;
+// optional .fmitcp_proto.fmi2_import_get_boolean_res fmi2_import_get_boolean_res = 73;
 inline bool fmitcp_message::has_fmi2_import_get_boolean_res() const {
   return (_has_bits_[2] & 0x00000100u) != 0;
 }
@@ -12175,25 +12175,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_boolean_res() {
   _has_bits_[2] &= ~0x00000100u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_boolean_res() {
-  if (fmi2_import_get_boolean_res_ != NULL) fmi2_import_get_boolean_res_->::fmitcp::fmi2_import_get_boolean_res::Clear();
+  if (fmi2_import_get_boolean_res_ != NULL) fmi2_import_get_boolean_res_->::fmitcp_proto::fmi2_import_get_boolean_res::Clear();
   clear_has_fmi2_import_get_boolean_res();
 }
-inline const ::fmitcp::fmi2_import_get_boolean_res& fmitcp_message::fmi2_import_get_boolean_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_boolean_res& fmitcp_message::fmi2_import_get_boolean_res() const {
   return fmi2_import_get_boolean_res_ != NULL ? *fmi2_import_get_boolean_res_ : *default_instance_->fmi2_import_get_boolean_res_;
 }
-inline ::fmitcp::fmi2_import_get_boolean_res* fmitcp_message::mutable_fmi2_import_get_boolean_res() {
+inline ::fmitcp_proto::fmi2_import_get_boolean_res* fmitcp_message::mutable_fmi2_import_get_boolean_res() {
   set_has_fmi2_import_get_boolean_res();
-  if (fmi2_import_get_boolean_res_ == NULL) fmi2_import_get_boolean_res_ = new ::fmitcp::fmi2_import_get_boolean_res;
+  if (fmi2_import_get_boolean_res_ == NULL) fmi2_import_get_boolean_res_ = new ::fmitcp_proto::fmi2_import_get_boolean_res;
   return fmi2_import_get_boolean_res_;
 }
-inline ::fmitcp::fmi2_import_get_boolean_res* fmitcp_message::release_fmi2_import_get_boolean_res() {
+inline ::fmitcp_proto::fmi2_import_get_boolean_res* fmitcp_message::release_fmi2_import_get_boolean_res() {
   clear_has_fmi2_import_get_boolean_res();
-  ::fmitcp::fmi2_import_get_boolean_res* temp = fmi2_import_get_boolean_res_;
+  ::fmitcp_proto::fmi2_import_get_boolean_res* temp = fmi2_import_get_boolean_res_;
   fmi2_import_get_boolean_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_string_req fmi2_import_get_string_req = 74;
+// optional .fmitcp_proto.fmi2_import_get_string_req fmi2_import_get_string_req = 74;
 inline bool fmitcp_message::has_fmi2_import_get_string_req() const {
   return (_has_bits_[2] & 0x00000200u) != 0;
 }
@@ -12204,25 +12204,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_string_req() {
   _has_bits_[2] &= ~0x00000200u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_string_req() {
-  if (fmi2_import_get_string_req_ != NULL) fmi2_import_get_string_req_->::fmitcp::fmi2_import_get_string_req::Clear();
+  if (fmi2_import_get_string_req_ != NULL) fmi2_import_get_string_req_->::fmitcp_proto::fmi2_import_get_string_req::Clear();
   clear_has_fmi2_import_get_string_req();
 }
-inline const ::fmitcp::fmi2_import_get_string_req& fmitcp_message::fmi2_import_get_string_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_string_req& fmitcp_message::fmi2_import_get_string_req() const {
   return fmi2_import_get_string_req_ != NULL ? *fmi2_import_get_string_req_ : *default_instance_->fmi2_import_get_string_req_;
 }
-inline ::fmitcp::fmi2_import_get_string_req* fmitcp_message::mutable_fmi2_import_get_string_req() {
+inline ::fmitcp_proto::fmi2_import_get_string_req* fmitcp_message::mutable_fmi2_import_get_string_req() {
   set_has_fmi2_import_get_string_req();
-  if (fmi2_import_get_string_req_ == NULL) fmi2_import_get_string_req_ = new ::fmitcp::fmi2_import_get_string_req;
+  if (fmi2_import_get_string_req_ == NULL) fmi2_import_get_string_req_ = new ::fmitcp_proto::fmi2_import_get_string_req;
   return fmi2_import_get_string_req_;
 }
-inline ::fmitcp::fmi2_import_get_string_req* fmitcp_message::release_fmi2_import_get_string_req() {
+inline ::fmitcp_proto::fmi2_import_get_string_req* fmitcp_message::release_fmi2_import_get_string_req() {
   clear_has_fmi2_import_get_string_req();
-  ::fmitcp::fmi2_import_get_string_req* temp = fmi2_import_get_string_req_;
+  ::fmitcp_proto::fmi2_import_get_string_req* temp = fmi2_import_get_string_req_;
   fmi2_import_get_string_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_string_res fmi2_import_get_string_res = 75;
+// optional .fmitcp_proto.fmi2_import_get_string_res fmi2_import_get_string_res = 75;
 inline bool fmitcp_message::has_fmi2_import_get_string_res() const {
   return (_has_bits_[2] & 0x00000400u) != 0;
 }
@@ -12233,25 +12233,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_string_res() {
   _has_bits_[2] &= ~0x00000400u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_string_res() {
-  if (fmi2_import_get_string_res_ != NULL) fmi2_import_get_string_res_->::fmitcp::fmi2_import_get_string_res::Clear();
+  if (fmi2_import_get_string_res_ != NULL) fmi2_import_get_string_res_->::fmitcp_proto::fmi2_import_get_string_res::Clear();
   clear_has_fmi2_import_get_string_res();
 }
-inline const ::fmitcp::fmi2_import_get_string_res& fmitcp_message::fmi2_import_get_string_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_string_res& fmitcp_message::fmi2_import_get_string_res() const {
   return fmi2_import_get_string_res_ != NULL ? *fmi2_import_get_string_res_ : *default_instance_->fmi2_import_get_string_res_;
 }
-inline ::fmitcp::fmi2_import_get_string_res* fmitcp_message::mutable_fmi2_import_get_string_res() {
+inline ::fmitcp_proto::fmi2_import_get_string_res* fmitcp_message::mutable_fmi2_import_get_string_res() {
   set_has_fmi2_import_get_string_res();
-  if (fmi2_import_get_string_res_ == NULL) fmi2_import_get_string_res_ = new ::fmitcp::fmi2_import_get_string_res;
+  if (fmi2_import_get_string_res_ == NULL) fmi2_import_get_string_res_ = new ::fmitcp_proto::fmi2_import_get_string_res;
   return fmi2_import_get_string_res_;
 }
-inline ::fmitcp::fmi2_import_get_string_res* fmitcp_message::release_fmi2_import_get_string_res() {
+inline ::fmitcp_proto::fmi2_import_get_string_res* fmitcp_message::release_fmi2_import_get_string_res() {
   clear_has_fmi2_import_get_string_res();
-  ::fmitcp::fmi2_import_get_string_res* temp = fmi2_import_get_string_res_;
+  ::fmitcp_proto::fmi2_import_get_string_res* temp = fmi2_import_get_string_res_;
   fmi2_import_get_string_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_fmu_state_req fmi2_import_get_fmu_state_req = 76;
+// optional .fmitcp_proto.fmi2_import_get_fmu_state_req fmi2_import_get_fmu_state_req = 76;
 inline bool fmitcp_message::has_fmi2_import_get_fmu_state_req() const {
   return (_has_bits_[2] & 0x00000800u) != 0;
 }
@@ -12262,25 +12262,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_fmu_state_req() {
   _has_bits_[2] &= ~0x00000800u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_fmu_state_req() {
-  if (fmi2_import_get_fmu_state_req_ != NULL) fmi2_import_get_fmu_state_req_->::fmitcp::fmi2_import_get_fmu_state_req::Clear();
+  if (fmi2_import_get_fmu_state_req_ != NULL) fmi2_import_get_fmu_state_req_->::fmitcp_proto::fmi2_import_get_fmu_state_req::Clear();
   clear_has_fmi2_import_get_fmu_state_req();
 }
-inline const ::fmitcp::fmi2_import_get_fmu_state_req& fmitcp_message::fmi2_import_get_fmu_state_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_fmu_state_req& fmitcp_message::fmi2_import_get_fmu_state_req() const {
   return fmi2_import_get_fmu_state_req_ != NULL ? *fmi2_import_get_fmu_state_req_ : *default_instance_->fmi2_import_get_fmu_state_req_;
 }
-inline ::fmitcp::fmi2_import_get_fmu_state_req* fmitcp_message::mutable_fmi2_import_get_fmu_state_req() {
+inline ::fmitcp_proto::fmi2_import_get_fmu_state_req* fmitcp_message::mutable_fmi2_import_get_fmu_state_req() {
   set_has_fmi2_import_get_fmu_state_req();
-  if (fmi2_import_get_fmu_state_req_ == NULL) fmi2_import_get_fmu_state_req_ = new ::fmitcp::fmi2_import_get_fmu_state_req;
+  if (fmi2_import_get_fmu_state_req_ == NULL) fmi2_import_get_fmu_state_req_ = new ::fmitcp_proto::fmi2_import_get_fmu_state_req;
   return fmi2_import_get_fmu_state_req_;
 }
-inline ::fmitcp::fmi2_import_get_fmu_state_req* fmitcp_message::release_fmi2_import_get_fmu_state_req() {
+inline ::fmitcp_proto::fmi2_import_get_fmu_state_req* fmitcp_message::release_fmi2_import_get_fmu_state_req() {
   clear_has_fmi2_import_get_fmu_state_req();
-  ::fmitcp::fmi2_import_get_fmu_state_req* temp = fmi2_import_get_fmu_state_req_;
+  ::fmitcp_proto::fmi2_import_get_fmu_state_req* temp = fmi2_import_get_fmu_state_req_;
   fmi2_import_get_fmu_state_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_fmu_state_res fmi2_import_get_fmu_state_res = 77;
+// optional .fmitcp_proto.fmi2_import_get_fmu_state_res fmi2_import_get_fmu_state_res = 77;
 inline bool fmitcp_message::has_fmi2_import_get_fmu_state_res() const {
   return (_has_bits_[2] & 0x00001000u) != 0;
 }
@@ -12291,25 +12291,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_fmu_state_res() {
   _has_bits_[2] &= ~0x00001000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_fmu_state_res() {
-  if (fmi2_import_get_fmu_state_res_ != NULL) fmi2_import_get_fmu_state_res_->::fmitcp::fmi2_import_get_fmu_state_res::Clear();
+  if (fmi2_import_get_fmu_state_res_ != NULL) fmi2_import_get_fmu_state_res_->::fmitcp_proto::fmi2_import_get_fmu_state_res::Clear();
   clear_has_fmi2_import_get_fmu_state_res();
 }
-inline const ::fmitcp::fmi2_import_get_fmu_state_res& fmitcp_message::fmi2_import_get_fmu_state_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_fmu_state_res& fmitcp_message::fmi2_import_get_fmu_state_res() const {
   return fmi2_import_get_fmu_state_res_ != NULL ? *fmi2_import_get_fmu_state_res_ : *default_instance_->fmi2_import_get_fmu_state_res_;
 }
-inline ::fmitcp::fmi2_import_get_fmu_state_res* fmitcp_message::mutable_fmi2_import_get_fmu_state_res() {
+inline ::fmitcp_proto::fmi2_import_get_fmu_state_res* fmitcp_message::mutable_fmi2_import_get_fmu_state_res() {
   set_has_fmi2_import_get_fmu_state_res();
-  if (fmi2_import_get_fmu_state_res_ == NULL) fmi2_import_get_fmu_state_res_ = new ::fmitcp::fmi2_import_get_fmu_state_res;
+  if (fmi2_import_get_fmu_state_res_ == NULL) fmi2_import_get_fmu_state_res_ = new ::fmitcp_proto::fmi2_import_get_fmu_state_res;
   return fmi2_import_get_fmu_state_res_;
 }
-inline ::fmitcp::fmi2_import_get_fmu_state_res* fmitcp_message::release_fmi2_import_get_fmu_state_res() {
+inline ::fmitcp_proto::fmi2_import_get_fmu_state_res* fmitcp_message::release_fmi2_import_get_fmu_state_res() {
   clear_has_fmi2_import_get_fmu_state_res();
-  ::fmitcp::fmi2_import_get_fmu_state_res* temp = fmi2_import_get_fmu_state_res_;
+  ::fmitcp_proto::fmi2_import_get_fmu_state_res* temp = fmi2_import_get_fmu_state_res_;
   fmi2_import_get_fmu_state_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_fmu_state_req fmi2_import_set_fmu_state_req = 78;
+// optional .fmitcp_proto.fmi2_import_set_fmu_state_req fmi2_import_set_fmu_state_req = 78;
 inline bool fmitcp_message::has_fmi2_import_set_fmu_state_req() const {
   return (_has_bits_[2] & 0x00002000u) != 0;
 }
@@ -12320,25 +12320,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_fmu_state_req() {
   _has_bits_[2] &= ~0x00002000u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_fmu_state_req() {
-  if (fmi2_import_set_fmu_state_req_ != NULL) fmi2_import_set_fmu_state_req_->::fmitcp::fmi2_import_set_fmu_state_req::Clear();
+  if (fmi2_import_set_fmu_state_req_ != NULL) fmi2_import_set_fmu_state_req_->::fmitcp_proto::fmi2_import_set_fmu_state_req::Clear();
   clear_has_fmi2_import_set_fmu_state_req();
 }
-inline const ::fmitcp::fmi2_import_set_fmu_state_req& fmitcp_message::fmi2_import_set_fmu_state_req() const {
+inline const ::fmitcp_proto::fmi2_import_set_fmu_state_req& fmitcp_message::fmi2_import_set_fmu_state_req() const {
   return fmi2_import_set_fmu_state_req_ != NULL ? *fmi2_import_set_fmu_state_req_ : *default_instance_->fmi2_import_set_fmu_state_req_;
 }
-inline ::fmitcp::fmi2_import_set_fmu_state_req* fmitcp_message::mutable_fmi2_import_set_fmu_state_req() {
+inline ::fmitcp_proto::fmi2_import_set_fmu_state_req* fmitcp_message::mutable_fmi2_import_set_fmu_state_req() {
   set_has_fmi2_import_set_fmu_state_req();
-  if (fmi2_import_set_fmu_state_req_ == NULL) fmi2_import_set_fmu_state_req_ = new ::fmitcp::fmi2_import_set_fmu_state_req;
+  if (fmi2_import_set_fmu_state_req_ == NULL) fmi2_import_set_fmu_state_req_ = new ::fmitcp_proto::fmi2_import_set_fmu_state_req;
   return fmi2_import_set_fmu_state_req_;
 }
-inline ::fmitcp::fmi2_import_set_fmu_state_req* fmitcp_message::release_fmi2_import_set_fmu_state_req() {
+inline ::fmitcp_proto::fmi2_import_set_fmu_state_req* fmitcp_message::release_fmi2_import_set_fmu_state_req() {
   clear_has_fmi2_import_set_fmu_state_req();
-  ::fmitcp::fmi2_import_set_fmu_state_req* temp = fmi2_import_set_fmu_state_req_;
+  ::fmitcp_proto::fmi2_import_set_fmu_state_req* temp = fmi2_import_set_fmu_state_req_;
   fmi2_import_set_fmu_state_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_set_fmu_state_res fmi2_import_set_fmu_state_res = 79;
+// optional .fmitcp_proto.fmi2_import_set_fmu_state_res fmi2_import_set_fmu_state_res = 79;
 inline bool fmitcp_message::has_fmi2_import_set_fmu_state_res() const {
   return (_has_bits_[2] & 0x00004000u) != 0;
 }
@@ -12349,25 +12349,25 @@ inline void fmitcp_message::clear_has_fmi2_import_set_fmu_state_res() {
   _has_bits_[2] &= ~0x00004000u;
 }
 inline void fmitcp_message::clear_fmi2_import_set_fmu_state_res() {
-  if (fmi2_import_set_fmu_state_res_ != NULL) fmi2_import_set_fmu_state_res_->::fmitcp::fmi2_import_set_fmu_state_res::Clear();
+  if (fmi2_import_set_fmu_state_res_ != NULL) fmi2_import_set_fmu_state_res_->::fmitcp_proto::fmi2_import_set_fmu_state_res::Clear();
   clear_has_fmi2_import_set_fmu_state_res();
 }
-inline const ::fmitcp::fmi2_import_set_fmu_state_res& fmitcp_message::fmi2_import_set_fmu_state_res() const {
+inline const ::fmitcp_proto::fmi2_import_set_fmu_state_res& fmitcp_message::fmi2_import_set_fmu_state_res() const {
   return fmi2_import_set_fmu_state_res_ != NULL ? *fmi2_import_set_fmu_state_res_ : *default_instance_->fmi2_import_set_fmu_state_res_;
 }
-inline ::fmitcp::fmi2_import_set_fmu_state_res* fmitcp_message::mutable_fmi2_import_set_fmu_state_res() {
+inline ::fmitcp_proto::fmi2_import_set_fmu_state_res* fmitcp_message::mutable_fmi2_import_set_fmu_state_res() {
   set_has_fmi2_import_set_fmu_state_res();
-  if (fmi2_import_set_fmu_state_res_ == NULL) fmi2_import_set_fmu_state_res_ = new ::fmitcp::fmi2_import_set_fmu_state_res;
+  if (fmi2_import_set_fmu_state_res_ == NULL) fmi2_import_set_fmu_state_res_ = new ::fmitcp_proto::fmi2_import_set_fmu_state_res;
   return fmi2_import_set_fmu_state_res_;
 }
-inline ::fmitcp::fmi2_import_set_fmu_state_res* fmitcp_message::release_fmi2_import_set_fmu_state_res() {
+inline ::fmitcp_proto::fmi2_import_set_fmu_state_res* fmitcp_message::release_fmi2_import_set_fmu_state_res() {
   clear_has_fmi2_import_set_fmu_state_res();
-  ::fmitcp::fmi2_import_set_fmu_state_res* temp = fmi2_import_set_fmu_state_res_;
+  ::fmitcp_proto::fmi2_import_set_fmu_state_res* temp = fmi2_import_set_fmu_state_res_;
   fmi2_import_set_fmu_state_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_free_fmu_state_req fmi2_import_free_fmu_state_req = 80;
+// optional .fmitcp_proto.fmi2_import_free_fmu_state_req fmi2_import_free_fmu_state_req = 80;
 inline bool fmitcp_message::has_fmi2_import_free_fmu_state_req() const {
   return (_has_bits_[2] & 0x00008000u) != 0;
 }
@@ -12378,25 +12378,25 @@ inline void fmitcp_message::clear_has_fmi2_import_free_fmu_state_req() {
   _has_bits_[2] &= ~0x00008000u;
 }
 inline void fmitcp_message::clear_fmi2_import_free_fmu_state_req() {
-  if (fmi2_import_free_fmu_state_req_ != NULL) fmi2_import_free_fmu_state_req_->::fmitcp::fmi2_import_free_fmu_state_req::Clear();
+  if (fmi2_import_free_fmu_state_req_ != NULL) fmi2_import_free_fmu_state_req_->::fmitcp_proto::fmi2_import_free_fmu_state_req::Clear();
   clear_has_fmi2_import_free_fmu_state_req();
 }
-inline const ::fmitcp::fmi2_import_free_fmu_state_req& fmitcp_message::fmi2_import_free_fmu_state_req() const {
+inline const ::fmitcp_proto::fmi2_import_free_fmu_state_req& fmitcp_message::fmi2_import_free_fmu_state_req() const {
   return fmi2_import_free_fmu_state_req_ != NULL ? *fmi2_import_free_fmu_state_req_ : *default_instance_->fmi2_import_free_fmu_state_req_;
 }
-inline ::fmitcp::fmi2_import_free_fmu_state_req* fmitcp_message::mutable_fmi2_import_free_fmu_state_req() {
+inline ::fmitcp_proto::fmi2_import_free_fmu_state_req* fmitcp_message::mutable_fmi2_import_free_fmu_state_req() {
   set_has_fmi2_import_free_fmu_state_req();
-  if (fmi2_import_free_fmu_state_req_ == NULL) fmi2_import_free_fmu_state_req_ = new ::fmitcp::fmi2_import_free_fmu_state_req;
+  if (fmi2_import_free_fmu_state_req_ == NULL) fmi2_import_free_fmu_state_req_ = new ::fmitcp_proto::fmi2_import_free_fmu_state_req;
   return fmi2_import_free_fmu_state_req_;
 }
-inline ::fmitcp::fmi2_import_free_fmu_state_req* fmitcp_message::release_fmi2_import_free_fmu_state_req() {
+inline ::fmitcp_proto::fmi2_import_free_fmu_state_req* fmitcp_message::release_fmi2_import_free_fmu_state_req() {
   clear_has_fmi2_import_free_fmu_state_req();
-  ::fmitcp::fmi2_import_free_fmu_state_req* temp = fmi2_import_free_fmu_state_req_;
+  ::fmitcp_proto::fmi2_import_free_fmu_state_req* temp = fmi2_import_free_fmu_state_req_;
   fmi2_import_free_fmu_state_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_free_fmu_state_res fmi2_import_free_fmu_state_res = 81;
+// optional .fmitcp_proto.fmi2_import_free_fmu_state_res fmi2_import_free_fmu_state_res = 81;
 inline bool fmitcp_message::has_fmi2_import_free_fmu_state_res() const {
   return (_has_bits_[2] & 0x00010000u) != 0;
 }
@@ -12407,25 +12407,25 @@ inline void fmitcp_message::clear_has_fmi2_import_free_fmu_state_res() {
   _has_bits_[2] &= ~0x00010000u;
 }
 inline void fmitcp_message::clear_fmi2_import_free_fmu_state_res() {
-  if (fmi2_import_free_fmu_state_res_ != NULL) fmi2_import_free_fmu_state_res_->::fmitcp::fmi2_import_free_fmu_state_res::Clear();
+  if (fmi2_import_free_fmu_state_res_ != NULL) fmi2_import_free_fmu_state_res_->::fmitcp_proto::fmi2_import_free_fmu_state_res::Clear();
   clear_has_fmi2_import_free_fmu_state_res();
 }
-inline const ::fmitcp::fmi2_import_free_fmu_state_res& fmitcp_message::fmi2_import_free_fmu_state_res() const {
+inline const ::fmitcp_proto::fmi2_import_free_fmu_state_res& fmitcp_message::fmi2_import_free_fmu_state_res() const {
   return fmi2_import_free_fmu_state_res_ != NULL ? *fmi2_import_free_fmu_state_res_ : *default_instance_->fmi2_import_free_fmu_state_res_;
 }
-inline ::fmitcp::fmi2_import_free_fmu_state_res* fmitcp_message::mutable_fmi2_import_free_fmu_state_res() {
+inline ::fmitcp_proto::fmi2_import_free_fmu_state_res* fmitcp_message::mutable_fmi2_import_free_fmu_state_res() {
   set_has_fmi2_import_free_fmu_state_res();
-  if (fmi2_import_free_fmu_state_res_ == NULL) fmi2_import_free_fmu_state_res_ = new ::fmitcp::fmi2_import_free_fmu_state_res;
+  if (fmi2_import_free_fmu_state_res_ == NULL) fmi2_import_free_fmu_state_res_ = new ::fmitcp_proto::fmi2_import_free_fmu_state_res;
   return fmi2_import_free_fmu_state_res_;
 }
-inline ::fmitcp::fmi2_import_free_fmu_state_res* fmitcp_message::release_fmi2_import_free_fmu_state_res() {
+inline ::fmitcp_proto::fmi2_import_free_fmu_state_res* fmitcp_message::release_fmi2_import_free_fmu_state_res() {
   clear_has_fmi2_import_free_fmu_state_res();
-  ::fmitcp::fmi2_import_free_fmu_state_res* temp = fmi2_import_free_fmu_state_res_;
+  ::fmitcp_proto::fmi2_import_free_fmu_state_res* temp = fmi2_import_free_fmu_state_res_;
   fmi2_import_free_fmu_state_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_directional_derivative_req fmi2_import_get_directional_derivative_req = 88;
+// optional .fmitcp_proto.fmi2_import_get_directional_derivative_req fmi2_import_get_directional_derivative_req = 88;
 inline bool fmitcp_message::has_fmi2_import_get_directional_derivative_req() const {
   return (_has_bits_[2] & 0x00020000u) != 0;
 }
@@ -12436,25 +12436,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_directional_derivative_req
   _has_bits_[2] &= ~0x00020000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_directional_derivative_req() {
-  if (fmi2_import_get_directional_derivative_req_ != NULL) fmi2_import_get_directional_derivative_req_->::fmitcp::fmi2_import_get_directional_derivative_req::Clear();
+  if (fmi2_import_get_directional_derivative_req_ != NULL) fmi2_import_get_directional_derivative_req_->::fmitcp_proto::fmi2_import_get_directional_derivative_req::Clear();
   clear_has_fmi2_import_get_directional_derivative_req();
 }
-inline const ::fmitcp::fmi2_import_get_directional_derivative_req& fmitcp_message::fmi2_import_get_directional_derivative_req() const {
+inline const ::fmitcp_proto::fmi2_import_get_directional_derivative_req& fmitcp_message::fmi2_import_get_directional_derivative_req() const {
   return fmi2_import_get_directional_derivative_req_ != NULL ? *fmi2_import_get_directional_derivative_req_ : *default_instance_->fmi2_import_get_directional_derivative_req_;
 }
-inline ::fmitcp::fmi2_import_get_directional_derivative_req* fmitcp_message::mutable_fmi2_import_get_directional_derivative_req() {
+inline ::fmitcp_proto::fmi2_import_get_directional_derivative_req* fmitcp_message::mutable_fmi2_import_get_directional_derivative_req() {
   set_has_fmi2_import_get_directional_derivative_req();
-  if (fmi2_import_get_directional_derivative_req_ == NULL) fmi2_import_get_directional_derivative_req_ = new ::fmitcp::fmi2_import_get_directional_derivative_req;
+  if (fmi2_import_get_directional_derivative_req_ == NULL) fmi2_import_get_directional_derivative_req_ = new ::fmitcp_proto::fmi2_import_get_directional_derivative_req;
   return fmi2_import_get_directional_derivative_req_;
 }
-inline ::fmitcp::fmi2_import_get_directional_derivative_req* fmitcp_message::release_fmi2_import_get_directional_derivative_req() {
+inline ::fmitcp_proto::fmi2_import_get_directional_derivative_req* fmitcp_message::release_fmi2_import_get_directional_derivative_req() {
   clear_has_fmi2_import_get_directional_derivative_req();
-  ::fmitcp::fmi2_import_get_directional_derivative_req* temp = fmi2_import_get_directional_derivative_req_;
+  ::fmitcp_proto::fmi2_import_get_directional_derivative_req* temp = fmi2_import_get_directional_derivative_req_;
   fmi2_import_get_directional_derivative_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.fmi2_import_get_directional_derivative_res fmi2_import_get_directional_derivative_res = 89;
+// optional .fmitcp_proto.fmi2_import_get_directional_derivative_res fmi2_import_get_directional_derivative_res = 89;
 inline bool fmitcp_message::has_fmi2_import_get_directional_derivative_res() const {
   return (_has_bits_[2] & 0x00040000u) != 0;
 }
@@ -12465,25 +12465,25 @@ inline void fmitcp_message::clear_has_fmi2_import_get_directional_derivative_res
   _has_bits_[2] &= ~0x00040000u;
 }
 inline void fmitcp_message::clear_fmi2_import_get_directional_derivative_res() {
-  if (fmi2_import_get_directional_derivative_res_ != NULL) fmi2_import_get_directional_derivative_res_->::fmitcp::fmi2_import_get_directional_derivative_res::Clear();
+  if (fmi2_import_get_directional_derivative_res_ != NULL) fmi2_import_get_directional_derivative_res_->::fmitcp_proto::fmi2_import_get_directional_derivative_res::Clear();
   clear_has_fmi2_import_get_directional_derivative_res();
 }
-inline const ::fmitcp::fmi2_import_get_directional_derivative_res& fmitcp_message::fmi2_import_get_directional_derivative_res() const {
+inline const ::fmitcp_proto::fmi2_import_get_directional_derivative_res& fmitcp_message::fmi2_import_get_directional_derivative_res() const {
   return fmi2_import_get_directional_derivative_res_ != NULL ? *fmi2_import_get_directional_derivative_res_ : *default_instance_->fmi2_import_get_directional_derivative_res_;
 }
-inline ::fmitcp::fmi2_import_get_directional_derivative_res* fmitcp_message::mutable_fmi2_import_get_directional_derivative_res() {
+inline ::fmitcp_proto::fmi2_import_get_directional_derivative_res* fmitcp_message::mutable_fmi2_import_get_directional_derivative_res() {
   set_has_fmi2_import_get_directional_derivative_res();
-  if (fmi2_import_get_directional_derivative_res_ == NULL) fmi2_import_get_directional_derivative_res_ = new ::fmitcp::fmi2_import_get_directional_derivative_res;
+  if (fmi2_import_get_directional_derivative_res_ == NULL) fmi2_import_get_directional_derivative_res_ = new ::fmitcp_proto::fmi2_import_get_directional_derivative_res;
   return fmi2_import_get_directional_derivative_res_;
 }
-inline ::fmitcp::fmi2_import_get_directional_derivative_res* fmitcp_message::release_fmi2_import_get_directional_derivative_res() {
+inline ::fmitcp_proto::fmi2_import_get_directional_derivative_res* fmitcp_message::release_fmi2_import_get_directional_derivative_res() {
   clear_has_fmi2_import_get_directional_derivative_res();
-  ::fmitcp::fmi2_import_get_directional_derivative_res* temp = fmi2_import_get_directional_derivative_res_;
+  ::fmitcp_proto::fmi2_import_get_directional_derivative_res* temp = fmi2_import_get_directional_derivative_res_;
   fmi2_import_get_directional_derivative_res_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.get_xml_req get_xml_req = 90;
+// optional .fmitcp_proto.get_xml_req get_xml_req = 90;
 inline bool fmitcp_message::has_get_xml_req() const {
   return (_has_bits_[2] & 0x00080000u) != 0;
 }
@@ -12494,25 +12494,25 @@ inline void fmitcp_message::clear_has_get_xml_req() {
   _has_bits_[2] &= ~0x00080000u;
 }
 inline void fmitcp_message::clear_get_xml_req() {
-  if (get_xml_req_ != NULL) get_xml_req_->::fmitcp::get_xml_req::Clear();
+  if (get_xml_req_ != NULL) get_xml_req_->::fmitcp_proto::get_xml_req::Clear();
   clear_has_get_xml_req();
 }
-inline const ::fmitcp::get_xml_req& fmitcp_message::get_xml_req() const {
+inline const ::fmitcp_proto::get_xml_req& fmitcp_message::get_xml_req() const {
   return get_xml_req_ != NULL ? *get_xml_req_ : *default_instance_->get_xml_req_;
 }
-inline ::fmitcp::get_xml_req* fmitcp_message::mutable_get_xml_req() {
+inline ::fmitcp_proto::get_xml_req* fmitcp_message::mutable_get_xml_req() {
   set_has_get_xml_req();
-  if (get_xml_req_ == NULL) get_xml_req_ = new ::fmitcp::get_xml_req;
+  if (get_xml_req_ == NULL) get_xml_req_ = new ::fmitcp_proto::get_xml_req;
   return get_xml_req_;
 }
-inline ::fmitcp::get_xml_req* fmitcp_message::release_get_xml_req() {
+inline ::fmitcp_proto::get_xml_req* fmitcp_message::release_get_xml_req() {
   clear_has_get_xml_req();
-  ::fmitcp::get_xml_req* temp = get_xml_req_;
+  ::fmitcp_proto::get_xml_req* temp = get_xml_req_;
   get_xml_req_ = NULL;
   return temp;
 }
 
-// optional .fmitcp.get_xml_res get_xml_res = 91;
+// optional .fmitcp_proto.get_xml_res get_xml_res = 91;
 inline bool fmitcp_message::has_get_xml_res() const {
   return (_has_bits_[2] & 0x00100000u) != 0;
 }
@@ -12523,20 +12523,20 @@ inline void fmitcp_message::clear_has_get_xml_res() {
   _has_bits_[2] &= ~0x00100000u;
 }
 inline void fmitcp_message::clear_get_xml_res() {
-  if (get_xml_res_ != NULL) get_xml_res_->::fmitcp::get_xml_res::Clear();
+  if (get_xml_res_ != NULL) get_xml_res_->::fmitcp_proto::get_xml_res::Clear();
   clear_has_get_xml_res();
 }
-inline const ::fmitcp::get_xml_res& fmitcp_message::get_xml_res() const {
+inline const ::fmitcp_proto::get_xml_res& fmitcp_message::get_xml_res() const {
   return get_xml_res_ != NULL ? *get_xml_res_ : *default_instance_->get_xml_res_;
 }
-inline ::fmitcp::get_xml_res* fmitcp_message::mutable_get_xml_res() {
+inline ::fmitcp_proto::get_xml_res* fmitcp_message::mutable_get_xml_res() {
   set_has_get_xml_res();
-  if (get_xml_res_ == NULL) get_xml_res_ = new ::fmitcp::get_xml_res;
+  if (get_xml_res_ == NULL) get_xml_res_ = new ::fmitcp_proto::get_xml_res;
   return get_xml_res_;
 }
-inline ::fmitcp::get_xml_res* fmitcp_message::release_get_xml_res() {
+inline ::fmitcp_proto::get_xml_res* fmitcp_message::release_get_xml_res() {
   clear_has_get_xml_res();
-  ::fmitcp::get_xml_res* temp = get_xml_res_;
+  ::fmitcp_proto::get_xml_res* temp = get_xml_res_;
   get_xml_res_ = NULL;
   return temp;
 }
@@ -12911,7 +12911,7 @@ inline void fmi2_import_instantiate_slave_res::set_fmuid(::google::protobuf::int
   fmuid_ = value;
 }
 
-// required .fmitcp.jm_status_enu_t status = 3;
+// required .fmitcp_proto.jm_status_enu_t status = 3;
 inline bool fmi2_import_instantiate_slave_res::has_status() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -12925,11 +12925,11 @@ inline void fmi2_import_instantiate_slave_res::clear_status() {
   status_ = -1;
   clear_has_status();
 }
-inline fmitcp::jm_status_enu_t fmi2_import_instantiate_slave_res::status() const {
-  return static_cast< fmitcp::jm_status_enu_t >(status_);
+inline fmitcp_proto::jm_status_enu_t fmi2_import_instantiate_slave_res::status() const {
+  return static_cast< fmitcp_proto::jm_status_enu_t >(status_);
 }
-inline void fmi2_import_instantiate_slave_res::set_status(fmitcp::jm_status_enu_t value) {
-  GOOGLE_DCHECK(fmitcp::jm_status_enu_t_IsValid(value));
+inline void fmi2_import_instantiate_slave_res::set_status(fmitcp_proto::jm_status_enu_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::jm_status_enu_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -13074,7 +13074,7 @@ inline void fmi2_import_initialize_slave_res::set_message_id(::google::protobuf:
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_initialize_slave_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -13088,11 +13088,11 @@ inline void fmi2_import_initialize_slave_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_initialize_slave_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_initialize_slave_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_initialize_slave_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_initialize_slave_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -13245,7 +13245,7 @@ inline void fmi2_import_reset_slave_res::set_message_id(::google::protobuf::int3
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_reset_slave_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -13259,11 +13259,11 @@ inline void fmi2_import_reset_slave_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_reset_slave_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_reset_slave_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_reset_slave_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_reset_slave_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -13466,7 +13466,7 @@ inline void fmi2_import_set_real_input_derivatives_res::set_message_id(::google:
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_set_real_input_derivatives_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -13480,11 +13480,11 @@ inline void fmi2_import_set_real_input_derivatives_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_set_real_input_derivatives_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_set_real_input_derivatives_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_set_real_input_derivatives_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_set_real_input_derivatives_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -13613,7 +13613,7 @@ inline void fmi2_import_get_real_output_derivatives_res::set_message_id(::google
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_get_real_output_derivatives_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -13627,11 +13627,11 @@ inline void fmi2_import_get_real_output_derivatives_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_get_real_output_derivatives_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_get_real_output_derivatives_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_get_real_output_derivatives_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_get_real_output_derivatives_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -13735,7 +13735,7 @@ inline void fmi2_import_cancel_step_res::set_message_id(::google::protobuf::int3
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_cancel_step_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -13749,11 +13749,11 @@ inline void fmi2_import_cancel_step_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_cancel_step_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_cancel_step_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_cancel_step_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_cancel_step_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -13898,7 +13898,7 @@ inline void fmi2_import_do_step_res::set_message_id(::google::protobuf::int32 va
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_do_step_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -13912,11 +13912,11 @@ inline void fmi2_import_do_step_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_do_step_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_do_step_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_do_step_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_do_step_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -13969,7 +13969,7 @@ inline void fmi2_import_get_status_req::set_fmuid(::google::protobuf::int32 valu
   fmuid_ = value;
 }
 
-// required .fmitcp.fmi2_status_kind_t status = 3;
+// required .fmitcp_proto.fmi2_status_kind_t status = 3;
 inline bool fmi2_import_get_status_req::has_status() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -13983,11 +13983,11 @@ inline void fmi2_import_get_status_req::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_kind_t fmi2_import_get_status_req::status() const {
-  return static_cast< fmitcp::fmi2_status_kind_t >(status_);
+inline fmitcp_proto::fmi2_status_kind_t fmi2_import_get_status_req::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_kind_t >(status_);
 }
-inline void fmi2_import_get_status_req::set_status(fmitcp::fmi2_status_kind_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_kind_t_IsValid(value));
+inline void fmi2_import_get_status_req::set_status(fmitcp_proto::fmi2_status_kind_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_kind_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -14040,7 +14040,7 @@ inline void fmi2_import_get_status_res::set_fmuid(::google::protobuf::int32 valu
   fmuid_ = value;
 }
 
-// required .fmitcp.fmi2_status_t value = 3;
+// required .fmitcp_proto.fmi2_status_t value = 3;
 inline bool fmi2_import_get_status_res::has_value() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -14054,11 +14054,11 @@ inline void fmi2_import_get_status_res::clear_value() {
   value_ = 0;
   clear_has_value();
 }
-inline fmitcp::fmi2_status_t fmi2_import_get_status_res::value() const {
-  return static_cast< fmitcp::fmi2_status_t >(value_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_get_status_res::value() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(value_);
 }
-inline void fmi2_import_get_status_res::set_value(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_get_status_res::set_value(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_value();
   value_ = value;
 }
@@ -14111,7 +14111,7 @@ inline void fmi2_import_get_real_status_req::set_fmuid(::google::protobuf::int32
   fmuid_ = value;
 }
 
-// required .fmitcp.fmi2_status_kind_t kind = 3;
+// required .fmitcp_proto.fmi2_status_kind_t kind = 3;
 inline bool fmi2_import_get_real_status_req::has_kind() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -14125,11 +14125,11 @@ inline void fmi2_import_get_real_status_req::clear_kind() {
   kind_ = 0;
   clear_has_kind();
 }
-inline fmitcp::fmi2_status_kind_t fmi2_import_get_real_status_req::kind() const {
-  return static_cast< fmitcp::fmi2_status_kind_t >(kind_);
+inline fmitcp_proto::fmi2_status_kind_t fmi2_import_get_real_status_req::kind() const {
+  return static_cast< fmitcp_proto::fmi2_status_kind_t >(kind_);
 }
-inline void fmi2_import_get_real_status_req::set_kind(fmitcp::fmi2_status_kind_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_kind_t_IsValid(value));
+inline void fmi2_import_get_real_status_req::set_kind(fmitcp_proto::fmi2_status_kind_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_kind_t_IsValid(value));
   set_has_kind();
   kind_ = value;
 }
@@ -14230,7 +14230,7 @@ inline void fmi2_import_get_integer_status_req::set_fmuid(::google::protobuf::in
   fmuid_ = value;
 }
 
-// required .fmitcp.fmi2_status_kind_t kind = 3;
+// required .fmitcp_proto.fmi2_status_kind_t kind = 3;
 inline bool fmi2_import_get_integer_status_req::has_kind() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -14244,11 +14244,11 @@ inline void fmi2_import_get_integer_status_req::clear_kind() {
   kind_ = 0;
   clear_has_kind();
 }
-inline fmitcp::fmi2_status_kind_t fmi2_import_get_integer_status_req::kind() const {
-  return static_cast< fmitcp::fmi2_status_kind_t >(kind_);
+inline fmitcp_proto::fmi2_status_kind_t fmi2_import_get_integer_status_req::kind() const {
+  return static_cast< fmitcp_proto::fmi2_status_kind_t >(kind_);
 }
-inline void fmi2_import_get_integer_status_req::set_kind(fmitcp::fmi2_status_kind_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_kind_t_IsValid(value));
+inline void fmi2_import_get_integer_status_req::set_kind(fmitcp_proto::fmi2_status_kind_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_kind_t_IsValid(value));
   set_has_kind();
   kind_ = value;
 }
@@ -14349,7 +14349,7 @@ inline void fmi2_import_get_boolean_status_req::set_fmuid(::google::protobuf::in
   fmuid_ = value;
 }
 
-// required .fmitcp.fmi2_status_kind_t kind = 3;
+// required .fmitcp_proto.fmi2_status_kind_t kind = 3;
 inline bool fmi2_import_get_boolean_status_req::has_kind() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -14363,11 +14363,11 @@ inline void fmi2_import_get_boolean_status_req::clear_kind() {
   kind_ = 0;
   clear_has_kind();
 }
-inline fmitcp::fmi2_status_kind_t fmi2_import_get_boolean_status_req::kind() const {
-  return static_cast< fmitcp::fmi2_status_kind_t >(kind_);
+inline fmitcp_proto::fmi2_status_kind_t fmi2_import_get_boolean_status_req::kind() const {
+  return static_cast< fmitcp_proto::fmi2_status_kind_t >(kind_);
 }
-inline void fmi2_import_get_boolean_status_req::set_kind(fmitcp::fmi2_status_kind_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_kind_t_IsValid(value));
+inline void fmi2_import_get_boolean_status_req::set_kind(fmitcp_proto::fmi2_status_kind_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_kind_t_IsValid(value));
   set_has_kind();
   kind_ = value;
 }
@@ -14468,7 +14468,7 @@ inline void fmi2_import_get_string_status_req::set_fmuid(::google::protobuf::int
   fmuid_ = value;
 }
 
-// required .fmitcp.fmi2_status_kind_t kind = 3;
+// required .fmitcp_proto.fmi2_status_kind_t kind = 3;
 inline bool fmi2_import_get_string_status_req::has_kind() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -14482,11 +14482,11 @@ inline void fmi2_import_get_string_status_req::clear_kind() {
   kind_ = 0;
   clear_has_kind();
 }
-inline fmitcp::fmi2_status_kind_t fmi2_import_get_string_status_req::kind() const {
-  return static_cast< fmitcp::fmi2_status_kind_t >(kind_);
+inline fmitcp_proto::fmi2_status_kind_t fmi2_import_get_string_status_req::kind() const {
+  return static_cast< fmitcp_proto::fmi2_status_kind_t >(kind_);
 }
-inline void fmi2_import_get_string_status_req::set_kind(fmitcp::fmi2_status_kind_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_kind_t_IsValid(value));
+inline void fmi2_import_get_string_status_req::set_kind(fmitcp_proto::fmi2_status_kind_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_kind_t_IsValid(value));
   set_has_kind();
   kind_ = value;
 }
@@ -14765,7 +14765,7 @@ inline void fmi2_import_instantiate_model_res::set_message_id(::google::protobuf
   message_id_ = value;
 }
 
-// required .fmitcp.jm_status_enu_t status = 2;
+// required .fmitcp_proto.jm_status_enu_t status = 2;
 inline bool fmi2_import_instantiate_model_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -14779,11 +14779,11 @@ inline void fmi2_import_instantiate_model_res::clear_status() {
   status_ = -1;
   clear_has_status();
 }
-inline fmitcp::jm_status_enu_t fmi2_import_instantiate_model_res::status() const {
-  return static_cast< fmitcp::jm_status_enu_t >(status_);
+inline fmitcp_proto::jm_status_enu_t fmi2_import_instantiate_model_res::status() const {
+  return static_cast< fmitcp_proto::jm_status_enu_t >(status_);
 }
-inline void fmi2_import_instantiate_model_res::set_status(fmitcp::jm_status_enu_t value) {
-  GOOGLE_DCHECK(fmitcp::jm_status_enu_t_IsValid(value));
+inline void fmi2_import_instantiate_model_res::set_status(fmitcp_proto::jm_status_enu_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::jm_status_enu_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -14958,7 +14958,7 @@ inline void fmi2_import_set_time_res::set_message_id(::google::protobuf::int32 v
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_set_time_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -14972,11 +14972,11 @@ inline void fmi2_import_set_time_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_set_time_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_set_time_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_set_time_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_set_time_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -15080,7 +15080,7 @@ inline void fmi2_import_set_continuous_states_res::set_message_id(::google::prot
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_set_continuous_states_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -15094,11 +15094,11 @@ inline void fmi2_import_set_continuous_states_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_set_continuous_states_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_set_continuous_states_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_set_continuous_states_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_set_continuous_states_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -15199,7 +15199,7 @@ inline void fmi2_import_completed_integrator_step_res::set_calleventupdate(bool 
   calleventupdate_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 3;
+// required .fmitcp_proto.fmi2_status_t status = 3;
 inline bool fmi2_import_completed_integrator_step_res::has_status() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -15213,11 +15213,11 @@ inline void fmi2_import_completed_integrator_step_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_completed_integrator_step_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_completed_integrator_step_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_completed_integrator_step_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_completed_integrator_step_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -15340,7 +15340,7 @@ inline void fmi2_import_initialize_model_res::set_message_id(::google::protobuf:
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_event_info_t eventInfo = 2;
+// required .fmitcp_proto.fmi2_event_info_t eventInfo = 2;
 inline bool fmi2_import_initialize_model_res::has_eventinfo() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -15351,25 +15351,25 @@ inline void fmi2_import_initialize_model_res::clear_has_eventinfo() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void fmi2_import_initialize_model_res::clear_eventinfo() {
-  if (eventinfo_ != NULL) eventinfo_->::fmitcp::fmi2_event_info_t::Clear();
+  if (eventinfo_ != NULL) eventinfo_->::fmitcp_proto::fmi2_event_info_t::Clear();
   clear_has_eventinfo();
 }
-inline const ::fmitcp::fmi2_event_info_t& fmi2_import_initialize_model_res::eventinfo() const {
+inline const ::fmitcp_proto::fmi2_event_info_t& fmi2_import_initialize_model_res::eventinfo() const {
   return eventinfo_ != NULL ? *eventinfo_ : *default_instance_->eventinfo_;
 }
-inline ::fmitcp::fmi2_event_info_t* fmi2_import_initialize_model_res::mutable_eventinfo() {
+inline ::fmitcp_proto::fmi2_event_info_t* fmi2_import_initialize_model_res::mutable_eventinfo() {
   set_has_eventinfo();
-  if (eventinfo_ == NULL) eventinfo_ = new ::fmitcp::fmi2_event_info_t;
+  if (eventinfo_ == NULL) eventinfo_ = new ::fmitcp_proto::fmi2_event_info_t;
   return eventinfo_;
 }
-inline ::fmitcp::fmi2_event_info_t* fmi2_import_initialize_model_res::release_eventinfo() {
+inline ::fmitcp_proto::fmi2_event_info_t* fmi2_import_initialize_model_res::release_eventinfo() {
   clear_has_eventinfo();
-  ::fmitcp::fmi2_event_info_t* temp = eventinfo_;
+  ::fmitcp_proto::fmi2_event_info_t* temp = eventinfo_;
   eventinfo_ = NULL;
   return temp;
 }
 
-// required .fmitcp.fmi2_status_t status = 3;
+// required .fmitcp_proto.fmi2_status_t status = 3;
 inline bool fmi2_import_initialize_model_res::has_status() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -15383,11 +15383,11 @@ inline void fmi2_import_initialize_model_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_initialize_model_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_initialize_model_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_initialize_model_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_initialize_model_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -15491,7 +15491,7 @@ fmi2_import_get_derivatives_res::mutable_derivatives() {
   return &derivatives_;
 }
 
-// required .fmitcp.fmi2_status_t status = 3;
+// required .fmitcp_proto.fmi2_status_t status = 3;
 inline bool fmi2_import_get_derivatives_res::has_status() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -15505,11 +15505,11 @@ inline void fmi2_import_get_derivatives_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_get_derivatives_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_get_derivatives_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_get_derivatives_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_get_derivatives_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -15613,7 +15613,7 @@ fmi2_import_get_event_indicators_res::mutable_eventindicators() {
   return &eventindicators_;
 }
 
-// required .fmitcp.fmi2_status_t status = 3;
+// required .fmitcp_proto.fmi2_status_t status = 3;
 inline bool fmi2_import_get_event_indicators_res::has_status() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -15627,11 +15627,11 @@ inline void fmi2_import_get_event_indicators_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_get_event_indicators_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_get_event_indicators_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_get_event_indicators_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_get_event_indicators_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -15732,7 +15732,7 @@ inline void fmi2_import_eventUpdate_res::set_message_id(::google::protobuf::int3
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_event_info_t eventInfo = 2;
+// required .fmitcp_proto.fmi2_event_info_t eventInfo = 2;
 inline bool fmi2_import_eventUpdate_res::has_eventinfo() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -15743,25 +15743,25 @@ inline void fmi2_import_eventUpdate_res::clear_has_eventinfo() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void fmi2_import_eventUpdate_res::clear_eventinfo() {
-  if (eventinfo_ != NULL) eventinfo_->::fmitcp::fmi2_event_info_t::Clear();
+  if (eventinfo_ != NULL) eventinfo_->::fmitcp_proto::fmi2_event_info_t::Clear();
   clear_has_eventinfo();
 }
-inline const ::fmitcp::fmi2_event_info_t& fmi2_import_eventUpdate_res::eventinfo() const {
+inline const ::fmitcp_proto::fmi2_event_info_t& fmi2_import_eventUpdate_res::eventinfo() const {
   return eventinfo_ != NULL ? *eventinfo_ : *default_instance_->eventinfo_;
 }
-inline ::fmitcp::fmi2_event_info_t* fmi2_import_eventUpdate_res::mutable_eventinfo() {
+inline ::fmitcp_proto::fmi2_event_info_t* fmi2_import_eventUpdate_res::mutable_eventinfo() {
   set_has_eventinfo();
-  if (eventinfo_ == NULL) eventinfo_ = new ::fmitcp::fmi2_event_info_t;
+  if (eventinfo_ == NULL) eventinfo_ = new ::fmitcp_proto::fmi2_event_info_t;
   return eventinfo_;
 }
-inline ::fmitcp::fmi2_event_info_t* fmi2_import_eventUpdate_res::release_eventinfo() {
+inline ::fmitcp_proto::fmi2_event_info_t* fmi2_import_eventUpdate_res::release_eventinfo() {
   clear_has_eventinfo();
-  ::fmitcp::fmi2_event_info_t* temp = eventinfo_;
+  ::fmitcp_proto::fmi2_event_info_t* temp = eventinfo_;
   eventinfo_ = NULL;
   return temp;
 }
 
-// required .fmitcp.fmi2_status_t status = 3;
+// required .fmitcp_proto.fmi2_status_t status = 3;
 inline bool fmi2_import_eventUpdate_res::has_status() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -15775,11 +15775,11 @@ inline void fmi2_import_eventUpdate_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_eventUpdate_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_eventUpdate_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_eventUpdate_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_eventUpdate_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -15858,7 +15858,7 @@ inline void fmi2_import_completed_event_iteration_res::set_message_id(::google::
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_completed_event_iteration_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -15872,11 +15872,11 @@ inline void fmi2_import_completed_event_iteration_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_completed_event_iteration_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_completed_event_iteration_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_completed_event_iteration_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_completed_event_iteration_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -15980,7 +15980,7 @@ fmi2_import_get_continuous_states_res::mutable_states() {
   return &states_;
 }
 
-// required .fmitcp.fmi2_status_t status = 3;
+// required .fmitcp_proto.fmi2_status_t status = 3;
 inline bool fmi2_import_get_continuous_states_res::has_status() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -15994,11 +15994,11 @@ inline void fmi2_import_get_continuous_states_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_get_continuous_states_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_get_continuous_states_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_get_continuous_states_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_get_continuous_states_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -16102,7 +16102,7 @@ fmi2_import_get_nominal_continuous_states_res::mutable_nominal() {
   return &nominal_;
 }
 
-// required .fmitcp.fmi2_status_t status = 3;
+// required .fmitcp_proto.fmi2_status_t status = 3;
 inline bool fmi2_import_get_nominal_continuous_states_res::has_status() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -16116,11 +16116,11 @@ inline void fmi2_import_get_nominal_continuous_states_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_get_nominal_continuous_states_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_get_nominal_continuous_states_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_get_nominal_continuous_states_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_get_nominal_continuous_states_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -16199,7 +16199,7 @@ inline void fmi2_import_terminate_res::set_message_id(::google::protobuf::int32 
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_terminate_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -16213,11 +16213,11 @@ inline void fmi2_import_terminate_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_terminate_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_terminate_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_terminate_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_terminate_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -16475,7 +16475,7 @@ inline void fmi2_import_set_debug_logging_res::set_message_id(::google::protobuf
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_set_debug_logging_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -16489,11 +16489,11 @@ inline void fmi2_import_set_debug_logging_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_set_debug_logging_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_set_debug_logging_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_set_debug_logging_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_set_debug_logging_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -16622,7 +16622,7 @@ inline void fmi2_import_set_real_res::set_message_id(::google::protobuf::int32 v
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_set_real_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -16636,11 +16636,11 @@ inline void fmi2_import_set_real_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_set_real_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_set_real_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_set_real_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_set_real_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -16769,7 +16769,7 @@ inline void fmi2_import_set_integer_res::set_message_id(::google::protobuf::int3
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_set_integer_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -16783,11 +16783,11 @@ inline void fmi2_import_set_integer_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_set_integer_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_set_integer_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_set_integer_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_set_integer_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -16916,7 +16916,7 @@ inline void fmi2_import_set_boolean_res::set_message_id(::google::protobuf::int3
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_set_boolean_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -16930,11 +16930,11 @@ inline void fmi2_import_set_boolean_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_set_boolean_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_set_boolean_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_set_boolean_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_set_boolean_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -17082,7 +17082,7 @@ inline void fmi2_import_set_string_res::set_message_id(::google::protobuf::int32
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_set_string_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -17096,11 +17096,11 @@ inline void fmi2_import_set_string_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_set_string_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_set_string_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_set_string_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_set_string_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -17229,7 +17229,7 @@ fmi2_import_get_real_res::mutable_values() {
   return &values_;
 }
 
-// required .fmitcp.fmi2_status_t status = 3;
+// required .fmitcp_proto.fmi2_status_t status = 3;
 inline bool fmi2_import_get_real_res::has_status() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -17243,11 +17243,11 @@ inline void fmi2_import_get_real_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_get_real_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_get_real_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_get_real_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_get_real_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -17376,7 +17376,7 @@ fmi2_import_get_integer_res::mutable_values() {
   return &values_;
 }
 
-// required .fmitcp.fmi2_status_t status = 3;
+// required .fmitcp_proto.fmi2_status_t status = 3;
 inline bool fmi2_import_get_integer_res::has_status() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -17390,11 +17390,11 @@ inline void fmi2_import_get_integer_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_get_integer_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_get_integer_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_get_integer_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_get_integer_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -17523,7 +17523,7 @@ fmi2_import_get_boolean_res::mutable_values() {
   return &values_;
 }
 
-// required .fmitcp.fmi2_status_t status = 3;
+// required .fmitcp_proto.fmi2_status_t status = 3;
 inline bool fmi2_import_get_boolean_res::has_status() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -17537,11 +17537,11 @@ inline void fmi2_import_get_boolean_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_get_boolean_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_get_boolean_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_get_boolean_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_get_boolean_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -17689,7 +17689,7 @@ fmi2_import_get_string_res::mutable_values() {
   return &values_;
 }
 
-// required .fmitcp.fmi2_status_t status = 3;
+// required .fmitcp_proto.fmi2_status_t status = 3;
 inline bool fmi2_import_get_string_res::has_status() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -17703,11 +17703,11 @@ inline void fmi2_import_get_string_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_get_string_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_get_string_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_get_string_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_get_string_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -17912,7 +17912,7 @@ inline void fmi2_import_set_fmu_state_res::set_message_id(::google::protobuf::in
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_set_fmu_state_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -17926,11 +17926,11 @@ inline void fmi2_import_set_fmu_state_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_set_fmu_state_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_set_fmu_state_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_set_fmu_state_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_set_fmu_state_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -18009,7 +18009,7 @@ inline void fmi2_import_free_fmu_state_res::set_message_id(::google::protobuf::i
   message_id_ = value;
 }
 
-// required .fmitcp.fmi2_status_t status = 2;
+// required .fmitcp_proto.fmi2_status_t status = 2;
 inline bool fmi2_import_free_fmu_state_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -18023,11 +18023,11 @@ inline void fmi2_import_free_fmu_state_res::clear_status() {
   status_ = 0;
   clear_has_status();
 }
-inline fmitcp::fmi2_status_t fmi2_import_free_fmu_state_res::status() const {
-  return static_cast< fmitcp::fmi2_status_t >(status_);
+inline fmitcp_proto::fmi2_status_t fmi2_import_free_fmu_state_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
 }
-inline void fmi2_import_free_fmu_state_res::set_status(fmitcp::fmi2_status_t value) {
-  GOOGLE_DCHECK(fmitcp::fmi2_status_t_IsValid(value));
+inline void fmi2_import_free_fmu_state_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
   set_has_status();
   status_ = value;
 }
@@ -18319,27 +18319,27 @@ inline ::std::string* get_xml_res::release_xml() {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace fmitcp
+}  // namespace fmitcp_proto
 
 #ifndef SWIG
 namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::fmitcp::fmitcp_message_Type>() {
-  return ::fmitcp::fmitcp_message_Type_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::fmitcp_proto::fmitcp_message_Type>() {
+  return ::fmitcp_proto::fmitcp_message_Type_descriptor();
 }
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< fmitcp::fmi2_status_t>() {
-  return fmitcp::fmi2_status_t_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< fmitcp_proto::fmi2_status_t>() {
+  return fmitcp_proto::fmi2_status_t_descriptor();
 }
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< fmitcp::fmi2_status_kind_t>() {
-  return fmitcp::fmi2_status_kind_t_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< fmitcp_proto::fmi2_status_kind_t>() {
+  return fmitcp_proto::fmi2_status_kind_t_descriptor();
 }
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< fmitcp::jm_status_enu_t>() {
-  return fmitcp::jm_status_enu_t_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< fmitcp_proto::jm_status_enu_t>() {
+  return fmitcp_proto::jm_status_enu_t_descriptor();
 }
 
 }  // namespace google

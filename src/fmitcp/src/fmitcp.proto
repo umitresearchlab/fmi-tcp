@@ -1,4 +1,4 @@
-package fmitcp;
+package fmitcp_proto;
 
 // Wrapper for all possible messages
 message fmitcp_message {

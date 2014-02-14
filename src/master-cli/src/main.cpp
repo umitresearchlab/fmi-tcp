@@ -14,11 +14,11 @@ public:
 
     void onConnect(){
         printf("MyFMIClient::onConnect\n");
-        //fmi2_import_do_step(0,0,0.0,0.1,true);
-        m_pump->exitEventLoop();
+        fmi2_import_do_step(0,0,0.0,0.1,true);
+        //m_pump->exitEventLoop();
     };
 
-    void onDoStepResponse(){
+    void onDoStepResponse(fmitcp_proto::fmi2_status_t status){
         printf("MyFMIClient::onDoStepResponse\n");
         m_pump->exitEventLoop();
     };
@@ -34,15 +34,6 @@ public:
     };
 };
 
-/*
-lw_pump pump;
-
-void onConnect(lw_client c){
-    printf("connect\n");
-    lw_eventpump_post_eventloop_exit(pump);
-}
-*/
-
 int main(int argc, char *argv[] ) {
 
     printf("FMI Master\n");
@@ -51,19 +42,6 @@ int main(int argc, char *argv[] ) {
     MyFMIClient client(&pump);
     client.connect("localhost",3003);
     pump.startEventLoop();
-
-    /*
-    pump = lw_eventpump_new();
-    lw_client client = lw_client_new (pump);
-
-    lw_client_on_connect(client,onConnect);
-    lw_client_connect(client, "localhost", 3000);
-
-    lw_eventpump_start_eventloop(pump);
-
-    lw_stream_delete (client);
-    lw_pump_delete (pump);
-    */
 
     /*
     Logger logger;

@@ -2,8 +2,8 @@
 #define CLIENT_H_
 
 #include "EventPump.h"
+#include "fmitcp.pb.h"
 #include <string>
-#include <fmilib.h>
 #include <lacewing.h>
 
 using namespace std;
@@ -35,7 +35,7 @@ namespace fmitcp {
         virtual void onError(string message);
 
         /// To be implemented in subclass
-        virtual void onDoStepResponse();
+        virtual void onDoStepResponse(fmitcp_proto::fmi2_status_t status);
 
         void clientConnected(lw_client c);
         void clientData(lw_client c, const char* data, long size);
