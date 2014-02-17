@@ -6,6 +6,10 @@
 namespace fmitcp {
 
     class Logger {
+
+    private:
+        int m_filter;
+
     public:
 
         enum LogMessageType {
@@ -16,6 +20,8 @@ namespace fmitcp {
         Logger();
         virtual ~Logger();
         virtual void log(LogMessageType type, const char * format, ...);
+        virtual void setFilter(int filter);
+        virtual int getFilter() const;
     };
 
 };

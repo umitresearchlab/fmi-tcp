@@ -4,6 +4,7 @@
 #include <string>
 #include <lacewing.h>
 #include "EventPump.h"
+#include "Logger.h"
 
 using namespace std;
 
@@ -12,6 +13,7 @@ namespace fmitcp {
     class Server {
 
     private:
+        Logger m_logger;
         lw_server m_server;
 
     protected:
@@ -19,7 +21,10 @@ namespace fmitcp {
 
     public:
         Server(EventPump * pump);
+        Server(EventPump * pump, const Logger& logger);
         virtual ~Server();
+
+        void init(EventPump * pump);
 
         /// To be implemented in subclass
         virtual void onClientConnect();
@@ -37,6 +42,9 @@ namespace fmitcp {
 
         void host(string host, long port);
         void addFMU(string path);
+
+        Logger getLogger() const;
+        void setLogger(const Logger& logger);
 
     };
 

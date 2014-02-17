@@ -1,6 +1,7 @@
-#include "Server.h"
-#include "fmitcp.pb.h"
 #include <lacewing.h>
+#include "Server.h"
+#include "Logger.h"
+#include "fmitcp.pb.h"
 
 using namespace std;
 using namespace fmitcp;
@@ -119,6 +120,13 @@ void Server::error(lw_server s, lw_error error){
 }
 
 Server::Server(EventPump * pump){
+    init(pump);
+}
+Server::Server(EventPump * pump, const Logger& logger){
+    m_logger = logger;
+    init(pump);
+}
+void Server::init(EventPump * pump){
     m_pump = pump;
     m_server = lw_server_new(pump->getPump());
 }
@@ -151,4 +159,8 @@ void Server::host(string hostName, long port){
     // host/start the server
     lw_server_host_filter(m_server, filter);
     lw_filter_delete(filter);
+}
+
+Logger Server::getLogger() const {
+    return m_logger;
 }

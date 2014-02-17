@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string>
 #include <fmitcp/Server.h>
+#include <fmitcp/common.h>
 
 using namespace fmitcp;
 
@@ -29,19 +30,14 @@ public:
     };
 };
 
-using namespace fmitcp;
+void printHelp(){
+    printf("HELP PAGE: TODO\n");
+}
 
 int main( int argc, char *argv[] ) {
 
-    printf("FMI Server\n");
+    printf("FMI Server %s\n",FMITCP_VERSION);
 
-    EventPump pump;
-    MyFMIServer server(&pump);
-    server.host("localhost",3003);
-    pump.startEventLoop();
-
-
-    /*
     if (argc == 1) {
         // No args given, print help
         printHelp();
@@ -53,7 +49,7 @@ int main( int argc, char *argv[] ) {
     bool loggingOn = false,
          debugLogging = false,
          debugFlag = false;
-    std::string hostName="localhost",
+    std::string hostName = "localhost",
         fmuPath = "";
 
     for (j = 1; j < argc; j++) {
@@ -71,7 +67,7 @@ int main( int argc, char *argv[] ) {
             debugLogging = true;
 
         } else if (arg == "-v" || arg == "--version") {
-            printf("%s\n",VERSION); // todo
+            printf("%s\n",FMITCP_VERSION); // todo
             return EXIT_SUCCESS;
 
         } else if (arg == "--debugFlag") {
@@ -101,9 +97,12 @@ int main( int argc, char *argv[] ) {
         return EXIT_FAILURE;
     }
 
-    Slave slave(fmuPath);
-    slave.setLogger(Logger());
-    slave.host(hostName,port);
-*/
+    EventPump pump;
+    MyFMIServer server(&pump);
+    server.host(hostName,port);
+    pump.startEventLoop();
+
+    server.getLogger().setFilter(Logger::NETWORK|Logger::DEBUG);
+
     return EXIT_SUCCESS;
 }
