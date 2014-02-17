@@ -273,9 +273,9 @@ inline bool fmi2_status_kind_t_Parse(
     fmi2_status_kind_t_descriptor(), name, value);
 }
 enum jm_status_enu_t {
-  jm_status_error = -1,
-  jm_status_success = 0,
-  jm_status_warning = 1
+  jm_status_error = 0,
+  jm_status_success = 1,
+  jm_status_warning = 2
 };
 bool jm_status_enu_t_IsValid(int value);
 const jm_status_enu_t jm_status_enu_t_MIN = jm_status_error;
@@ -1735,17 +1735,10 @@ class fmi2_import_instantiate_slave_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required int32 fmuId = 2;
-  inline bool has_fmuid() const;
-  inline void clear_fmuid();
-  static const int kFmuIdFieldNumber = 2;
-  inline ::google::protobuf::int32 fmuid() const;
-  inline void set_fmuid(::google::protobuf::int32 value);
-  
-  // required .fmitcp_proto.jm_status_enu_t status = 3;
+  // required .fmitcp_proto.jm_status_enu_t status = 2;
   inline bool has_status() const;
   inline void clear_status();
-  static const int kStatusFieldNumber = 3;
+  static const int kStatusFieldNumber = 2;
   inline fmitcp_proto::jm_status_enu_t status() const;
   inline void set_status(fmitcp_proto::jm_status_enu_t value);
   
@@ -1753,19 +1746,16 @@ class fmi2_import_instantiate_slave_res : public ::google::protobuf::Message {
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
-  inline void set_has_fmuid();
-  inline void clear_has_fmuid();
   inline void set_has_status();
   inline void clear_has_status();
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
   ::google::protobuf::int32 message_id_;
-  ::google::protobuf::int32 fmuid_;
   int status_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   friend void  protobuf_AddDesc_fmitcp_2eproto();
   friend void protobuf_AssignDesc_fmitcp_2eproto();
@@ -2143,17 +2133,27 @@ class fmi2_import_terminate_slave_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
+  // required .fmitcp_proto.fmi2_status_t status = 2;
+  inline bool has_status() const;
+  inline void clear_status();
+  static const int kStatusFieldNumber = 2;
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
+  
   // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_terminate_slave_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
+  inline void set_has_status();
+  inline void clear_has_status();
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
   ::google::protobuf::int32 message_id_;
+  int status_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   friend void  protobuf_AddDesc_fmitcp_2eproto();
   friend void protobuf_AssignDesc_fmitcp_2eproto();
@@ -3516,17 +3516,10 @@ class fmi2_import_get_status_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // required int32 fmuId = 2;
-  inline bool has_fmuid() const;
-  inline void clear_fmuid();
-  static const int kFmuIdFieldNumber = 2;
-  inline ::google::protobuf::int32 fmuid() const;
-  inline void set_fmuid(::google::protobuf::int32 value);
-  
-  // required .fmitcp_proto.fmi2_status_t value = 3;
+  // required .fmitcp_proto.fmi2_status_t value = 2;
   inline bool has_value() const;
   inline void clear_value();
-  static const int kValueFieldNumber = 3;
+  static const int kValueFieldNumber = 2;
   inline fmitcp_proto::fmi2_status_t value() const;
   inline void set_value(fmitcp_proto::fmi2_status_t value);
   
@@ -3534,19 +3527,16 @@ class fmi2_import_get_status_res : public ::google::protobuf::Message {
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
-  inline void set_has_fmuid();
-  inline void clear_has_fmuid();
   inline void set_has_value();
   inline void clear_has_value();
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
   ::google::protobuf::int32 message_id_;
-  ::google::protobuf::int32 fmuid_;
   int value_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   friend void  protobuf_AddDesc_fmitcp_2eproto();
   friend void protobuf_AssignDesc_fmitcp_2eproto();
@@ -8499,16 +8489,16 @@ class fmi2_import_get_integer_res : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // repeated double values = 2;
+  // repeated int32 values = 2;
   inline int values_size() const;
   inline void clear_values();
   static const int kValuesFieldNumber = 2;
-  inline double values(int index) const;
-  inline void set_values(int index, double value);
-  inline void add_values(double value);
-  inline const ::google::protobuf::RepeatedField< double >&
+  inline ::google::protobuf::int32 values(int index) const;
+  inline void set_values(int index, ::google::protobuf::int32 value);
+  inline void add_values(::google::protobuf::int32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
       values() const;
-  inline ::google::protobuf::RepeatedField< double >*
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_values();
   
   // required .fmitcp_proto.fmi2_status_t status = 3;
@@ -8527,7 +8517,7 @@ class fmi2_import_get_integer_res : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::google::protobuf::RepeatedField< double > values_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > values_;
   ::google::protobuf::int32 message_id_;
   int status_;
   
@@ -12889,40 +12879,18 @@ inline void fmi2_import_instantiate_slave_res::set_message_id(::google::protobuf
   message_id_ = value;
 }
 
-// required int32 fmuId = 2;
-inline bool fmi2_import_instantiate_slave_res::has_fmuid() const {
+// required .fmitcp_proto.jm_status_enu_t status = 2;
+inline bool fmi2_import_instantiate_slave_res::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void fmi2_import_instantiate_slave_res::set_has_fmuid() {
+inline void fmi2_import_instantiate_slave_res::set_has_status() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void fmi2_import_instantiate_slave_res::clear_has_fmuid() {
+inline void fmi2_import_instantiate_slave_res::clear_has_status() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void fmi2_import_instantiate_slave_res::clear_fmuid() {
-  fmuid_ = 0;
-  clear_has_fmuid();
-}
-inline ::google::protobuf::int32 fmi2_import_instantiate_slave_res::fmuid() const {
-  return fmuid_;
-}
-inline void fmi2_import_instantiate_slave_res::set_fmuid(::google::protobuf::int32 value) {
-  set_has_fmuid();
-  fmuid_ = value;
-}
-
-// required .fmitcp_proto.jm_status_enu_t status = 3;
-inline bool fmi2_import_instantiate_slave_res::has_status() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void fmi2_import_instantiate_slave_res::set_has_status() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void fmi2_import_instantiate_slave_res::clear_has_status() {
-  _has_bits_[0] &= ~0x00000004u;
-}
 inline void fmi2_import_instantiate_slave_res::clear_status() {
-  status_ = -1;
+  status_ = 0;
   clear_has_status();
 }
 inline fmitcp_proto::jm_status_enu_t fmi2_import_instantiate_slave_res::status() const {
@@ -13169,6 +13137,29 @@ inline ::google::protobuf::int32 fmi2_import_terminate_slave_res::message_id() c
 inline void fmi2_import_terminate_slave_res::set_message_id(::google::protobuf::int32 value) {
   set_has_message_id();
   message_id_ = value;
+}
+
+// required .fmitcp_proto.fmi2_status_t status = 2;
+inline bool fmi2_import_terminate_slave_res::has_status() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void fmi2_import_terminate_slave_res::set_has_status() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void fmi2_import_terminate_slave_res::clear_has_status() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void fmi2_import_terminate_slave_res::clear_status() {
+  status_ = 0;
+  clear_has_status();
+}
+inline fmitcp_proto::fmi2_status_t fmi2_import_terminate_slave_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
+}
+inline void fmi2_import_terminate_slave_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
+  set_has_status();
+  status_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -14018,37 +14009,15 @@ inline void fmi2_import_get_status_res::set_message_id(::google::protobuf::int32
   message_id_ = value;
 }
 
-// required int32 fmuId = 2;
-inline bool fmi2_import_get_status_res::has_fmuid() const {
+// required .fmitcp_proto.fmi2_status_t value = 2;
+inline bool fmi2_import_get_status_res::has_value() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void fmi2_import_get_status_res::set_has_fmuid() {
+inline void fmi2_import_get_status_res::set_has_value() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void fmi2_import_get_status_res::clear_has_fmuid() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void fmi2_import_get_status_res::clear_fmuid() {
-  fmuid_ = 0;
-  clear_has_fmuid();
-}
-inline ::google::protobuf::int32 fmi2_import_get_status_res::fmuid() const {
-  return fmuid_;
-}
-inline void fmi2_import_get_status_res::set_fmuid(::google::protobuf::int32 value) {
-  set_has_fmuid();
-  fmuid_ = value;
-}
-
-// required .fmitcp_proto.fmi2_status_t value = 3;
-inline bool fmi2_import_get_status_res::has_value() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void fmi2_import_get_status_res::set_has_value() {
-  _has_bits_[0] |= 0x00000004u;
-}
 inline void fmi2_import_get_status_res::clear_has_value() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void fmi2_import_get_status_res::clear_value() {
   value_ = 0;
@@ -14776,7 +14745,7 @@ inline void fmi2_import_instantiate_model_res::clear_has_status() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void fmi2_import_instantiate_model_res::clear_status() {
-  status_ = -1;
+  status_ = 0;
   clear_has_status();
 }
 inline fmitcp_proto::jm_status_enu_t fmi2_import_instantiate_model_res::status() const {
@@ -17351,27 +17320,27 @@ inline void fmi2_import_get_integer_res::set_message_id(::google::protobuf::int3
   message_id_ = value;
 }
 
-// repeated double values = 2;
+// repeated int32 values = 2;
 inline int fmi2_import_get_integer_res::values_size() const {
   return values_.size();
 }
 inline void fmi2_import_get_integer_res::clear_values() {
   values_.Clear();
 }
-inline double fmi2_import_get_integer_res::values(int index) const {
+inline ::google::protobuf::int32 fmi2_import_get_integer_res::values(int index) const {
   return values_.Get(index);
 }
-inline void fmi2_import_get_integer_res::set_values(int index, double value) {
+inline void fmi2_import_get_integer_res::set_values(int index, ::google::protobuf::int32 value) {
   values_.Set(index, value);
 }
-inline void fmi2_import_get_integer_res::add_values(double value) {
+inline void fmi2_import_get_integer_res::add_values(::google::protobuf::int32 value) {
   values_.Add(value);
 }
-inline const ::google::protobuf::RepeatedField< double >&
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
 fmi2_import_get_integer_res::values() const {
   return values_;
 }
-inline ::google::protobuf::RepeatedField< double >*
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
 fmi2_import_get_integer_res::mutable_values() {
   return &values_;
 }

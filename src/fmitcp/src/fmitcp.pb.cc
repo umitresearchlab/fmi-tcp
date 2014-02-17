@@ -435,9 +435,8 @@ void protobuf_AssignDesc_fmitcp_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(fmi2_import_instantiate_slave_req));
   fmi2_import_instantiate_slave_res_descriptor_ = file->message_type(3);
-  static const int fmi2_import_instantiate_slave_res_offsets_[3] = {
+  static const int fmi2_import_instantiate_slave_res_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_instantiate_slave_res, message_id_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_instantiate_slave_res, fmuid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_instantiate_slave_res, status_),
   };
   fmi2_import_instantiate_slave_res_reflection_ =
@@ -503,8 +502,9 @@ void protobuf_AssignDesc_fmitcp_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(fmi2_import_terminate_slave_req));
   fmi2_import_terminate_slave_res_descriptor_ = file->message_type(7);
-  static const int fmi2_import_terminate_slave_res_offsets_[1] = {
+  static const int fmi2_import_terminate_slave_res_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_terminate_slave_res, message_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_terminate_slave_res, status_),
   };
   fmi2_import_terminate_slave_res_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -734,9 +734,8 @@ void protobuf_AssignDesc_fmitcp_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(fmi2_import_get_status_req));
   fmi2_import_get_status_res_descriptor_ = file->message_type(21);
-  static const int fmi2_import_get_status_res_offsets_[3] = {
+  static const int fmi2_import_get_status_res_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_get_status_res, message_id_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_get_status_res, fmuid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_get_status_res, value_),
   };
   fmi2_import_get_status_res_reflection_ =
@@ -2512,217 +2511,217 @@ void protobuf_AddDesc_fmitcp_2eproto() {
     "\006 \002(\001\"\212\001\n!fmi2_import_instantiate_slave_"
     "req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\024"
     "\n\014instanceName\030\003 \002(\t\022\033\n\023fmuResourceLocat"
-    "ion\030\004 \002(\t\022\017\n\007visible\030\005 \002(\010\"u\n!fmi2_impor"
+    "ion\030\004 \002(\t\022\017\n\007visible\030\005 \002(\010\"f\n!fmi2_impor"
     "t_instantiate_slave_res\022\022\n\nmessage_id\030\001 "
-    "\002(\005\022\r\n\005fmuId\030\002 \002(\005\022-\n\006status\030\003 \002(\0162\035.fmi"
-    "tcp_proto.jm_status_enu_t\"\177\n fmi2_import"
-    "_initialize_slave_req\022\022\n\nmessage_id\030\001 \002("
-    "\005\022\r\n\005fmuId\030\002 \002(\005\022\031\n\021relativeTolerance\030\003 "
-    "\002(\001\022\016\n\006tStart\030\004 \002(\001\022\r\n\005tStop\030\005 \001(\001\"c\n fm"
-    "i2_import_initialize_slave_res\022\022\n\nmessag"
-    "e_id\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_prot"
-    "o.fmi2_status_t\"D\n\037fmi2_import_terminate"
-    "_slave_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030"
-    "\002 \002(\005\"5\n\037fmi2_import_terminate_slave_res"
-    "\022\022\n\nmessage_id\030\001 \002(\005\"@\n\033fmi2_import_rese"
-    "t_slave_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId"
-    "\030\002 \002(\005\"^\n\033fmi2_import_reset_slave_res\022\022\n"
-    "\nmessage_id\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmit"
-    "cp_proto.fmi2_status_t\"H\n#fmi2_import_fr"
-    "ee_slave_instance_req\022\022\n\nmessage_id\030\001 \002("
-    "\005\022\r\n\005fmuId\030\002 \002(\005\"9\n#fmi2_import_free_sla"
-    "ve_instance_res\022\022\n\nmessage_id\030\001 \002(\005\"x\n*f"
-    "mi2_import_set_real_input_derivatives_re"
-    "q\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\027\n\017"
-    "valueReferences\030\003 \003(\005\022\016\n\006values\030\004 \003(\001\"m\n"
-    "*fmi2_import_set_real_input_derivatives_"
-    "res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006status\030\002 \002(\0162"
-    "\033.fmitcp_proto.fmi2_status_t\"y\n+fmi2_imp"
-    "ort_get_real_output_derivatives_req\022\022\n\nm"
-    "essage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\027\n\017valueR"
-    "eferences\030\003 \003(\005\022\016\n\006orders\030\004 \003(\005\"~\n+fmi2_"
-    "import_get_real_output_derivatives_res\022\022"
-    "\n\nmessage_id\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmi"
-    "tcp_proto.fmi2_status_t\022\016\n\006values\030\003 \003(\001\""
-    "@\n\033fmi2_import_cancel_step_req\022\022\n\nmessag"
-    "e_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\"^\n\033fmi2_import"
-    "_cancel_step_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006"
-    "status\030\002 \002(\0162\033.fmitcp_proto.fmi2_status_"
-    "t\"\217\001\n\027fmi2_import_do_step_req\022\022\n\nmessage"
-    "_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022!\n\031currentCommu"
-    "nicationPoint\030\003 \002(\001\022\035\n\025communicationStep"
-    "Size\030\004 \002(\001\022\017\n\007newStep\030\005 \002(\010\"Z\n\027fmi2_impo"
-    "rt_do_step_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006st"
-    "atus\030\002 \002(\0162\033.fmitcp_proto.fmi2_status_t\""
-    "q\n\032fmi2_import_get_status_req\022\022\n\nmessage"
-    "_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\0220\n\006status\030\003 \002(\016"
-    "2 .fmitcp_proto.fmi2_status_kind_t\"k\n\032fm"
-    "i2_import_get_status_res\022\022\n\nmessage_id\030\001"
-    " \002(\005\022\r\n\005fmuId\030\002 \002(\005\022*\n\005value\030\003 \002(\0162\033.fmi"
-    "tcp_proto.fmi2_status_t\"t\n\037fmi2_import_g"
-    "et_real_status_req\022\022\n\nmessage_id\030\001 \002(\005\022\r"
-    "\n\005fmuId\030\002 \002(\005\022.\n\004kind\030\003 \002(\0162 .fmitcp_pro"
-    "to.fmi2_status_kind_t\"D\n\037fmi2_import_get"
-    "_real_status_res\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005"
-    "value\030\002 \002(\001\"w\n\"fmi2_import_get_integer_s"
-    "tatus_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002"
-    " \002(\005\022.\n\004kind\030\003 \002(\0162 .fmitcp_proto.fmi2_s"
-    "tatus_kind_t\"G\n\"fmi2_import_get_integer_"
-    "status_res\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005value\030"
-    "\002 \002(\005\"w\n\"fmi2_import_get_boolean_status_"
-    "req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022."
-    "\n\004kind\030\003 \002(\0162 .fmitcp_proto.fmi2_status_"
-    "kind_t\"G\n\"fmi2_import_get_boolean_status"
-    "_res\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005value\030\002 \002(\010\""
-    "v\n!fmi2_import_get_string_status_req\022\022\n\n"
-    "message_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022.\n\004kind\030"
-    "\003 \002(\0162 .fmitcp_proto.fmi2_status_kind_t\""
-    "F\n!fmi2_import_get_string_status_res\022\022\n\n"
-    "message_id\030\001 \002(\005\022\r\n\005value\030\002 \002(\t\"v\n!fmi2_"
-    "import_instantiate_model_req\022\022\n\nmessage_"
-    "id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\024\n\014instanceName\030"
-    "\003 \002(\t\022\030\n\020resourceLocation\030\004 \002(\t\"f\n!fmi2_"
-    "import_instantiate_model_res\022\022\n\nmessage_"
-    "id\030\001 \002(\005\022-\n\006status\030\002 \002(\0162\035.fmitcp_proto."
-    "jm_status_enu_t\"H\n#fmi2_import_free_mode"
-    "l_instance_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fm"
-    "uId\030\002 \002(\005\"9\n#fmi2_import_free_model_inst"
-    "ance_res\022\022\n\nmessage_id\030\001 \002(\005\"K\n\030fmi2_imp"
-    "ort_set_time_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005"
-    "fmuId\030\002 \002(\005\022\014\n\004time\030\003 \002(\001\"[\n\030fmi2_import"
-    "_set_time_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006sta"
-    "tus\030\002 \002(\0162\033.fmitcp_proto.fmi2_status_t\"U"
-    "\n%fmi2_import_set_continuous_states_req\022"
-    "\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\t\n\001x\030"
-    "\003 \003(\001\"h\n%fmi2_import_set_continuous_stat"
-    "es_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006status\030\002 \002"
-    "(\0162\033.fmitcp_proto.fmi2_status_t\"N\n)fmi2_"
-    "import_completed_integrator_step_req\022\022\n\n"
-    "message_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\"\205\001\n)fmi2"
-    "_import_completed_integrator_step_res\022\022\n"
-    "\nmessage_id\030\001 \002(\005\022\027\n\017callEventUpdate\030\002 \002"
-    "(\010\022+\n\006status\030\003 \002(\0162\033.fmitcp_proto.fmi2_s"
-    "tatus_t\"}\n fmi2_import_initialize_model_"
-    "req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\033"
-    "\n\023toleranceControlled\030\003 \002(\010\022\031\n\021relativeT"
-    "olerance\030\004 \002(\001\"\227\001\n fmi2_import_initializ"
-    "e_model_res\022\022\n\nmessage_id\030\001 \002(\005\0222\n\tevent"
-    "Info\030\002 \002(\0132\037.fmitcp_proto.fmi2_event_inf"
-    "o_t\022+\n\006status\030\003 \002(\0162\033.fmitcp_proto.fmi2_"
-    "status_t\"D\n\037fmi2_import_get_derivatives_"
-    "req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\"w"
-    "\n\037fmi2_import_get_derivatives_res\022\022\n\nmes"
-    "sage_id\030\001 \002(\005\022\023\n\013derivatives\030\002 \003(\001\022+\n\006st"
-    "atus\030\003 \002(\0162\033.fmitcp_proto.fmi2_status_t\""
-    "I\n$fmi2_import_get_event_indicators_req\022"
-    "\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\"\200\001\n$f"
-    "mi2_import_get_event_indicators_res\022\022\n\nm"
-    "essage_id\030\001 \002(\005\022\027\n\017eventIndicators\030\002 \003(\001"
-    "\022+\n\006status\030\003 \002(\0162\033.fmitcp_proto.fmi2_sta"
-    "tus_t\"]\n\033fmi2_import_eventUpdate_req\022\022\n\n"
-    "message_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\033\n\023inter"
-    "mediateResults\030\003 \002(\010\"\222\001\n\033fmi2_import_eve"
-    "ntUpdate_res\022\022\n\nmessage_id\030\001 \002(\005\0222\n\teven"
-    "tInfo\030\002 \002(\0132\037.fmitcp_proto.fmi2_event_in"
-    "fo_t\022+\n\006status\030\003 \002(\0162\033.fmitcp_proto.fmi2"
-    "_status_t\"N\n)fmi2_import_completed_event"
-    "_iteration_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fm"
-    "uId\030\002 \002(\005\"l\n)fmi2_import_completed_event"
-    "_iteration_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006st"
-    "atus\030\002 \002(\0162\033.fmitcp_proto.fmi2_status_t\""
-    "J\n%fmi2_import_get_continuous_states_req"
-    "\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\"x\n%f"
-    "mi2_import_get_continuous_states_res\022\022\n\n"
-    "message_id\030\001 \002(\005\022\016\n\006states\030\002 \003(\001\022+\n\006stat"
-    "us\030\003 \002(\0162\033.fmitcp_proto.fmi2_status_t\"R\n"
-    "-fmi2_import_get_nominal_continuous_stat"
-    "es_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002("
-    "\005\"\201\001\n-fmi2_import_get_nominal_continuous"
-    "_states_res\022\022\n\nmessage_id\030\001 \002(\005\022\017\n\007nomin"
-    "al\030\002 \003(\001\022+\n\006status\030\003 \002(\0162\033.fmitcp_proto."
-    "fmi2_status_t\">\n\031fmi2_import_terminate_r"
-    "eq\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\"\\\n"
-    "\031fmi2_import_terminate_res\022\022\n\nmessage_id"
-    "\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_proto.fm"
-    "i2_status_t\"@\n\033fmi2_import_get_version_r"
-    "eq\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\"B\n"
-    "\033fmi2_import_get_version_res\022\022\n\nmessage_"
-    "id\030\001 \002(\005\022\017\n\007version\030\002 \002(\t\"m\n!fmi2_import"
-    "_set_debug_logging_req\022\022\n\nmessage_id\030\001 \002"
-    "(\005\022\r\n\005fmuId\030\002 \002(\005\022\021\n\tloggingOn\030\003 \002(\010\022\022\n\n"
-    "categories\030\004 \003(\005\"d\n!fmi2_import_set_debu"
-    "g_logging_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006sta"
-    "tus\030\002 \002(\0162\033.fmitcp_proto.fmi2_status_t\"f"
-    "\n\030fmi2_import_set_real_req\022\022\n\nmessage_id"
-    "\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\027\n\017valueReferences"
-    "\030\003 \003(\005\022\016\n\006values\030\004 \003(\001\"[\n\030fmi2_import_se"
-    "t_real_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006status"
-    "\030\002 \002(\0162\033.fmitcp_proto.fmi2_status_t\"i\n\033f"
-    "mi2_import_set_integer_req\022\022\n\nmessage_id"
-    "\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\027\n\017valueReferences"
-    "\030\003 \003(\005\022\016\n\006values\030\004 \003(\005\"^\n\033fmi2_import_se"
-    "t_integer_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006sta"
-    "tus\030\002 \002(\0162\033.fmitcp_proto.fmi2_status_t\"i"
-    "\n\033fmi2_import_set_boolean_req\022\022\n\nmessage"
-    "_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\027\n\017valueReferen"
-    "ces\030\003 \003(\005\022\016\n\006values\030\004 \003(\010\"^\n\033fmi2_import"
-    "_set_boolean_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006"
-    "status\030\002 \002(\0162\033.fmitcp_proto.fmi2_status_"
-    "t\"h\n\032fmi2_import_set_string_req\022\022\n\nmessa"
+    "\002(\005\022-\n\006status\030\002 \002(\0162\035.fmitcp_proto.jm_st"
+    "atus_enu_t\"\177\n fmi2_import_initialize_sla"
+    "ve_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002("
+    "\005\022\031\n\021relativeTolerance\030\003 \002(\001\022\016\n\006tStart\030\004"
+    " \002(\001\022\r\n\005tStop\030\005 \001(\001\"c\n fmi2_import_initi"
+    "alize_slave_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006s"
+    "tatus\030\002 \002(\0162\033.fmitcp_proto.fmi2_status_t"
+    "\"D\n\037fmi2_import_terminate_slave_req\022\022\n\nm"
+    "essage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\"b\n\037fmi2_i"
+    "mport_terminate_slave_res\022\022\n\nmessage_id\030"
+    "\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_proto.fmi"
+    "2_status_t\"@\n\033fmi2_import_reset_slave_re"
+    "q\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\"^\n\033"
+    "fmi2_import_reset_slave_res\022\022\n\nmessage_i"
+    "d\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_proto.f"
+    "mi2_status_t\"H\n#fmi2_import_free_slave_i"
+    "nstance_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId"
+    "\030\002 \002(\005\"9\n#fmi2_import_free_slave_instanc"
+    "e_res\022\022\n\nmessage_id\030\001 \002(\005\"x\n*fmi2_import"
+    "_set_real_input_derivatives_req\022\022\n\nmessa"
     "ge_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\027\n\017valueRefer"
-    "ences\030\003 \003(\005\022\016\n\006values\030\004 \003(\t\"]\n\032fmi2_impo"
-    "rt_set_string_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n"
-    "\006status\030\002 \002(\0162\033.fmitcp_proto.fmi2_status"
-    "_t\"V\n\030fmi2_import_get_real_req\022\022\n\nmessag"
-    "e_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\027\n\017valueRefere"
-    "nces\030\003 \003(\005\"k\n\030fmi2_import_get_real_res\022\022"
-    "\n\nmessage_id\030\001 \002(\005\022\016\n\006values\030\002 \003(\001\022+\n\006st"
-    "atus\030\003 \002(\0162\033.fmitcp_proto.fmi2_status_t\""
-    "Y\n\033fmi2_import_get_integer_req\022\022\n\nmessag"
-    "e_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\027\n\017valueRefere"
-    "nces\030\003 \003(\005\"n\n\033fmi2_import_get_integer_re"
-    "s\022\022\n\nmessage_id\030\001 \002(\005\022\016\n\006values\030\002 \003(\001\022+\n"
-    "\006status\030\003 \002(\0162\033.fmitcp_proto.fmi2_status"
-    "_t\"Y\n\033fmi2_import_get_boolean_req\022\022\n\nmes"
-    "sage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\027\n\017valueRef"
-    "erences\030\003 \003(\005\"n\n\033fmi2_import_get_boolean"
-    "_res\022\022\n\nmessage_id\030\001 \002(\005\022\016\n\006values\030\002 \003(\010"
-    "\022+\n\006status\030\003 \002(\0162\033.fmitcp_proto.fmi2_sta"
-    "tus_t\"X\n\032fmi2_import_get_string_req\022\022\n\nm"
-    "essage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\027\n\017valueR"
-    "eferences\030\003 \003(\005\"m\n\032fmi2_import_get_strin"
-    "g_res\022\022\n\nmessage_id\030\001 \002(\005\022\016\n\006values\030\002 \003("
-    "\t\022+\n\006status\030\003 \002(\0162\033.fmitcp_proto.fmi2_st"
-    "atus_t\"\n\n\010char_req\"\n\n\010char_res\"B\n\035fmi2_i"
-    "mport_get_fmu_state_req\022\022\n\nmessage_id\030\001 "
-    "\002(\005\022\r\n\005fmuId\030\002 \002(\005\"D\n\035fmi2_import_get_fm"
-    "u_state_res\022\022\n\nmessage_id\030\001 \002(\005\022\017\n\007state"
-    "Id\030\002 \002(\005\"S\n\035fmi2_import_set_fmu_state_re"
-    "q\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\017\n\007"
-    "stateId\030\003 \002(\005\"`\n\035fmi2_import_set_fmu_sta"
-    "te_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006status\030\002 \002"
-    "(\0162\033.fmitcp_proto.fmi2_status_t\"E\n\036fmi2_"
-    "import_free_fmu_state_req\022\022\n\nmessage_id\030"
-    "\001 \002(\005\022\017\n\007stateId\030\002 \002(\005\"a\n\036fmi2_import_fr"
-    "ee_fmu_state_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006"
-    "status\030\002 \002(\0162\033.fmitcp_proto.fmi2_status_"
-    "t\"j\n*fmi2_import_get_directional_derivat"
-    "ive_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005v_ref\030\002 \003"
-    "(\005\022\r\n\005z_ref\030\003 \003(\005\022\n\n\002dv\030\004 \003(\001\"L\n*fmi2_im"
-    "port_get_directional_derivative_res\022\022\n\nm"
-    "essage_id\030\001 \002(\005\022\n\n\002dz\030\002 \003(\001\"0\n\013get_xml_r"
-    "eq\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\".\n"
-    "\013get_xml_res\022\022\n\nmessage_id\030\001 \002(\005\022\013\n\003xml\030"
-    "\002 \002(\t*\234\001\n\rfmi2_status_t\022\022\n\016fmi2_status_o"
-    "k\020\000\022\027\n\023fmi2_status_warning\020\001\022\027\n\023fmi2_sta"
-    "tus_discard\020\002\022\025\n\021fmi2_status_error\020\003\022\025\n\021"
-    "fmi2_status_fatal\020\004\022\027\n\023fmi2_status_pendi"
-    "ng\020\005*z\n\022fmi2_status_kind_t\022\027\n\023fmi2_do_st"
-    "ep_status\020\000\022\027\n\023fmi2_pending_status\020\001\022\035\n\031"
-    "fmi2_last_successful_time\020\002\022\023\n\017fmi2_term"
-    "inated\020\003*]\n\017jm_status_enu_t\022\034\n\017jm_status"
-    "_error\020\377\377\377\377\377\377\377\377\377\001\022\025\n\021jm_status_success\020\000"
-    "\022\025\n\021jm_status_warning\020\001", 20063);
+    "ences\030\003 \003(\005\022\016\n\006values\030\004 \003(\001\"m\n*fmi2_impo"
+    "rt_set_real_input_derivatives_res\022\022\n\nmes"
+    "sage_id\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_p"
+    "roto.fmi2_status_t\"y\n+fmi2_import_get_re"
+    "al_output_derivatives_req\022\022\n\nmessage_id\030"
+    "\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\027\n\017valueReferences\030"
+    "\003 \003(\005\022\016\n\006orders\030\004 \003(\005\"~\n+fmi2_import_get"
+    "_real_output_derivatives_res\022\022\n\nmessage_"
+    "id\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_proto."
+    "fmi2_status_t\022\016\n\006values\030\003 \003(\001\"@\n\033fmi2_im"
+    "port_cancel_step_req\022\022\n\nmessage_id\030\001 \002(\005"
+    "\022\r\n\005fmuId\030\002 \002(\005\"^\n\033fmi2_import_cancel_st"
+    "ep_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006status\030\002 \002"
+    "(\0162\033.fmitcp_proto.fmi2_status_t\"\217\001\n\027fmi2"
+    "_import_do_step_req\022\022\n\nmessage_id\030\001 \002(\005\022"
+    "\r\n\005fmuId\030\002 \002(\005\022!\n\031currentCommunicationPo"
+    "int\030\003 \002(\001\022\035\n\025communicationStepSize\030\004 \002(\001"
+    "\022\017\n\007newStep\030\005 \002(\010\"Z\n\027fmi2_import_do_step"
+    "_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006status\030\002 \002(\016"
+    "2\033.fmitcp_proto.fmi2_status_t\"q\n\032fmi2_im"
+    "port_get_status_req\022\022\n\nmessage_id\030\001 \002(\005\022"
+    "\r\n\005fmuId\030\002 \002(\005\0220\n\006status\030\003 \002(\0162 .fmitcp_"
+    "proto.fmi2_status_kind_t\"\\\n\032fmi2_import_"
+    "get_status_res\022\022\n\nmessage_id\030\001 \002(\005\022*\n\005va"
+    "lue\030\002 \002(\0162\033.fmitcp_proto.fmi2_status_t\"t"
+    "\n\037fmi2_import_get_real_status_req\022\022\n\nmes"
+    "sage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022.\n\004kind\030\003 \002"
+    "(\0162 .fmitcp_proto.fmi2_status_kind_t\"D\n\037"
+    "fmi2_import_get_real_status_res\022\022\n\nmessa"
+    "ge_id\030\001 \002(\005\022\r\n\005value\030\002 \002(\001\"w\n\"fmi2_impor"
+    "t_get_integer_status_req\022\022\n\nmessage_id\030\001"
+    " \002(\005\022\r\n\005fmuId\030\002 \002(\005\022.\n\004kind\030\003 \002(\0162 .fmit"
+    "cp_proto.fmi2_status_kind_t\"G\n\"fmi2_impo"
+    "rt_get_integer_status_res\022\022\n\nmessage_id\030"
+    "\001 \002(\005\022\r\n\005value\030\002 \002(\005\"w\n\"fmi2_import_get_"
+    "boolean_status_req\022\022\n\nmessage_id\030\001 \002(\005\022\r"
+    "\n\005fmuId\030\002 \002(\005\022.\n\004kind\030\003 \002(\0162 .fmitcp_pro"
+    "to.fmi2_status_kind_t\"G\n\"fmi2_import_get"
+    "_boolean_status_res\022\022\n\nmessage_id\030\001 \002(\005\022"
+    "\r\n\005value\030\002 \002(\010\"v\n!fmi2_import_get_string"
+    "_status_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId"
+    "\030\002 \002(\005\022.\n\004kind\030\003 \002(\0162 .fmitcp_proto.fmi2"
+    "_status_kind_t\"F\n!fmi2_import_get_string"
+    "_status_res\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005value"
+    "\030\002 \002(\t\"v\n!fmi2_import_instantiate_model_"
+    "req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\024"
+    "\n\014instanceName\030\003 \002(\t\022\030\n\020resourceLocation"
+    "\030\004 \002(\t\"f\n!fmi2_import_instantiate_model_"
+    "res\022\022\n\nmessage_id\030\001 \002(\005\022-\n\006status\030\002 \002(\0162"
+    "\035.fmitcp_proto.jm_status_enu_t\"H\n#fmi2_i"
+    "mport_free_model_instance_req\022\022\n\nmessage"
+    "_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\"9\n#fmi2_import_"
+    "free_model_instance_res\022\022\n\nmessage_id\030\001 "
+    "\002(\005\"K\n\030fmi2_import_set_time_req\022\022\n\nmessa"
+    "ge_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\014\n\004time\030\003 \002(\001"
+    "\"[\n\030fmi2_import_set_time_res\022\022\n\nmessage_"
+    "id\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_proto."
+    "fmi2_status_t\"U\n%fmi2_import_set_continu"
+    "ous_states_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fm"
+    "uId\030\002 \002(\005\022\t\n\001x\030\003 \003(\001\"h\n%fmi2_import_set_"
+    "continuous_states_res\022\022\n\nmessage_id\030\001 \002("
+    "\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_proto.fmi2_st"
+    "atus_t\"N\n)fmi2_import_completed_integrat"
+    "or_step_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId"
+    "\030\002 \002(\005\"\205\001\n)fmi2_import_completed_integra"
+    "tor_step_res\022\022\n\nmessage_id\030\001 \002(\005\022\027\n\017call"
+    "EventUpdate\030\002 \002(\010\022+\n\006status\030\003 \002(\0162\033.fmit"
+    "cp_proto.fmi2_status_t\"}\n fmi2_import_in"
+    "itialize_model_req\022\022\n\nmessage_id\030\001 \002(\005\022\r"
+    "\n\005fmuId\030\002 \002(\005\022\033\n\023toleranceControlled\030\003 \002"
+    "(\010\022\031\n\021relativeTolerance\030\004 \002(\001\"\227\001\n fmi2_i"
+    "mport_initialize_model_res\022\022\n\nmessage_id"
+    "\030\001 \002(\005\0222\n\teventInfo\030\002 \002(\0132\037.fmitcp_proto"
+    ".fmi2_event_info_t\022+\n\006status\030\003 \002(\0162\033.fmi"
+    "tcp_proto.fmi2_status_t\"D\n\037fmi2_import_g"
+    "et_derivatives_req\022\022\n\nmessage_id\030\001 \002(\005\022\r"
+    "\n\005fmuId\030\002 \002(\005\"w\n\037fmi2_import_get_derivat"
+    "ives_res\022\022\n\nmessage_id\030\001 \002(\005\022\023\n\013derivati"
+    "ves\030\002 \003(\001\022+\n\006status\030\003 \002(\0162\033.fmitcp_proto"
+    ".fmi2_status_t\"I\n$fmi2_import_get_event_"
+    "indicators_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fm"
+    "uId\030\002 \002(\005\"\200\001\n$fmi2_import_get_event_indi"
+    "cators_res\022\022\n\nmessage_id\030\001 \002(\005\022\027\n\017eventI"
+    "ndicators\030\002 \003(\001\022+\n\006status\030\003 \002(\0162\033.fmitcp"
+    "_proto.fmi2_status_t\"]\n\033fmi2_import_even"
+    "tUpdate_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId"
+    "\030\002 \002(\005\022\033\n\023intermediateResults\030\003 \002(\010\"\222\001\n\033"
+    "fmi2_import_eventUpdate_res\022\022\n\nmessage_i"
+    "d\030\001 \002(\005\0222\n\teventInfo\030\002 \002(\0132\037.fmitcp_prot"
+    "o.fmi2_event_info_t\022+\n\006status\030\003 \002(\0162\033.fm"
+    "itcp_proto.fmi2_status_t\"N\n)fmi2_import_"
+    "completed_event_iteration_req\022\022\n\nmessage"
+    "_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\"l\n)fmi2_import_"
+    "completed_event_iteration_res\022\022\n\nmessage"
+    "_id\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_proto"
+    ".fmi2_status_t\"J\n%fmi2_import_get_contin"
+    "uous_states_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005f"
+    "muId\030\002 \002(\005\"x\n%fmi2_import_get_continuous"
+    "_states_res\022\022\n\nmessage_id\030\001 \002(\005\022\016\n\006state"
+    "s\030\002 \003(\001\022+\n\006status\030\003 \002(\0162\033.fmitcp_proto.f"
+    "mi2_status_t\"R\n-fmi2_import_get_nominal_"
+    "continuous_states_req\022\022\n\nmessage_id\030\001 \002("
+    "\005\022\r\n\005fmuId\030\002 \002(\005\"\201\001\n-fmi2_import_get_nom"
+    "inal_continuous_states_res\022\022\n\nmessage_id"
+    "\030\001 \002(\005\022\017\n\007nominal\030\002 \003(\001\022+\n\006status\030\003 \002(\0162"
+    "\033.fmitcp_proto.fmi2_status_t\">\n\031fmi2_imp"
+    "ort_terminate_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n"
+    "\005fmuId\030\002 \002(\005\"\\\n\031fmi2_import_terminate_re"
+    "s\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033."
+    "fmitcp_proto.fmi2_status_t\"@\n\033fmi2_impor"
+    "t_get_version_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n"
+    "\005fmuId\030\002 \002(\005\"B\n\033fmi2_import_get_version_"
+    "res\022\022\n\nmessage_id\030\001 \002(\005\022\017\n\007version\030\002 \002(\t"
+    "\"m\n!fmi2_import_set_debug_logging_req\022\022\n"
+    "\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\021\n\tlogg"
+    "ingOn\030\003 \002(\010\022\022\n\ncategories\030\004 \003(\005\"d\n!fmi2_"
+    "import_set_debug_logging_res\022\022\n\nmessage_"
+    "id\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_proto."
+    "fmi2_status_t\"f\n\030fmi2_import_set_real_re"
+    "q\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\027\n\017"
+    "valueReferences\030\003 \003(\005\022\016\n\006values\030\004 \003(\001\"[\n"
+    "\030fmi2_import_set_real_res\022\022\n\nmessage_id\030"
+    "\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_proto.fmi"
+    "2_status_t\"i\n\033fmi2_import_set_integer_re"
+    "q\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\027\n\017"
+    "valueReferences\030\003 \003(\005\022\016\n\006values\030\004 \003(\005\"^\n"
+    "\033fmi2_import_set_integer_res\022\022\n\nmessage_"
+    "id\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_proto."
+    "fmi2_status_t\"i\n\033fmi2_import_set_boolean"
+    "_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022"
+    "\027\n\017valueReferences\030\003 \003(\005\022\016\n\006values\030\004 \003(\010"
+    "\"^\n\033fmi2_import_set_boolean_res\022\022\n\nmessa"
+    "ge_id\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_pro"
+    "to.fmi2_status_t\"h\n\032fmi2_import_set_stri"
+    "ng_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002("
+    "\005\022\027\n\017valueReferences\030\003 \003(\005\022\016\n\006values\030\004 \003"
+    "(\t\"]\n\032fmi2_import_set_string_res\022\022\n\nmess"
+    "age_id\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_pr"
+    "oto.fmi2_status_t\"V\n\030fmi2_import_get_rea"
+    "l_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005"
+    "\022\027\n\017valueReferences\030\003 \003(\005\"k\n\030fmi2_import"
+    "_get_real_res\022\022\n\nmessage_id\030\001 \002(\005\022\016\n\006val"
+    "ues\030\002 \003(\001\022+\n\006status\030\003 \002(\0162\033.fmitcp_proto"
+    ".fmi2_status_t\"Y\n\033fmi2_import_get_intege"
+    "r_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005"
+    "\022\027\n\017valueReferences\030\003 \003(\005\"n\n\033fmi2_import"
+    "_get_integer_res\022\022\n\nmessage_id\030\001 \002(\005\022\016\n\006"
+    "values\030\002 \003(\005\022+\n\006status\030\003 \002(\0162\033.fmitcp_pr"
+    "oto.fmi2_status_t\"Y\n\033fmi2_import_get_boo"
+    "lean_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 "
+    "\002(\005\022\027\n\017valueReferences\030\003 \003(\005\"n\n\033fmi2_imp"
+    "ort_get_boolean_res\022\022\n\nmessage_id\030\001 \002(\005\022"
+    "\016\n\006values\030\002 \003(\010\022+\n\006status\030\003 \002(\0162\033.fmitcp"
+    "_proto.fmi2_status_t\"X\n\032fmi2_import_get_"
+    "string_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030"
+    "\002 \002(\005\022\027\n\017valueReferences\030\003 \003(\005\"m\n\032fmi2_i"
+    "mport_get_string_res\022\022\n\nmessage_id\030\001 \002(\005"
+    "\022\016\n\006values\030\002 \003(\t\022+\n\006status\030\003 \002(\0162\033.fmitc"
+    "p_proto.fmi2_status_t\"\n\n\010char_req\"\n\n\010cha"
+    "r_res\"B\n\035fmi2_import_get_fmu_state_req\022\022"
+    "\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\"D\n\035fmi"
+    "2_import_get_fmu_state_res\022\022\n\nmessage_id"
+    "\030\001 \002(\005\022\017\n\007stateId\030\002 \002(\005\"S\n\035fmi2_import_s"
+    "et_fmu_state_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005"
+    "fmuId\030\002 \002(\005\022\017\n\007stateId\030\003 \002(\005\"`\n\035fmi2_imp"
+    "ort_set_fmu_state_res\022\022\n\nmessage_id\030\001 \002("
+    "\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_proto.fmi2_st"
+    "atus_t\"E\n\036fmi2_import_free_fmu_state_req"
+    "\022\022\n\nmessage_id\030\001 \002(\005\022\017\n\007stateId\030\002 \002(\005\"a\n"
+    "\036fmi2_import_free_fmu_state_res\022\022\n\nmessa"
+    "ge_id\030\001 \002(\005\022+\n\006status\030\002 \002(\0162\033.fmitcp_pro"
+    "to.fmi2_status_t\"j\n*fmi2_import_get_dire"
+    "ctional_derivative_req\022\022\n\nmessage_id\030\001 \002"
+    "(\005\022\r\n\005v_ref\030\002 \003(\005\022\r\n\005z_ref\030\003 \003(\005\022\n\n\002dv\030\004"
+    " \003(\001\"L\n*fmi2_import_get_directional_deri"
+    "vative_res\022\022\n\nmessage_id\030\001 \002(\005\022\n\n\002dz\030\002 \003"
+    "(\001\"0\n\013get_xml_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n"
+    "\005fmuId\030\002 \002(\005\".\n\013get_xml_res\022\022\n\nmessage_i"
+    "d\030\001 \002(\005\022\013\n\003xml\030\002 \002(\t*\234\001\n\rfmi2_status_t\022\022"
+    "\n\016fmi2_status_ok\020\000\022\027\n\023fmi2_status_warnin"
+    "g\020\001\022\027\n\023fmi2_status_discard\020\002\022\025\n\021fmi2_sta"
+    "tus_error\020\003\022\025\n\021fmi2_status_fatal\020\004\022\027\n\023fm"
+    "i2_status_pending\020\005*z\n\022fmi2_status_kind_"
+    "t\022\027\n\023fmi2_do_step_status\020\000\022\027\n\023fmi2_pendi"
+    "ng_status\020\001\022\035\n\031fmi2_last_successful_time"
+    "\020\002\022\023\n\017fmi2_terminated\020\003*T\n\017jm_status_enu"
+    "_t\022\023\n\017jm_status_error\020\000\022\025\n\021jm_status_suc"
+    "cess\020\001\022\025\n\021jm_status_warning\020\002", 20069);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "fmitcp.proto", &protobuf_RegisterTypes);
   fmitcp_message::default_instance_ = new fmitcp_message();
@@ -2951,9 +2950,9 @@ const ::google::protobuf::EnumDescriptor* jm_status_enu_t_descriptor() {
 }
 bool jm_status_enu_t_IsValid(int value) {
   switch(value) {
-    case -1:
     case 0:
     case 1:
+    case 2:
       return true;
     default:
       return false;
@@ -8266,7 +8265,6 @@ void fmi2_import_instantiate_slave_req::Swap(fmi2_import_instantiate_slave_req* 
 
 #ifndef _MSC_VER
 const int fmi2_import_instantiate_slave_res::kMessageIdFieldNumber;
-const int fmi2_import_instantiate_slave_res::kFmuIdFieldNumber;
 const int fmi2_import_instantiate_slave_res::kStatusFieldNumber;
 #endif  // !_MSC_VER
 
@@ -8287,8 +8285,7 @@ fmi2_import_instantiate_slave_res::fmi2_import_instantiate_slave_res(const fmi2_
 void fmi2_import_instantiate_slave_res::SharedCtor() {
   _cached_size_ = 0;
   message_id_ = 0;
-  fmuid_ = 0;
-  status_ = -1;
+  status_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -8324,8 +8321,7 @@ fmi2_import_instantiate_slave_res* fmi2_import_instantiate_slave_res::New() cons
 void fmi2_import_instantiate_slave_res::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     message_id_ = 0;
-    fmuid_ = 0;
-    status_ = -1;
+    status_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -8348,28 +8344,12 @@ bool fmi2_import_instantiate_slave_res::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_fmuId;
+        if (input->ExpectTag(16)) goto parse_status;
         break;
       }
       
-      // required int32 fmuId = 2;
+      // required .fmitcp_proto.jm_status_enu_t status = 2;
       case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_fmuId:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &fmuid_)));
-          set_has_fmuid();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(24)) goto parse_status;
-        break;
-      }
-      
-      // required .fmitcp_proto.jm_status_enu_t status = 3;
-      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_status:
@@ -8380,7 +8360,7 @@ bool fmi2_import_instantiate_slave_res::MergePartialFromCodedStream(
           if (fmitcp_proto::jm_status_enu_t_IsValid(value)) {
             set_status(static_cast< fmitcp_proto::jm_status_enu_t >(value));
           } else {
-            mutable_unknown_fields()->AddVarint(3, value);
+            mutable_unknown_fields()->AddVarint(2, value);
           }
         } else {
           goto handle_uninterpreted;
@@ -8412,15 +8392,10 @@ void fmi2_import_instantiate_slave_res::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->message_id(), output);
   }
   
-  // required int32 fmuId = 2;
-  if (has_fmuid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->fmuid(), output);
-  }
-  
-  // required .fmitcp_proto.jm_status_enu_t status = 3;
+  // required .fmitcp_proto.jm_status_enu_t status = 2;
   if (has_status()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      3, this->status(), output);
+      2, this->status(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -8436,15 +8411,10 @@ void fmi2_import_instantiate_slave_res::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->message_id(), target);
   }
   
-  // required int32 fmuId = 2;
-  if (has_fmuid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->fmuid(), target);
-  }
-  
-  // required .fmitcp_proto.jm_status_enu_t status = 3;
+  // required .fmitcp_proto.jm_status_enu_t status = 2;
   if (has_status()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      3, this->status(), target);
+      2, this->status(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -8465,14 +8435,7 @@ int fmi2_import_instantiate_slave_res::ByteSize() const {
           this->message_id());
     }
     
-    // required int32 fmuId = 2;
-    if (has_fmuid()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->fmuid());
-    }
-    
-    // required .fmitcp_proto.jm_status_enu_t status = 3;
+    // required .fmitcp_proto.jm_status_enu_t status = 2;
     if (has_status()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->status());
@@ -8508,9 +8471,6 @@ void fmi2_import_instantiate_slave_res::MergeFrom(const fmi2_import_instantiate_
     if (from.has_message_id()) {
       set_message_id(from.message_id());
     }
-    if (from.has_fmuid()) {
-      set_fmuid(from.fmuid());
-    }
     if (from.has_status()) {
       set_status(from.status());
     }
@@ -8531,7 +8491,7 @@ void fmi2_import_instantiate_slave_res::CopyFrom(const fmi2_import_instantiate_s
 }
 
 bool fmi2_import_instantiate_slave_res::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
   
   return true;
 }
@@ -8539,7 +8499,6 @@ bool fmi2_import_instantiate_slave_res::IsInitialized() const {
 void fmi2_import_instantiate_slave_res::Swap(fmi2_import_instantiate_slave_res* other) {
   if (other != this) {
     std::swap(message_id_, other->message_id_);
-    std::swap(fmuid_, other->fmuid_);
     std::swap(status_, other->status_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -9424,6 +9383,7 @@ void fmi2_import_terminate_slave_req::Swap(fmi2_import_terminate_slave_req* othe
 
 #ifndef _MSC_VER
 const int fmi2_import_terminate_slave_res::kMessageIdFieldNumber;
+const int fmi2_import_terminate_slave_res::kStatusFieldNumber;
 #endif  // !_MSC_VER
 
 fmi2_import_terminate_slave_res::fmi2_import_terminate_slave_res()
@@ -9443,6 +9403,7 @@ fmi2_import_terminate_slave_res::fmi2_import_terminate_slave_res(const fmi2_impo
 void fmi2_import_terminate_slave_res::SharedCtor() {
   _cached_size_ = 0;
   message_id_ = 0;
+  status_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -9478,6 +9439,7 @@ fmi2_import_terminate_slave_res* fmi2_import_terminate_slave_res::New() const {
 void fmi2_import_terminate_slave_res::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     message_id_ = 0;
+    status_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -9497,6 +9459,27 @@ bool fmi2_import_terminate_slave_res::MergePartialFromCodedStream(
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &message_id_)));
           set_has_message_id();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_status;
+        break;
+      }
+      
+      // required .fmitcp_proto.fmi2_status_t status = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_status:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (fmitcp_proto::fmi2_status_t_IsValid(value)) {
+            set_status(static_cast< fmitcp_proto::fmi2_status_t >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(2, value);
+          }
         } else {
           goto handle_uninterpreted;
         }
@@ -9527,6 +9510,12 @@ void fmi2_import_terminate_slave_res::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->message_id(), output);
   }
   
+  // required .fmitcp_proto.fmi2_status_t status = 2;
+  if (has_status()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->status(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -9538,6 +9527,12 @@ void fmi2_import_terminate_slave_res::SerializeWithCachedSizes(
   // required int32 message_id = 1;
   if (has_message_id()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->message_id(), target);
+  }
+  
+  // required .fmitcp_proto.fmi2_status_t status = 2;
+  if (has_status()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->status(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -9556,6 +9551,12 @@ int fmi2_import_terminate_slave_res::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->message_id());
+    }
+    
+    // required .fmitcp_proto.fmi2_status_t status = 2;
+    if (has_status()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->status());
     }
     
   }
@@ -9588,6 +9589,9 @@ void fmi2_import_terminate_slave_res::MergeFrom(const fmi2_import_terminate_slav
     if (from.has_message_id()) {
       set_message_id(from.message_id());
     }
+    if (from.has_status()) {
+      set_status(from.status());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -9605,7 +9609,7 @@ void fmi2_import_terminate_slave_res::CopyFrom(const fmi2_import_terminate_slave
 }
 
 bool fmi2_import_terminate_slave_res::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
   
   return true;
 }
@@ -9613,6 +9617,7 @@ bool fmi2_import_terminate_slave_res::IsInitialized() const {
 void fmi2_import_terminate_slave_res::Swap(fmi2_import_terminate_slave_res* other) {
   if (other != this) {
     std::swap(message_id_, other->message_id_);
+    std::swap(status_, other->status_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -13240,7 +13245,6 @@ void fmi2_import_get_status_req::Swap(fmi2_import_get_status_req* other) {
 
 #ifndef _MSC_VER
 const int fmi2_import_get_status_res::kMessageIdFieldNumber;
-const int fmi2_import_get_status_res::kFmuIdFieldNumber;
 const int fmi2_import_get_status_res::kValueFieldNumber;
 #endif  // !_MSC_VER
 
@@ -13261,7 +13265,6 @@ fmi2_import_get_status_res::fmi2_import_get_status_res(const fmi2_import_get_sta
 void fmi2_import_get_status_res::SharedCtor() {
   _cached_size_ = 0;
   message_id_ = 0;
-  fmuid_ = 0;
   value_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -13298,7 +13301,6 @@ fmi2_import_get_status_res* fmi2_import_get_status_res::New() const {
 void fmi2_import_get_status_res::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     message_id_ = 0;
-    fmuid_ = 0;
     value_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -13322,28 +13324,12 @@ bool fmi2_import_get_status_res::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_fmuId;
+        if (input->ExpectTag(16)) goto parse_value;
         break;
       }
       
-      // required int32 fmuId = 2;
+      // required .fmitcp_proto.fmi2_status_t value = 2;
       case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_fmuId:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &fmuid_)));
-          set_has_fmuid();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(24)) goto parse_value;
-        break;
-      }
-      
-      // required .fmitcp_proto.fmi2_status_t value = 3;
-      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_value:
@@ -13354,7 +13340,7 @@ bool fmi2_import_get_status_res::MergePartialFromCodedStream(
           if (fmitcp_proto::fmi2_status_t_IsValid(value)) {
             set_value(static_cast< fmitcp_proto::fmi2_status_t >(value));
           } else {
-            mutable_unknown_fields()->AddVarint(3, value);
+            mutable_unknown_fields()->AddVarint(2, value);
           }
         } else {
           goto handle_uninterpreted;
@@ -13386,15 +13372,10 @@ void fmi2_import_get_status_res::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->message_id(), output);
   }
   
-  // required int32 fmuId = 2;
-  if (has_fmuid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->fmuid(), output);
-  }
-  
-  // required .fmitcp_proto.fmi2_status_t value = 3;
+  // required .fmitcp_proto.fmi2_status_t value = 2;
   if (has_value()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      3, this->value(), output);
+      2, this->value(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -13410,15 +13391,10 @@ void fmi2_import_get_status_res::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->message_id(), target);
   }
   
-  // required int32 fmuId = 2;
-  if (has_fmuid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->fmuid(), target);
-  }
-  
-  // required .fmitcp_proto.fmi2_status_t value = 3;
+  // required .fmitcp_proto.fmi2_status_t value = 2;
   if (has_value()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      3, this->value(), target);
+      2, this->value(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -13439,14 +13415,7 @@ int fmi2_import_get_status_res::ByteSize() const {
           this->message_id());
     }
     
-    // required int32 fmuId = 2;
-    if (has_fmuid()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->fmuid());
-    }
-    
-    // required .fmitcp_proto.fmi2_status_t value = 3;
+    // required .fmitcp_proto.fmi2_status_t value = 2;
     if (has_value()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->value());
@@ -13482,9 +13451,6 @@ void fmi2_import_get_status_res::MergeFrom(const fmi2_import_get_status_res& fro
     if (from.has_message_id()) {
       set_message_id(from.message_id());
     }
-    if (from.has_fmuid()) {
-      set_fmuid(from.fmuid());
-    }
     if (from.has_value()) {
       set_value(from.value());
     }
@@ -13505,7 +13471,7 @@ void fmi2_import_get_status_res::CopyFrom(const fmi2_import_get_status_res& from
 }
 
 bool fmi2_import_get_status_res::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
   
   return true;
 }
@@ -13513,7 +13479,6 @@ bool fmi2_import_get_status_res::IsInitialized() const {
 void fmi2_import_get_status_res::Swap(fmi2_import_get_status_res* other) {
   if (other != this) {
     std::swap(message_id_, other->message_id_);
-    std::swap(fmuid_, other->fmuid_);
     std::swap(value_, other->value_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -16097,7 +16062,7 @@ fmi2_import_instantiate_model_res::fmi2_import_instantiate_model_res(const fmi2_
 void fmi2_import_instantiate_model_res::SharedCtor() {
   _cached_size_ = 0;
   message_id_ = 0;
-  status_ = -1;
+  status_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -16133,7 +16098,7 @@ fmi2_import_instantiate_model_res* fmi2_import_instantiate_model_res::New() cons
 void fmi2_import_instantiate_model_res::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     message_id_ = 0;
-    status_ = -1;
+    status_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -27278,28 +27243,28 @@ bool fmi2_import_get_integer_res::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(17)) goto parse_values;
+        if (input->ExpectTag(16)) goto parse_values;
         break;
       }
       
-      // repeated double values = 2;
+      // repeated int32 values = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_values:
           DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 1, 17, input, this->mutable_values())));
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 1, 16, input, this->mutable_values())));
         } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
                    == ::google::protobuf::internal::WireFormatLite::
                       WIRETYPE_LENGTH_DELIMITED) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, this->mutable_values())));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(17)) goto parse_values;
+        if (input->ExpectTag(16)) goto parse_values;
         if (input->ExpectTag(24)) goto parse_status;
         break;
       }
@@ -27348,9 +27313,9 @@ void fmi2_import_get_integer_res::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->message_id(), output);
   }
   
-  // repeated double values = 2;
+  // repeated int32 values = 2;
   for (int i = 0; i < this->values_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(
       2, this->values(i), output);
   }
   
@@ -27373,10 +27338,10 @@ void fmi2_import_get_integer_res::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->message_id(), target);
   }
   
-  // repeated double values = 2;
+  // repeated int32 values = 2;
   for (int i = 0; i < this->values_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteDoubleToArray(2, this->values(i), target);
+      WriteInt32ToArray(2, this->values(i), target);
   }
   
   // required .fmitcp_proto.fmi2_status_t status = 3;
@@ -27410,10 +27375,13 @@ int fmi2_import_get_integer_res::ByteSize() const {
     }
     
   }
-  // repeated double values = 2;
+  // repeated int32 values = 2;
   {
     int data_size = 0;
-    data_size = 8 * this->values_size();
+    for (int i = 0; i < this->values_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        Int32Size(this->values(i));
+    }
     total_size += 1 * this->values_size() + data_size;
   }
   

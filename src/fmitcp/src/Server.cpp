@@ -58,7 +58,29 @@ void Server::clientData(lw_client c, const char* data, size_t size){
     fmitcp_proto::fmitcp_message res;
     bool sendResponse = true;
 
-           if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_slave_req){
+    if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_slave_req){
+
+        // Unpack message
+        fmitcp_proto::fmi2_import_instantiate_slave_req * instantiateReq = req.mutable_fmi2_import_instantiate_slave_req();
+        int fmuId = instantiateReq->fmuid();
+        int messageId = instantiateReq->message_id();
+        string instanceName = instantiateReq->instancename();
+        string fmuResourceLocation = instantiateReq->fmuresourcelocation();
+        bool visible = instantiateReq->visible();
+
+        m_logger.log(Logger::NETWORK,"< fmi2_import_instantiate_slave_req(fmuId=%d,instanceName=%s,resourceLoc=%s,visible=%d)\n",fmuId,instanceName.c_str(),fmuResourceLocation.c_str(),visible);
+
+        // instantiate FMU
+        // TODO
+
+        // Create response
+        res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_slave_res);
+        fmitcp_proto::jm_status_enu_t status = fmitcp_proto::jm_status_success;
+        fmitcp_proto::fmi2_import_instantiate_slave_res * instantiateRes = res.mutable_fmi2_import_instantiate_slave_res();
+        instantiateRes->set_message_id(1);
+        instantiateRes->set_status(status);
+        m_logger.log(Logger::NETWORK,"> fmi2_import_instantiate_slave_res(mid=%d,status=%d)\n",1,status);
+
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_initialize_slave_req){
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_terminate_slave_req){
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_reset_slave_req){
@@ -79,13 +101,15 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         // Step the FMU
         // TODO
 
+        //printf("Setting type=%d\n", fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_res);fflush(NULL);
+
         // Create response
         res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_res);
         fmitcp_proto::fmi2_status_t status = fmitcp_proto::fmi2_status_ok;
         fmitcp_proto::fmi2_import_do_step_res * doStepRes = res.mutable_fmi2_import_do_step_res();
         doStepRes->set_message_id(0);
         doStepRes->set_status(status);
-        m_logger.log(Logger::NETWORK,"> fmi2_import_do_step_res(status=%d)\n");
+        m_logger.log(Logger::NETWORK,"> fmi2_import_do_step_res(status=%d)\n",status);
 
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_status_req){
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_status_req){
@@ -126,7 +150,7 @@ void Server::clientData(lw_client c, const char* data, size_t size){
     } else {
         // Something is wrong.
         sendResponse = false;
-        m_logger.log(Logger::ERROR,"Message type not recognized.\n");
+        m_logger.log(Logger::ERROR,"Message type not recognized: %d.\n",type);
     }
 
     if(sendResponse){

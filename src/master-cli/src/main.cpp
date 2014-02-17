@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <sstream>
+#include <fmilib.h>
 
 using namespace fmitcp;
 
@@ -16,12 +17,15 @@ public:
 
     void onConnect(){
         fmi2_import_do_step(0,0,0.0,0.1,true);
-        //m_pump->exitEventLoop();
     };
 
-    void onDoStepResponse(fmitcp_proto::fmi2_status_t status){
-        m_pump->exitEventLoop();
+    void on_fmi2_import_do_step_res(int message_id, fmitcp_proto::fmi2_status_t status){
+        fmi2_import_instantiate_slave(0,0,"","",true);
     };
+
+    void on_fmi2_import_instantiate_slave_res(int message_id, fmitcp_proto::jm_status_enu_t status){
+        m_pump->exitEventLoop();
+    }
 
     void onDisconnect(){
         //m_logger.log(Logger::DEBUG,"MyFMIClient::onDisconnect\n");
