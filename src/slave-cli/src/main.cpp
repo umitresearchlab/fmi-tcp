@@ -15,23 +15,23 @@ public:
     ~MyFMIServer(){};
 
     void onClientConnect(){
-        printf("MyFMIServer::onConnect\n");
+        //printf("MyFMIServer::onConnect\n");
         //m_pump->exitEventLoop();
     };
 
     void onClientDisconnect(){
-        printf("MyFMIServer::onDisconnect\n");
-        m_pump->exitEventLoop();
+        //printf("MyFMIServer::onDisconnect\n");
+        //m_pump->exitEventLoop();
     };
 
     void onError(string message){
-        printf("MyFMIServer::onError\n");
+        printf("MyFMIServer::onError\n");fflush(NULL);
         m_pump->exitEventLoop();
     };
 };
 
 void printHelp(){
-    printf("HELP PAGE: TODO\n");
+    printf("HELP PAGE: TODO\n");fflush(NULL);
 }
 
 int main( int argc, char *argv[] ) {
@@ -80,7 +80,7 @@ int main( int argc, char *argv[] ) {
             ss >> port;
 
             if (port <= 0) {
-                printf("Invalid port.\n");
+                printf("Invalid port.\n");fflush(NULL);
                 return EXIT_FAILURE;
             }
 
@@ -100,9 +100,8 @@ int main( int argc, char *argv[] ) {
     EventPump pump;
     MyFMIServer server(&pump);
     server.host(hostName,port);
+    server.getLogger().setFilter(Logger::NETWORK|Logger::DEBUG|Logger::ERROR);
     pump.startEventLoop();
-
-    server.getLogger().setFilter(Logger::NETWORK|Logger::DEBUG);
 
     return EXIT_SUCCESS;
 }

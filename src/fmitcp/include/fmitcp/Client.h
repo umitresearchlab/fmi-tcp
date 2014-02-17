@@ -2,6 +2,7 @@
 #define CLIENT_H_
 
 #include "EventPump.h"
+#include "Logger.h"
 #include "fmitcp.pb.h"
 #include <string>
 #include <lacewing.h>
@@ -14,6 +15,7 @@ namespace fmitcp {
 
     protected:
         EventPump * m_pump;
+        Logger m_logger;
 
     private:
         lw_client m_client;

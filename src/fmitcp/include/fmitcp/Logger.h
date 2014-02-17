@@ -14,7 +14,8 @@ namespace fmitcp {
 
         enum LogMessageType {
             DEBUG,
-            NETWORK
+            NETWORK,
+            ERROR,
         };
 
         Logger();
