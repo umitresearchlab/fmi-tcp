@@ -61,19 +61,19 @@ void Server::clientData(lw_client c, const char* data, size_t size){
     if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_slave_req){
 
         // Unpack message
-        fmitcp_proto::fmi2_import_instantiate_slave_req * instantiateReq = req.mutable_fmi2_import_instantiate_slave_req();
-        int fmuId = instantiateReq->fmuid();
-        int messageId = instantiateReq->message_id();
-        string instanceName = instantiateReq->instancename();
-        string fmuResourceLocation = instantiateReq->fmuresourcelocation();
-        bool visible = instantiateReq->visible();
+        fmitcp_proto::fmi2_import_instantiate_slave_req * r = req.mutable_fmi2_import_instantiate_slave_req();
+        int fmuId = r->fmuid();
+        int messageId = r->message_id();
+        string instanceName = r->instancename();
+        string fmuResourceLocation = r->fmuresourcelocation();
+        bool visible = r->visible();
 
         m_logger.log(Logger::NETWORK,"< fmi2_import_instantiate_slave_req(fmuId=%d,instanceName=%s,resourceLoc=%s,visible=%d)\n",fmuId,instanceName.c_str(),fmuResourceLocation.c_str(),visible);
 
-        // instantiate FMU
+        // instantiate FMU here
         // TODO
 
-        // Create response
+        // Create response message
         res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_slave_res);
         fmitcp_proto::jm_status_enu_t status = fmitcp_proto::jm_status_success;
         fmitcp_proto::fmi2_import_instantiate_slave_res * instantiateRes = res.mutable_fmi2_import_instantiate_slave_res();
@@ -98,10 +98,8 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         bool newStep = doStepReq->newstep();
         m_logger.log(Logger::NETWORK,"< fmi2_import_do_step_req(fmuId=%d,commPoint=%g,stepSize=%g,newStep=%d)\n",fmuId,currentCommunicationPoint,communicationStepSize,newStep?1:0);
 
-        // Step the FMU
+        // Step the FMU here
         // TODO
-
-        //printf("Setting type=%d\n", fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_res);fflush(NULL);
 
         // Create response
         res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_res);

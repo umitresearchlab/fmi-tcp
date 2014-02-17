@@ -48,7 +48,7 @@ namespace fmitcp {
         virtual void on_fmi2_import_initialize_slave_res                (int mid, fmitcp_proto::fmi2_status_t status){}
         virtual void on_fmi2_import_terminate_slave_res                 (int mid, fmitcp_proto::fmi2_status_t status){}
         virtual void on_fmi2_import_reset_slave_res                     (int mid, fmitcp_proto::fmi2_status_t status){}
-        virtual void on_fmi2_import_free_slave_instance_res             (int mid, fmitcp_proto::fmi2_status_t status){}
+        virtual void on_fmi2_import_free_slave_instance_res             (int mid){}
         virtual void on_fmi2_import_set_real_input_derivatives_res      (int mid, fmitcp_proto::fmi2_status_t status){}
         virtual void on_fmi2_import_get_real_output_derivatives_res     (int mid, fmitcp_proto::fmi2_status_t status, const vector<double>& values){}
         virtual void on_fmi2_import_cancel_step_res                     (int mid, fmitcp_proto::fmi2_status_t status){}

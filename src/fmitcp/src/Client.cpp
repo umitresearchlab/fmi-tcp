@@ -3,6 +3,7 @@
 
 using namespace std;
 using namespace fmitcp;
+using namespace fmitcp_proto;
 
 void clientOnConnect(lw_client c) {
     Client * client = (Client*)lw_stream_tag(c);
@@ -27,77 +28,101 @@ void Client::clientConnected(lw_client c){
 }
 
 void Client::clientData(lw_client c, const char* data, long size){
+
+    // Skip?
     if(strcmp(data,"\n") == 0 || strcmp(data,"\0") == 0 || size<=1)
         return;
 
-    // Construct message
-    fmitcp_proto::fmitcp_message res;
+    // Parse message
+    fmitcp_message res;
     res.ParseFromString(data);
-    fmitcp_proto::fmitcp_message_Type type = res.type();
+    fmitcp_message_Type type = res.type();
 
-    if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_slave_res){
-        fmitcp_proto::fmi2_import_instantiate_slave_res * instantiateSlaveRes = res.mutable_fmi2_import_instantiate_slave_res();
+    // Check type and run the corresponding event handler
+    if(type == fmitcp_message_Type_type_fmi2_import_instantiate_slave_res){
+        fmi2_import_instantiate_slave_res * r = res.mutable_fmi2_import_instantiate_slave_res();
         m_logger.log(Logger::NETWORK,
             "< fmi2_import_instantiate_slave_res(mid=%d,status=%d)\n",
-            instantiateSlaveRes->message_id(),
-            instantiateSlaveRes->status());
-        on_fmi2_import_instantiate_slave_res(
-            instantiateSlaveRes->message_id(),
-            instantiateSlaveRes->status()
-        );
+            r->message_id(),
+            r->status());
+        on_fmi2_import_instantiate_slave_res( r->message_id(), r->status() );
 
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_initialize_slave_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_terminate_slave_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_reset_slave_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_free_slave_instance_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_real_input_derivatives_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_output_derivatives_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_cancel_step_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_res){
-        fmitcp_proto::fmi2_import_do_step_res * doStepRes = res.mutable_fmi2_import_do_step_res();
-        m_logger.log(Logger::NETWORK,"< fmi2_import_do_step_res(status=%d)\n",doStepRes->status());
+    } else if(type == fmitcp_message_Type_type_fmi2_import_initialize_slave_res){
+        fmi2_import_initialize_slave_res * r = res.mutable_fmi2_import_initialize_slave_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_initialize_slave_res(status=%d)\n",r->status());
+        on_fmi2_import_initialize_slave_res(r->message_id(), r->status());
 
-        on_fmi2_import_do_step_res(
-            doStepRes->message_id(),
-            doStepRes->status()
-        );
+    } else if(type == fmitcp_message_Type_type_fmi2_import_terminate_slave_res){
+        fmi2_import_terminate_slave_res * r = res.mutable_fmi2_import_terminate_slave_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_terminate_slave_res(status=%d)\n",r->status());
+        on_fmi2_import_terminate_slave_res(r->message_id(), r->status());
 
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_status_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_status_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_integer_status_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_boolean_status_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_string_status_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_model_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_free_model_instance_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_time_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_continuous_states_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_completed_integrator_step_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_initialize_model_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_derivatives_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_event_indicators_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_eventUpdate_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_completed_event_iteration_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_continuous_states_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_nominal_continuous_states_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_terminate_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_version_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_debug_logging_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_real_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_integer_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_boolean_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_string_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_integer_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_boolean_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_string_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_fmu_state_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_fmu_state_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_free_fmu_state_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_serialized_fmu_state_size_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_serialize_fmu_state_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_de_serialize_fmu_state_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_directional_derivative_res){
-    } else if(type == fmitcp_proto::fmitcp_message_Type_type_get_xml_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_reset_slave_res){
+        fmi2_import_reset_slave_res * r = res.mutable_fmi2_import_reset_slave_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_reset_slave_res(status=%d)\n",r->status());
+        on_fmi2_import_reset_slave_res(r->message_id(), r->status());
+
+    } else if(type == fmitcp_message_Type_type_fmi2_import_free_slave_instance_res){
+        fmi2_import_free_slave_instance_res * r = res.mutable_fmi2_import_free_slave_instance_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_free_slave_instance_res()\n");
+        on_fmi2_import_free_slave_instance_res(r->message_id());
+
+    } else if(type == fmitcp_message_Type_type_fmi2_import_set_real_input_derivatives_res){
+        fmi2_import_set_real_input_derivatives_res * r = res.mutable_fmi2_import_set_real_input_derivatives_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_set_real_input_derivatives_res()\n");
+        on_fmi2_import_set_real_input_derivatives_res(r->message_id(),r->status());
+
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_real_output_derivatives_res){
+        fmi2_import_get_real_output_derivatives_res * r = res.mutable_fmi2_import_get_real_output_derivatives_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_real_output_derivatives_res()\n");
+        on_fmi2_import_get_real_output_derivatives_res(r->message_id(),r->status(),vector<double>());
+
+    } else if(type == fmitcp_message_Type_type_fmi2_import_cancel_step_res){
+        fmi2_import_cancel_step_res * r = res.mutable_fmi2_import_cancel_step_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_cancel_step_res()\n");
+        on_fmi2_import_cancel_step_res(r->message_id(),r->status());
+
+    } else if(type == fmitcp_message_Type_type_fmi2_import_do_step_res){
+        fmi2_import_do_step_res * r = res.mutable_fmi2_import_do_step_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_do_step_res(status=%d)\n",r->status());
+        on_fmi2_import_do_step_res(r->message_id(), r->status());
+
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_status_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_real_status_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_integer_status_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_boolean_status_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_string_status_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_instantiate_model_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_free_model_instance_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_set_time_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_set_continuous_states_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_completed_integrator_step_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_initialize_model_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_derivatives_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_event_indicators_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_eventUpdate_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_completed_event_iteration_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_continuous_states_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_nominal_continuous_states_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_terminate_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_version_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_set_debug_logging_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_set_real_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_set_integer_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_set_boolean_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_set_string_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_real_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_integer_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_boolean_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_string_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_fmu_state_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_set_fmu_state_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_free_fmu_state_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_serialized_fmu_state_size_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_serialize_fmu_state_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_de_serialize_fmu_state_res){
+    } else if(type == fmitcp_message_Type_type_fmi2_import_get_directional_derivative_res){
+    } else if(type == fmitcp_message_Type_type_get_xml_res){
     } else {
         m_logger.log(Logger::ERROR,"Message type not recognized: %d!\n",type);
     }
@@ -159,10 +184,10 @@ void Client::fmi2_import_do_step(int message_id,
     //printf("Sending doStep!\n");fflush(NULL);
 
     // Construct message
-    fmitcp_proto::fmitcp_message m;
-    m.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_req);
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_do_step_req);
 
-    fmitcp_proto::fmi2_import_do_step_req * req = m.mutable_fmi2_import_do_step_req();
+    fmi2_import_do_step_req * req = m.mutable_fmi2_import_do_step_req();
     req->set_message_id(message_id);
     req->set_fmuid(fmuId);
     req->set_currentcommunicationpoint(currentCommunicationPoint);
@@ -192,10 +217,10 @@ void Client::fmi2_import_instantiate_slave( int message_id, int fmuId,
     //printf("Sending doStep!\n");fflush(NULL);
 
     // Construct message
-    fmitcp_proto::fmitcp_message m;
-    m.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_slave_req);
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_instantiate_slave_req);
 
-    fmitcp_proto::fmi2_import_instantiate_slave_req * req = m.mutable_fmi2_import_instantiate_slave_req();
+    fmi2_import_instantiate_slave_req * req = m.mutable_fmi2_import_instantiate_slave_req();
     req->set_message_id(message_id);
     req->set_fmuid(fmuId);
     req->set_instancename(instanceName);
