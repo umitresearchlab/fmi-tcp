@@ -29,18 +29,10 @@ void Client::clientConnected(lw_client c){
 }
 
 void Client::clientData(lw_client c, const char* data, long size){
-    //fprintf(stderr,"client size:%ld\n",size);
 
     // Parse message
     fmitcp_message res;
     res.ParseFromString(data);
-    /*
-    if(!res.ParseFromString(data)){
-        m_logger.log(Logger::ERROR,"Could not parse message!\n");
-        //m_logger.log(Logger::DEBUG,"Got message of size:%ld\n",size);
-        return;
-    }
-    */
     fmitcp_message_Type type = res.type();
 
     // Check type and run the corresponding event handler
@@ -186,12 +178,6 @@ Logger * Client::getLogger() {
 }
 
 void Client::sendMessage(fmitcp_proto::fmitcp_message message){
-    /*
-    string s;
-    message.SerializeToString(&s);
-    lw_stream_write(m_client, s.c_str(), s.size());
-    */
-    //lw_stream_write(m_client, "\n", 1);
     fmitcp::sendProtoBuffer(m_client,message);
 }
 

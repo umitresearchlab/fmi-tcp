@@ -12,11 +12,6 @@ void Server::onClientDisconnect(){}
 void Server::onError(string message){}
 
 void serverOnConnect(lw_server s, lw_client c) {
-
-    // For some reason the server needs to send the first message
-    //lw_stream_write(c, "\n", 1);
-    //fflush(NULL);
-
     Server * server = (Server*)lw_server_tag(s);
     server->clientConnected(c);
 }
@@ -49,11 +44,6 @@ void Server::clientData(lw_client c, const char* data, size_t size){
     fmitcp_proto::fmitcp_message req;
     req.ParseFromString(data);
     string s = data;
-    /*if(!req.ParseFromString(data)){
-        m_logger.log(Logger::ERROR,"Could not parse message!\n");
-        //m_logger.log(Logger::DEBUG,"Got message of size:%ld\n",size);
-        return;
-    }*/
     fmitcp_proto::fmitcp_message_Type type = req.type();
 
     fmitcp_proto::fmitcp_message res;
@@ -423,12 +413,6 @@ void Server::addFMU(string path){
 }
 
 void Server::sendMessage(lw_client c, fmitcp_proto::fmitcp_message message){
-    /*
-    string s;
-    message.SerializeToString(&s);
-    lw_stream_write(c, s.c_str(), s.size());
-    //lw_stream_write(c, "\n", 1);
-    */
    fmitcp::sendProtoBuffer(c,message);
 }
 
