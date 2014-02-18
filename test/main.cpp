@@ -84,24 +84,33 @@ public:
 
     void on_fmi2_import_do_step_res(int message_id, fmitcp_proto::fmi2_status_t status){
         assertMessageId(message_id);
+        fmi2_import_get_status(messageId(), 0, fmitcp_proto::fmi2_do_step_status);
+    }
+
+    void on_fmi2_import_get_status_res(int message_id, fmitcp_proto::fmi2_status_t status){
+        assertMessageId(message_id);
+        fmi2_import_get_real_status(messageId(), 0, fmitcp_proto::fmi2_do_step_status);
+    }
+    void on_fmi2_import_get_real_status_res(int message_id, double value){
+        assertMessageId(message_id);
+        fmi2_import_get_integer_status(messageId(), 0, fmitcp_proto::fmi2_do_step_status);
+    }
+    void on_fmi2_import_get_integer_status_res(int message_id, int value){
+        assertMessageId(message_id);
+        fmi2_import_get_boolean_status(messageId(), 0, fmitcp_proto::fmi2_do_step_status);
+    }
+    void on_fmi2_import_get_boolean_status_res(int message_id, bool value){
+        assertMessageId(message_id);
+        fmi2_import_get_string_status(messageId(), 0, fmitcp_proto::fmi2_do_step_status);
+    }
+    void on_fmi2_import_get_string_status_res(int message_id, string value){
+        assertMessageId(message_id);
         m_pump->exitEventLoop();
     }
 
-    void on_fmi2_import_get_status_res(){
-        m_pump->exitEventLoop();
-    }
-    void on_fmi2_import_get_real_status_res(){
-        m_pump->exitEventLoop();
-    }
-    void on_fmi2_import_get_integer_status_res(){
-        m_pump->exitEventLoop();
-    }
-    void on_fmi2_import_get_boolean_status_res(){
-        m_pump->exitEventLoop();
-    }
-    void on_fmi2_import_get_string_status_res(){
-        m_pump->exitEventLoop();
-    }
+    /*
+
+    TODOOOOO:
 
     // =========== FMI 2.0 (ME) Model Exchange functions ===========
     void on_fmi2_import_instantiate_model_res(){
@@ -143,6 +152,7 @@ public:
     void on_fmi2_import_terminate_res(){
         m_pump->exitEventLoop();
     }
+    */
 
     // ========= FMI 2.0 CS & ME COMMON FUNCTIONS ============
     void on_fmi2_import_get_version_res(){
