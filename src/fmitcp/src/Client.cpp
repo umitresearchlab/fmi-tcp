@@ -28,14 +28,18 @@ void Client::clientConnected(lw_client c){
 }
 
 void Client::clientData(lw_client c, const char* data, long size){
-
-    // Skip?
-    if(strcmp(data,"\n") == 0 || strcmp(data,"\0") == 0 || size<=1)
-        return;
+    //fprintf(stderr,"client size:%ld\n",size);
 
     // Parse message
     fmitcp_message res;
     res.ParseFromString(data);
+    /*
+    if(!res.ParseFromString(data)){
+        m_logger.log(Logger::ERROR,"Could not parse message!\n");
+        //m_logger.log(Logger::DEBUG,"Got message of size:%ld\n",size);
+        return;
+    }
+    */
     fmitcp_message_Type type = res.type();
 
     // Check type and run the corresponding event handler
@@ -151,6 +155,10 @@ Client::~Client(){
     google::protobuf::ShutdownProtobufLibrary();
 }
 
+Logger * Client::getLogger() {
+    return &m_logger;
+}
+
 void Client::connect(string host, long port){
 
     // Set the master object as tag
@@ -181,7 +189,6 @@ void Client::fmi2_import_do_step(int message_id,
                                  double currentCommunicationPoint,
                                  double communicationStepSize,
                                  bool newStep){
-    //printf("Sending doStep!\n");fflush(NULL);
 
     // Construct message
     fmitcp_message m;
@@ -205,7 +212,7 @@ void Client::fmi2_import_do_step(int message_id,
     // Send
     string s;
     m.SerializeToString(&s);
-    fflush(NULL);
+    m_logger.log(Logger::DEBUG,"sending message of size:%d\n",s.size());
     lw_stream_write(m_client, s.c_str(), s.size());
     fflush(NULL);
 }

@@ -27,6 +27,7 @@ namespace fmitcp {
 
         void connect(string host, long port);
         void disconnect();
+        Logger * getLogger();
 
         /// To be implemented in subclass
         virtual void onConnect(){}

@@ -14,7 +14,8 @@ void serverOnConnect(lw_server s, lw_client c) {
     //printf("serverOnConnect\n");fflush(NULL);
 
     // For some reason the server needs to send the first message
-    lw_stream_write(c, "\n", 1);
+    //lw_stream_write(c, "\n", 1);
+    fflush(NULL);
 
     Server * server = (Server*)lw_server_tag(s);
     server->clientConnected(c);
@@ -47,12 +48,20 @@ void Server::clientDisconnected(lw_client c){
 void Server::clientData(lw_client c, const char* data, size_t size){
     //printf("Got client data: %s\n", data);fflush(NULL);
 
+    //fprintf(stderr,"server got message of size:%ld\n",size);
+
     if(strcmp(data,"\n") == 0)
         return;
 
     // Construct message
     fmitcp_proto::fmitcp_message req;
     req.ParseFromString(data);
+    string s = data;
+    /*if(!req.ParseFromString(data)){
+        m_logger.log(Logger::ERROR,"Could not parse message!\n");
+        //m_logger.log(Logger::DEBUG,"Got message of size:%ld\n",size);
+        return;
+    }*/
     fmitcp_proto::fmitcp_message_Type type = req.type();
 
     fmitcp_proto::fmitcp_message res;
@@ -91,23 +100,25 @@ void Server::clientData(lw_client c, const char* data, size_t size){
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_req){
 
         // Unpack message
-        fmitcp_proto::fmi2_import_do_step_req * doStepReq = req.mutable_fmi2_import_do_step_req();
-        int fmuId = doStepReq->fmuid();
-        double currentCommunicationPoint = doStepReq->currentcommunicationpoint(),
-               communicationStepSize = doStepReq->communicationstepsize();
-        bool newStep = doStepReq->newstep();
+        fmitcp_proto::fmi2_import_do_step_req * r = req.mutable_fmi2_import_do_step_req();
+        int fmuId = r->fmuid();
+        double currentCommunicationPoint = r->currentcommunicationpoint(),
+               communicationStepSize = r->communicationstepsize();
+        bool newStep = r->newstep();
         m_logger.log(Logger::NETWORK,"< fmi2_import_do_step_req(fmuId=%d,commPoint=%g,stepSize=%g,newStep=%d)\n",fmuId,currentCommunicationPoint,communicationStepSize,newStep?1:0);
 
-        // Step the FMU here
-        // TODO
+        // Defaults
+        fmitcp_proto::fmi2_import_do_step_res * doStepRes = res.mutable_fmi2_import_do_step_res();
+        res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_res);
+        doStepRes->set_message_id(0);
+        doStepRes->set_status(fmitcp_proto::fmi2_status_ok);
+
+        if(!m_sendDummyResponses){
+            // TODO: Step the FMU
+        }
 
         // Create response
-        res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_res);
-        fmitcp_proto::fmi2_status_t status = fmitcp_proto::fmi2_status_ok;
-        fmitcp_proto::fmi2_import_do_step_res * doStepRes = res.mutable_fmi2_import_do_step_res();
-        doStepRes->set_message_id(0);
-        doStepRes->set_status(status);
-        m_logger.log(Logger::NETWORK,"> fmi2_import_do_step_res(status=%d)\n",status);
+        m_logger.log(Logger::NETWORK,"> fmi2_import_do_step_res(status=%d)\n",doStepRes->status());
 
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_status_req){
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_status_req){
@@ -154,9 +165,8 @@ void Server::clientData(lw_client c, const char* data, size_t size){
     if(sendResponse){
         string response;
         res.SerializeToString(&response);
-        fflush(NULL);
+        //fprintf(stderr,"server sending message of size %d\n",(int)response.size());
         lw_stream_write(c, response.c_str(), response.size());
-        lw_stream_write(c, "\n", 1);
         fflush(NULL);
     }
 }
@@ -164,6 +174,8 @@ void Server::error(lw_server s, lw_error error){
     string err = lw_error_tostring(error);
     onError(err);
 }
+
+
 
 Server::Server(EventPump * pump){
     init(pump);
@@ -175,6 +187,7 @@ Server::Server(EventPump * pump, const Logger& logger){
 void Server::init(EventPump * pump){
     m_pump = pump;
     m_server = lw_server_new(pump->getPump());
+    m_sendDummyResponses = false;
 }
 
 Server::~Server(){
@@ -183,6 +196,10 @@ Server::~Server(){
 
 void Server::addFMU(string path){
 
+}
+
+void Server::sendDummyResponses(bool sendDummyResponses){
+    m_sendDummyResponses = sendDummyResponses;
 }
 
 void Server::host(string hostName, long port){
@@ -211,6 +228,6 @@ void Server::host(string hostName, long port){
     fflush(NULL);
 }
 
-Logger Server::getLogger() const {
-    return m_logger;
+Logger * Server::getLogger() {
+    return &m_logger;
 }

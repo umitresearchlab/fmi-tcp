@@ -15,6 +15,7 @@ namespace fmitcp {
     private:
         Logger m_logger;
         lw_server m_server;
+        bool m_sendDummyResponses;
 
     protected:
         EventPump * m_pump;
@@ -43,7 +44,10 @@ namespace fmitcp {
         void host(string host, long port);
         void addFMU(string path);
 
-        Logger getLogger() const;
+        /// Set to true to start ignoring the local FMU and just send back dummy responses. Good for debugging the protocol.
+        void sendDummyResponses(bool);
+
+        Logger * getLogger();
         void setLogger(const Logger& logger);
 
     };

@@ -100,7 +100,7 @@ int main( int argc, char *argv[] ) {
     EventPump pump;
     MyFMIServer server(&pump);
     server.host(hostName,port);
-    server.getLogger().setFilter(Logger::NETWORK|Logger::DEBUG|Logger::ERROR);
+    server.getLogger()->setFilter(Logger::NETWORK|Logger::DEBUG|Logger::ERROR);
     pump.startEventLoop();
 
     return EXIT_SUCCESS;
