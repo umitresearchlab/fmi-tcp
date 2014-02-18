@@ -59,7 +59,12 @@ fmi1_status_t fmi1PendingStatusString(FMICoSimulationClient *FMICSClient, fmi1_s
 fmi1_status_t fmi1DoStepStatus(FMICoSimulationClient *FMICSClient, fmi1_status_t *status);
 
 /* FMI 2.0 wrapper functions */
+/* Check if the fmi status is ok or warning */
+static int fmi2_status_ok_or_warning(fmi2_status_t fmistatus) {
+  return (fmistatus == fmi2_status_ok) || (fmistatus == fmi2_status_warning);
+}
 jm_status_enu_t fmi2InstantiateSlaveWrapper(FMICoSimulationClient *FMICSClient);
+fmi2_status_t fmi2InitializeSlaveWrapper(FMICoSimulationClient *FMICSClient);
 
 void connectClient(FMICoSimulationClient *FMICSClient, const char* hostName, int port);
 void clientOnConnect(lw_client client);

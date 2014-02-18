@@ -377,6 +377,30 @@ jm_status_enu_t fmi2InstantiateSlaveWrapper(FMICoSimulationClient *FMICSClient) 
   return status;
 }
 
+fmi2_status_t fmi2InitializeSlaveWrapper(FMICoSimulationClient *FMICSClient) {
+  /*!
+   * \todo
+   * We should set all variable start values (of "ScalarVariable / <type> / start").
+   * fmiSetReal/Integer/Boolean/String(s1, ...);
+   */
+  fmi2_boolean_t toleranceControlled = fmi2_false;
+  fmi2_real_t relativeTolerance = fmi2_import_get_default_experiment_tolerance(FMICSClient->FMI2ImportInstance);
+  fmi2_status_t status;
+
+  /*!
+   * \todo
+   * We need to set the input values at time = startTime after fmiEnterInitializationMode and before fmiExitInitializationMode.
+   * fmiSetReal/Integer/Boolean/String(s1, ...);
+   */
+  if (fmi2_status_ok_or_warning(status =  fmi2_import_setup_experiment(FMICSClient->FMI2ImportInstance, toleranceControlled,
+      relativeTolerance, FMICSClient->tStart, FMICSClient->stopTimeDefined, FMICSClient->tStop)) &&
+      fmi2_status_ok_or_warning(status = fmi2_import_enter_initialization_mode(FMICSClient->FMI2ImportInstance)) &&
+      fmi2_status_ok_or_warning(fmi2_import_exit_initialization_mode(FMICSClient->FMI2ImportInstance))) {
+    return status;
+  }
+  return status;
+}
+
 void connectClient(FMICoSimulationClient *FMICSClient, const char* hostName, int port) {
   FMICSClient->pump = lw_eventpump_new();
   FMICSClient->client = lw_client_new(FMICSClient->pump);
@@ -435,7 +459,7 @@ void clientOnData(lw_client client, const char* data, long size) {
 }
 
 void fmi1ClientOnData(FMICoSimulationClient *FMICSClient, lw_client client, const char* token) {
-  if (strncmp(token, fmiInstantiateSlave, strlen(fmiInitializeSlave)) == 0) {  /* Handle fmiInstantiateSlave */
+  if (strncmp(token, fmiInstantiateSlave, strlen(fmiInstantiateSlave)) == 0) {  /* Handle fmiInstantiateSlave */
     jm_status_enu_t status = fmi1InstantiateSlaveWrapper(FMICSClient);
     if (status == jm_status_success) {
       sendCommand(client, fmiInstantiateSlaveSuccess, strlen(fmiInstantiateSlaveSuccess));
@@ -515,7 +539,7 @@ void fmi1ClientOnData(FMICoSimulationClient *FMICSClient, lw_client client, cons
 }
 
 void fmi2ClientOnData(FMICoSimulationClient *FMICSClient, lw_client client, const char* token) {
-  if (strncmp(token, fmiInstantiateSlave, strlen(fmiInitializeSlave)) == 0) {  /* Handle fmiInstantiateSlave */
+  if (strncmp(token, fmiInstantiateSlave, strlen(fmiInstantiateSlave)) == 0) {  /* Handle fmiInstantiateSlave */
     jm_status_enu_t status = fmi2InstantiateSlaveWrapper(FMICSClient);
     if (status == jm_status_success) {
       sendCommand(client, fmiInstantiateSlaveSuccess, strlen(fmiInstantiateSlaveSuccess));
@@ -524,13 +548,13 @@ void fmi2ClientOnData(FMICoSimulationClient *FMICSClient, lw_client client, cons
     } else {
       sendCommand(client, fmiInstantiateSlaveError, strlen(fmiInstantiateSlaveError));
     }
-//  } else if (strncmp(token, fmiInitializeSlave, strlen(fmiInitializeSlave)) == 0) {  /* Handle fmiInitializeSlave */
-//    fmi1_status_t status = fmi1InitializeSlaveWrapper(FMICSClient);
-//    if (status == fmi1_status_ok) {
-//      sendCommand(client, fmiInitializeSlaveOk, strlen(fmiInitializeSlaveOk));
-//    } else {
-//      sendCommand(client, fmiInitializeSlaveError, strlen(fmiInitializeSlaveError));
-//    }
+  } else if (strncmp(token, fmiInitializeSlave, strlen(fmiInitializeSlave)) == 0) {  /* Handle fmiInitializeSlave */
+    fmi1_status_t status = fmi2InitializeSlaveWrapper(FMICSClient);
+    if (status == fmi1_status_ok) {
+      sendCommand(client, fmiInitializeSlaveOk, strlen(fmiInitializeSlaveOk));
+    } else {
+      sendCommand(client, fmiInitializeSlaveError, strlen(fmiInitializeSlaveError));
+    }
 //  } else if (strncmp(token, setInitialValues, strlen(setInitialValues)) == 0) {  /* Handle fmiInitializeSlave */
 //    fmi1SetInitialValues(FMICSClient);
 //    sendCommand(client, setInitialValuesOk, strlen(setInitialValuesOk));
