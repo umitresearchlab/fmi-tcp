@@ -306,7 +306,8 @@ message fmi2_import_set_real_input_derivatives_req {
     required int32 message_id = 1;
     required int32 fmuId = 2;
     repeated int32 valueReferences = 3;
-    repeated double values = 4;
+    repeated int32 orders = 4;
+    repeated double values = 5;
 }
 message fmi2_import_set_real_input_derivatives_res {
     required int32 message_id = 1;

@@ -1,6 +1,7 @@
 SET(HEADERS
     include/fmitcp/fmitcp.pb.h
     include/fmitcp/Client.h
+    include/fmitcp/common.h
     include/fmitcp/Logger.h
     include/fmitcp/Server.h
     include/fmitcp/EventPump.h
@@ -8,6 +9,7 @@ SET(HEADERS
 SET(SRCS
     src/fmitcp.pb.cc
     src/Client.cpp
+    src/common.cpp
     src/Logger.cpp
     src/Server.cpp
     src/EventPump.cpp

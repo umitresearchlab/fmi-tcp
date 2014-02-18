@@ -1,5 +1,6 @@
 #include "Client.h"
 #include "Logger.h"
+#include "common.h"
 
 using namespace std;
 using namespace fmitcp;
@@ -45,10 +46,7 @@ void Client::clientData(lw_client c, const char* data, long size){
     // Check type and run the corresponding event handler
     if(type == fmitcp_message_Type_type_fmi2_import_instantiate_slave_res){
         fmi2_import_instantiate_slave_res * r = res.mutable_fmi2_import_instantiate_slave_res();
-        m_logger.log(Logger::NETWORK,
-            "< fmi2_import_instantiate_slave_res(mid=%d,status=%d)\n",
-            r->message_id(),
-            r->status());
+        m_logger.log(Logger::NETWORK,"< fmi2_import_instantiate_slave_res(mid=%d,status=%d)\n",r->message_id(),r->status());
         on_fmi2_import_instantiate_slave_res( r->message_id(), r->status() );
 
     } else if(type == fmitcp_message_Type_type_fmi2_import_initialize_slave_res){
@@ -68,22 +66,22 @@ void Client::clientData(lw_client c, const char* data, long size){
 
     } else if(type == fmitcp_message_Type_type_fmi2_import_free_slave_instance_res){
         fmi2_import_free_slave_instance_res * r = res.mutable_fmi2_import_free_slave_instance_res();
-        m_logger.log(Logger::NETWORK,"< fmi2_import_free_slave_instance_res()\n");
+        m_logger.log(Logger::NETWORK,"< fmi2_import_free_slave_instance_res(mid=%d)\n",r->message_id());
         on_fmi2_import_free_slave_instance_res(r->message_id());
 
     } else if(type == fmitcp_message_Type_type_fmi2_import_set_real_input_derivatives_res){
         fmi2_import_set_real_input_derivatives_res * r = res.mutable_fmi2_import_set_real_input_derivatives_res();
-        m_logger.log(Logger::NETWORK,"< fmi2_import_set_real_input_derivatives_res()\n");
+        m_logger.log(Logger::NETWORK,"< fmi2_import_set_real_input_derivatives_res(mid=%d,status=%d)\n",r->message_id(),r->status());
         on_fmi2_import_set_real_input_derivatives_res(r->message_id(),r->status());
 
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_real_output_derivatives_res){
         fmi2_import_get_real_output_derivatives_res * r = res.mutable_fmi2_import_get_real_output_derivatives_res();
-        m_logger.log(Logger::NETWORK,"< fmi2_import_get_real_output_derivatives_res()\n");
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_real_output_derivatives_res(mid=%d,status=%d,values=...)\n",r->message_id(),r->status());
         on_fmi2_import_get_real_output_derivatives_res(r->message_id(),r->status(),vector<double>());
 
     } else if(type == fmitcp_message_Type_type_fmi2_import_cancel_step_res){
         fmi2_import_cancel_step_res * r = res.mutable_fmi2_import_cancel_step_res();
-        m_logger.log(Logger::NETWORK,"< fmi2_import_cancel_step_res()\n");
+        m_logger.log(Logger::NETWORK,"< fmi2_import_cancel_step_res(mid=%d,status=%d)\n",r->message_id(),r->status());
         on_fmi2_import_cancel_step_res(r->message_id(),r->status());
 
     } else if(type == fmitcp_message_Type_type_fmi2_import_do_step_res){
@@ -92,12 +90,40 @@ void Client::clientData(lw_client c, const char* data, long size){
         on_fmi2_import_do_step_res(r->message_id(), r->status());
 
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_status_res){
+        fmi2_import_get_status_res * r = res.mutable_fmi2_import_get_status_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_status_res(value=%d)\n",r->value());
+        on_fmi2_import_get_status_res(r->message_id(), r->value());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_real_status_res){
+        fmi2_import_get_real_status_res * r = res.mutable_fmi2_import_get_real_status_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_real_status_res(value=%g)\n",r->value());
+        on_fmi2_import_get_real_status_res(r->message_id(), r->value());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_integer_status_res){
+        fmi2_import_get_integer_status_res * r = res.mutable_fmi2_import_get_integer_status_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_integer_status_res(value=%d)\n",r->value());
+        on_fmi2_import_get_integer_status_res(r->message_id(), r->value());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_boolean_status_res){
+        fmi2_import_get_boolean_status_res * r = res.mutable_fmi2_import_get_boolean_status_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_boolean_status_res(value=%d)\n",r->value());
+        on_fmi2_import_get_boolean_status_res(r->message_id(), r->value());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_string_status_res){
+        fmi2_import_get_string_status_res * r = res.mutable_fmi2_import_get_string_status_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_string_status_res(value=%s)\n",r->value().c_str());
+        on_fmi2_import_get_string_status_res(r->message_id(), r->value());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_instantiate_model_res){
+        fmi2_import_instantiate_model_res * r = res.mutable_fmi2_import_instantiate_model_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_instantiate_model_res(mid=%d,status=%d)\n",r->message_id(), r->status());
+        on_fmi2_import_instantiate_model_res(r->message_id(), r->status());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_free_model_instance_res){
+        fmi2_import_free_model_instance_res * r = res.mutable_fmi2_import_free_model_instance_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_free_model_instance_res(mid=%d)\n",r->message_id());
+        on_fmi2_import_free_model_instance_res(r->message_id());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_set_time_res){
     } else if(type == fmitcp_message_Type_type_fmi2_import_set_continuous_states_res){
     } else if(type == fmitcp_message_Type_type_fmi2_import_completed_integrator_step_res){
@@ -160,10 +186,13 @@ Logger * Client::getLogger() {
 }
 
 void Client::sendMessage(fmitcp_proto::fmitcp_message message){
+    /*
     string s;
     message.SerializeToString(&s);
     lw_stream_write(m_client, s.c_str(), s.size());
-    fflush(NULL);
+    */
+    //lw_stream_write(m_client, "\n", 1);
+    fmitcp::sendProtoBuffer(m_client,message);
 }
 
 void Client::connect(string host, long port){
@@ -179,7 +208,6 @@ void Client::connect(string host, long port){
 
     // connect the client to the server
     lw_client_connect(m_client, host.c_str(), port);
-    fflush(NULL);
 
     m_logger.log(Logger::DEBUG,"Connecting to %s:%ld...\n",host.c_str(),port);
 }
@@ -191,44 +219,12 @@ void Client::disconnect(){
     //lw_pump_delete(m_pump->getPump());
 }
 
-void Client::fmi2_import_do_step(int message_id,
-                                 int fmuId,
-                                 double currentCommunicationPoint,
-                                 double communicationStepSize,
-                                 bool newStep){
 
-    // Construct message
-    fmitcp_message m;
-    m.set_type(fmitcp_message_Type_type_fmi2_import_do_step_req);
-
-    fmi2_import_do_step_req * req = m.mutable_fmi2_import_do_step_req();
-    req->set_message_id(message_id);
-    req->set_fmuid(fmuId);
-    req->set_currentcommunicationpoint(currentCommunicationPoint);
-    req->set_communicationstepsize(communicationStepSize);
-    req->set_newstep(newStep);
-
-    m_logger.log(Logger::NETWORK,
-        "> fmi2_import_do_step_req(mid=%d,fmu=%d,commPoint=%g,stepSize=%g,newStep=%d)\n",
-        message_id,
-        fmuId,
-        currentCommunicationPoint,
-        communicationStepSize,
-        newStep);
-
-    // Send
-    string s;
-    m.SerializeToString(&s);
-    m_logger.log(Logger::DEBUG,"sending message of size:%d\n",s.size());
-    lw_stream_write(m_client, s.c_str(), s.size());
-    fflush(NULL);
-}
-
-void Client::fmi2_import_instantiate_slave( int message_id, int fmuId,
+void Client::fmi2_import_instantiate_slave( int message_id,
+                                            int fmuId,
                                             string instanceName,
                                             string resourceLocation,
                                             bool visible){
-    //printf("Sending doStep!\n");fflush(NULL);
 
     // Construct message
     fmitcp_message m;
@@ -266,13 +262,7 @@ void Client::fmi2_import_initialize_slave(int message_id, int fmuId, double relT
     if(stopTimeDefined)
         req->set_tstop(tStop);
 
-    m_logger.log(Logger::NETWORK,
-        "> fmi2_import_initialize_slave_req(mid=%d,fmu=%d,relTol=%g,tStart=%g,tStop=%g)\n",
-        message_id,
-        fmuId,
-        relTol,
-        tStart,
-        tStop);
+    m_logger.log(Logger::NETWORK, "> fmi2_import_initialize_slave_req(mid=%d,fmu=%d,relTol=%g,tStart=%g,tStop=%g)\n", message_id, fmuId, relTol, tStart, tStop);
 
     sendMessage(m);
 }
@@ -305,6 +295,91 @@ void Client::fmi2_import_reset_slave(int message_id, int fmuId){
         "> fmi2_import_reset_slave_req(mid=%d,fmu=%d)\n",
         message_id,
         fmuId);
+
+    sendMessage(m);
+}
+
+void Client::fmi2_import_free_slave_instance(int message_id,int fmuId){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_free_slave_instance_req);
+
+    fmi2_import_free_slave_instance_req * req = m.mutable_fmi2_import_free_slave_instance_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_free_slave_instance_req(mid=%d,fmu=%d)\n", message_id, fmuId);
+
+    sendMessage(m);
+}
+
+void Client::fmi2_import_set_real_input_derivatives(int message_id, int fmuId,
+                                                    std::vector<int> valueRefs,
+                                                    std::vector<int> orders,
+                                                    std::vector<double> values){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_set_real_input_derivatives_req);
+
+    fmi2_import_set_real_input_derivatives_req * req = m.mutable_fmi2_import_set_real_input_derivatives_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+
+    // TODO: SET the derivatives in message
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_set_real_input_derivatives_req(mid=%d,fmu=%d)\n", message_id, fmuId);
+
+    sendMessage(m);
+}
+
+void Client::fmi2_import_get_real_output_derivatives(int message_id, int fmuId, std::vector<int> valueRefs, std::vector<int> orders){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_get_real_output_derivatives_req);
+
+    fmi2_import_get_real_output_derivatives_req * req = m.mutable_fmi2_import_get_real_output_derivatives_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_get_real_output_derivatives_req(mid=%d,fmu=%d)\n", message_id, fmuId);
+
+    sendMessage(m);
+}
+
+void Client::fmi2_import_cancel_step(int message_id, int fmuId){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_cancel_step_req);
+
+    fmi2_import_cancel_step_req * req = m.mutable_fmi2_import_cancel_step_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_cancel_step_req(mid=%d,fmu=%d)\n", message_id, fmuId);
+
+    sendMessage(m);
+}
+
+void Client::fmi2_import_do_step(int message_id,
+                                 int fmuId,
+                                 double currentCommunicationPoint,
+                                 double communicationStepSize,
+                                 bool newStep){
+
+    // Construct message
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_do_step_req);
+
+    fmi2_import_do_step_req * req = m.mutable_fmi2_import_do_step_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+    req->set_currentcommunicationpoint(currentCommunicationPoint);
+    req->set_communicationstepsize(communicationStepSize);
+    req->set_newstep(newStep);
+
+    m_logger.log(Logger::NETWORK,
+        "> fmi2_import_do_step_req(mid=%d,fmu=%d,commPoint=%g,stepSize=%g,newStep=%d)\n",
+        message_id,
+        fmuId,
+        currentCommunicationPoint,
+        communicationStepSize,
+        newStep);
 
     sendMessage(m);
 }

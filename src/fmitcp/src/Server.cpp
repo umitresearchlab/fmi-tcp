@@ -1,6 +1,7 @@
 #include <lacewing.h>
 #include "Server.h"
 #include "Logger.h"
+#include "common.h"
 #include "fmitcp.pb.h"
 
 using namespace std;
@@ -11,7 +12,6 @@ void Server::onClientDisconnect(){}
 void Server::onError(string message){}
 
 void serverOnConnect(lw_server s, lw_client c) {
-    //printf("serverOnConnect\n");fflush(NULL);
 
     // For some reason the server needs to send the first message
     //lw_stream_write(c, "\n", 1);
@@ -21,17 +21,14 @@ void serverOnConnect(lw_server s, lw_client c) {
     server->clientConnected(c);
 }
 void serverOnData(lw_server s, lw_client client, const char* data, size_t size) {
-    //printf("serverOnData\n");fflush(NULL);
     Server * server = (Server*)lw_server_tag(s);
     server->clientData(client,data,size);
 }
 void serverOnDisconnect(lw_server s, lw_client c) {
-    //printf("serverOnDisconnect\n");fflush(NULL);
     Server * server = (Server*)lw_server_tag(s);
     server->clientDisconnected(c);
 }
 void serverOnError(lw_server s, lw_error error) {
-    //printf("serverOnError\n");fflush(NULL);
     Server * server = (Server*)lw_server_tag(s);
     server->error(s,error);
 }
@@ -45,10 +42,6 @@ void Server::clientDisconnected(lw_client c){
     onClientDisconnect();
 }
 void Server::clientData(lw_client c, const char* data, size_t size){
-    //printf("Got client data: %s\n", data);fflush(NULL);
-
-    //fprintf(stderr,"server got message of size:%ld\n",size);
-
     if(strcmp(data,"\n") == 0)
         return;
 
@@ -239,9 +232,29 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         }
 
         m_logger.log(Logger::NETWORK,"> fmi2_import_get_real_output_derivatives_res(mid=%d)\n",messageId);
+
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_cancel_step_req){
-        // TODO
-        sendResponse = false;
+
+        // Unpack message
+        fmitcp_proto::fmi2_import_cancel_step_req * r = req.mutable_fmi2_import_cancel_step_req();
+        int fmuId = r->fmuid(),
+            messageId = r->message_id();
+
+        m_logger.log(Logger::NETWORK,"< fmi2_import_cancel_step_req(mid=%d,fmuId=%d)\n",messageId,fmuId);
+
+        res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_cancel_step_res);
+        fmitcp_proto::fmi2_import_cancel_step_res * resetRes = res.mutable_fmi2_import_cancel_step_res();
+        resetRes->set_message_id(messageId);
+        resetRes->set_status(fmitcp_proto::fmi2_status_ok);
+
+        if(!m_sendDummyResponses){
+
+            // Interact with FMU here
+            // TODO
+        }
+
+        m_logger.log(Logger::NETWORK,"> fmi2_import_cancel_step_res(mid=%d,status=%d)\n",messageId,resetRes->status());
+
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_req){
 
         // Unpack message
@@ -255,7 +268,7 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         // Defaults
         fmitcp_proto::fmi2_import_do_step_res * doStepRes = res.mutable_fmi2_import_do_step_res();
         res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_res);
-        doStepRes->set_message_id(0);
+        doStepRes->set_message_id(r->message_id());
         doStepRes->set_status(fmitcp_proto::fmi2_status_ok);
 
         if(!m_sendDummyResponses){
@@ -380,19 +393,13 @@ void Server::clientData(lw_client c, const char* data, size_t size){
     }
 
     if(sendResponse){
-        string response;
-        res.SerializeToString(&response);
-        //fprintf(stderr,"server sending message of size %d\n",(int)response.size());
-        lw_stream_write(c, response.c_str(), response.size());
-        fflush(NULL);
+        sendMessage(c,res);
     }
 }
 void Server::error(lw_server s, lw_error error){
     string err = lw_error_tostring(error);
     onError(err);
 }
-
-
 
 Server::Server(EventPump * pump){
     init(pump);
@@ -413,6 +420,16 @@ Server::~Server(){
 
 void Server::addFMU(string path){
 
+}
+
+void Server::sendMessage(lw_client c, fmitcp_proto::fmitcp_message message){
+    /*
+    string s;
+    message.SerializeToString(&s);
+    lw_stream_write(c, s.c_str(), s.size());
+    //lw_stream_write(c, "\n", 1);
+    */
+   fmitcp::sendProtoBuffer(c,message);
 }
 
 void Server::sendDummyResponses(bool sendDummyResponses){
@@ -441,8 +458,6 @@ void Server::host(string hostName, long port){
     lw_filter_delete(filter);
 
     m_logger.log(Logger::NETWORK,"Listening to %s:%ld\n",hostName.c_str(),port);
-
-    fflush(NULL);
 }
 
 Logger * Server::getLogger() {

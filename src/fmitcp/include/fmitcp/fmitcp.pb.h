@@ -2602,10 +2602,22 @@ class fmi2_import_set_real_input_derivatives_req : public ::google::protobuf::Me
   inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_valuereferences();
   
-  // repeated double values = 4;
+  // repeated int32 orders = 4;
+  inline int orders_size() const;
+  inline void clear_orders();
+  static const int kOrdersFieldNumber = 4;
+  inline ::google::protobuf::int32 orders(int index) const;
+  inline void set_orders(int index, ::google::protobuf::int32 value);
+  inline void add_orders(::google::protobuf::int32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      orders() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_orders();
+  
+  // repeated double values = 5;
   inline int values_size() const;
   inline void clear_values();
-  static const int kValuesFieldNumber = 4;
+  static const int kValuesFieldNumber = 5;
   inline double values(int index) const;
   inline void set_values(int index, double value);
   inline void add_values(double value);
@@ -2626,10 +2638,11 @@ class fmi2_import_set_real_input_derivatives_req : public ::google::protobuf::Me
   ::google::protobuf::int32 message_id_;
   ::google::protobuf::int32 fmuid_;
   ::google::protobuf::RepeatedField< ::google::protobuf::int32 > valuereferences_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > orders_;
   ::google::protobuf::RepeatedField< double > values_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
   
   friend void  protobuf_AddDesc_fmitcp_2eproto();
   friend void protobuf_AssignDesc_fmitcp_2eproto();
@@ -13406,7 +13419,32 @@ fmi2_import_set_real_input_derivatives_req::mutable_valuereferences() {
   return &valuereferences_;
 }
 
-// repeated double values = 4;
+// repeated int32 orders = 4;
+inline int fmi2_import_set_real_input_derivatives_req::orders_size() const {
+  return orders_.size();
+}
+inline void fmi2_import_set_real_input_derivatives_req::clear_orders() {
+  orders_.Clear();
+}
+inline ::google::protobuf::int32 fmi2_import_set_real_input_derivatives_req::orders(int index) const {
+  return orders_.Get(index);
+}
+inline void fmi2_import_set_real_input_derivatives_req::set_orders(int index, ::google::protobuf::int32 value) {
+  orders_.Set(index, value);
+}
+inline void fmi2_import_set_real_input_derivatives_req::add_orders(::google::protobuf::int32 value) {
+  orders_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+fmi2_import_set_real_input_derivatives_req::orders() const {
+  return orders_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+fmi2_import_set_real_input_derivatives_req::mutable_orders() {
+  return &orders_;
+}
+
+// repeated double values = 5;
 inline int fmi2_import_set_real_input_derivatives_req::values_size() const {
   return values_.size();
 }

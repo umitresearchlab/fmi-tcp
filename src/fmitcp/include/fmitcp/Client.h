@@ -99,20 +99,20 @@ namespace fmitcp {
         void fmi2_import_initialize_slave(int mid, int fmuId, double relTol, double tStart, bool stopTimeDefined, double tStop);
         void fmi2_import_terminate_slave(int mid, int fmuId);
         void fmi2_import_reset_slave(int mid, int fmuId);
-        void fmi2_import_free_slave_instance();
-        void fmi2_import_set_real_input_derivatives();
-        void fmi2_import_get_real_output_derivatives();
-        void fmi2_import_cancel_step();
+        void fmi2_import_free_slave_instance(int mid, int fmuId);
+        void fmi2_import_set_real_input_derivatives(int mid, int fmuId, std::vector<int> valueRefs, std::vector<int> orders, std::vector<double> values);
+        void fmi2_import_get_real_output_derivatives(int mid, int fmuId, std::vector<int> valueRefs, std::vector<int> orders);
+        void fmi2_import_cancel_step(int mid, int fmuId);
         void fmi2_import_do_step(int message_id,
                                  int fmuId,
                                  double currentCommunicationPoint,
                                  double communicationStepSize,
                                  bool newStep);
-        void fmi2_import_get_status();
-        void fmi2_import_get_real_status();
-        void fmi2_import_get_integer_status();
-        void fmi2_import_get_boolean_status();
-        void fmi2_import_get_string_status();
+        void fmi2_import_get_status        (int message_id, int fmuId, fmitcp_proto::fmi2_status_kind_t s);
+        void fmi2_import_get_real_status   (int message_id, int fmuId, fmitcp_proto::fmi2_status_kind_t s);
+        void fmi2_import_get_integer_status(int message_id, int fmuId, fmitcp_proto::fmi2_status_kind_t s);
+        void fmi2_import_get_boolean_status(int message_id, int fmuId, fmitcp_proto::fmi2_status_kind_t s);
+        void fmi2_import_get_string_status (int message_id, int fmuId, fmitcp_proto::fmi2_status_kind_t s);
 
         // =========== FMI 2.0 (ME) Model Exchange functions ===========
         void fmi2_import_instantiate_model();
