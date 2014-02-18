@@ -28,6 +28,7 @@ namespace fmitcp {
         void connect(string host, long port);
         void disconnect();
         Logger * getLogger();
+        void sendMessage(fmitcp_proto::fmitcp_message message);
 
         /// To be implemented in subclass
         virtual void onConnect(){}
@@ -95,8 +96,9 @@ namespace fmitcp {
                                             string instanceName,
                                             string resourceLocation,
                                             bool visible);
-        void fmi2_import_initialize_slave ();
-        void fmi2_import_terminate_slave();
+        void fmi2_import_initialize_slave(int mid, int fmuId, double relTol, double tStart, bool stopTimeDefined, double tStop);
+        void fmi2_import_terminate_slave(int mid, int fmuId);
+        void fmi2_import_reset_slave(int mid, int fmuId);
         void fmi2_import_free_slave_instance();
         void fmi2_import_set_real_input_derivatives();
         void fmi2_import_get_real_output_derivatives();
