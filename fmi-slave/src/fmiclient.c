@@ -69,7 +69,6 @@ FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int log
       logPrint(stderr,"Only FMI Co-Simulation 1.0 & 2.0 are supported.\n");fflush(NULL);
       return 0;
     }
-    FMICSClient->fmuType = fmuType;
     /* FMI callback functions */
     int registerGlobally = 0;
     FMICSClient->FMI1CallbackFunctions.logger = loggingOn ? fmi1_log_forwarding : fmi1_null_logger;
@@ -115,18 +114,19 @@ FMICoSimulationClient* createFMICoSimulationClient(const char* fileName, int log
     }
     /* check FMU kind */
     fmi2_fmu_kind_enu_t fmuType = fmi2_import_get_fmu_kind(FMICSClient->FMI2ImportInstance);
-    if(fmuType != fmi2_fmu_kind_cs) {
+    if(fmuType != fmi2_fmu_kind_cs && fmuType != fmi2_fmu_kind_me_and_cs) {
       fmi_import_free_context(FMICSClient->importContext);
       free(FMICSClient->workingDirectory);
       free(FMICSClient);
       logPrint(stderr,"Only FMI Co-Simulation 1.0 & 2.0 are supported.\n");fflush(NULL);
       return 0;
     }
-    FMICSClient->fmuType = fmuType;
     /* FMI callback functions */
     FMICSClient->FMI2CallbackFunctions.logger = loggingOn ? fmi2_log_forwarding : fmi2_null_logger;
     FMICSClient->FMI2CallbackFunctions.allocateMemory = calloc;
     FMICSClient->FMI2CallbackFunctions.freeMemory = free;
+    FMICSClient->FMI2CallbackFunctions.stepFinished = 0;
+    FMICSClient->FMI2CallbackFunctions.componentEnvironment = 0;
     /* Load the binary (dll/so) */
     jm_status_enu_t status = fmi2_import_create_dllfmu(FMICSClient->FMI2ImportInstance, fmuType, &FMICSClient->FMI2CallbackFunctions);
     if (status == jm_status_error) {
@@ -361,7 +361,7 @@ fmi1_status_t fmi1DoStepStatus(FMICoSimulationClient *FMICSClient, fmi1_status_t
 }
 
 jm_status_enu_t fmi2InstantiateSlaveWrapper(FMICoSimulationClient *FMICSClient) {
-  jm_status_enu_t status = fmi2_import_instantiate(FMICSClient->FMI2ImportInstance, FMICSClient->instanceName, FMICSClient->fmuType,
+  jm_status_enu_t status = fmi2_import_instantiate(FMICSClient->FMI2ImportInstance, FMICSClient->instanceName, fmi2_cosimulation,
       FMICSClient->fmuLocation, FMICSClient->visible);
   if (status != jm_status_error) {
     /* fetch the logging categories from the FMU */

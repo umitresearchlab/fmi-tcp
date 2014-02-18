@@ -15,7 +15,6 @@ typedef struct {
   int logLevel;
   jm_callbacks JMCallbacks;
   fmi_import_context_t* importContext;
-  fmi1_fmu_kind_enu_t fmuType;
   fmi1_callback_functions_t FMI1CallbackFunctions;
   fmi2_callback_functions_t FMI2CallbackFunctions;
   char* workingDirectory;
