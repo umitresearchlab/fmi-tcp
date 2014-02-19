@@ -767,9 +767,10 @@ message fmi2_import_free_fmu_state_res {
 //     Wrapper for the FMI function fmiGetDirectionalDerivative(...)
 message fmi2_import_get_directional_derivative_req {
     required int32 message_id = 1;
-    repeated int32 v_ref = 2;
-    repeated int32 z_ref = 3;
-    repeated double dv = 4;
+    required int32 fmuId = 2;
+    repeated int32 v_ref = 3;
+    repeated int32 z_ref = 4;
+    repeated double dv = 5;
 }
 message fmi2_import_get_directional_derivative_res {
     required int32 message_id = 1;

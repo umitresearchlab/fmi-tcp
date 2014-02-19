@@ -1775,8 +1775,9 @@ void protobuf_AssignDesc_fmitcp_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(fmi2_import_free_fmu_state_res));
   fmi2_import_get_directional_derivative_req_descriptor_ = file->message_type(84);
-  static const int fmi2_import_get_directional_derivative_req_offsets_[4] = {
+  static const int fmi2_import_get_directional_derivative_req_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_get_directional_derivative_req, message_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_get_directional_derivative_req, fmuid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_get_directional_derivative_req, v_ref_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_get_directional_derivative_req, z_ref_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_get_directional_derivative_req, dv_),
@@ -2707,25 +2708,25 @@ void protobuf_AddDesc_fmitcp_2eproto() {
     "ree_fmu_state_req\022\022\n\nmessage_id\030\001 \002(\005\022\017\n"
     "\007stateId\030\002 \002(\005\"a\n\036fmi2_import_free_fmu_s"
     "tate_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006status\030\002"
-    " \002(\0162\033.fmitcp_proto.fmi2_status_t\"j\n*fmi"
+    " \002(\0162\033.fmitcp_proto.fmi2_status_t\"y\n*fmi"
     "2_import_get_directional_derivative_req\022"
-    "\022\n\nmessage_id\030\001 \002(\005\022\r\n\005v_ref\030\002 \003(\005\022\r\n\005z_"
-    "ref\030\003 \003(\005\022\n\n\002dv\030\004 \003(\001\"y\n*fmi2_import_get"
-    "_directional_derivative_res\022\022\n\nmessage_i"
-    "d\030\001 \002(\005\022\n\n\002dz\030\002 \003(\001\022+\n\006status\030\003 \002(\0162\033.fm"
-    "itcp_proto.fmi2_status_t\"0\n\013get_xml_req\022"
-    "\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\".\n\013ge"
-    "t_xml_res\022\022\n\nmessage_id\030\001 \002(\005\022\013\n\003xml\030\002 \002"
-    "(\t*\234\001\n\rfmi2_status_t\022\022\n\016fmi2_status_ok\020\000"
-    "\022\027\n\023fmi2_status_warning\020\001\022\027\n\023fmi2_status"
-    "_discard\020\002\022\025\n\021fmi2_status_error\020\003\022\025\n\021fmi"
-    "2_status_fatal\020\004\022\027\n\023fmi2_status_pending\020"
-    "\005*z\n\022fmi2_status_kind_t\022\027\n\023fmi2_do_step_"
-    "status\020\000\022\027\n\023fmi2_pending_status\020\001\022\035\n\031fmi"
-    "2_last_successful_time\020\002\022\023\n\017fmi2_termina"
-    "ted\020\003*T\n\017jm_status_enu_t\022\023\n\017jm_status_er"
-    "ror\020\000\022\025\n\021jm_status_success\020\001\022\025\n\021jm_statu"
-    "s_warning\020\002", 20131);
+    "\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\022\r\n\005v_"
+    "ref\030\003 \003(\005\022\r\n\005z_ref\030\004 \003(\005\022\n\n\002dv\030\005 \003(\001\"y\n*"
+    "fmi2_import_get_directional_derivative_r"
+    "es\022\022\n\nmessage_id\030\001 \002(\005\022\n\n\002dz\030\002 \003(\001\022+\n\006st"
+    "atus\030\003 \002(\0162\033.fmitcp_proto.fmi2_status_t\""
+    "0\n\013get_xml_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fm"
+    "uId\030\002 \002(\005\".\n\013get_xml_res\022\022\n\nmessage_id\030\001"
+    " \002(\005\022\013\n\003xml\030\002 \002(\t*\234\001\n\rfmi2_status_t\022\022\n\016f"
+    "mi2_status_ok\020\000\022\027\n\023fmi2_status_warning\020\001"
+    "\022\027\n\023fmi2_status_discard\020\002\022\025\n\021fmi2_status"
+    "_error\020\003\022\025\n\021fmi2_status_fatal\020\004\022\027\n\023fmi2_"
+    "status_pending\020\005*z\n\022fmi2_status_kind_t\022\027"
+    "\n\023fmi2_do_step_status\020\000\022\027\n\023fmi2_pending_"
+    "status\020\001\022\035\n\031fmi2_last_successful_time\020\002\022"
+    "\023\n\017fmi2_terminated\020\003*T\n\017jm_status_enu_t\022"
+    "\023\n\017jm_status_error\020\000\022\025\n\021jm_status_succes"
+    "s\020\001\022\025\n\021jm_status_warning\020\002", 20146);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "fmitcp.proto", &protobuf_RegisterTypes);
   fmitcp_message::default_instance_ = new fmitcp_message();
@@ -30557,6 +30558,7 @@ void fmi2_import_free_fmu_state_res::Swap(fmi2_import_free_fmu_state_res* other)
 
 #ifndef _MSC_VER
 const int fmi2_import_get_directional_derivative_req::kMessageIdFieldNumber;
+const int fmi2_import_get_directional_derivative_req::kFmuIdFieldNumber;
 const int fmi2_import_get_directional_derivative_req::kVRefFieldNumber;
 const int fmi2_import_get_directional_derivative_req::kZRefFieldNumber;
 const int fmi2_import_get_directional_derivative_req::kDvFieldNumber;
@@ -30579,6 +30581,7 @@ fmi2_import_get_directional_derivative_req::fmi2_import_get_directional_derivati
 void fmi2_import_get_directional_derivative_req::SharedCtor() {
   _cached_size_ = 0;
   message_id_ = 0;
+  fmuid_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -30614,6 +30617,7 @@ fmi2_import_get_directional_derivative_req* fmi2_import_get_directional_derivati
 void fmi2_import_get_directional_derivative_req::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     message_id_ = 0;
+    fmuid_ = 0;
   }
   v_ref_.Clear();
   z_ref_.Clear();
@@ -30639,18 +30643,34 @@ bool fmi2_import_get_directional_derivative_req::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_v_ref;
+        if (input->ExpectTag(16)) goto parse_fmuId;
         break;
       }
       
-      // repeated int32 v_ref = 2;
+      // required int32 fmuId = 2;
       case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_fmuId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &fmuid_)));
+          set_has_fmuid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_v_ref;
+        break;
+      }
+      
+      // repeated int32 v_ref = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_v_ref:
           DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 1, 16, input, this->mutable_v_ref())));
+                 1, 24, input, this->mutable_v_ref())));
         } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
                    == ::google::protobuf::internal::WireFormatLite::
                       WIRETYPE_LENGTH_DELIMITED) {
@@ -30660,19 +30680,19 @@ bool fmi2_import_get_directional_derivative_req::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_v_ref;
-        if (input->ExpectTag(24)) goto parse_z_ref;
+        if (input->ExpectTag(24)) goto parse_v_ref;
+        if (input->ExpectTag(32)) goto parse_z_ref;
         break;
       }
       
-      // repeated int32 z_ref = 3;
-      case 3: {
+      // repeated int32 z_ref = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_z_ref:
           DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 1, 24, input, this->mutable_z_ref())));
+                 1, 32, input, this->mutable_z_ref())));
         } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
                    == ::google::protobuf::internal::WireFormatLite::
                       WIRETYPE_LENGTH_DELIMITED) {
@@ -30682,19 +30702,19 @@ bool fmi2_import_get_directional_derivative_req::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_z_ref;
-        if (input->ExpectTag(33)) goto parse_dv;
+        if (input->ExpectTag(32)) goto parse_z_ref;
+        if (input->ExpectTag(41)) goto parse_dv;
         break;
       }
       
-      // repeated double dv = 4;
-      case 4: {
+      // repeated double dv = 5;
+      case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
          parse_dv:
           DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 1, 33, input, this->mutable_dv())));
+                 1, 41, input, this->mutable_dv())));
         } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
                    == ::google::protobuf::internal::WireFormatLite::
                       WIRETYPE_LENGTH_DELIMITED) {
@@ -30704,7 +30724,7 @@ bool fmi2_import_get_directional_derivative_req::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(33)) goto parse_dv;
+        if (input->ExpectTag(41)) goto parse_dv;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -30732,22 +30752,27 @@ void fmi2_import_get_directional_derivative_req::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->message_id(), output);
   }
   
-  // repeated int32 v_ref = 2;
+  // required int32 fmuId = 2;
+  if (has_fmuid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->fmuid(), output);
+  }
+  
+  // repeated int32 v_ref = 3;
   for (int i = 0; i < this->v_ref_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(
-      2, this->v_ref(i), output);
+      3, this->v_ref(i), output);
   }
   
-  // repeated int32 z_ref = 3;
+  // repeated int32 z_ref = 4;
   for (int i = 0; i < this->z_ref_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(
-      3, this->z_ref(i), output);
+      4, this->z_ref(i), output);
   }
   
-  // repeated double dv = 4;
+  // repeated double dv = 5;
   for (int i = 0; i < this->dv_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(
-      4, this->dv(i), output);
+      5, this->dv(i), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -30763,22 +30788,27 @@ void fmi2_import_get_directional_derivative_req::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->message_id(), target);
   }
   
-  // repeated int32 v_ref = 2;
+  // required int32 fmuId = 2;
+  if (has_fmuid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->fmuid(), target);
+  }
+  
+  // repeated int32 v_ref = 3;
   for (int i = 0; i < this->v_ref_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteInt32ToArray(2, this->v_ref(i), target);
+      WriteInt32ToArray(3, this->v_ref(i), target);
   }
   
-  // repeated int32 z_ref = 3;
+  // repeated int32 z_ref = 4;
   for (int i = 0; i < this->z_ref_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteInt32ToArray(3, this->z_ref(i), target);
+      WriteInt32ToArray(4, this->z_ref(i), target);
   }
   
-  // repeated double dv = 4;
+  // repeated double dv = 5;
   for (int i = 0; i < this->dv_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteDoubleToArray(4, this->dv(i), target);
+      WriteDoubleToArray(5, this->dv(i), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -30799,8 +30829,15 @@ int fmi2_import_get_directional_derivative_req::ByteSize() const {
           this->message_id());
     }
     
+    // required int32 fmuId = 2;
+    if (has_fmuid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->fmuid());
+    }
+    
   }
-  // repeated int32 v_ref = 2;
+  // repeated int32 v_ref = 3;
   {
     int data_size = 0;
     for (int i = 0; i < this->v_ref_size(); i++) {
@@ -30810,7 +30847,7 @@ int fmi2_import_get_directional_derivative_req::ByteSize() const {
     total_size += 1 * this->v_ref_size() + data_size;
   }
   
-  // repeated int32 z_ref = 3;
+  // repeated int32 z_ref = 4;
   {
     int data_size = 0;
     for (int i = 0; i < this->z_ref_size(); i++) {
@@ -30820,7 +30857,7 @@ int fmi2_import_get_directional_derivative_req::ByteSize() const {
     total_size += 1 * this->z_ref_size() + data_size;
   }
   
-  // repeated double dv = 4;
+  // repeated double dv = 5;
   {
     int data_size = 0;
     data_size = 8 * this->dv_size();
@@ -30859,6 +30896,9 @@ void fmi2_import_get_directional_derivative_req::MergeFrom(const fmi2_import_get
     if (from.has_message_id()) {
       set_message_id(from.message_id());
     }
+    if (from.has_fmuid()) {
+      set_fmuid(from.fmuid());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -30876,7 +30916,7 @@ void fmi2_import_get_directional_derivative_req::CopyFrom(const fmi2_import_get_
 }
 
 bool fmi2_import_get_directional_derivative_req::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
   
   return true;
 }
@@ -30884,6 +30924,7 @@ bool fmi2_import_get_directional_derivative_req::IsInitialized() const {
 void fmi2_import_get_directional_derivative_req::Swap(fmi2_import_get_directional_derivative_req* other) {
   if (other != this) {
     std::swap(message_id_, other->message_id_);
+    std::swap(fmuid_, other->fmuid_);
     v_ref_.Swap(&other->v_ref_);
     z_ref_.Swap(&other->z_ref_);
     dv_.Swap(&other->dv_);

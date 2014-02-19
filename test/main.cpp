@@ -162,41 +162,76 @@ public:
     }
 
     void on_fmi2_import_set_debug_logging_res(int message_id, fmitcp_proto::fmi2_status_t status){
-        m_pump->exitEventLoop();
+        assertMessageId(message_id);
+        std::vector<int> valueRefs;
+        std::vector<double> values;
+        fmi2_import_set_real(messageId(), 0, valueRefs, values);
     }
 
+    /*
+        void fmi2_import_get_integer(int message_id, int fmuId, const vector<int>& valueRefs);
+        void fmi2_import_get_boolean(int message_id, int fmuId, const vector<int>& valueRefs);
+        void fmi2_import_get_string (int message_id, int fmuId, const vector<int>& valueRefs);
+        void fmi2_import_get_fmu_state();
+        void fmi2_import_set_fmu_state();
+        void fmi2_import_free_fmu_state();
+        void fmi2_import_serialized_fmu_state_size();
+        void fmi2_import_serialize_fmu_state();
+        void fmi2_import_de_serialize_fmu_state();
+        void fmi2_import_get_directional_derivative(int message_id, int fmuId, const vector<int>& v_ref, const vector<int>& z_ref, const vector<double>& dv);
+*/
+
+
+
     void on_fmi2_import_set_real_res(int message_id, fmitcp_proto::fmi2_status_t status){
-        m_pump->exitEventLoop();
+        assertMessageId(message_id);
+        std::vector<int> valueRefs;
+        std::vector<int> values;
+        fmi2_import_set_integer(messageId(), 0, valueRefs, values);
     }
 
     void on_fmi2_import_set_integer_res(int message_id, fmitcp_proto::fmi2_status_t status){
-        m_pump->exitEventLoop();
+        assertMessageId(message_id);
+        std::vector<int> valueRefs;
+        std::vector<bool> values;
+        fmi2_import_set_boolean(messageId(), 0, valueRefs, values);
     }
 
     void on_fmi2_import_set_boolean_res(int message_id, fmitcp_proto::fmi2_status_t status){
-        m_pump->exitEventLoop();
+        assertMessageId(message_id);
+        std::vector<int> valueRefs;
+        std::vector<string> values;
+        fmi2_import_set_string(messageId(), 0, valueRefs, values);
     }
 
     void on_fmi2_import_set_string_res(int message_id, fmitcp_proto::fmi2_status_t status){
-        m_pump->exitEventLoop();
+        std::vector<int> valueRefs;
+        fmi2_import_get_real(messageId(), 0, valueRefs);
     }
 
     void on_fmi2_import_get_real_res(int message_id, const vector<double>& values, fmitcp_proto::fmi2_status_t status){
-        m_pump->exitEventLoop();
+        std::vector<int> valueRefs;
+        fmi2_import_get_integer(messageId(), 0, valueRefs);
     }
 
     void on_fmi2_import_get_integer_res(int message_id, const vector<int>& values, fmitcp_proto::fmi2_status_t status){
-        m_pump->exitEventLoop();
+        std::vector<int> valueRefs;
+        fmi2_import_get_boolean(messageId(), 0, valueRefs);
     }
 
     void on_fmi2_import_get_boolean_res(int message_id, const vector<bool>& values, fmitcp_proto::fmi2_status_t status){
-        m_pump->exitEventLoop();
+        std::vector<int> valueRefs;
+        fmi2_import_get_string(messageId(), 0, valueRefs);
     }
 
     void on_fmi2_import_get_string_res(int message_id, const vector<string>& values, fmitcp_proto::fmi2_status_t status){
-        m_pump->exitEventLoop();
+        std::vector<int> v_ref;
+        std::vector<int> z_ref;
+        std::vector<double> dv;
+        fmi2_import_get_directional_derivative(messageId(), 0, v_ref, z_ref, dv);
     }
 
+    /*
     void on_fmi2_import_get_fmu_state_res(int message_id, int stateId){
         m_pump->exitEventLoop();
     }
@@ -208,7 +243,11 @@ public:
     void on_fmi2_import_free_fmu_state_res(int message_id, fmitcp_proto::fmi2_status_t status){
         m_pump->exitEventLoop();
     }
+    */
 
+    void on_fmi2_import_get_directional_derivative_res(int mid, const vector<double>& dz, fmitcp_proto::fmi2_status_t status){
+        m_pump->exitEventLoop();
+    }
 
     void onDisconnect(){
         m_logger.log(Logger::DEBUG,"TestClient::onDisconnect\n");

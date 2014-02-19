@@ -9741,10 +9741,17 @@ class fmi2_import_get_directional_derivative_req : public ::google::protobuf::Me
   inline ::google::protobuf::int32 message_id() const;
   inline void set_message_id(::google::protobuf::int32 value);
   
-  // repeated int32 v_ref = 2;
+  // required int32 fmuId = 2;
+  inline bool has_fmuid() const;
+  inline void clear_fmuid();
+  static const int kFmuIdFieldNumber = 2;
+  inline ::google::protobuf::int32 fmuid() const;
+  inline void set_fmuid(::google::protobuf::int32 value);
+  
+  // repeated int32 v_ref = 3;
   inline int v_ref_size() const;
   inline void clear_v_ref();
-  static const int kVRefFieldNumber = 2;
+  static const int kVRefFieldNumber = 3;
   inline ::google::protobuf::int32 v_ref(int index) const;
   inline void set_v_ref(int index, ::google::protobuf::int32 value);
   inline void add_v_ref(::google::protobuf::int32 value);
@@ -9753,10 +9760,10 @@ class fmi2_import_get_directional_derivative_req : public ::google::protobuf::Me
   inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_v_ref();
   
-  // repeated int32 z_ref = 3;
+  // repeated int32 z_ref = 4;
   inline int z_ref_size() const;
   inline void clear_z_ref();
-  static const int kZRefFieldNumber = 3;
+  static const int kZRefFieldNumber = 4;
   inline ::google::protobuf::int32 z_ref(int index) const;
   inline void set_z_ref(int index, ::google::protobuf::int32 value);
   inline void add_z_ref(::google::protobuf::int32 value);
@@ -9765,10 +9772,10 @@ class fmi2_import_get_directional_derivative_req : public ::google::protobuf::Me
   inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_z_ref();
   
-  // repeated double dv = 4;
+  // repeated double dv = 5;
   inline int dv_size() const;
   inline void clear_dv();
-  static const int kDvFieldNumber = 4;
+  static const int kDvFieldNumber = 5;
   inline double dv(int index) const;
   inline void set_dv(int index, double value);
   inline void add_dv(double value);
@@ -9781,16 +9788,19 @@ class fmi2_import_get_directional_derivative_req : public ::google::protobuf::Me
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
+  inline void set_has_fmuid();
+  inline void clear_has_fmuid();
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
+  ::google::protobuf::int32 message_id_;
+  ::google::protobuf::int32 fmuid_;
   ::google::protobuf::RepeatedField< ::google::protobuf::int32 > v_ref_;
   ::google::protobuf::RepeatedField< ::google::protobuf::int32 > z_ref_;
   ::google::protobuf::RepeatedField< double > dv_;
-  ::google::protobuf::int32 message_id_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
   
   friend void  protobuf_AddDesc_fmitcp_2eproto();
   friend void protobuf_AssignDesc_fmitcp_2eproto();
@@ -18098,7 +18108,29 @@ inline void fmi2_import_get_directional_derivative_req::set_message_id(::google:
   message_id_ = value;
 }
 
-// repeated int32 v_ref = 2;
+// required int32 fmuId = 2;
+inline bool fmi2_import_get_directional_derivative_req::has_fmuid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void fmi2_import_get_directional_derivative_req::set_has_fmuid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void fmi2_import_get_directional_derivative_req::clear_has_fmuid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void fmi2_import_get_directional_derivative_req::clear_fmuid() {
+  fmuid_ = 0;
+  clear_has_fmuid();
+}
+inline ::google::protobuf::int32 fmi2_import_get_directional_derivative_req::fmuid() const {
+  return fmuid_;
+}
+inline void fmi2_import_get_directional_derivative_req::set_fmuid(::google::protobuf::int32 value) {
+  set_has_fmuid();
+  fmuid_ = value;
+}
+
+// repeated int32 v_ref = 3;
 inline int fmi2_import_get_directional_derivative_req::v_ref_size() const {
   return v_ref_.size();
 }
@@ -18123,7 +18155,7 @@ fmi2_import_get_directional_derivative_req::mutable_v_ref() {
   return &v_ref_;
 }
 
-// repeated int32 z_ref = 3;
+// repeated int32 z_ref = 4;
 inline int fmi2_import_get_directional_derivative_req::z_ref_size() const {
   return z_ref_.size();
 }
@@ -18148,7 +18180,7 @@ fmi2_import_get_directional_derivative_req::mutable_z_ref() {
   return &z_ref_;
 }
 
-// repeated double dv = 4;
+// repeated double dv = 5;
 inline int fmi2_import_get_directional_derivative_req::dv_size() const {
   return dv_.size();
 }

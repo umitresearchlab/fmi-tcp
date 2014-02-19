@@ -579,3 +579,138 @@ void Client::fmi2_import_set_real(int message_id, int fmuId, const vector<int>& 
 
     sendMessage(&m);
 }
+
+void Client::fmi2_import_set_integer(int message_id, int fmuId, const vector<int>& valueRefs, const vector<int>& values){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_set_integer_req);
+
+    fmi2_import_set_integer_req * req = m.mutable_fmi2_import_set_integer_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+    for(int i=0; i<valueRefs.size(); i++)
+        req->set_valuereferences(i,valueRefs[i]);
+    for(int i=0; i<values.size(); i++)
+        req->set_values(i,values[i]);
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_set_integer_req(mid=%d,fmu=%d,vrs=...,values=...)\n", message_id, fmuId);
+
+    sendMessage(&m);
+}
+
+void Client::fmi2_import_set_boolean(int message_id, int fmuId, const vector<int>& valueRefs, const vector<bool>& values){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_set_boolean_req);
+
+    fmi2_import_set_boolean_req * req = m.mutable_fmi2_import_set_boolean_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+    for(int i=0; i<valueRefs.size(); i++)
+        req->set_valuereferences(i,valueRefs[i]);
+    for(int i=0; i<values.size(); i++)
+        req->set_values(i,values[i]);
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_set_boolean_req(mid=%d,fmu=%d,vrs=...,values=...)\n", message_id, fmuId);
+
+    sendMessage(&m);
+}
+
+
+void Client::fmi2_import_set_string(int message_id, int fmuId, const vector<int>& valueRefs, const vector<string>& values){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_set_string_req);
+
+    fmi2_import_set_string_req * req = m.mutable_fmi2_import_set_string_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+    for(int i=0; i<valueRefs.size(); i++)
+        req->set_valuereferences(i,valueRefs[i]);
+    for(int i=0; i<values.size(); i++)
+        req->set_values(i,values[i]);
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_set_string_req(mid=%d,fmu=%d,vrs=...,values=...)\n", message_id, fmuId);
+
+    sendMessage(&m);
+}
+
+void Client::fmi2_import_get_real(int message_id, int fmuId, const vector<int>& valueRefs){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_get_real_req);
+
+    fmi2_import_get_real_req * req = m.mutable_fmi2_import_get_real_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+    for(int i=0; i<valueRefs.size(); i++)
+        req->set_valuereferences(i,valueRefs[i]);
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_get_real_req(mid=%d,fmu=%d,vrs=...)\n", message_id, fmuId);
+
+    sendMessage(&m);
+}
+
+void Client::fmi2_import_get_integer(int message_id, int fmuId, const vector<int>& valueRefs){
+
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_get_integer_req);
+
+    fmi2_import_get_integer_req * req = m.mutable_fmi2_import_get_integer_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+    for(int i=0; i<valueRefs.size(); i++)
+        req->set_valuereferences(i,valueRefs[i]);
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_get_integer_req(mid=%d,fmu=%d,vrs=...)\n", message_id, fmuId);
+
+    sendMessage(&m);
+}
+
+void Client::fmi2_import_get_boolean(int message_id, int fmuId, const vector<int>& valueRefs){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_get_boolean_req);
+
+    fmi2_import_get_boolean_req * req = m.mutable_fmi2_import_get_boolean_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+    for(int i=0; i<valueRefs.size(); i++)
+        req->set_valuereferences(i,valueRefs[i]);
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_get_boolean_req(mid=%d,fmu=%d,vrs=...)\n", message_id, fmuId);
+
+    sendMessage(&m);
+}
+
+void Client::fmi2_import_get_string (int message_id, int fmuId, const vector<int>& valueRefs){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_get_string_req);
+
+    fmi2_import_get_string_req * req = m.mutable_fmi2_import_get_string_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+    for(int i=0; i<valueRefs.size(); i++)
+        req->set_valuereferences(i,valueRefs[i]);
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_get_string_req(mid=%d,fmu=%d,vrs=...)\n", message_id, fmuId);
+
+    sendMessage(&m);
+}
+
+void Client::fmi2_import_get_directional_derivative(int message_id, int fmuId,
+                                                    const vector<int>& v_ref,
+                                                    const vector<int>& z_ref,
+                                                    const vector<double>& dv){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_get_directional_derivative_req);
+
+    fmi2_import_get_directional_derivative_req * req = m.mutable_fmi2_import_get_directional_derivative_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+    for(int i=0; i<v_ref.size(); i++)
+        req->set_v_ref(i,v_ref[i]);
+    for(int i=0; i<z_ref.size(); i++)
+        req->set_z_ref(i,z_ref[i]);
+    for(int i=0; i<dv.size(); i++)
+        req->set_dv(i,dv[i]);
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_get_directional_derivative_req(mid=%d,fmu=%d,vref=...,zref=...,dv=...)\n", message_id, fmuId);
+
+    sendMessage(&m);
+}
