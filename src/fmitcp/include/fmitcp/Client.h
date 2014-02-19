@@ -45,7 +45,7 @@ namespace fmitcp {
         void clientError(lw_client c, lw_error error);
 
         // Response functions - to be implemented by the user
-        virtual void onGetXmlRes(string xml){}
+        virtual void onGetXmlRes(int mid, string xml){}
         virtual void on_fmi2_import_instantiate_slave_res               (int mid, fmitcp_proto::jm_status_enu_t status){}
         virtual void on_fmi2_import_initialize_slave_res                (int mid, fmitcp_proto::fmi2_status_t status){}
         virtual void on_fmi2_import_terminate_slave_res                 (int mid, fmitcp_proto::fmi2_status_t status){}
@@ -150,7 +150,7 @@ namespace fmitcp {
         void fmi2_import_get_directional_derivative(int message_id, int fmuId, const vector<int>& v_ref, const vector<int>& z_ref, const vector<double>& dv);
 
         // ========= NETWORK SPECIFIC FUNCTIONS ============
-        void get_xml();
+        void get_xml(int message_id, int fmuId);
     };
 
 };

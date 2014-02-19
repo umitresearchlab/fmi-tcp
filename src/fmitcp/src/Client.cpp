@@ -222,6 +222,11 @@ void Client::clientData(lw_client c, const char* data, long size){
         on_fmi2_import_get_directional_derivative_res(r->message_id(),dz,r->status());
 
     } else if(type == fmitcp_message_Type_type_get_xml_res){
+
+        get_xml_res * r = res.mutable_get_xml_res();
+        m_logger.log(Logger::NETWORK,"< get_xml_res(mid=%d,xml=...)\n",r->message_id());
+        onGetXmlRes(r->message_id(), r->xml());
+
     } else {
         m_logger.log(Logger::ERROR,"Message type not recognized: %d!\n",type);
     }
@@ -711,6 +716,20 @@ void Client::fmi2_import_get_directional_derivative(int message_id, int fmuId,
         req->set_dv(i,dv[i]);
 
     m_logger.log(Logger::NETWORK, "> fmi2_import_get_directional_derivative_req(mid=%d,fmu=%d,vref=...,zref=...,dv=...)\n", message_id, fmuId);
+
+    sendMessage(&m);
+}
+
+
+void Client::get_xml(int message_id, int fmuId){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_get_xml_req);
+
+    get_xml_req * req = m.mutable_get_xml_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+
+    m_logger.log(Logger::NETWORK, "> get_xml_req(mid=%d,fmu=%d)\n", message_id, fmuId);
 
     sendMessage(&m);
 }

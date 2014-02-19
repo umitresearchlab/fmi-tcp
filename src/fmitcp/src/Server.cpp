@@ -630,8 +630,23 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         m_logger.log(Logger::NETWORK,"> fmi2_import_get_directional_derivative_res(mid=%d,status=%d,dz=...)\n",getStatusRes->message_id(),getStatusRes->status());
 
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_get_xml_req){
-        // TODO
-        sendResponse = false;
+
+        // Unpack message
+        fmitcp_proto::get_xml_req * r = req.mutable_get_xml_req();
+        m_logger.log(Logger::NETWORK,"< get_xml_req(mid=%d,fmuId=%d)\n",r->message_id(),r->fmuid());
+
+        fmitcp_proto::get_xml_res * getStatusRes = res.mutable_get_xml_res();
+        res.set_type(fmitcp_proto::fmitcp_message_Type_type_get_xml_res);
+        getStatusRes->set_message_id(r->message_id());
+        getStatusRes->set_xml("");
+
+        if(!m_sendDummyResponses){
+            // TODO: interact with FMU
+        }
+
+        // Create response
+        m_logger.log(Logger::NETWORK,"> get_xml_res(mid=%d,xml=...)\n",getStatusRes->message_id());
+
     } else {
         // Something is wrong.
         sendResponse = false;

@@ -205,26 +205,31 @@ public:
     }
 
     void on_fmi2_import_set_string_res(int message_id, fmitcp_proto::fmi2_status_t status){
+        assertMessageId(message_id);
         std::vector<int> valueRefs;
         fmi2_import_get_real(messageId(), 0, valueRefs);
     }
 
     void on_fmi2_import_get_real_res(int message_id, const vector<double>& values, fmitcp_proto::fmi2_status_t status){
+        assertMessageId(message_id);
         std::vector<int> valueRefs;
         fmi2_import_get_integer(messageId(), 0, valueRefs);
     }
 
     void on_fmi2_import_get_integer_res(int message_id, const vector<int>& values, fmitcp_proto::fmi2_status_t status){
+        assertMessageId(message_id);
         std::vector<int> valueRefs;
         fmi2_import_get_boolean(messageId(), 0, valueRefs);
     }
 
     void on_fmi2_import_get_boolean_res(int message_id, const vector<bool>& values, fmitcp_proto::fmi2_status_t status){
+        assertMessageId(message_id);
         std::vector<int> valueRefs;
         fmi2_import_get_string(messageId(), 0, valueRefs);
     }
 
     void on_fmi2_import_get_string_res(int message_id, const vector<string>& values, fmitcp_proto::fmi2_status_t status){
+        assertMessageId(message_id);
         std::vector<int> v_ref;
         std::vector<int> z_ref;
         std::vector<double> dv;
@@ -245,9 +250,15 @@ public:
     }
     */
 
-    void on_fmi2_import_get_directional_derivative_res(int mid, const vector<double>& dz, fmitcp_proto::fmi2_status_t status){
-        m_pump->exitEventLoop();
+    void on_fmi2_import_get_directional_derivative_res(int message_id, const vector<double>& dz, fmitcp_proto::fmi2_status_t status){
+        assertMessageId(message_id);
+        get_xml(messageId(),0);
     }
+
+    void onGetXmlRes(int message_id, string xml){
+        assertMessageId(message_id);
+        m_pump->exitEventLoop();
+    };
 
     void onDisconnect(){
         m_logger.log(Logger::DEBUG,"TestClient::onDisconnect\n");
@@ -258,6 +269,7 @@ public:
         m_logger.log(Logger::DEBUG,"TestClient::onError\n");
         m_pump->exitEventLoop();
     };
+
 };
 
 void printHelp(){
