@@ -2,6 +2,9 @@
 fmu
 build
 bin/*
+lib/*
+src/fmitcp/src/fmitcp.pb.cc
+src/fmitcp/include/fmitcp/fmitcp.pb.h
 .cproject
 .project
 .settings/*
