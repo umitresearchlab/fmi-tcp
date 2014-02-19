@@ -48,7 +48,7 @@ namespace fmitcp {
         /// Set to true to start ignoring the local FMU and just send back dummy responses. Good for debugging the protocol.
         void sendDummyResponses(bool);
 
-        void sendMessage(lw_client c, fmitcp_proto::fmitcp_message message);
+        void sendMessage(lw_client c, fmitcp_proto::fmitcp_message * message);
 
         Logger * getLogger();
         void setLogger(const Logger& logger);

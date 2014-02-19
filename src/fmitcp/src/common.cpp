@@ -2,9 +2,9 @@
 #include <vector>
 #include <string>
 
-void fmitcp::sendProtoBuffer(lw_client c, fmitcp_proto::fmitcp_message message){
+void fmitcp::sendProtoBuffer(lw_client c, fmitcp_proto::fmitcp_message * message){
     std::string s;
-    bool status = message.SerializeToString(&s);
+    bool status = message->SerializeToString(&s);
     //printf("serialize status=%d\n", status);
     lw_stream_write(c, s.c_str(), s.size());
     //std::string newline = "\n";
@@ -15,7 +15,6 @@ void fmitcp::sendProtoBuffer(lw_client c, fmitcp_proto::fmitcp_message message){
 std::string fmitcp::dataToString(const char* data, long size) {
     std::string data2(data, size);
     return data2;
-
     /*
     // Make this data safe!
     std::string data2;

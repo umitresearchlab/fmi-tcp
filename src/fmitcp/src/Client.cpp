@@ -39,6 +39,8 @@ void Client::clientData(lw_client c, const char* data, long size){
     bool status = res.ParseFromString(data2);
     fmitcp_message_Type type = res.type();
 
+    m_logger.log(Logger::DEBUG,"Client parse status: %d\n", status);
+
     // Check type and run the corresponding event handler
     if(type == fmitcp_message_Type_type_fmi2_import_instantiate_slave_res){
         fmi2_import_instantiate_slave_res * r = res.mutable_fmi2_import_instantiate_slave_res();
@@ -149,14 +151,62 @@ void Client::clientData(lw_client c, const char* data, long size){
         on_fmi2_import_get_version_res(r->message_id(),r->version());
 
     } else if(type == fmitcp_message_Type_type_fmi2_import_set_debug_logging_res){
+        fmi2_import_set_debug_logging_res * r = res.mutable_fmi2_import_set_debug_logging_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_set_debug_logging_res(mid=%d,status=%d)\n",r->message_id(), r->status());
+        on_fmi2_import_set_debug_logging_res(r->message_id(),r->status());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_set_real_res){
+        fmi2_import_set_real_res * r = res.mutable_fmi2_import_set_real_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_set_real_res(mid=%d,status=%d)\n",r->message_id(), r->status());
+        on_fmi2_import_set_real_res(r->message_id(),r->status());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_set_integer_res){
+        fmi2_import_set_integer_res * r = res.mutable_fmi2_import_set_integer_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_set_integer_res(mid=%d,status=%d)\n",r->message_id(), r->status());
+        on_fmi2_import_set_integer_res(r->message_id(),r->status());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_set_boolean_res){
+        fmi2_import_set_boolean_res * r = res.mutable_fmi2_import_set_boolean_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_set_boolean_res(mid=%d,status=%d)\n",r->message_id(), r->status());
+        on_fmi2_import_set_boolean_res(r->message_id(),r->status());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_set_string_res){
+        fmi2_import_set_string_res * r = res.mutable_fmi2_import_set_string_res();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_set_string_res(mid=%d,status=%d)\n",r->message_id(), r->status());
+        on_fmi2_import_set_string_res(r->message_id(),r->status());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_real_res){
+        fmi2_import_get_real_res * r = res.mutable_fmi2_import_get_real_res();
+        std::vector<double> values;
+        for(int i=0; i<r->values_size(); i++)
+            values.push_back(r->values(i));
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_real_res(mid=%d,values=...,status=%d)\n",r->message_id(), r->status());
+        on_fmi2_import_get_real_res(r->message_id(),values,r->status());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_integer_res){
+        fmi2_import_get_integer_res * r = res.mutable_fmi2_import_get_integer_res();
+        std::vector<int> values;
+        for(int i=0; i<r->values_size(); i++)
+            values.push_back(r->values(i));
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_integer_res(mid=%d,values=...,status=%d)\n",r->message_id(), r->status());
+        on_fmi2_import_get_integer_res(r->message_id(),values,r->status());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_boolean_res){
+        fmi2_import_get_boolean_res * r = res.mutable_fmi2_import_get_boolean_res();
+        std::vector<bool> values;
+        for(int i=0; i<r->values_size(); i++)
+            values.push_back(r->values(i));
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_boolean_res(mid=%d,values=...,status=%d)\n",r->message_id(), r->status());
+        on_fmi2_import_get_boolean_res(r->message_id(),values,r->status());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_string_res){
+        fmi2_import_get_string_res * r = res.mutable_fmi2_import_get_string_res();
+        std::vector<string> values;
+        for(int i=0; i<r->values_size(); i++)
+            values.push_back(r->values(i));
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_string_res(mid=%d,values=...,status=%d)\n",r->message_id(), r->status());
+        on_fmi2_import_get_string_res(r->message_id(),values,r->status());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_fmu_state_res){
     } else if(type == fmitcp_message_Type_type_fmi2_import_set_fmu_state_res){
     } else if(type == fmitcp_message_Type_type_fmi2_import_free_fmu_state_res){
@@ -164,6 +214,13 @@ void Client::clientData(lw_client c, const char* data, long size){
     } else if(type == fmitcp_message_Type_type_fmi2_import_serialize_fmu_state_res){
     } else if(type == fmitcp_message_Type_type_fmi2_import_de_serialize_fmu_state_res){
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_directional_derivative_res){
+        fmi2_import_get_directional_derivative_res * r = res.mutable_fmi2_import_get_directional_derivative_res();
+        std::vector<double> dz;
+        for(int i=0; i<r->dz_size(); i++)
+            dz.push_back(r->dz(i));
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_directional_derivative_res(mid=%d,dz=...,status=%d)\n",r->message_id(), r->status());
+        on_fmi2_import_get_directional_derivative_res(r->message_id(),dz,r->status());
+
     } else if(type == fmitcp_message_Type_type_get_xml_res){
     } else {
         m_logger.log(Logger::ERROR,"Message type not recognized: %d!\n",type);
@@ -198,7 +255,7 @@ Logger * Client::getLogger() {
     return &m_logger;
 }
 
-void Client::sendMessage(fmitcp_proto::fmitcp_message message){
+void Client::sendMessage(fmitcp_proto::fmitcp_message * message){
     fmitcp::sendProtoBuffer(m_client,message);
 }
 
@@ -252,7 +309,7 @@ void Client::fmi2_import_instantiate_slave( int message_id,
         resourceLocation.c_str(),
         visible);
 
-    sendMessage(m);
+    sendMessage(&m);
 }
 
 void Client::fmi2_import_initialize_slave(int message_id, int fmuId, double relTol, double tStart, bool stopTimeDefined, double tStop){
@@ -271,7 +328,7 @@ void Client::fmi2_import_initialize_slave(int message_id, int fmuId, double relT
 
     m_logger.log(Logger::NETWORK, "> fmi2_import_initialize_slave_req(mid=%d,fmu=%d,relTol=%g,tStart=%g,tStop=%g)\n", message_id, fmuId, relTol, tStart, tStop);
 
-    sendMessage(m);
+    sendMessage(&m);
 }
 
 void Client::fmi2_import_terminate_slave(int message_id, int fmuId){
@@ -287,7 +344,7 @@ void Client::fmi2_import_terminate_slave(int message_id, int fmuId){
         message_id,
         fmuId);
 
-    sendMessage(m);
+    sendMessage(&m);
 }
 
 void Client::fmi2_import_reset_slave(int message_id, int fmuId){
@@ -303,7 +360,7 @@ void Client::fmi2_import_reset_slave(int message_id, int fmuId){
         message_id,
         fmuId);
 
-    sendMessage(m);
+    sendMessage(&m);
 }
 
 void Client::fmi2_import_free_slave_instance(int message_id,int fmuId){
@@ -316,7 +373,7 @@ void Client::fmi2_import_free_slave_instance(int message_id,int fmuId){
 
     m_logger.log(Logger::NETWORK, "> fmi2_import_free_slave_instance_req(mid=%d,fmu=%d)\n", message_id, fmuId);
 
-    sendMessage(m);
+    sendMessage(&m);
 }
 
 void Client::fmi2_import_set_real_input_derivatives(int message_id, int fmuId,
@@ -334,7 +391,7 @@ void Client::fmi2_import_set_real_input_derivatives(int message_id, int fmuId,
 
     m_logger.log(Logger::NETWORK, "> fmi2_import_set_real_input_derivatives_req(mid=%d,fmu=%d)\n", message_id, fmuId);
 
-    sendMessage(m);
+    sendMessage(&m);
 }
 
 void Client::fmi2_import_get_real_output_derivatives(int message_id, int fmuId, std::vector<int> valueRefs, std::vector<int> orders){
@@ -347,7 +404,7 @@ void Client::fmi2_import_get_real_output_derivatives(int message_id, int fmuId, 
 
     m_logger.log(Logger::NETWORK, "> fmi2_import_get_real_output_derivatives_req(mid=%d,fmu=%d)\n", message_id, fmuId);
 
-    sendMessage(m);
+    sendMessage(&m);
 }
 
 void Client::fmi2_import_cancel_step(int message_id, int fmuId){
@@ -360,7 +417,7 @@ void Client::fmi2_import_cancel_step(int message_id, int fmuId){
 
     m_logger.log(Logger::NETWORK, "> fmi2_import_cancel_step_req(mid=%d,fmu=%d)\n", message_id, fmuId);
 
-    sendMessage(m);
+    sendMessage(&m);
 }
 
 void Client::fmi2_import_do_step(int message_id,
@@ -388,7 +445,7 @@ void Client::fmi2_import_do_step(int message_id,
         communicationStepSize,
         newStep);
 
-    sendMessage(m);
+    sendMessage(&m);
 }
 
 void Client::fmi2_import_get_status(int message_id, int fmuId, fmitcp_proto::fmi2_status_kind_t s){
@@ -407,7 +464,7 @@ void Client::fmi2_import_get_status(int message_id, int fmuId, fmitcp_proto::fmi
         fmuId,
         s);
 
-    sendMessage(m);
+    sendMessage(&m);
 }
 
 void Client::fmi2_import_get_real_status(int message_id, int fmuId, fmitcp_proto::fmi2_status_kind_t s){
@@ -426,7 +483,7 @@ void Client::fmi2_import_get_real_status(int message_id, int fmuId, fmitcp_proto
         fmuId,
         s);
 
-    sendMessage(m);
+    sendMessage(&m);
 }
 
 void Client::fmi2_import_get_integer_status(int message_id, int fmuId, fmitcp_proto::fmi2_status_kind_t s){
@@ -441,7 +498,7 @@ void Client::fmi2_import_get_integer_status(int message_id, int fmuId, fmitcp_pr
 
     m_logger.log(Logger::NETWORK, "> fmi2_import_get_integer_status_req(mid=%d,fmu=%d,kind=%d)\n", message_id, fmuId, s);
 
-    sendMessage(m);
+    sendMessage(&m);
 }
 
 
@@ -457,7 +514,7 @@ void Client::fmi2_import_get_boolean_status(int message_id, int fmuId, fmitcp_pr
 
     m_logger.log(Logger::NETWORK, "> fmi2_import_get_boolean_status_req(mid=%d,fmu=%d,kind=%d)\n", message_id, fmuId, s);
 
-    sendMessage(m);
+    sendMessage(&m);
 }
 
 void Client::fmi2_import_get_string_status(int message_id, int fmuId, fmitcp_proto::fmi2_status_kind_t s){
@@ -472,5 +529,53 @@ void Client::fmi2_import_get_string_status(int message_id, int fmuId, fmitcp_pro
 
     m_logger.log(Logger::NETWORK, "> fmi2_import_get_string_status_req(mid=%d,fmu=%d,kind=%d)\n", message_id, fmuId, s);
 
-    sendMessage(m);
+    sendMessage(&m);
+}
+
+void Client::fmi2_import_get_version(int message_id, int fmuId){
+    // Construct message
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_get_version_req);
+
+    fmi2_import_get_version_req * req = m.mutable_fmi2_import_get_version_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_get_version_req(mid=%d,fmu=%d)\n", message_id, fmuId);
+
+    sendMessage(&m);
+}
+
+void Client::fmi2_import_set_debug_logging(int message_id, int fmuId, bool loggingOn, const std::vector<string> categories){
+    // Construct message
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_set_debug_logging_req);
+
+    fmi2_import_set_debug_logging_req * req = m.mutable_fmi2_import_set_debug_logging_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+    req->set_loggingon(loggingOn);
+    for(int i=0; i<categories.size(); i++)
+        req->set_categories(i,categories[i]);
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_set_debug_logging_req(mid=%d,fmu=%d,categories=...)\n", message_id, fmuId);
+
+    sendMessage(&m);
+}
+
+void Client::fmi2_import_set_real(int message_id, int fmuId, const vector<int>& valueRefs, const vector<double>& values){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_set_real_req);
+
+    fmi2_import_set_real_req * req = m.mutable_fmi2_import_set_real_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+    for(int i=0; i<valueRefs.size(); i++)
+        req->set_valuereferences(i,valueRefs[i]);
+    for(int i=0; i<values.size(); i++)
+        req->set_values(i,values[i]);
+
+    m_logger.log(Logger::NETWORK, "> fmi2_import_set_real_req(mid=%d,fmu=%d,vrs=...,values=...)\n", message_id, fmuId);
+
+    sendMessage(&m);
 }

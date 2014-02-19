@@ -49,7 +49,7 @@ void Server::clientData(lw_client c, const char* data, size_t size){
     bool parseStatus = req.ParseFromString(data2);
     fmitcp_proto::fmitcp_message_Type type = req.type();
 
-    //printf("Server parse status = %d\n", parseStatus);
+    m_logger.log(Logger::DEBUG,"Parse status: %d\n", parseStatus);
 
     fmitcp_proto::fmitcp_message res;
     bool sendResponse = true;
@@ -412,11 +412,43 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         // TODO
         sendResponse = false;
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_version_req){
-        // TODO
-        sendResponse = false;
+
+        // Unpack message
+        fmitcp_proto::fmi2_import_get_version_req * r = req.mutable_fmi2_import_get_version_req();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_version_req(mid=%d,fmuId=%d)\n",r->message_id(),r->fmuid());
+
+        // Defaults
+        fmitcp_proto::fmi2_import_get_version_res * getStatusRes = res.mutable_fmi2_import_get_version_res();
+        res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_version_res);
+        getStatusRes->set_message_id(r->message_id());
+        getStatusRes->set_version("VeRsIoN");
+
+        if(!m_sendDummyResponses){
+            // TODO: Step the FMU
+        }
+
+        // Create response
+        m_logger.log(Logger::NETWORK,"> fmi2_import_get_version_res(mid=%d,version=%s)\n",getStatusRes->message_id(),getStatusRes->version().c_str());
+
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_debug_logging_req){
-        // TODO
-        sendResponse = false;
+
+        // Unpack message
+        fmitcp_proto::fmi2_import_set_debug_logging_req * r = req.mutable_fmi2_import_set_debug_logging_req();
+        m_logger.log(Logger::NETWORK,"< fmi2_import_set_debug_logging_req(mid=%d,fmuId=%d,loggingOn=%d,categories=...)\n",r->message_id(),r->fmuid(),r->loggingon());
+
+        // Defaults
+        fmitcp_proto::fmi2_import_set_debug_logging_res * getStatusRes = res.mutable_fmi2_import_set_debug_logging_res();
+        res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_debug_logging_res);
+        getStatusRes->set_message_id(r->message_id());
+        getStatusRes->set_status(fmitcp_proto::fmi2_status_ok);
+
+        if(!m_sendDummyResponses){
+            // TODO: Step the FMU
+        }
+
+        // Create response
+        m_logger.log(Logger::NETWORK,"> fmi2_import_set_debug_logging_res(mid=%d,status=%d)\n",getStatusRes->message_id(),getStatusRes->status());
+
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_real_req){
         // TODO
         sendResponse = false;
@@ -472,7 +504,7 @@ void Server::clientData(lw_client c, const char* data, size_t size){
     }
 
     if(sendResponse){
-        sendMessage(c,res);
+        sendMessage(c,&res);
     }
 }
 void Server::error(lw_server s, lw_error error){
@@ -501,7 +533,7 @@ void Server::addFMU(string path){
 
 }
 
-void Server::sendMessage(lw_client c, fmitcp_proto::fmitcp_message message){
+void Server::sendMessage(lw_client c, fmitcp_proto::fmitcp_message * message){
    fmitcp::sendProtoBuffer(c,message);
 }
 

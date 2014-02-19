@@ -1793,9 +1793,10 @@ void protobuf_AssignDesc_fmitcp_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(fmi2_import_get_directional_derivative_req));
   fmi2_import_get_directional_derivative_res_descriptor_ = file->message_type(85);
-  static const int fmi2_import_get_directional_derivative_res_offsets_[2] = {
+  static const int fmi2_import_get_directional_derivative_res_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_get_directional_derivative_res, message_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_get_directional_derivative_res, dz_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(fmi2_import_get_directional_derivative_res, status_),
   };
   fmi2_import_get_directional_derivative_res_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -2651,7 +2652,7 @@ void protobuf_AddDesc_fmitcp_2eproto() {
     "\022\017\n\007version\030\002 \002(\t\"m\n!fmi2_import_set_deb"
     "ug_logging_req\022\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fm"
     "uId\030\002 \002(\005\022\021\n\tloggingOn\030\003 \002(\010\022\022\n\ncategori"
-    "es\030\004 \003(\005\"d\n!fmi2_import_set_debug_loggin"
+    "es\030\004 \003(\t\"d\n!fmi2_import_set_debug_loggin"
     "g_res\022\022\n\nmessage_id\030\001 \002(\005\022+\n\006status\030\002 \002("
     "\0162\033.fmitcp_proto.fmi2_status_t\"f\n\030fmi2_i"
     "mport_set_real_req\022\022\n\nmessage_id\030\001 \002(\005\022\r"
@@ -2709,21 +2710,22 @@ void protobuf_AddDesc_fmitcp_2eproto() {
     " \002(\0162\033.fmitcp_proto.fmi2_status_t\"j\n*fmi"
     "2_import_get_directional_derivative_req\022"
     "\022\n\nmessage_id\030\001 \002(\005\022\r\n\005v_ref\030\002 \003(\005\022\r\n\005z_"
-    "ref\030\003 \003(\005\022\n\n\002dv\030\004 \003(\001\"L\n*fmi2_import_get"
+    "ref\030\003 \003(\005\022\n\n\002dv\030\004 \003(\001\"y\n*fmi2_import_get"
     "_directional_derivative_res\022\022\n\nmessage_i"
-    "d\030\001 \002(\005\022\n\n\002dz\030\002 \003(\001\"0\n\013get_xml_req\022\022\n\nme"
-    "ssage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\".\n\013get_xml"
-    "_res\022\022\n\nmessage_id\030\001 \002(\005\022\013\n\003xml\030\002 \002(\t*\234\001"
-    "\n\rfmi2_status_t\022\022\n\016fmi2_status_ok\020\000\022\027\n\023f"
-    "mi2_status_warning\020\001\022\027\n\023fmi2_status_disc"
-    "ard\020\002\022\025\n\021fmi2_status_error\020\003\022\025\n\021fmi2_sta"
-    "tus_fatal\020\004\022\027\n\023fmi2_status_pending\020\005*z\n\022"
-    "fmi2_status_kind_t\022\027\n\023fmi2_do_step_statu"
-    "s\020\000\022\027\n\023fmi2_pending_status\020\001\022\035\n\031fmi2_las"
-    "t_successful_time\020\002\022\023\n\017fmi2_terminated\020\003"
-    "*T\n\017jm_status_enu_t\022\023\n\017jm_status_error\020\000"
-    "\022\025\n\021jm_status_success\020\001\022\025\n\021jm_status_war"
-    "ning\020\002", 20086);
+    "d\030\001 \002(\005\022\n\n\002dz\030\002 \003(\001\022+\n\006status\030\003 \002(\0162\033.fm"
+    "itcp_proto.fmi2_status_t\"0\n\013get_xml_req\022"
+    "\022\n\nmessage_id\030\001 \002(\005\022\r\n\005fmuId\030\002 \002(\005\".\n\013ge"
+    "t_xml_res\022\022\n\nmessage_id\030\001 \002(\005\022\013\n\003xml\030\002 \002"
+    "(\t*\234\001\n\rfmi2_status_t\022\022\n\016fmi2_status_ok\020\000"
+    "\022\027\n\023fmi2_status_warning\020\001\022\027\n\023fmi2_status"
+    "_discard\020\002\022\025\n\021fmi2_status_error\020\003\022\025\n\021fmi"
+    "2_status_fatal\020\004\022\027\n\023fmi2_status_pending\020"
+    "\005*z\n\022fmi2_status_kind_t\022\027\n\023fmi2_do_step_"
+    "status\020\000\022\027\n\023fmi2_pending_status\020\001\022\035\n\031fmi"
+    "2_last_successful_time\020\002\022\023\n\017fmi2_termina"
+    "ted\020\003*T\n\017jm_status_enu_t\022\023\n\017jm_status_er"
+    "ror\020\000\022\025\n\021jm_status_success\020\001\022\025\n\021jm_statu"
+    "s_warning\020\002", 20131);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "fmitcp.proto", &protobuf_RegisterTypes);
   fmitcp_message::default_instance_ = new fmitcp_message();
@@ -23464,28 +23466,24 @@ bool fmi2_import_set_debug_logging_req::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(32)) goto parse_categories;
+        if (input->ExpectTag(34)) goto parse_categories;
         break;
       }
       
-      // repeated int32 categories = 4;
+      // repeated string categories = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_categories:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 1, 32, input, this->mutable_categories())));
-        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
-                   == ::google::protobuf::internal::WireFormatLite::
-                      WIRETYPE_LENGTH_DELIMITED) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, this->mutable_categories())));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_categories()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->categories(0).data(), this->categories(0).length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(32)) goto parse_categories;
+        if (input->ExpectTag(34)) goto parse_categories;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -23523,9 +23521,12 @@ void fmi2_import_set_debug_logging_req::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->loggingon(), output);
   }
   
-  // repeated int32 categories = 4;
+  // repeated string categories = 4;
   for (int i = 0; i < this->categories_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(
+  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+    this->categories(i).data(), this->categories(i).length(),
+    ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
       4, this->categories(i), output);
   }
   
@@ -23552,10 +23553,13 @@ void fmi2_import_set_debug_logging_req::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->loggingon(), target);
   }
   
-  // repeated int32 categories = 4;
+  // repeated string categories = 4;
   for (int i = 0; i < this->categories_size(); i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->categories(i).data(), this->categories(i).length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteInt32ToArray(4, this->categories(i), target);
+      WriteStringToArray(4, this->categories(i), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -23589,14 +23593,11 @@ int fmi2_import_set_debug_logging_req::ByteSize() const {
     }
     
   }
-  // repeated int32 categories = 4;
-  {
-    int data_size = 0;
-    for (int i = 0; i < this->categories_size(); i++) {
-      data_size += ::google::protobuf::internal::WireFormatLite::
-        Int32Size(this->categories(i));
-    }
-    total_size += 1 * this->categories_size() + data_size;
+  // repeated string categories = 4;
+  total_size += 1 * this->categories_size();
+  for (int i = 0; i < this->categories_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->categories(i));
   }
   
   if (!unknown_fields().empty()) {
@@ -30906,6 +30907,7 @@ void fmi2_import_get_directional_derivative_req::Swap(fmi2_import_get_directiona
 #ifndef _MSC_VER
 const int fmi2_import_get_directional_derivative_res::kMessageIdFieldNumber;
 const int fmi2_import_get_directional_derivative_res::kDzFieldNumber;
+const int fmi2_import_get_directional_derivative_res::kStatusFieldNumber;
 #endif  // !_MSC_VER
 
 fmi2_import_get_directional_derivative_res::fmi2_import_get_directional_derivative_res()
@@ -30925,6 +30927,7 @@ fmi2_import_get_directional_derivative_res::fmi2_import_get_directional_derivati
 void fmi2_import_get_directional_derivative_res::SharedCtor() {
   _cached_size_ = 0;
   message_id_ = 0;
+  status_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -30960,6 +30963,7 @@ fmi2_import_get_directional_derivative_res* fmi2_import_get_directional_derivati
 void fmi2_import_get_directional_derivative_res::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     message_id_ = 0;
+    status_ = 0;
   }
   dz_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -31005,6 +31009,27 @@ bool fmi2_import_get_directional_derivative_res::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(17)) goto parse_dz;
+        if (input->ExpectTag(24)) goto parse_status;
+        break;
+      }
+      
+      // required .fmitcp_proto.fmi2_status_t status = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_status:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (fmitcp_proto::fmi2_status_t_IsValid(value)) {
+            set_status(static_cast< fmitcp_proto::fmi2_status_t >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(3, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -31038,6 +31063,12 @@ void fmi2_import_get_directional_derivative_res::SerializeWithCachedSizes(
       2, this->dz(i), output);
   }
   
+  // required .fmitcp_proto.fmi2_status_t status = 3;
+  if (has_status()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      3, this->status(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -31057,6 +31088,12 @@ void fmi2_import_get_directional_derivative_res::SerializeWithCachedSizes(
       WriteDoubleToArray(2, this->dz(i), target);
   }
   
+  // required .fmitcp_proto.fmi2_status_t status = 3;
+  if (has_status()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      3, this->status(), target);
+  }
+  
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -31073,6 +31110,12 @@ int fmi2_import_get_directional_derivative_res::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->message_id());
+    }
+    
+    // required .fmitcp_proto.fmi2_status_t status = 3;
+    if (has_status()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->status());
     }
     
   }
@@ -31113,6 +31156,9 @@ void fmi2_import_get_directional_derivative_res::MergeFrom(const fmi2_import_get
     if (from.has_message_id()) {
       set_message_id(from.message_id());
     }
+    if (from.has_status()) {
+      set_status(from.status());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -31130,7 +31176,7 @@ void fmi2_import_get_directional_derivative_res::CopyFrom(const fmi2_import_get_
 }
 
 bool fmi2_import_get_directional_derivative_res::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000005) != 0x00000005) return false;
   
   return true;
 }
@@ -31139,6 +31185,7 @@ void fmi2_import_get_directional_derivative_res::Swap(fmi2_import_get_directiona
   if (other != this) {
     std::swap(message_id_, other->message_id_);
     dz_.Swap(&other->dz_);
+    std::swap(status_, other->status_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

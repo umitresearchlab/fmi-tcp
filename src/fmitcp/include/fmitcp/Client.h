@@ -28,7 +28,7 @@ namespace fmitcp {
         void connect(string host, long port);
         void disconnect();
         Logger * getLogger();
-        void sendMessage(fmitcp_proto::fmitcp_message message);
+        void sendMessage(fmitcp_proto::fmitcp_message * message);
 
         /// To be implemented in subclass
         virtual void onConnect(){}
@@ -89,7 +89,8 @@ namespace fmitcp {
         /*virtual void on_fmi2_import_serialized_fmu_state_size_res(){}
         virtual void on_fmi2_import_serialize_fmu_state_res(){}
         virtual void on_fmi2_import_de_serialize_fmu_state_res(){}
-        virtual void on_fmi2_import_get_directional_derivative_res(){}*/
+        */
+        virtual void on_fmi2_import_get_directional_derivative_res(int mid, const vector<double>& dz, fmitcp_proto::fmi2_status_t status){}
 
         // =========== FMI 2.0 (CS) Co-Simulation functions ===========
         void fmi2_import_instantiate_slave( int message_id, int fmuId,
@@ -130,23 +131,23 @@ namespace fmitcp {
         void fmi2_import_terminate();
 
         // ========= FMI 2.0 CS & ME COMMON FUNCTIONS ============
-        void fmi2_import_get_version();
-        void fmi2_import_set_debug_logging();
-        void fmi2_import_set_real();
-        void fmi2_import_set_integer();
-        void fmi2_import_set_boolean();
-        void fmi2_import_set_string();
-        void fmi2_import_get_real();
-        void fmi2_import_get_integer();
-        void fmi2_import_get_boolean();
-        void fmi2_import_get_string();
+        void fmi2_import_get_version(int message_id, int fmuId);
+        void fmi2_import_set_debug_logging(int message_id, int fmuId, bool loggingOn, std::vector<string> categories);
+        void fmi2_import_set_real   (int message_id, int fmuId, const vector<int>& valueRefs, const vector<double>& values);
+        void fmi2_import_set_integer(int message_id, int fmuId, const vector<int>& valueRefs, const vector<int>& values);
+        void fmi2_import_set_boolean(int message_id, int fmuId, const vector<int>& valueRefs, const vector<bool>& values);
+        void fmi2_import_set_string (int message_id, int fmuId, const vector<int>& valueRefs, const vector<string>& values);
+        void fmi2_import_get_real(int message_id, int fmuId, const vector<int>& valueRefs);
+        void fmi2_import_get_integer(int message_id, int fmuId, const vector<int>& valueRefs);
+        void fmi2_import_get_boolean(int message_id, int fmuId, const vector<int>& valueRefs);
+        void fmi2_import_get_string (int message_id, int fmuId, const vector<int>& valueRefs);
         void fmi2_import_get_fmu_state();
         void fmi2_import_set_fmu_state();
         void fmi2_import_free_fmu_state();
         void fmi2_import_serialized_fmu_state_size();
         void fmi2_import_serialize_fmu_state();
         void fmi2_import_de_serialize_fmu_state();
-        void fmi2_import_get_directional_derivative();
+        void fmi2_import_get_directional_derivative(int message_id, int fmuId, const vector<int>& v_ref, const vector<int>& z_ref, const vector<double>& dv);
 
         // ========= NETWORK SPECIFIC FUNCTIONS ============
         void get_xml();

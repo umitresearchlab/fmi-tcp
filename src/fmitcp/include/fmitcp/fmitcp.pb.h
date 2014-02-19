@@ -7150,17 +7150,21 @@ class fmi2_import_set_debug_logging_req : public ::google::protobuf::Message {
   inline bool loggingon() const;
   inline void set_loggingon(bool value);
   
-  // repeated int32 categories = 4;
+  // repeated string categories = 4;
   inline int categories_size() const;
   inline void clear_categories();
   static const int kCategoriesFieldNumber = 4;
-  inline ::google::protobuf::int32 categories(int index) const;
-  inline void set_categories(int index, ::google::protobuf::int32 value);
-  inline void add_categories(::google::protobuf::int32 value);
-  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
-      categories() const;
-  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
-      mutable_categories();
+  inline const ::std::string& categories(int index) const;
+  inline ::std::string* mutable_categories(int index);
+  inline void set_categories(int index, const ::std::string& value);
+  inline void set_categories(int index, const char* value);
+  inline void set_categories(int index, const char* value, size_t size);
+  inline ::std::string* add_categories();
+  inline void add_categories(const ::std::string& value);
+  inline void add_categories(const char* value);
+  inline void add_categories(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& categories() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_categories();
   
   // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_set_debug_logging_req)
  private:
@@ -7175,7 +7179,7 @@ class fmi2_import_set_debug_logging_req : public ::google::protobuf::Message {
   
   ::google::protobuf::int32 message_id_;
   ::google::protobuf::int32 fmuid_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > categories_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> categories_;
   bool loggingon_;
   
   mutable int _cached_size_;
@@ -9870,18 +9874,28 @@ class fmi2_import_get_directional_derivative_res : public ::google::protobuf::Me
   inline ::google::protobuf::RepeatedField< double >*
       mutable_dz();
   
+  // required .fmitcp_proto.fmi2_status_t status = 3;
+  inline bool has_status() const;
+  inline void clear_status();
+  static const int kStatusFieldNumber = 3;
+  inline fmitcp_proto::fmi2_status_t status() const;
+  inline void set_status(fmitcp_proto::fmi2_status_t value);
+  
   // @@protoc_insertion_point(class_scope:fmitcp_proto.fmi2_import_get_directional_derivative_res)
  private:
   inline void set_has_message_id();
   inline void clear_has_message_id();
+  inline void set_has_status();
+  inline void clear_has_status();
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
   ::google::protobuf::RepeatedField< double > dz_;
   ::google::protobuf::int32 message_id_;
+  int status_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
   
   friend void  protobuf_AddDesc_fmitcp_2eproto();
   friend void protobuf_AssignDesc_fmitcp_2eproto();
@@ -16431,27 +16445,46 @@ inline void fmi2_import_set_debug_logging_req::set_loggingon(bool value) {
   loggingon_ = value;
 }
 
-// repeated int32 categories = 4;
+// repeated string categories = 4;
 inline int fmi2_import_set_debug_logging_req::categories_size() const {
   return categories_.size();
 }
 inline void fmi2_import_set_debug_logging_req::clear_categories() {
   categories_.Clear();
 }
-inline ::google::protobuf::int32 fmi2_import_set_debug_logging_req::categories(int index) const {
+inline const ::std::string& fmi2_import_set_debug_logging_req::categories(int index) const {
   return categories_.Get(index);
 }
-inline void fmi2_import_set_debug_logging_req::set_categories(int index, ::google::protobuf::int32 value) {
-  categories_.Set(index, value);
+inline ::std::string* fmi2_import_set_debug_logging_req::mutable_categories(int index) {
+  return categories_.Mutable(index);
 }
-inline void fmi2_import_set_debug_logging_req::add_categories(::google::protobuf::int32 value) {
-  categories_.Add(value);
+inline void fmi2_import_set_debug_logging_req::set_categories(int index, const ::std::string& value) {
+  categories_.Mutable(index)->assign(value);
 }
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+inline void fmi2_import_set_debug_logging_req::set_categories(int index, const char* value) {
+  categories_.Mutable(index)->assign(value);
+}
+inline void fmi2_import_set_debug_logging_req::set_categories(int index, const char* value, size_t size) {
+  categories_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* fmi2_import_set_debug_logging_req::add_categories() {
+  return categories_.Add();
+}
+inline void fmi2_import_set_debug_logging_req::add_categories(const ::std::string& value) {
+  categories_.Add()->assign(value);
+}
+inline void fmi2_import_set_debug_logging_req::add_categories(const char* value) {
+  categories_.Add()->assign(value);
+}
+inline void fmi2_import_set_debug_logging_req::add_categories(const char* value, size_t size) {
+  categories_.Add()->assign(reinterpret_cast<const char*>(value), size);
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
 fmi2_import_set_debug_logging_req::categories() const {
   return categories_;
 }
-inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
 fmi2_import_set_debug_logging_req::mutable_categories() {
   return &categories_;
 }
@@ -18189,6 +18222,29 @@ fmi2_import_get_directional_derivative_res::dz() const {
 inline ::google::protobuf::RepeatedField< double >*
 fmi2_import_get_directional_derivative_res::mutable_dz() {
   return &dz_;
+}
+
+// required .fmitcp_proto.fmi2_status_t status = 3;
+inline bool fmi2_import_get_directional_derivative_res::has_status() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void fmi2_import_get_directional_derivative_res::set_has_status() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void fmi2_import_get_directional_derivative_res::clear_has_status() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void fmi2_import_get_directional_derivative_res::clear_status() {
+  status_ = 0;
+  clear_has_status();
+}
+inline fmitcp_proto::fmi2_status_t fmi2_import_get_directional_derivative_res::status() const {
+  return static_cast< fmitcp_proto::fmi2_status_t >(status_);
+}
+inline void fmi2_import_get_directional_derivative_res::set_status(fmitcp_proto::fmi2_status_t value) {
+  GOOGLE_DCHECK(fmitcp_proto::fmi2_status_t_IsValid(value));
+  set_has_status();
+  status_ = value;
 }
 
 // -------------------------------------------------------------------

@@ -596,7 +596,7 @@ message fmi2_import_set_debug_logging_req {
     required int32 message_id = 1;
     required int32 fmuId = 2;
     required bool  loggingOn = 3;
-    repeated int32 categories = 4;
+    repeated string categories = 4;
 }
 message fmi2_import_set_debug_logging_res {
     required int32 message_id = 1;
@@ -774,6 +774,7 @@ message fmi2_import_get_directional_derivative_req {
 message fmi2_import_get_directional_derivative_res {
     required int32 message_id = 1;
     repeated double dz = 2;
+    required fmi2_status_t status = 3;
 }
 
 
