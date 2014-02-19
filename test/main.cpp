@@ -30,7 +30,7 @@ public:
     ~TestClient(){};
 
     void onConnect(){
-        fmi2_import_instantiate_slave(messageId(),0,"","",true);
+        fmi2_import_instantiate_slave(messageId(),0,"name","loc",true);
     };
 
     void on_fmi2_import_instantiate_slave_res(int message_id, fmitcp_proto::jm_status_enu_t status){

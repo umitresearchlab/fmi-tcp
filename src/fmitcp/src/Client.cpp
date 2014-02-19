@@ -29,10 +29,14 @@ void Client::clientConnected(lw_client c){
 }
 
 void Client::clientData(lw_client c, const char* data, long size){
+    string data2 = fmitcp::dataToString(data,size);
+
+    if(data2 ==  "\n")
+        return;
 
     // Parse message
     fmitcp_message res;
-    res.ParseFromString(data);
+    bool status = res.ParseFromString(data2);
     fmitcp_message_Type type = res.type();
 
     // Check type and run the corresponding event handler
@@ -93,7 +97,7 @@ void Client::clientData(lw_client c, const char* data, long size){
 
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_integer_status_res){
         fmi2_import_get_integer_status_res * r = res.mutable_fmi2_import_get_integer_status_res();
-        m_logger.log(Logger::NETWORK,"< fmi2_import_get_integer_status_res(value=%d)\n",r->value());
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_integer_status_res(mid=%d,value=%d)\n",r->message_id(),r->value());
         on_fmi2_import_get_integer_status_res(r->message_id(), r->value());
 
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_boolean_status_res){

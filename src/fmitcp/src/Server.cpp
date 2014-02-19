@@ -38,14 +38,18 @@ void Server::clientDisconnected(lw_client c){
     onClientDisconnect();
 }
 void Server::clientData(lw_client c, const char* data, size_t size){
-    if(strcmp(data,"\n") == 0)
+    string data2(data, size);
+
+    if(data2 == "\n")
         return;
 
     // Construct message
     fmitcp_proto::fmitcp_message req;
-    req.ParseFromString(data);
-    string s = data;
+    //string data2 = fmitcp::dataToString(data,size);
+    bool parseStatus = req.ParseFromString(data2);
     fmitcp_proto::fmitcp_message_Type type = req.type();
+
+    //printf("Server parse status = %d\n", parseStatus);
 
     fmitcp_proto::fmitcp_message res;
     bool sendResponse = true;
@@ -60,7 +64,7 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         string fmuResourceLocation = r->fmuresourcelocation();
         bool visible = r->visible();
 
-        m_logger.log(Logger::NETWORK,"< fmi2_import_instantiate_slave_req(fmuId=%d,instanceName=%s,resourceLoc=%s,visible=%d)\n",fmuId,instanceName.c_str(),fmuResourceLocation.c_str(),visible);
+        m_logger.log(Logger::NETWORK,"< fmi2_import_instantiate_slave_req(mid=%d,fmuId=%d,instanceName=%s,resourceLoc=%s,visible=%d)\n",messageId,fmuId,instanceName.c_str(),fmuResourceLocation.c_str(),visible);
 
         if(!m_sendDummyResponses){
             // instantiate FMU here
@@ -73,7 +77,7 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         fmitcp_proto::fmi2_import_instantiate_slave_res * instantiateRes = res.mutable_fmi2_import_instantiate_slave_res();
         instantiateRes->set_message_id(messageId);
         instantiateRes->set_status(status);
-        m_logger.log(Logger::NETWORK,"> fmi2_import_instantiate_slave_res(mid=%d,status=%d)\n",1,status);
+        m_logger.log(Logger::NETWORK,"> fmi2_import_instantiate_slave_res(mid=%d,status=%d)\n",messageId,status);
 
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_initialize_slave_req){
 
@@ -86,7 +90,7 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         double tStop = 0.0;
         bool tStopGiven = r->has_tstop();
 
-        m_logger.log(Logger::NETWORK,"< fmi2_import_initialize_slave_req(fmuId=%d,relTol=%g,tStart=%g,tStop=%g)\n",fmuId,relTol,tStart,tStop);
+        m_logger.log(Logger::NETWORK,"< fmi2_import_initialize_slave_req(mid=%d,fmuId=%d,relTol=%g,tStart=%g,tStop=%g)\n",messageId,fmuId,relTol,tStart,tStop);
 
         if(!m_sendDummyResponses){
             // initialize FMU here
@@ -99,7 +103,7 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         fmitcp_proto::fmi2_import_initialize_slave_res * initializeRes = res.mutable_fmi2_import_initialize_slave_res();
         initializeRes->set_message_id(messageId);
         initializeRes->set_status(status);
-        m_logger.log(Logger::NETWORK,"> fmi2_import_initialize_slave_res(mid=%d,status=%d)\n",1,status);
+        m_logger.log(Logger::NETWORK,"> fmi2_import_initialize_slave_res(mid=%d,status=%d)\n",messageId,status);
 
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_terminate_slave_req){
 
@@ -108,7 +112,7 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         int fmuId = r->fmuid();
         int messageId = r->message_id();
 
-        m_logger.log(Logger::NETWORK,"< fmi2_import_terminate_slave_req(fmuId=%d)\n",fmuId);
+        m_logger.log(Logger::NETWORK,"< fmi2_import_terminate_slave_req(mid=%d,fmuId=%d)\n",messageId,fmuId);
 
         if(!m_sendDummyResponses){
             // terminate FMU here
@@ -316,6 +320,7 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         int fmuId = r->fmuid();
         m_logger.log(Logger::NETWORK,"< fmi2_import_get_integer_status_req(fmuId=%d)\n",fmuId);
 
+
         // Defaults
         fmitcp_proto::fmi2_import_get_integer_status_res * getStatusRes = res.mutable_fmi2_import_get_integer_status_res();
         res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_integer_status_res);
@@ -327,14 +332,13 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         }
 
         // Create response
-        m_logger.log(Logger::NETWORK,"> fmi2_import_get_integer_status_res(value=%g)\n",getStatusRes->value());
+        m_logger.log(Logger::NETWORK,"> fmi2_import_get_integer_status_res(value=%d)\n",getStatusRes->value());
 
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_boolean_status_req){
 
         // Unpack message
         fmitcp_proto::fmi2_import_get_boolean_status_req * r = req.mutable_fmi2_import_get_boolean_status_req();
-        int fmuId = r->fmuid();
-        m_logger.log(Logger::NETWORK,"< fmi2_import_get_boolean_status_req(fmuId=%d)\n",fmuId);
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_boolean_status_req(mid=%d,fmuId=%d)\n",r->message_id(),r->fmuid());
 
         // Defaults
         fmitcp_proto::fmi2_import_get_boolean_status_res * getStatusRes = res.mutable_fmi2_import_get_boolean_status_res();
@@ -347,14 +351,13 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         }
 
         // Create response
-        m_logger.log(Logger::NETWORK,"> fmi2_import_get_boolean_status_res(value=%g)\n",getStatusRes->value());
+        m_logger.log(Logger::NETWORK,"> fmi2_import_get_boolean_status_res(mid=%d,value=%d)\n",getStatusRes->message_id(),getStatusRes->value());
 
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_string_status_req){
 
         // Unpack message
         fmitcp_proto::fmi2_import_get_string_status_req * r = req.mutable_fmi2_import_get_string_status_req();
-        int fmuId = r->fmuid();
-        m_logger.log(Logger::NETWORK,"< fmi2_import_get_string_status_req(fmuId=%d)\n",fmuId);
+        m_logger.log(Logger::NETWORK,"< fmi2_import_get_string_status_req(mid=%d,fmuId=%d)\n",r->message_id(),r->fmuid());
 
         // Defaults
         fmitcp_proto::fmi2_import_get_string_status_res * getStatusRes = res.mutable_fmi2_import_get_string_status_res();
@@ -367,7 +370,7 @@ void Server::clientData(lw_client c, const char* data, size_t size){
         }
 
         // Create response
-        m_logger.log(Logger::NETWORK,"> fmi2_import_get_string_status_res(value=%g)\n",getStatusRes->value().c_str());
+        m_logger.log(Logger::NETWORK,"> fmi2_import_get_string_status_res(mid=%d,value=%s)\n",getStatusRes->message_id(),getStatusRes->value().c_str());
 
     } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_model_req){
         // TODO
