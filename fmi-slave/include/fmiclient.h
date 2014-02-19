@@ -65,6 +65,13 @@ static int fmi2_status_ok_or_warning(fmi2_status_t fmistatus) {
 }
 jm_status_enu_t fmi2InstantiateSlaveWrapper(FMICoSimulationClient *FMICSClient);
 fmi2_status_t fmi2InitializeSlaveWrapper(FMICoSimulationClient *FMICSClient);
+void fmi2SetInitialValues(FMICoSimulationClient *FMICSClient);
+fmi2_import_variable_t* fmi2GetVariableByVr(FMICoSimulationClient *FMICSClient, int valueReference);
+void fmi2GetValue(FMICoSimulationClient *FMICSClient, int valueReference, char* retVal);
+void fmi2SetValue(FMICoSimulationClient *FMICSClient, int valueReference, const char* data, const char* name);
+fmi2_status_t fmi2DoStep(FMICoSimulationClient *FMICSClient, int *finished);
+fmi2_status_t fmi2PendingStatusString(FMICoSimulationClient *FMICSClient, fmi2_string_t *str);
+fmi2_status_t fmi2DoStepStatus(FMICoSimulationClient *FMICSClient, fmi2_status_t *status);
 
 void connectClient(FMICoSimulationClient *FMICSClient, const char* hostName, int port);
 void clientOnConnect(lw_client client);
