@@ -261,12 +261,12 @@ public:
     };
 
     void onDisconnect(){
-        m_logger.log(Logger::DEBUG,"TestClient::onDisconnect\n");
+        m_logger.log(Logger::LOG_DEBUG,"TestClient::onDisconnect\n");
         m_pump->exitEventLoop();
     };
 
     void onError(string err){
-        m_logger.log(Logger::DEBUG,"TestClient::onError\n");
+        m_logger.log(Logger::LOG_DEBUG,"TestClient::onError\n");
         m_pump->exitEventLoop();
     };
 

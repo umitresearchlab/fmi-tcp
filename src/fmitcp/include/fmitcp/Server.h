@@ -2,6 +2,7 @@
 #define SERVER_H_
 
 #include <string>
+#define lw_import
 #include <lacewing.h>
 #include "EventPump.h"
 #include "Logger.h"

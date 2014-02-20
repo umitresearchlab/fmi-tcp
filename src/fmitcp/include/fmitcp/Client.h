@@ -6,6 +6,7 @@
 #include "fmitcp.pb.h"
 #include <string>
 #include <vector>
+#define lw_import
 #include <lacewing.h>
 
 using namespace std;

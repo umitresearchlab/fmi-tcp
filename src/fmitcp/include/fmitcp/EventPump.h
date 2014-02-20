@@ -1,6 +1,7 @@
 #ifndef EVENTPUMP_H_
 #define EVENTPUMP_H_
 
+#define lw_import
 #include <lacewing.h>
 
 namespace fmitcp {
