@@ -36,10 +36,15 @@ void Server::error(lw_server s, lw_error error) {
 }
 
 Server::Server(string fmuPath, bool debugLogging, jm_log_level_enu_t logLevel, EventPump *pump) {
+  m_fmuParsed = true;
+  m_fmuPath = fmuPath;
+  m_debugLogging = debugLogging;
+  m_logLevel = logLevel;
   init(pump);
 }
 
 Server::Server(string fmuPath, bool debugLogging, jm_log_level_enu_t logLevel, EventPump *pump, const Logger &logger) {
+  m_fmuParsed = true;
   m_fmuPath = fmuPath;
   m_debugLogging = debugLogging;
   m_logLevel = logLevel;
@@ -74,7 +79,10 @@ void Server::init(EventPump * pump) {
   m_version = fmi_import_get_fmi_version(m_context, m_fmuPath.c_str(), m_workingDir.c_str());
   // Check version OK
   if ((m_version <= fmi_version_unknown_enu) || (m_version >= fmi_version_unsupported_enu)) {
+    fmi_import_free_context(m_context);
+    fmi_import_rmdir(&m_jmCallbacks, m_workingDir.c_str());
     m_logger.log(Logger::LOG_ERROR, "Unsupported/unknown FMU version: '%s'.\n", fmi_version_to_string(m_version));
+    m_fmuParsed = false;
     return;
   }
   if (m_version == fmi_version_2_0_enu) { // FMI 2.0
@@ -82,14 +90,19 @@ void Server::init(EventPump * pump) {
     m_fmi2Instance = fmi2_import_parse_xml(m_context, m_workingDir.c_str(), 0);
     if(!m_fmi2Instance) {
       fmi_import_free_context(m_context);
+      fmi_import_rmdir(&m_jmCallbacks, m_workingDir.c_str());
       m_logger.log(Logger::LOG_ERROR, "Error parsing the modelDescription.xml file contained in %s\n", m_workingDir.c_str());
+      m_fmuParsed = false;
       return;
     }
     // check FMU kind
     fmi2_fmu_kind_enu_t fmuType = fmi2_import_get_fmu_kind(m_fmi2Instance);
     if(fmuType != fmi2_fmu_kind_cs && fmuType != fmi2_fmu_kind_me_and_cs) {
+      fmi2_import_free(m_fmi2Instance);
       fmi_import_free_context(m_context);
+      fmi_import_rmdir(&m_jmCallbacks, m_workingDir.c_str());
       m_logger.log(Logger::LOG_ERROR, "Only FMI Co-Simulation 2.0 is supported.\n");
+      m_fmuParsed = false;
       return;
     }
     // FMI callback functions
@@ -101,8 +114,11 @@ void Server::init(EventPump * pump) {
     // Load the binary (dll/so)
     jm_status_enu_t status = fmi2_import_create_dllfmu(m_fmi2Instance, fmuType, &m_fmi2CallbackFunctions);
     if (status == jm_status_error) {
+      fmi2_import_free(m_fmi2Instance);
       fmi_import_free_context(m_context);
+      fmi_import_rmdir(&m_jmCallbacks, m_workingDir.c_str());
       m_logger.log(Logger::LOG_ERROR, "There was an error loading the FMU binary. Turn on logging (-l) for more info.\n");
+      m_fmuParsed = false;
       return;
     }
     m_instanceName = (char*)fmi2_import_get_model_name(m_fmi2Instance);
@@ -113,6 +129,13 @@ void Server::init(EventPump * pump) {
      */
     int sortOrder = 0;
     m_fmi2Variables = fmi2_import_get_variable_list(m_fmi2Instance, sortOrder);
+  } else {
+    // todo add FMI 1.0 later on.
+    fmi_import_free_context(m_context);
+    fmi_import_rmdir(&m_jmCallbacks, m_workingDir.c_str());
+    m_logger.log(Logger::LOG_ERROR, "Only FMI Co-Simulation 2.0 is supported.\n");
+    m_fmuParsed = false;
+    return;
   }
 }
 

@@ -20,6 +20,7 @@ namespace fmitcp {
     Logger m_logger;
     lw_server m_server;
     bool m_sendDummyResponses;
+    bool m_fmuParsed;
 
   protected:
     EventPump * m_pump;
@@ -36,7 +37,6 @@ namespace fmitcp {
     fmi2_import_t* m_fmi2Instance;
     fmi2_callback_functions_t m_fmi2CallbackFunctions;
     fmi2_import_variable_list_t* m_fmi2Variables;
-
 
     string m_instanceName;
     string m_fmuLocation;
@@ -67,6 +67,8 @@ namespace fmitcp {
 
     Logger* getLogger() {return &m_logger;}
     void setLogger(const Logger &logger);
+
+    bool isFmuParsed() {return m_fmuParsed;}
   };
 
 };
