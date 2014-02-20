@@ -64,6 +64,56 @@ void Server::init(EventPump * pump) {
   m_jmCallbacks.logger = jmCallbacksLogger;
   m_jmCallbacks.log_level = m_logLevel;
   m_jmCallbacks.context = 0;
+  // working directory
+  char* dir = fmi_import_mk_temp_dir(&m_jmCallbacks, NULL, "fmitcp_");
+  m_workingDir = dir; // convert to std::string
+  free(dir);
+  // import allocate context
+  m_context = fmi_import_allocate_context(&m_jmCallbacks);
+  // get FMU version
+  m_version = fmi_import_get_fmi_version(m_context, m_fmuPath.c_str(), m_workingDir.c_str());
+  // Check version OK
+  if ((m_version <= fmi_version_unknown_enu) || (m_version >= fmi_version_unsupported_enu)) {
+    m_logger.log(Logger::LOG_ERROR, "Unsupported/unknown FMU version: '%s'.\n", fmi_version_to_string(m_version));
+    return;
+  }
+  if (m_version == fmi_version_2_0_enu) { // FMI 2.0
+    // parse the xml file
+    m_fmi2Instance = fmi2_import_parse_xml(m_context, m_workingDir.c_str(), 0);
+    if(!m_fmi2Instance) {
+      fmi_import_free_context(m_context);
+      m_logger.log(Logger::LOG_ERROR, "Error parsing the modelDescription.xml file contained in %s\n", m_workingDir.c_str());
+      return;
+    }
+    // check FMU kind
+    fmi2_fmu_kind_enu_t fmuType = fmi2_import_get_fmu_kind(m_fmi2Instance);
+    if(fmuType != fmi2_fmu_kind_cs && fmuType != fmi2_fmu_kind_me_and_cs) {
+      fmi_import_free_context(m_context);
+      m_logger.log(Logger::LOG_ERROR, "Only FMI Co-Simulation 2.0 is supported.\n");
+      return;
+    }
+    // FMI callback functions
+    m_fmi2CallbackFunctions.logger = fmi2_log_forwarding;
+    m_fmi2CallbackFunctions.allocateMemory = calloc;
+    m_fmi2CallbackFunctions.freeMemory = free;
+    m_fmi2CallbackFunctions.stepFinished = 0;
+    m_fmi2CallbackFunctions.componentEnvironment = 0;
+    // Load the binary (dll/so)
+    jm_status_enu_t status = fmi2_import_create_dllfmu(m_fmi2Instance, fmuType, &m_fmi2CallbackFunctions);
+    if (status == jm_status_error) {
+      fmi_import_free_context(m_context);
+      m_logger.log(Logger::LOG_ERROR, "There was an error loading the FMU binary. Turn on logging (-l) for more info.\n");
+      return;
+    }
+    m_instanceName = (char*)fmi2_import_get_model_name(m_fmi2Instance);
+    m_fmuLocation = fmi_import_create_URL_from_abs_path(&m_jmCallbacks, m_fmuPath.c_str());
+    /* 0 - original order as found in the XML file;
+     * 1 - sorted alphabetically by variable name;
+     * 2 sorted by types/value references.
+     */
+    int sortOrder = 0;
+    m_fmi2Variables = fmi2_import_get_variable_list(m_fmi2Instance, sortOrder);
+  }
 }
 
 void Server::onClientConnect() {}
