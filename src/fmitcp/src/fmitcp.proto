@@ -5,8 +5,8 @@ message fmitcp_message {
     enum Type {
 
         // =========== FMI 2.0 (CS) Co-Simulation functions ===========
-        type_fmi2_import_instantiate_slave_req = 1;
-        type_fmi2_import_instantiate_slave_res = 2;
+        type_fmi2_import_instantiate_req = 1;
+        type_fmi2_import_instantiate_res = 2;
         type_fmi2_import_initialize_slave_req  = 3;
         type_fmi2_import_initialize_slave_res  = 4;
         type_fmi2_import_terminate_slave_req = 5;
@@ -107,8 +107,8 @@ message fmitcp_message {
     required Type type = 1;
 
     // =========== FMI 2.0 (CS) Co-Simulation functions ===========
-    optional fmi2_import_instantiate_slave_req fmi2_import_instantiate_slave_req = 2;
-    optional fmi2_import_instantiate_slave_res fmi2_import_instantiate_slave_res = 3;
+    optional fmi2_import_instantiate_req fmi2_import_instantiate_req = 2;
+    optional fmi2_import_instantiate_res fmi2_import_instantiate_res = 3;
     optional fmi2_import_initialize_slave_req fmi2_import_initialize_slave_req  = 4;
     optional fmi2_import_initialize_slave_res fmi2_import_initialize_slave_res  = 5;
     optional fmi2_import_terminate_slave_req fmi2_import_terminate_slave_req = 6;
@@ -242,14 +242,10 @@ message fmi2_event_info_t {
 
 //jm_status_enu_t   fmi2_import_instantiate_slave (fmi2_import_t *fmu, fmi2_string_t instanceName, fmi2_string_t fmuResourceLocation, fmi2_boolean_t visible)
 //    Wrapper for the FMI function fmiInstantiateSlave(...)
-message fmi2_import_instantiate_slave_req {
+message fmi2_import_instantiate_req {
     required int32 message_id = 1;
-    required int32 fmuId = 2;
-    required string instanceName = 3;
-    required string fmuResourceLocation = 4;
-    required bool visible = 5;
 }
-message fmi2_import_instantiate_slave_res {
+message fmi2_import_instantiate_res {
     required int32 message_id = 1;
     required jm_status_enu_t status = 2;
 }

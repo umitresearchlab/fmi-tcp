@@ -38,8 +38,8 @@ namespace fmitcp {
     fmi2_callback_functions_t m_fmi2CallbackFunctions;
     fmi2_import_variable_list_t* m_fmi2Variables;
 
-    string m_instanceName;
-    string m_fmuLocation;
+    const char* m_instanceName;
+    char* m_fmuLocation;
   public:
     Server(string fmuPath, bool debugLogging, jm_log_level_enu_t logLevel, EventPump *pump);
     Server(string fmuPath, bool debugLogging, jm_log_level_enu_t logLevel, EventPump *pump, const Logger &logger);

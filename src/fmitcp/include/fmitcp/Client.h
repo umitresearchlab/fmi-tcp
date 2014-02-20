@@ -49,7 +49,7 @@ namespace fmitcp {
 
         // Response functions - to be implemented by the user
         virtual void onGetXmlRes(int mid, string xml){}
-        virtual void on_fmi2_import_instantiate_slave_res               (int mid, fmitcp_proto::jm_status_enu_t status){}
+        virtual void on_fmi2_import_instantiate_res                     (int mid, fmitcp_proto::jm_status_enu_t status){}
         virtual void on_fmi2_import_initialize_slave_res                (int mid, fmitcp_proto::fmi2_status_t status){}
         virtual void on_fmi2_import_terminate_slave_res                 (int mid, fmitcp_proto::fmi2_status_t status){}
         virtual void on_fmi2_import_reset_slave_res                     (int mid, fmitcp_proto::fmi2_status_t status){}
@@ -96,10 +96,7 @@ namespace fmitcp {
         virtual void on_fmi2_import_get_directional_derivative_res(int mid, const vector<double>& dz, fmitcp_proto::fmi2_status_t status){}
 
         // =========== FMI 2.0 (CS) Co-Simulation functions ===========
-        void fmi2_import_instantiate_slave( int message_id, int fmuId,
-                                            string instanceName,
-                                            string resourceLocation,
-                                            bool visible);
+        void fmi2_import_instantiate(int message_id);
         void fmi2_import_initialize_slave(int mid, int fmuId, double relTol, double tStart, bool stopTimeDefined, double tStop);
         void fmi2_import_terminate_slave(int mid, int fmuId);
         void fmi2_import_reset_slave(int mid, int fmuId);

@@ -42,10 +42,10 @@ void Client::clientData(lw_client c, const char* data, long size){
     m_logger.log(Logger::LOG_DEBUG,"Client parse status: %d\n", status);
 
     // Check type and run the corresponding event handler
-    if(type == fmitcp_message_Type_type_fmi2_import_instantiate_slave_res){
-        fmi2_import_instantiate_slave_res * r = res.mutable_fmi2_import_instantiate_slave_res();
+    if(type == fmitcp_message_Type_type_fmi2_import_instantiate_res){
+        fmi2_import_instantiate_res * r = res.mutable_fmi2_import_instantiate_res();
         m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_instantiate_slave_res(mid=%d,status=%d)\n",r->message_id(),r->status());
-        on_fmi2_import_instantiate_slave_res( r->message_id(), r->status() );
+        on_fmi2_import_instantiate_res(r->message_id(), r->status());
 
     } else if(type == fmitcp_message_Type_type_fmi2_import_initialize_slave_res){
         fmi2_import_initialize_slave_res * r = res.mutable_fmi2_import_initialize_slave_res();
@@ -292,33 +292,19 @@ void Client::disconnect(){
     //lw_pump_delete(m_pump->getPump());
 }
 
+void Client::fmi2_import_instantiate(int message_id) {
+  // Construct message
+  fmitcp_message m;
+  m.set_type(fmitcp_message_Type_type_fmi2_import_instantiate_req);
 
-void Client::fmi2_import_instantiate_slave( int message_id,
-                                            int fmuId,
-                                            string instanceName,
-                                            string resourceLocation,
-                                            bool visible){
+  fmi2_import_instantiate_req * req = m.mutable_fmi2_import_instantiate_req();
+  req->set_message_id(message_id);
 
-    // Construct message
-    fmitcp_message m;
-    m.set_type(fmitcp_message_Type_type_fmi2_import_instantiate_slave_req);
+  m_logger.log(Logger::LOG_NETWORK,
+      "> fmi2_import_instantiate_slave_req(mid=%d)\n",
+      message_id);
 
-    fmi2_import_instantiate_slave_req * req = m.mutable_fmi2_import_instantiate_slave_req();
-    req->set_message_id(message_id);
-    req->set_fmuid(fmuId);
-    req->set_instancename(instanceName);
-    req->set_fmuresourcelocation(resourceLocation);
-    req->set_visible(visible);
-
-    m_logger.log(Logger::LOG_NETWORK,
-        "> fmi2_import_instantiate_slave_req(mid=%d,fmu=%d,instanceName=%s,resourceLocation=%s,visible=%d)\n",
-        message_id,
-        fmuId,
-        instanceName.c_str(),
-        resourceLocation.c_str(),
-        visible);
-
-    sendMessage(&m);
+  sendMessage(&m);
 }
 
 void Client::fmi2_import_initialize_slave(int message_id, int fmuId, double relTol, double tStart, bool stopTimeDefined, double tStop){

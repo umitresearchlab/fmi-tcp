@@ -27,3 +27,16 @@ std::string fmitcp::dataToString(const char* data, long size) {
     return data2;
     */
 }
+
+fmitcp_proto::jm_status_enu_t fmitcp::fmiJMStatusToProtoJMStatus(jm_status_enu_t status) {
+  switch (status) {
+  case jm_status_error:
+    return fmitcp_proto::jm_status_error;
+  case jm_status_success:
+    return fmitcp_proto::jm_status_success;
+  case jm_status_warning:
+    return fmitcp_proto::jm_status_warning;
+  default: // should never be reached
+    return fmitcp_proto::jm_status_error;
+  }
+}

@@ -121,7 +121,7 @@ void Server::init(EventPump * pump) {
       m_fmuParsed = false;
       return;
     }
-    m_instanceName = (char*)fmi2_import_get_model_name(m_fmi2Instance);
+    m_instanceName = fmi2_import_get_model_name(m_fmi2Instance);
     m_fmuLocation = fmi_import_create_URL_from_abs_path(&m_jmCallbacks, m_fmuPath.c_str());
     /* 0 - original order as found in the XML file;
      * 1 - sorted alphabetically by variable name;
@@ -170,27 +170,26 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
   fmitcp_proto::fmitcp_message res;
   bool sendResponse = true;
 
-  if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_slave_req){
+  if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_req){
 
     // Unpack message
-    fmitcp_proto::fmi2_import_instantiate_slave_req * r = req.mutable_fmi2_import_instantiate_slave_req();
-    int fmuId = r->fmuid();
+    fmitcp_proto::fmi2_import_instantiate_req * r = req.mutable_fmi2_import_instantiate_req();
     int messageId = r->message_id();
-    string instanceName = r->instancename();
-    string fmuResourceLocation = r->fmuresourcelocation();
-    bool visible = r->visible();
 
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_instantiate_slave_req(mid=%d,fmuId=%d,instanceName=%s,resourceLoc=%s,visible=%d)\n",messageId,fmuId,instanceName.c_str(),fmuResourceLocation.c_str(),visible);
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_instantiate_req(mid=%d)\n",messageId);
 
-    if(!m_sendDummyResponses){
-      // instantiate FMU here
-      // TODO
+    jm_status_enu_t instantiate_status = jm_status_success;
+    if (!m_sendDummyResponses) {
+      // instantiate FMU
+      fmi2_boolean_t visible = fmi2_false;
+      instantiate_status = fmi2_import_instantiate(m_fmi2Instance, m_instanceName, fmi2_cosimulation, m_fmuLocation, visible);
+      m_logger.log(Logger::LOG_ERROR,"adeel status=%d \n", instantiate_status);
     }
 
     // Create response message
-    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_slave_res);
-    fmitcp_proto::jm_status_enu_t status = fmitcp_proto::jm_status_success;
-    fmitcp_proto::fmi2_import_instantiate_slave_res * instantiateRes = res.mutable_fmi2_import_instantiate_slave_res();
+    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_res);
+    fmitcp_proto::jm_status_enu_t status = fmiJMStatusToProtoJMStatus(instantiate_status);
+    fmitcp_proto::fmi2_import_instantiate_res * instantiateRes = res.mutable_fmi2_import_instantiate_res();
     instantiateRes->set_message_id(messageId);
     instantiateRes->set_status(status);
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_instantiate_slave_res(mid=%d,status=%d)\n",messageId,status);
