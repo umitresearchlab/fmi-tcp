@@ -31,6 +31,8 @@ namespace fmitcp {
         Logger * getLogger();
         void sendMessage(fmitcp_proto::fmitcp_message * message);
 
+        bool isConnected();
+
         /// To be implemented in subclass
         virtual void onConnect(){}
 

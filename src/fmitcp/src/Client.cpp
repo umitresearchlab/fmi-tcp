@@ -256,6 +256,10 @@ Client::~Client(){
     google::protobuf::ShutdownProtobufLibrary();
 }
 
+bool Client::isConnected(){
+    return lw_client_connected(m_client);
+}
+
 Logger * Client::getLogger() {
     return &m_logger;
 }
