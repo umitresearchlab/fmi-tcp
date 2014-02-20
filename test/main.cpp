@@ -314,7 +314,7 @@ int main(int argc, char const *argv[]){
 
     EventPump pump;
 
-    Server server(&pump);
+    Server server("", false, jm_log_level_all, &pump);
     server.sendDummyResponses(true);
     server.host(hostName,port);
     server.getLogger()->setPrefix("Server: ");

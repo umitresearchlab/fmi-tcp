@@ -23,16 +23,26 @@ void serverOnError(lw_server s, lw_error error) {
   server->error(s,error);
 }
 
+/*!
+ * Callback function for FMILibrary. Logs the FMILibrary operations.
+ */
+void jmCallbacksLogger(jm_callbacks* c, jm_string module, jm_log_level_enu_t log_level, jm_string message) {
+  printf("[module = %s][log level = %s] %s\n", module, jm_log_level_to_string(log_level), message);fflush(NULL);
+}
+
 void Server::error(lw_server s, lw_error error) {
   string err = lw_error_tostring(error);
   onError(err);
 }
 
-Server::Server(EventPump *pump) {
+Server::Server(string fmuPath, bool debugLogging, jm_log_level_enu_t logLevel, EventPump *pump) {
   init(pump);
 }
 
-Server::Server(EventPump *pump, const Logger &logger) {
+Server::Server(string fmuPath, bool debugLogging, jm_log_level_enu_t logLevel, EventPump *pump, const Logger &logger) {
+  m_fmuPath = fmuPath;
+  m_debugLogging = debugLogging;
+  m_logLevel = logLevel;
   m_logger = logger;
   init(pump);
 }
@@ -45,6 +55,15 @@ void Server::init(EventPump * pump) {
   m_pump = pump;
   m_server = lw_server_new(pump->getPump());
   m_sendDummyResponses = false;
+  // Parse FMU
+  // JM callbacks
+  m_jmCallbacks.malloc = malloc;
+  m_jmCallbacks.calloc = calloc;
+  m_jmCallbacks.realloc = realloc;
+  m_jmCallbacks.free = free;
+  m_jmCallbacks.logger = jmCallbacksLogger;
+  m_jmCallbacks.log_level = m_logLevel;
+  m_jmCallbacks.context = 0;
 }
 
 void Server::onClientConnect() {}
@@ -683,39 +702,23 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
 }
 
 void Server::host(string hostName, long port) {
-
   // save this object in the server tag so we can use it later on.
   lw_server_set_tag(m_server, (void*)this);
-
   // connect the hooks
   lw_server_on_connect(   m_server, serverOnConnect);
   lw_server_on_data(      m_server, serverOnData);
   lw_server_on_disconnect(m_server, serverOnDisconnect);
   lw_server_on_error(     m_server, serverOnError);
-
   // setup the server host name and port
   lw_addr host = lw_addr_new_port(hostName.c_str(), port);
   lw_filter filter = lw_filter_new();
   lw_filter_set_ipv6(filter, lw_false);
   lw_filter_set_local(filter, host);
-
   // host/start the server
   lw_server_host_filter(m_server, filter);
   lw_filter_delete(filter);
 
   m_logger.log(Logger::LOG_NETWORK,"Listening to %s:%ld\n",hostName.c_str(),port);
-}
-
-void Server::setFmuPath(string path) {
-  m_fmuPath = path;
-}
-
-void Server::setLogLevel(jm_log_level_enu_t log_level) {
-  m_logLevel = log_level;
-}
-
-void Server::setDebugLogging(bool debugLogging) {
-  m_debugLogging = debugLogging;
 }
 
 void Server::sendDummyResponses(bool sendDummyResponses){

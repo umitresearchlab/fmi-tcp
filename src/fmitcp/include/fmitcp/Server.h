@@ -24,12 +24,21 @@ namespace fmitcp {
   protected:
     EventPump * m_pump;
     string m_fmuPath;
+
+    /// FMU logging level
     jm_log_level_enu_t m_logLevel;
     bool m_debugLogging;
+    jm_callbacks m_jmCallbacks;
+    fmi_import_context_t* m_context;
+
+    /// Directory for the unpacked FMU
+    string m_workingDir;
+    fmi_version_enu_t m_version;
+    std::string m_instanceName;
 
   public:
-    Server(EventPump *pump);
-    Server(EventPump *pump, const Logger &logger);
+    Server(string fmuPath, bool debugLogging, jm_log_level_enu_t logLevel, EventPump *pump);
+    Server(string fmuPath, bool debugLogging, jm_log_level_enu_t logLevel, EventPump *pump, const Logger &logger);
     virtual ~Server();
 
     void init(EventPump *pump);
@@ -46,9 +55,6 @@ namespace fmitcp {
     void error(lw_server s, lw_error err);
 
     void host(string host, long port);
-    void setFmuPath(string path);
-    void setLogLevel(jm_log_level_enu_t log_level);
-    void setDebugLogging(bool debugLogging);
 
     /// Set to true to start ignoring the local FMU and just send back dummy responses. Good for debugging the protocol.
     void sendDummyResponses(bool);
