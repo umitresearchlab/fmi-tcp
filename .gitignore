@@ -5,6 +5,8 @@ bin/*
 lib/*
 src/fmitcp/src/fmitcp.pb.cc
 src/fmitcp/include/fmitcp/fmitcp.pb.h
+compile.bat
+run.bat
 .cproject
 .project
 .settings/*
