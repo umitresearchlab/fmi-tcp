@@ -59,6 +59,7 @@ Server::~Server() {
 void Server::init(EventPump * pump) {
   m_pump = pump;
   m_server = lw_server_new(pump->getPump());
+  m_sendDummyResponses = false;
 
   if(m_fmuPath == "dummy"){
     m_sendDummyResponses = true;
@@ -189,7 +190,6 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
       // instantiate FMU
       fmi2_boolean_t visible = fmi2_false;
       instantiate_status = fmi2_import_instantiate(m_fmi2Instance, m_instanceName, fmi2_cosimulation, m_fmuLocation, visible);
-      m_logger.log(Logger::LOG_ERROR,"adeel status=%d \n", instantiate_status);
     }
 
     // Create response message
