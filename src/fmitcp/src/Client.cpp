@@ -138,13 +138,21 @@ void Client::clientData(lw_client c, const char* data, long size){
         on_fmi2_import_completed_integrator_step_res(r->message_id(),r->calleventupdate(),r->status());
 
     } else if(type == fmitcp_message_Type_type_fmi2_import_initialize_model_res){
+        m_logger.log(Logger::LOG_NETWORK,"This command is TODO\n");
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_derivatives_res){
+        m_logger.log(Logger::LOG_NETWORK,"This command is TODO\n");
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_event_indicators_res){
+        m_logger.log(Logger::LOG_NETWORK,"This command is TODO\n");
     } else if(type == fmitcp_message_Type_type_fmi2_import_eventUpdate_res){
+        m_logger.log(Logger::LOG_NETWORK,"This command is TODO\n");
     } else if(type == fmitcp_message_Type_type_fmi2_import_completed_event_iteration_res){
+        m_logger.log(Logger::LOG_NETWORK,"This command is TODO\n");
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_continuous_states_res){
+        m_logger.log(Logger::LOG_NETWORK,"This command is TODO\n");
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_nominal_continuous_states_res){
+        m_logger.log(Logger::LOG_NETWORK,"This command is TODO\n");
     } else if(type == fmitcp_message_Type_type_fmi2_import_terminate_res){
+        m_logger.log(Logger::LOG_NETWORK,"This command is TODO\n");
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_version_res){
         fmi2_import_get_version_res * r = res.mutable_fmi2_import_get_version_res();
         m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_version_res(mid=%d,version=%s)\n",r->message_id(), r->version().c_str());
@@ -213,10 +221,18 @@ void Client::clientData(lw_client c, const char* data, long size){
         on_fmi2_import_get_fmu_state_res(r->message_id(),r->stateid(),r->status());
 
     } else if(type == fmitcp_message_Type_type_fmi2_import_set_fmu_state_res){
+        fmi2_import_set_fmu_state_res * r = res.mutable_fmi2_import_set_fmu_state_res();
+        m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_set_fmu_state_res(mid=%d,status=%d)\n",r->message_id(), r->status());
+        on_fmi2_import_set_fmu_state_res(r->message_id(),r->status());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_free_fmu_state_res){
+        m_logger.log(Logger::LOG_NETWORK,"This command is TODO\n");
     } else if(type == fmitcp_message_Type_type_fmi2_import_serialized_fmu_state_size_res){
+        m_logger.log(Logger::LOG_NETWORK,"This command is TODO\n");
     } else if(type == fmitcp_message_Type_type_fmi2_import_serialize_fmu_state_res){
+        m_logger.log(Logger::LOG_NETWORK,"This command is TODO\n");
     } else if(type == fmitcp_message_Type_type_fmi2_import_de_serialize_fmu_state_res){
+        m_logger.log(Logger::LOG_NETWORK,"This command is TODO\n");
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_directional_derivative_res){
         fmi2_import_get_directional_derivative_res * r = res.mutable_fmi2_import_get_directional_derivative_res();
         std::vector<double> dz;
@@ -703,7 +719,8 @@ void Client::fmi2_import_set_fmu_state(int message_id, int fmuId, int stateId){
 
     fmi2_import_set_fmu_state_req * req = m.mutable_fmi2_import_set_fmu_state_req();
     req->set_message_id(message_id);
-    req->set_stateid(fmuId);
+    req->set_stateid(stateId);
+    req->set_fmuid(fmuId);
     m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_set_fmu_state_req(mid=%d,fmu=%d,stateId=%d)\n", message_id, fmuId, stateId);
 
     sendMessage(&m);
