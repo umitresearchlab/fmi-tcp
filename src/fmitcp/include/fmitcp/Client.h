@@ -86,7 +86,7 @@ namespace fmitcp {
         virtual void on_fmi2_import_get_integer_res                     (int mid, const vector<int>& values, fmitcp_proto::fmi2_status_t status){}
         virtual void on_fmi2_import_get_boolean_res                     (int mid, const vector<bool>& values, fmitcp_proto::fmi2_status_t status){}
         virtual void on_fmi2_import_get_string_res                      (int mid, const vector<string>& values, fmitcp_proto::fmi2_status_t status){}
-        virtual void on_fmi2_import_get_fmu_state_res                   (int mid, int stateId){}
+        virtual void on_fmi2_import_get_fmu_state_res                   (int mid, int stateId, fmitcp_proto::fmi2_status_t status){}
         virtual void on_fmi2_import_set_fmu_state_res                   (int mid, fmitcp_proto::fmi2_status_t status){}
         virtual void on_fmi2_import_free_fmu_state_res                  (int mid, fmitcp_proto::fmi2_status_t status){}
         /*virtual void on_fmi2_import_serialized_fmu_state_size_res(){}
@@ -141,9 +141,9 @@ namespace fmitcp {
         void fmi2_import_get_integer(int message_id, int fmuId, const vector<int>& valueRefs);
         void fmi2_import_get_boolean(int message_id, int fmuId, const vector<int>& valueRefs);
         void fmi2_import_get_string (int message_id, int fmuId, const vector<int>& valueRefs);
-        void fmi2_import_get_fmu_state();
-        void fmi2_import_set_fmu_state();
-        void fmi2_import_free_fmu_state();
+        void fmi2_import_get_fmu_state(int message_id, int fmuId);
+        void fmi2_import_set_fmu_state(int message_id, int fmuId, int stateId);
+        void fmi2_import_free_fmu_state(int messageId, int stateId);
         void fmi2_import_serialized_fmu_state_size();
         void fmi2_import_serialize_fmu_state();
         void fmi2_import_de_serialize_fmu_state();

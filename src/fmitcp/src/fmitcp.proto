@@ -717,6 +717,7 @@ message fmi2_import_get_fmu_state_req {
 message fmi2_import_get_fmu_state_res {
     required int32 message_id = 1;
     required int32 stateId = 2;
+    required fmi2_status_t status = 3;
 }
 
 // fmi2_status_t     fmi2_import_set_fmu_state (fmi2_import_t *fmu, fmi2_FMU_state_t s)

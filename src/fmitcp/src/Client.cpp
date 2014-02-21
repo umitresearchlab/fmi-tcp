@@ -208,6 +208,10 @@ void Client::clientData(lw_client c, const char* data, long size){
         on_fmi2_import_get_string_res(r->message_id(),values,r->status());
 
     } else if(type == fmitcp_message_Type_type_fmi2_import_get_fmu_state_res){
+        fmi2_import_get_fmu_state_res * r = res.mutable_fmi2_import_get_fmu_state_res();
+        m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_fmu_state_res(mid=%d,stateId=%d,status=%d)\n",r->message_id(), r->stateid(), r->status());
+        on_fmi2_import_get_fmu_state_res(r->message_id(),r->stateid(),r->status());
+
     } else if(type == fmitcp_message_Type_type_fmi2_import_set_fmu_state_res){
     } else if(type == fmitcp_message_Type_type_fmi2_import_free_fmu_state_res){
     } else if(type == fmitcp_message_Type_type_fmi2_import_serialized_fmu_state_size_res){
@@ -684,6 +688,30 @@ void Client::fmi2_import_get_string (int message_id, int fmuId, const vector<int
         req->set_valuereferences(i,valueRefs[i]);
 
     m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_get_string_req(mid=%d,fmu=%d,vrs=...)\n", message_id, fmuId);
+
+    sendMessage(&m);
+}
+
+void Client::fmi2_import_get_fmu_state(int message_id, int fmuId){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_get_fmu_state_req);
+
+    fmi2_import_get_fmu_state_req * req = m.mutable_fmi2_import_get_fmu_state_req();
+    req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+    m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_get_fmu_state_req(mid=%d,fmu=%d)\n", message_id, fmuId);
+
+    sendMessage(&m);
+}
+
+void Client::fmi2_import_set_fmu_state(int message_id, int fmuId, int stateId){
+    fmitcp_message m;
+    m.set_type(fmitcp_message_Type_type_fmi2_import_set_fmu_state_req);
+
+    fmi2_import_set_fmu_state_req * req = m.mutable_fmi2_import_set_fmu_state_req();
+    req->set_message_id(message_id);
+    req->set_stateid(fmuId);
+    m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_set_fmu_state_req(mid=%d,fmu=%d,stateId=%d)\n", message_id, fmuId, stateId);
 
     sendMessage(&m);
 }
