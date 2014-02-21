@@ -216,23 +216,38 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_initialize_slave_req * r = req.mutable_fmi2_import_initialize_slave_req();
-    int fmuId = r->fmuid();
     int messageId = r->message_id();
-    double relTol = r->relativetolerance();
-    double tStart = r->tstart();
-    double tStop = 0.0;
-    bool tStopGiven = r->has_tstop();
 
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_initialize_slave_req(mid=%d,fmuId=%d,relTol=%g,tStart=%g,tStop=%g)\n",messageId,fmuId,relTol,tStart,tStop);
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_initialize_slave_req(mid=%d)\n",messageId);
 
-    if(!m_sendDummyResponses){
-      // initialize FMU here
-      // TODO
+    fmi2_status_t initialize_status = fmi2_status_ok;
+    if(!m_sendDummyResponses) {
+      // initialize FMU
+//      /*!
+//       * \todo
+//       * We should set all variable start values (of "ScalarVariable / <type> / start").
+//       * fmiSetReal/Integer/Boolean/String(s1, ...);
+//       */
+//      fmi2_boolean_t toleranceControlled = fmi2_false;
+//      fmi2_real_t relativeTolerance = fmi2_import_get_default_experiment_tolerance(FMICSClient->FMI2ImportInstance);
+//      fmi2_status_t status;
+//
+//      /*!
+//       * \todo
+//       * We need to set the input values at time = startTime after fmiEnterInitializationMode and before fmiExitInitializationMode.
+//       * fmiSetReal/Integer/Boolean/String(s1, ...);
+//       */
+//      if (fmi2_status_ok_or_warning(status =  fmi2_import_setup_experiment(FMICSClient->FMI2ImportInstance, toleranceControlled,
+//          relativeTolerance, FMICSClient->tStart, FMICSClient->stopTimeDefined, FMICSClient->tStop)) &&
+//          fmi2_status_ok_or_warning(status = fmi2_import_enter_initialization_mode(FMICSClient->FMI2ImportInstance)) &&
+//          fmi2_status_ok_or_warning(fmi2_import_exit_initialization_mode(FMICSClient->FMI2ImportInstance))) {
+//        return status;
+//      }
     }
 
     // Create response message
     res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_initialize_slave_res);
-    fmitcp_proto::fmi2_status_t status = fmitcp_proto::fmi2_status_ok;
+    fmitcp_proto::fmi2_status_t status = fmi2StatusToProtofmi2Status(initialize_status);
     fmitcp_proto::fmi2_import_initialize_slave_res * initializeRes = res.mutable_fmi2_import_initialize_slave_res();
     initializeRes->set_message_id(messageId);
     initializeRes->set_status(status);

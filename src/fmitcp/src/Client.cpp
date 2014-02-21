@@ -310,21 +310,15 @@ void Client::fmi2_import_instantiate(int message_id) {
   sendMessage(&m);
 }
 
-void Client::fmi2_import_initialize_slave(int message_id, int fmuId, double relTol, double tStart, bool stopTimeDefined, double tStop){
-
+void Client::fmi2_import_initialize_slave(int message_id) {
     // Construct message
     fmitcp_message m;
     m.set_type(fmitcp_message_Type_type_fmi2_import_initialize_slave_req);
 
     fmi2_import_initialize_slave_req * req = m.mutable_fmi2_import_initialize_slave_req();
     req->set_message_id(message_id);
-    req->set_fmuid(fmuId);
-    req->set_relativetolerance(relTol);
-    req->set_tstart(tStart);
-    if(stopTimeDefined)
-        req->set_tstop(tStop);
 
-    m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_initialize_slave_req(mid=%d,fmu=%d,relTol=%g,tStart=%g,tStop=%g)\n", message_id, fmuId, relTol, tStart, tStop);
+    m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_initialize_slave_req(mid=%d)\n", message_id);
 
     sendMessage(&m);
 }

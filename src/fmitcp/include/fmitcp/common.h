@@ -16,6 +16,7 @@ namespace fmitcp {
     std::string dataToString(const char* data, long size);
 
     fmitcp_proto::jm_status_enu_t fmiJMStatusToProtoJMStatus(jm_status_enu_t status);
+    fmitcp_proto::fmi2_status_t fmi2StatusToProtofmi2Status(fmi2_status_t status);
 
 }
 
