@@ -97,7 +97,8 @@ namespace fmitcp {
 
         // =========== FMI 2.0 (CS) Co-Simulation functions ===========
         void fmi2_import_instantiate(int message_id);
-        void fmi2_import_initialize_slave(int message_id);
+        void fmi2_import_initialize_slave(int message_id, int fmuId, bool toleranceDefined, double tolerance, double startTime,
+            bool stopTimeDefined, double stopTime);
         void fmi2_import_terminate_slave(int mid, int fmuId);
         void fmi2_import_reset_slave(int mid, int fmuId);
         void fmi2_import_free_slave_instance(int mid, int fmuId);

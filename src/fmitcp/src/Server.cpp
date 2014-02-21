@@ -217,32 +217,41 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     // Unpack message
     fmitcp_proto::fmi2_import_initialize_slave_req * r = req.mutable_fmi2_import_initialize_slave_req();
     int messageId = r->message_id();
+    int fmuId = r->fmuid();
+    bool toleranceDefined = r->has_tolerancedefined();
+    double tolerance = r->tolerance();
+    double starttime = r->starttime();
+    bool stopTimeDefined = r->has_stoptimedefined();
+    double stoptime = r->stoptime();
 
     m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_initialize_slave_req(mid=%d)\n",messageId);
 
     fmi2_status_t initialize_status = fmi2_status_ok;
     if(!m_sendDummyResponses) {
       // initialize FMU
-//      /*!
-//       * \todo
-//       * We should set all variable start values (of "ScalarVariable / <type> / start").
-//       * fmiSetReal/Integer/Boolean/String(s1, ...);
-//       */
+      /*!
+       * \todo
+       * We should set all variable start values (of "ScalarVariable / <type> / start").
+       * fmiSetReal/Integer/Boolean/String(s1, ...);
+       */
+      /*!
+       * \todo
+       * What about FMUs internal experiment values e.g tolerance ????
+       */
 //      fmi2_boolean_t toleranceControlled = fmi2_false;
-//      fmi2_real_t relativeTolerance = fmi2_import_get_default_experiment_tolerance(FMICSClient->FMI2ImportInstance);
-//      fmi2_status_t status;
-//
-//      /*!
-//       * \todo
-//       * We need to set the input values at time = startTime after fmiEnterInitializationMode and before fmiExitInitializationMode.
-//       * fmiSetReal/Integer/Boolean/String(s1, ...);
-//       */
-//      if (fmi2_status_ok_or_warning(status =  fmi2_import_setup_experiment(FMICSClient->FMI2ImportInstance, toleranceControlled,
-//          relativeTolerance, FMICSClient->tStart, FMICSClient->stopTimeDefined, FMICSClient->tStop)) &&
-//          fmi2_status_ok_or_warning(status = fmi2_import_enter_initialization_mode(FMICSClient->FMI2ImportInstance)) &&
-//          fmi2_status_ok_or_warning(fmi2_import_exit_initialization_mode(FMICSClient->FMI2ImportInstance))) {
-//        return status;
-//      }
+//      fmi2_real_t relativeTolerance = fmi2_import_get_default_experiment_tolerance(m_fmi2Instance);
+
+      /*!
+       * \todo
+       * We need to set the input values at time = startTime after fmiEnterInitializationMode and before fmiExitInitializationMode.
+       * fmiSetReal/Integer/Boolean/String(s1, ...);
+       */
+      if (fmi2StatusOkOrWarning(initialize_status =  fmi2_import_setup_experiment(m_fmi2Instance, toleranceDefined, tolerance,
+          starttime, stopTimeDefined, stoptime)) &&
+          fmi2StatusOkOrWarning(initialize_status = fmi2_import_enter_initialization_mode(m_fmi2Instance)) &&
+          fmi2StatusOkOrWarning(fmi2_import_exit_initialization_mode(m_fmi2Instance))) {
+        // do nothing
+      }
     }
 
     // Create response message
