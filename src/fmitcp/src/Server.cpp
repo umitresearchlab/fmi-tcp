@@ -59,7 +59,13 @@ Server::~Server() {
 void Server::init(EventPump * pump) {
   m_pump = pump;
   m_server = lw_server_new(pump->getPump());
-  m_sendDummyResponses = false;
+
+  if(m_fmuPath == "dummy"){
+    m_sendDummyResponses = true;
+    m_fmuParsed = true;
+    return;
+  }
+
   // Parse FMU
   // JM callbacks
   m_jmCallbacks.malloc = malloc;
