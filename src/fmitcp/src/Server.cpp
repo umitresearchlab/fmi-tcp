@@ -275,9 +275,6 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     if(!m_sendDummyResponses) {
       // terminate FMU
       terminateStatus = fmi2_import_terminate(m_fmi2Instance);
-      fmi2_import_free(m_fmi2Instance);
-      fmi_import_free_context(m_context);
-      fmi_import_rmdir(&m_jmCallbacks, m_workingDir.c_str());
     }
 
     // Create response message
@@ -325,8 +322,10 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     resetRes->set_message_id(messageId);
 
     if(!m_sendDummyResponses){
-      // Interact with FMU here
-      // TODO
+      // Interact with FMU
+      fmi2_import_free(m_fmi2Instance);
+      fmi_import_free_context(m_context);
+      fmi_import_rmdir(&m_jmCallbacks, m_workingDir.c_str());
     }
 
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_free_slave_instance_res(mid=%d)\n",messageId);
