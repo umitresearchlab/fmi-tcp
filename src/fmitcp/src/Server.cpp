@@ -190,6 +190,18 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
       // instantiate FMU
       fmi2_boolean_t visible = fmi2_false;
       instantiate_status = fmi2_import_instantiate(m_fmi2Instance, m_instanceName, fmi2_cosimulation, m_fmuLocation, visible);
+      // set the debug logging for FMU
+      if (instantiate_status != jm_status_error) {
+        // fetch the logging categories from the FMU
+        size_t nCategories = fmi2_import_get_log_categories_num(m_fmi2Instance);
+        fmi2_string_t categories[nCategories];
+        int i;
+        for (i = 0 ; i < nCategories ; i++) {
+          categories[i] = fmi2_import_get_log_category(m_fmi2Instance, i);
+        }
+        // set debug logging. We don't care about its result.
+        fmi2_import_set_debug_logging(m_fmi2Instance, m_debugLogging, nCategories, categories);
+      }
     }
 
     // Create response message
