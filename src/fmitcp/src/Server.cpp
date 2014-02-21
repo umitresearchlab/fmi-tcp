@@ -226,7 +226,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_initialize_slave_req(mid=%d)\n",messageId);
 
     fmi2_status_t status = fmi2_status_ok;
-    if(!m_sendDummyResponses) {
+    if (!m_sendDummyResponses) {
       // initialize FMU
       /*!
        * \todo
@@ -270,7 +270,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_terminate_slave_req(mid=%d,fmuId=%d)\n",messageId,fmuId);
 
     fmi2_status_t status = fmi2_status_ok;
-    if(!m_sendDummyResponses) {
+    if (!m_sendDummyResponses) {
       // terminate FMU
       status = fmi2_import_terminate(m_fmi2Instance);
     }
@@ -292,7 +292,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_reset_slave_req(fmuId=%d)\n",fmuId);
 
     fmi2_status_t status = fmi2_status_ok;
-    if(!m_sendDummyResponses) {
+    if (!m_sendDummyResponses) {
       // reset FMU
       status = fmi2_import_reset(m_fmi2Instance);
     }
@@ -385,7 +385,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
 
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_real_output_derivatives_res(mid=%d)\n",messageId);
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_cancel_step_req){
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_cancel_step_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_cancel_step_req * r = req.mutable_fmi2_import_cancel_step_req();
@@ -394,20 +394,21 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
 
     m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_cancel_step_req(mid=%d,fmuId=%d)\n",messageId,fmuId);
 
-    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_cancel_step_res);
-    fmitcp_proto::fmi2_import_cancel_step_res * resetRes = res.mutable_fmi2_import_cancel_step_res();
-    resetRes->set_message_id(messageId);
-    resetRes->set_status(fmitcp_proto::fmi2_status_ok);
-
-    if(!m_sendDummyResponses){
-
-      // Interact with FMU here
-      // TODO
+    fmi2_status_t status = fmi2_status_ok;
+    if (!m_sendDummyResponses) {
+      // Interact with FMU
+      status = fmi2_import_cancel_step(m_fmi2Instance);
     }
 
-    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_cancel_step_res(mid=%d,status=%d)\n",messageId,resetRes->status());
+    // Create response
+    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_cancel_step_res);
+    fmitcp_proto::fmi2_import_cancel_step_res * cancelStepRes = res.mutable_fmi2_import_cancel_step_res();
+    cancelStepRes->set_message_id(messageId);
+    cancelStepRes->set_status(fmi2StatusToProtofmi2Status(status));
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_req){
+    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_cancel_step_res(mid=%d,status=%d)\n",messageId,cancelStepRes->status());
+
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_do_step_req * r = req.mutable_fmi2_import_do_step_req();
@@ -417,17 +418,17 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     bool newStep = r->newstep();
     m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_do_step_req(fmuId=%d,commPoint=%g,stepSize=%g,newStep=%d)\n",fmuId,currentCommunicationPoint,communicationStepSize,newStep?1:0);
 
-    // Defaults
-    fmitcp_proto::fmi2_import_do_step_res * doStepRes = res.mutable_fmi2_import_do_step_res();
-    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_res);
-    doStepRes->set_message_id(r->message_id());
-    doStepRes->set_status(fmitcp_proto::fmi2_status_ok);
-
-    if(!m_sendDummyResponses){
-      // TODO: Step the FMU
+    fmi2_status_t status = fmi2_status_ok;
+    if (!m_sendDummyResponses) {
+      // Step the FMU
+      status = fmi2_import_do_step(m_fmi2Instance, currentCommunicationPoint, communicationStepSize, newStep);
     }
 
     // Create response
+    fmitcp_proto::fmi2_import_do_step_res * doStepRes = res.mutable_fmi2_import_do_step_res();
+    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_do_step_res);
+    doStepRes->set_message_id(r->message_id());
+    doStepRes->set_status(fmi2StatusToProtofmi2Status(status));
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_do_step_res(status=%d)\n",doStepRes->status());
 
   } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_status_req){
