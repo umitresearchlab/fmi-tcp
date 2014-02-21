@@ -256,7 +256,6 @@ Client::Client(EventPump * pump){
 
 Client::~Client(){
     lw_stream_delete(m_client);
-    lw_pump_delete(m_pump->getPump());
     google::protobuf::ShutdownProtobufLibrary();
 }
 
