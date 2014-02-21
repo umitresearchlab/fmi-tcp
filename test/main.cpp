@@ -29,17 +29,13 @@ public:
     };
     ~TestClient(){};
 
-    void onConnect(){
-        fmi2_import_instantiate(messageId());
+    void onConnect() {
+      fmi2_import_instantiate(messageId());
     };
 
-    void on_fmi2_import_instantiate_res(int message_id, fmitcp_proto::jm_status_enu_t status){
-        assertMessageId(message_id);
-        double relTol = 0.0001,
-            tStart = 0,
-            tStop = 10;
-        bool StopTimeDefined = true;
-        fmi2_import_initialize_slave(messageId(), 0, relTol, tStart, StopTimeDefined, tStop);
+    void on_fmi2_import_instantiate_res(int message_id, fmitcp_proto::jm_status_enu_t status) {
+      assertMessageId(message_id);
+      fmi2_import_initialize_slave(messageId());
     }
 
     void on_fmi2_import_initialize_slave_res(int message_id, fmitcp_proto::fmi2_status_t status){
