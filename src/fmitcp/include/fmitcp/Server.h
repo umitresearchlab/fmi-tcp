@@ -69,6 +69,11 @@ namespace fmitcp {
     void setLogger(const Logger &logger);
 
     bool isFmuParsed() {return m_fmuParsed;}
+
+    /* Check if the fmi2 status is ok or warning */
+    bool fmi2StatusOkOrWarning(fmi2_status_t fmistatus) {
+      return (fmistatus == fmi2_status_ok) || (fmistatus == fmi2_status_warning);
+    }
   };
 
 };

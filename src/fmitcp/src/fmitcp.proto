@@ -253,6 +253,13 @@ message fmi2_import_instantiate_res {
 // Wrapper for the FMI function fmiSetupExperiment(...), fmiEnterInitializationMode(...) & fmiExitInitializationMode(...)
 message fmi2_import_initialize_slave_req {
     required int32 message_id = 1;
+    required int32 fmuId = 2;
+    required bool toleranceDefined = 3;
+    required double tolerance = 4;
+    required double startTime = 5;
+    required bool stopTimeDefined= 6;
+    required double stopTime = 7;
+    
 }
 message fmi2_import_initialize_slave_res {
     required int32 message_id = 1;

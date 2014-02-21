@@ -326,15 +326,24 @@ void Client::fmi2_import_instantiate(int message_id) {
   sendMessage(&m);
 }
 
-void Client::fmi2_import_initialize_slave(int message_id) {
+void Client::fmi2_import_initialize_slave(int message_id, int fmuId, bool toleranceDefined, double tolerance, double startTime,
+    bool stopTimeDefined, double stopTime) {
     // Construct message
     fmitcp_message m;
     m.set_type(fmitcp_message_Type_type_fmi2_import_initialize_slave_req);
 
     fmi2_import_initialize_slave_req * req = m.mutable_fmi2_import_initialize_slave_req();
     req->set_message_id(message_id);
+    req->set_fmuid(fmuId);
+    req->set_tolerancedefined(toleranceDefined);
+    req->set_tolerance(tolerance);
+    req->set_starttime(startTime);
+    req->set_stoptimedefined(stopTimeDefined);
+    req->set_stoptime(stopTime);
 
-    m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_initialize_slave_req(mid=%d)\n", message_id);
+    m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_initialize_slave_req(mid=%d,fmu=%d,toleranceDefined=%d,tolerance=%g,"
+        "startTime=%g,stopTimeDefined=%d,stopTime=%g)\n", message_id, fmuId, toleranceDefined, tolerance, startTime,
+        stopTimeDefined, stopTime);
 
     sendMessage(&m);
 }

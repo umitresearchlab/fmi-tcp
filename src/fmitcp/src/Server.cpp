@@ -177,7 +177,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
   fmitcp_proto::fmitcp_message res;
   bool sendResponse = true;
 
-  if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_req){
+  if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_instantiate_req * r = req.mutable_fmi2_import_instantiate_req();
@@ -185,13 +185,13 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
 
     m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_instantiate_req(mid=%d)\n",messageId);
 
-    jm_status_enu_t instantiate_status = jm_status_success;
+    jm_status_enu_t instantiateStatus = jm_status_success;
     if (!m_sendDummyResponses) {
       // instantiate FMU
       fmi2_boolean_t visible = fmi2_false;
-      instantiate_status = fmi2_import_instantiate(m_fmi2Instance, m_instanceName, fmi2_cosimulation, m_fmuLocation, visible);
+      instantiateStatus = fmi2_import_instantiate(m_fmi2Instance, m_instanceName, fmi2_cosimulation, m_fmuLocation, visible);
       // set the debug logging for FMU
-      if (instantiate_status != jm_status_error) {
+      if (instantiateStatus != jm_status_error) {
         // fetch the logging categories from the FMU
         size_t nCategories = fmi2_import_get_log_categories_num(m_fmi2Instance);
         fmi2_string_t categories[nCategories];
@@ -206,54 +206,63 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
 
     // Create response message
     res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_res);
-    fmitcp_proto::jm_status_enu_t status = fmiJMStatusToProtoJMStatus(instantiate_status);
+    fmitcp_proto::jm_status_enu_t status = fmiJMStatusToProtoJMStatus(instantiateStatus);
     fmitcp_proto::fmi2_import_instantiate_res * instantiateRes = res.mutable_fmi2_import_instantiate_res();
     instantiateRes->set_message_id(messageId);
     instantiateRes->set_status(status);
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_instantiate_slave_res(mid=%d,status=%d)\n",messageId,status);
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_initialize_slave_req){
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_initialize_slave_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_initialize_slave_req * r = req.mutable_fmi2_import_initialize_slave_req();
     int messageId = r->message_id();
+    int fmuId = r->fmuid();
+    bool toleranceDefined = r->has_tolerancedefined();
+    double tolerance = r->tolerance();
+    double starttime = r->starttime();
+    bool stopTimeDefined = r->has_stoptimedefined();
+    double stoptime = r->stoptime();
 
     m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_initialize_slave_req(mid=%d)\n",messageId);
 
-    fmi2_status_t initialize_status = fmi2_status_ok;
+    fmi2_status_t initializeStatus = fmi2_status_ok;
     if(!m_sendDummyResponses) {
       // initialize FMU
-//      /*!
-//       * \todo
-//       * We should set all variable start values (of "ScalarVariable / <type> / start").
-//       * fmiSetReal/Integer/Boolean/String(s1, ...);
-//       */
+      /*!
+       * \todo
+       * We should set all variable start values (of "ScalarVariable / <type> / start").
+       * fmiSetReal/Integer/Boolean/String(s1, ...);
+       */
+      /*!
+       * \todo
+       * What about FMUs internal experiment values e.g tolerance ????
+       */
 //      fmi2_boolean_t toleranceControlled = fmi2_false;
-//      fmi2_real_t relativeTolerance = fmi2_import_get_default_experiment_tolerance(FMICSClient->FMI2ImportInstance);
-//      fmi2_status_t status;
-//
-//      /*!
-//       * \todo
-//       * We need to set the input values at time = startTime after fmiEnterInitializationMode and before fmiExitInitializationMode.
-//       * fmiSetReal/Integer/Boolean/String(s1, ...);
-//       */
-//      if (fmi2_status_ok_or_warning(status =  fmi2_import_setup_experiment(FMICSClient->FMI2ImportInstance, toleranceControlled,
-//          relativeTolerance, FMICSClient->tStart, FMICSClient->stopTimeDefined, FMICSClient->tStop)) &&
-//          fmi2_status_ok_or_warning(status = fmi2_import_enter_initialization_mode(FMICSClient->FMI2ImportInstance)) &&
-//          fmi2_status_ok_or_warning(fmi2_import_exit_initialization_mode(FMICSClient->FMI2ImportInstance))) {
-//        return status;
-//      }
+//      fmi2_real_t relativeTolerance = fmi2_import_get_default_experiment_tolerance(m_fmi2Instance);
+
+      /*!
+       * \todo
+       * We need to set the input values at time = startTime after fmiEnterInitializationMode and before fmiExitInitializationMode.
+       * fmiSetReal/Integer/Boolean/String(s1, ...);
+       */
+      if (fmi2StatusOkOrWarning(initializeStatus =  fmi2_import_setup_experiment(m_fmi2Instance, toleranceDefined, tolerance,
+          starttime, stopTimeDefined, stoptime)) &&
+          fmi2StatusOkOrWarning(initializeStatus = fmi2_import_enter_initialization_mode(m_fmi2Instance)) &&
+          fmi2StatusOkOrWarning(fmi2_import_exit_initialization_mode(m_fmi2Instance))) {
+        // do nothing
+      }
     }
 
     // Create response message
     res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_initialize_slave_res);
-    fmitcp_proto::fmi2_status_t status = fmi2StatusToProtofmi2Status(initialize_status);
+    fmitcp_proto::fmi2_status_t status = fmi2StatusToProtofmi2Status(initializeStatus);
     fmitcp_proto::fmi2_import_initialize_slave_res * initializeRes = res.mutable_fmi2_import_initialize_slave_res();
     initializeRes->set_message_id(messageId);
     initializeRes->set_status(status);
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_initialize_slave_res(mid=%d,status=%d)\n",messageId,status);
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_terminate_slave_req){
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_terminate_slave_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_terminate_slave_req * r = req.mutable_fmi2_import_terminate_slave_req();
@@ -262,14 +271,15 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
 
     m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_terminate_slave_req(mid=%d,fmuId=%d)\n",messageId,fmuId);
 
-    if(!m_sendDummyResponses){
-      // terminate FMU here
-      // TODO
+    fmi2_status_t terminateStatus = fmi2_status_ok;
+    if(!m_sendDummyResponses) {
+      // terminate FMU
+      terminateStatus = fmi2_import_terminate(m_fmi2Instance);
     }
 
     // Create response message
     res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_terminate_slave_res);
-    fmitcp_proto::fmi2_status_t status = fmitcp_proto::fmi2_status_ok;
+    fmitcp_proto::fmi2_status_t status = fmi2StatusToProtofmi2Status(terminateStatus);
     fmitcp_proto::fmi2_import_terminate_slave_res * terminateRes = res.mutable_fmi2_import_terminate_slave_res();
     terminateRes->set_message_id(messageId);
     terminateRes->set_status(status);
@@ -312,8 +322,10 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     resetRes->set_message_id(messageId);
 
     if(!m_sendDummyResponses){
-      // Interact with FMU here
-      // TODO
+      // Interact with FMU
+      fmi2_import_free(m_fmi2Instance);
+      fmi_import_free_context(m_context);
+      fmi_import_rmdir(&m_jmCallbacks, m_workingDir.c_str());
     }
 
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_free_slave_instance_res(mid=%d)\n",messageId);
