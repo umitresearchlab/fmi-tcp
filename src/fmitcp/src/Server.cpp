@@ -931,7 +931,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     for (int i = 0 ; i < r->z_ref_size() ; i++) {
       z_ref[i] = r->z_ref(i);
     }
-    for (int i = 0 ; i < r->dv_size()() ; i++) {
+    for (int i = 0 ; i < r->dv_size() ; i++) {
       dv[i] = r->dv(i);
     }
     m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_directional_derivative_req(mid=%d,fmuId=%d,vref=...,zref=...,dv=...)\n",r->message_id(),r->fmuid());
