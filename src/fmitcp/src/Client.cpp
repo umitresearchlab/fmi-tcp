@@ -573,7 +573,7 @@ void Client::fmi2_import_set_debug_logging(int message_id, int fmuId, bool loggi
     req->set_fmuid(fmuId);
     req->set_loggingon(loggingOn);
     for(int i=0; i<categories.size(); i++)
-        req->set_categories(i,categories[i]);
+        req->add_categories(categories[i]);
 
     m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_set_debug_logging_req(mid=%d,fmu=%d,categories=...)\n", message_id, fmuId);
 
@@ -588,9 +588,9 @@ void Client::fmi2_import_set_real(int message_id, int fmuId, const vector<int>& 
     req->set_message_id(message_id);
     req->set_fmuid(fmuId);
     for(int i=0; i<valueRefs.size(); i++)
-        req->set_valuereferences(i,valueRefs[i]);
+        req->add_valuereferences(valueRefs[i]);
     for(int i=0; i<values.size(); i++)
-        req->set_values(i,values[i]);
+        req->add_values(values[i]);
 
     m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_set_real_req(mid=%d,fmu=%d,vrs=...,values=...)\n", message_id, fmuId);
 
@@ -605,9 +605,9 @@ void Client::fmi2_import_set_integer(int message_id, int fmuId, const vector<int
     req->set_message_id(message_id);
     req->set_fmuid(fmuId);
     for(int i=0; i<valueRefs.size(); i++)
-        req->set_valuereferences(i,valueRefs[i]);
+        req->add_valuereferences(valueRefs[i]);
     for(int i=0; i<values.size(); i++)
-        req->set_values(i,values[i]);
+        req->add_values(values[i]);
 
     m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_set_integer_req(mid=%d,fmu=%d,vrs=...,values=...)\n", message_id, fmuId);
 
@@ -622,9 +622,9 @@ void Client::fmi2_import_set_boolean(int message_id, int fmuId, const vector<int
     req->set_message_id(message_id);
     req->set_fmuid(fmuId);
     for(int i=0; i<valueRefs.size(); i++)
-        req->set_valuereferences(i,valueRefs[i]);
+        req->add_valuereferences(valueRefs[i]);
     for(int i=0; i<values.size(); i++)
-        req->set_values(i,values[i]);
+        req->add_values(values[i]);
 
     m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_set_boolean_req(mid=%d,fmu=%d,vrs=...,values=...)\n", message_id, fmuId);
 
@@ -640,9 +640,9 @@ void Client::fmi2_import_set_string(int message_id, int fmuId, const vector<int>
     req->set_message_id(message_id);
     req->set_fmuid(fmuId);
     for(int i=0; i<valueRefs.size(); i++)
-        req->set_valuereferences(i,valueRefs[i]);
+        req->add_valuereferences(valueRefs[i]);
     for(int i=0; i<values.size(); i++)
-        req->set_values(i,values[i]);
+        req->add_values(values[i]);
 
     m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_set_string_req(mid=%d,fmu=%d,vrs=...,values=...)\n", message_id, fmuId);
 
@@ -657,7 +657,7 @@ void Client::fmi2_import_get_real(int message_id, int fmuId, const vector<int>& 
     req->set_message_id(message_id);
     req->set_fmuid(fmuId);
     for(int i=0; i<valueRefs.size(); i++)
-        req->set_valuereferences(i,valueRefs[i]);
+        req->add_valuereferences(valueRefs[i]);
 
     m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_get_real_req(mid=%d,fmu=%d,vrs=...)\n", message_id, fmuId);
 
@@ -673,7 +673,7 @@ void Client::fmi2_import_get_integer(int message_id, int fmuId, const vector<int
     req->set_message_id(message_id);
     req->set_fmuid(fmuId);
     for(int i=0; i<valueRefs.size(); i++)
-        req->set_valuereferences(i,valueRefs[i]);
+        req->add_valuereferences(valueRefs[i]);
 
     m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_get_integer_req(mid=%d,fmu=%d,vrs=...)\n", message_id, fmuId);
 
@@ -688,7 +688,7 @@ void Client::fmi2_import_get_boolean(int message_id, int fmuId, const vector<int
     req->set_message_id(message_id);
     req->set_fmuid(fmuId);
     for(int i=0; i<valueRefs.size(); i++)
-        req->set_valuereferences(i,valueRefs[i]);
+        req->add_valuereferences(valueRefs[i]);
 
     m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_get_boolean_req(mid=%d,fmu=%d,vrs=...)\n", message_id, fmuId);
 
@@ -703,7 +703,7 @@ void Client::fmi2_import_get_string (int message_id, int fmuId, const vector<int
     req->set_message_id(message_id);
     req->set_fmuid(fmuId);
     for(int i=0; i<valueRefs.size(); i++)
-        req->set_valuereferences(i,valueRefs[i]);
+        req->add_valuereferences(valueRefs[i]);
 
     m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_get_string_req(mid=%d,fmu=%d,vrs=...)\n", message_id, fmuId);
 
@@ -746,11 +746,11 @@ void Client::fmi2_import_get_directional_derivative(int message_id, int fmuId,
     req->set_message_id(message_id);
     req->set_fmuid(fmuId);
     for(int i=0; i<v_ref.size(); i++)
-        req->set_v_ref(i,v_ref[i]);
+        req->add_v_ref(v_ref[i]);
     for(int i=0; i<z_ref.size(); i++)
-        req->set_z_ref(i,z_ref[i]);
+        req->add_z_ref(z_ref[i]);
     for(int i=0; i<dv.size(); i++)
-        req->set_dv(i,dv[i]);
+        req->add_dv(dv[i]);
 
     m_logger.log(Logger::LOG_NETWORK, "> fmi2_import_get_directional_derivative_req(mid=%d,fmu=%d,vref=...,zref=...,dv=...)\n", message_id, fmuId);
 
