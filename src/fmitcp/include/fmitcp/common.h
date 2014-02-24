@@ -9,14 +9,35 @@
 #define FMILIB_BUILDING_LIBRARY
 #include <fmilib.h>
 #include <string>
+#include <sstream>
 
+using namespace std;
 namespace fmitcp {
 
-    void sendProtoBuffer(lw_client c, fmitcp_proto::fmitcp_message * message);
-    std::string dataToString(const char* data, long size);
+  template <typename T>
+  string NumberToString(T Number) {
+    ostringstream ss;
+    ss << Number;
+    return ss.str();
+  }
+  template <typename TArray>
+  string arrayToString(TArray arr[], int size) {
+    string res;
+    res.append("{");
+    for (int i = 0 ; i < size ; i++) {
+      if (i != 0) res.append(",");
+      res.append(NumberToString(arr[i]));
+    }
+    res.append("}");
+    return res;
+  }
 
-    fmitcp_proto::jm_status_enu_t fmiJMStatusToProtoJMStatus(jm_status_enu_t status);
-    fmitcp_proto::fmi2_status_t fmi2StatusToProtofmi2Status(fmi2_status_t status);
+
+  void sendProtoBuffer(lw_client c, fmitcp_proto::fmitcp_message * message);
+  string dataToString(const char* data, long size);
+
+  fmitcp_proto::jm_status_enu_t fmiJMStatusToProtoJMStatus(jm_status_enu_t status);
+  fmitcp_proto::fmi2_status_t fmi2StatusToProtofmi2Status(fmi2_status_t status);
 
 }
 
