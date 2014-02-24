@@ -304,7 +304,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     resetRes->set_status(fmi2StatusToProtofmi2Status(status));
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_reset_slave_res(mid=%d,status=%d)\n",messageId,resetRes->status());
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_free_slave_instance_req)  {
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_free_slave_instance_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_free_slave_instance_req * r = req.mutable_fmi2_import_free_slave_instance_req();
@@ -327,63 +327,67 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
 
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_free_slave_instance_res(mid=%d)\n",messageId);
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_real_input_derivatives_req){
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_real_input_derivatives_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_set_real_input_derivatives_req * r = req.mutable_fmi2_import_set_real_input_derivatives_req();
-    int fmuId = r->fmuid(),
-        messageId = r->message_id(),
-        numValueRefs = r->valuereferences_size(),
-        numValues = r->values_size();
+    int messageId = r->message_id();
+    int fmuId = r->fmuid();
+    fmi2_value_reference_t vr[r->valuereferences_size()];
+    fmi2_integer_t order[r->orders_size()];
+    fmi2_real_t value[r->values_size()];
 
+    for (int i = 0 ; i < r->valuereferences_size() ; i++) {
+      vr[i] = r->valuereferences(i);
+      order[i] = r->orders(i);
+      value[i] = r->values(i);
+    }
     m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_set_real_input_derivatives_req(mid=%d,fmuId=%d)\n",messageId,fmuId);
 
-    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_real_input_derivatives_res);
-    fmitcp_proto::fmi2_import_set_real_input_derivatives_res * resetRes = res.mutable_fmi2_import_set_real_input_derivatives_res();
-    resetRes->set_message_id(messageId);
-    resetRes->set_status(fmitcp_proto::fmi2_status_ok);
-
-    if(!m_sendDummyResponses){
-
-      // Get values
-      for(int i=0; i<numValues; i++){
-        r->values(i);
-        r->valuereferences(i);
-      }
-
-      // Interact with FMU here
-      // TODO
+    fmi2_status_t status = fmi2_status_ok;
+    if (!m_sendDummyResponses) {
+      // interact with FMU
+      status = fmi2_import_set_real_input_derivatives(m_fmi2Instance, vr, r->valuereferences_size(), order, value);
     }
 
-    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_set_real_input_derivatives_res(mid=%d)\n",messageId);
+    // Create response
+    fmitcp_proto::fmi2_import_set_real_input_derivatives_res * setRealInputDerivativesRes = res.mutable_fmi2_import_set_real_input_derivatives_res();
+    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_real_input_derivatives_res);
+    setRealInputDerivativesRes->set_message_id(messageId);
+    setRealInputDerivativesRes->set_status(fmi2StatusToProtofmi2Status(status));
+    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_set_real_input_derivatives_res(mid=%d,status=%d)\n",messageId, setRealInputDerivativesRes->status());
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_output_derivatives_req){
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_output_derivatives_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_get_real_output_derivatives_req * r = req.mutable_fmi2_import_get_real_output_derivatives_req();
-    int fmuId = r->fmuid(),
-        messageId = r->message_id(),
-        numValueRefs = r->valuereferences_size();
+    int messageId = r->message_id();
+    int fmuId = r->fmuid();
+    fmi2_value_reference_t vr[r->valuereferences_size()];
+    fmi2_integer_t order[r->orders_size()];
+    fmi2_real_t value[r->valuereferences_size()];
 
+    for (int i = 0 ; i < r->valuereferences_size() ; i++) {
+      vr[i] = r->valuereferences(i);
+      order[i] = r->orders(i);
+    }
     m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_real_output_derivatives_req(mid=%d,fmuId=%d)\n",messageId,fmuId);
 
-    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_output_derivatives_res);
-    fmitcp_proto::fmi2_import_get_real_output_derivatives_res * resetRes = res.mutable_fmi2_import_get_real_output_derivatives_res();
-    resetRes->set_message_id(messageId);
-    resetRes->set_status(fmitcp_proto::fmi2_status_ok);
-
-    if(!m_sendDummyResponses){
-
-      // Set values
-      for(int i=0; i<numValueRefs; i++){
-        resetRes->set_values(i,0.0f); // Just testing
-      }
-
-      // Interact with FMU here
-      // TODO
+    fmi2_status_t status = fmi2_status_ok;
+    if (!m_sendDummyResponses) {
+      // interact with FMU
+      status = fmi2_import_get_real_output_derivatives(m_fmi2Instance, vr, r->valuereferences_size(), order, value);
     }
 
-    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_real_output_derivatives_res(mid=%d)\n",messageId);
+    // Create response
+    fmitcp_proto::fmi2_import_get_real_output_derivatives_res * getRealOutputDerivativesRes = res.mutable_fmi2_import_get_real_output_derivatives_res();
+    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_output_derivatives_res);
+    getRealOutputDerivativesRes->set_message_id(messageId);
+    getRealOutputDerivativesRes->set_status(fmi2StatusToProtofmi2Status(status));
+    for (int i = 0 ; i < r->valuereferences_size() ; i++) {
+      getRealOutputDerivativesRes->add_values(value[i]);
+    }
+    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_real_output_derivatives_res(mid=%d,status=%d,values=...)\n",getRealOutputDerivativesRes->message_id(),getRealOutputDerivativesRes->status());
 
   } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_cancel_step_req) {
 
@@ -953,8 +957,8 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     m_logger.log(Logger::LOG_ERROR,"Message type not recognized: %d.\n",type);
   }
 
-  if(sendResponse){
-    sendMessage(c,&res);
+  if (sendResponse) {
+    sendMessage(c, &res);
   }
 }
 
