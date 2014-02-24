@@ -15,9 +15,9 @@ using namespace std;
 namespace fmitcp {
 
   template <typename T>
-  string NumberToString(T Number) {
+  string typeToString(T type) {
     ostringstream ss;
-    ss << Number;
+    ss << type;
     return ss.str();
   }
   template <typename TArray>
@@ -26,7 +26,7 @@ namespace fmitcp {
     res.append("{");
     for (int i = 0 ; i < size ; i++) {
       if (i != 0) res.append(",");
-      res.append(NumberToString(arr[i]));
+      res.append(typeToString(arr[i]));
     }
     res.append("}");
     return res;
