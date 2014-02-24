@@ -919,19 +919,38 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_get_directional_derivative_req * r = req.mutable_fmi2_import_get_directional_derivative_req();
+    int messageId = r->message_id();
+    int fmuId = r->fmuid();
+    fmi2_value_reference_t v_ref[r->v_ref_size()];
+    fmi2_value_reference_t z_ref[r->z_ref_size()];
+    fmi2_real_t dv[r->dv_size()], dz[r->z_ref_size()];
+
+    for (int i = 0 ; i < r->v_ref_size() ; i++) {
+      v_ref[i] = r->v_ref(i);
+    }
+    for (int i = 0 ; i < r->z_ref_size() ; i++) {
+      z_ref[i] = r->z_ref(i);
+    }
+    for (int i = 0 ; i < r->dv_size()() ; i++) {
+      dv[i] = r->dv(i);
+    }
     m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_directional_derivative_req(mid=%d,fmuId=%d,vref=...,zref=...,dv=...)\n",r->message_id(),r->fmuid());
 
-    fmitcp_proto::fmi2_import_get_directional_derivative_res * getStatusRes = res.mutable_fmi2_import_get_directional_derivative_res();
-    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_directional_derivative_res);
-    getStatusRes->set_message_id(r->message_id());
-    getStatusRes->set_status(fmitcp_proto::fmi2_status_ok);
-
-    if(!m_sendDummyResponses){
-      // TODO: interact with FMU
+    fmi2_status_t status = fmi2_status_ok;
+    if (!m_sendDummyResponses) {
+      // interact with FMU
+      status = fmi2_import_get_directional_derivative(m_fmi2Instance, v_ref, r->v_ref_size(), z_ref, r->z_ref_size(), dv, dz);
     }
 
     // Create response
-    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_directional_derivative_res(mid=%d,status=%d,dz=...)\n",getStatusRes->message_id(),getStatusRes->status());
+    fmitcp_proto::fmi2_import_get_directional_derivative_res * getDirectionalDerivativesRes = res.mutable_fmi2_import_get_directional_derivative_res();
+    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_directional_derivative_res);
+    getDirectionalDerivativesRes->set_message_id(r->message_id());
+    getDirectionalDerivativesRes->set_status(fmi2StatusToProtofmi2Status(status));
+    for (int i = 0 ; i < r->z_ref_size() ; i++) {
+      getDirectionalDerivativesRes->add_dz(dz[i]);
+    }
+    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_directional_derivative_res(mid=%d,status=%d,dz=...)\n",getDirectionalDerivativesRes->message_id(),getDirectionalDerivativesRes->status());
 
   } else if(type == fmitcp_proto::fmitcp_message_Type_type_get_xml_req){
 
