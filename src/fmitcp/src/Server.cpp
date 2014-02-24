@@ -703,6 +703,11 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
 
     if(!m_sendDummyResponses){
       // TODO: interact with FMU
+    } else {
+        // Set dummy values
+        for (int i = 0 ; i < r->valuereferences_size() ; i++) {
+            getStatusRes->add_values(0.0);
+        }
     }
 
     // Create response
