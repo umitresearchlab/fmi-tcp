@@ -14,12 +14,19 @@
 using namespace std;
 namespace fmitcp {
 
+  /*!
+   * Converts the type e.g int, double etc. to string.
+   */
   template <typename T>
   string typeToString(T type) {
     ostringstream ss;
     ss << type;
     return ss.str();
   }
+
+  /*!
+   * Makes a comma separated string of an array. The array could be if type int, double etc.
+   */
   template <typename TArray>
   string arrayToString(TArray arr[], int size) {
     string res;
@@ -31,7 +38,6 @@ namespace fmitcp {
     res.append("}");
     return res;
   }
-
 
   void sendProtoBuffer(lw_client c, fmitcp_proto::fmitcp_message * message);
   string dataToString(const char* data, long size);
