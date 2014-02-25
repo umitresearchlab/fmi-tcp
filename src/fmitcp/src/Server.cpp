@@ -1,3 +1,5 @@
+#include <fstream>
+
 #include "Server.h"
 #include "Logger.h"
 #include "common.h"
@@ -954,23 +956,37 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     }
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_directional_derivative_res(mid=%d,status=%d,dz=%s)\n",getDirectionalDerivativesRes->message_id(),getDirectionalDerivativesRes->status(),arrayToString(dz, r->z_ref_size()).c_str());
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_get_xml_req){
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_get_xml_req) {
 
     // Unpack message
     fmitcp_proto::get_xml_req * r = req.mutable_get_xml_req();
     m_logger.log(Logger::LOG_NETWORK,"< get_xml_req(mid=%d,fmuId=%d)\n",r->message_id(),r->fmuid());
 
-    fmitcp_proto::get_xml_res * getStatusRes = res.mutable_get_xml_res();
-    res.set_type(fmitcp_proto::fmitcp_message_Type_type_get_xml_res);
-    getStatusRes->set_message_id(r->message_id());
-    getStatusRes->set_xml("");
-
-    if(!m_sendDummyResponses){
-      // TODO: interact with FMU
+    string xml = "";
+    if (!m_sendDummyResponses) {
+      // interact with FMU
+      string line;
+      char* xmlFilePath = fmi_import_get_model_description_path(m_workingDir.c_str(), &m_jmCallbacks);
+      m_logger.log(Logger::LOG_DEBUG,"xmlFilePath=%s\n",xmlFilePath);
+      ifstream xmlFile (xmlFilePath);
+      if (xmlFile.is_open()) {
+        while (getline(xmlFile, line)) {
+          xml.append(line).append("\n");
+        }
+        xmlFile.close();
+      } else {
+        m_logger.log(Logger::LOG_ERROR, "Error opening the %s file.\n", xmlFilePath);
+      }
+      free(xmlFilePath);
     }
 
     // Create response
-    m_logger.log(Logger::LOG_NETWORK,"> get_xml_res(mid=%d,xml=...)\n",getStatusRes->message_id());
+    fmitcp_proto::get_xml_res * getXmlRes = res.mutable_get_xml_res();
+    res.set_type(fmitcp_proto::fmitcp_message_Type_type_get_xml_res);
+    getXmlRes->set_message_id(r->message_id());
+    getXmlRes->set_xml(xml);
+    // only printing the first 38 characters of xml.
+    m_logger.log(Logger::LOG_NETWORK,"> get_xml_res(mid=%d,xml=%.*s)\n",getXmlRes->message_id(), 38, getXmlRes->xml().c_str());
 
   } else {
     // Something is wrong.
