@@ -30,11 +30,6 @@ void jmCallbacksLogger(jm_callbacks* c, jm_string module, jm_log_level_enu_t log
   printf("[module = %s][log level = %s] %s\n", module, jm_log_level_to_string(log_level), message);fflush(NULL);
 }
 
-void Server::error(lw_server s, lw_error error) {
-  string err = lw_error_tostring(error);
-  onError(err);
-}
-
 Server::Server(string fmuPath, bool debugLogging, jm_log_level_enu_t logLevel, EventPump *pump) {
   m_fmuParsed = true;
   m_fmuPath = fmuPath;
@@ -988,6 +983,11 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
   }
 }
 
+void Server::error(lw_server s, lw_error error) {
+  string err = lw_error_tostring(error);
+  onError(err);
+}
+
 void Server::host(string hostName, long port) {
   // save this object in the server tag so we can use it later on.
   lw_server_set_tag(m_server, (void*)this);
@@ -1008,14 +1008,10 @@ void Server::host(string hostName, long port) {
   m_logger.log(Logger::LOG_NETWORK,"Listening to %s:%ld\n",hostName.c_str(),port);
 }
 
-void Server::sendDummyResponses(bool sendDummyResponses){
+void Server::sendDummyResponses(bool sendDummyResponses) {
   m_sendDummyResponses = sendDummyResponses;
 }
 
 void Server::sendMessage(lw_client c, fmitcp_proto::fmitcp_message* message) {
   fmitcp::sendProtoBuffer(c,message);
-}
-
-void Server::setLogger(const Logger &logger) {
-  m_logger = logger;
 }
