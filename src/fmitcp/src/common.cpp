@@ -50,3 +50,26 @@ fmitcp_proto::fmi2_status_t fmitcp::fmi2StatusToProtofmi2Status(fmi2_status_t st
     return fmitcp_proto::fmi2_status_error;
   }
 }
+
+fmitcp_proto::jm_log_level_enu_t fmitcp::fmiJMLogLevelToProtoJMLogLevel(jm_log_level_enu_t logLevel) {
+  switch (logLevel) {
+  case jm_log_level_nothing:
+    return fmitcp_proto::jm_log_level_nothing;
+  case jm_log_level_fatal:
+    return fmitcp_proto::jm_log_level_fatal;
+  case jm_log_level_error:
+    return fmitcp_proto::jm_log_level_error;
+  case jm_log_level_warning:
+    return fmitcp_proto::jm_log_level_warning;
+  case jm_log_level_info:
+    return fmitcp_proto::jm_log_level_info;
+  case jm_log_level_verbose:
+    return fmitcp_proto::jm_log_level_verbose;
+  case jm_log_level_debug:
+    return fmitcp_proto::jm_log_level_debug;
+  case jm_log_level_all:
+    return fmitcp_proto::jm_log_level_all;
+  default: // should never be reached
+    return fmitcp_proto::jm_log_level_nothing;
+  }
+}

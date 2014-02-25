@@ -249,7 +249,7 @@ void Client::clientData(lw_client c, const char* data, long size){
 
         get_xml_res * r = res.mutable_get_xml_res();
         m_logger.log(Logger::LOG_NETWORK,"< get_xml_res(mid=%d,xml=...)\n",r->message_id());
-        onGetXmlRes(r->message_id(), r->xml());
+        onGetXmlRes(r->message_id(), r->loglevel(), r->xml());
 
     } else {
         m_logger.log(Logger::LOG_ERROR,"Message type not recognized: %d!\n",type);
@@ -331,7 +331,7 @@ void Client::getXml(int message_id, int fmuId) {
   req->set_message_id(message_id);
   req->set_fmuid(fmuId);
 
-  m_logger.log(Logger::LOG_NETWORK, "> get_xml_req(mid=%d)\n", message_id);
+  m_logger.log(Logger::LOG_NETWORK, "> get_xml_req(mid=%d,fmuId=%d)\n", message_id, fmuId);
 
   sendMessage(&m);
 }

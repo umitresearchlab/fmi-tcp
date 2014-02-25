@@ -205,6 +205,17 @@ message fmitcp_message {
     optional get_xml_res get_xml_res = 91;
 }
 
+enum jm_log_level_enu_t {
+  jm_log_level_nothing = 0;
+  jm_log_level_fatal = 1;
+  jm_log_level_error = 2;
+  jm_log_level_warning = 3;
+  jm_log_level_info = 4;
+  jm_log_level_verbose = 5;
+  jm_log_level_debug = 6;
+  jm_log_level_all = 7;
+}
+
 enum fmi2_status_t {
     fmi2_status_ok = 0;
     fmi2_status_warning = 1;
@@ -786,5 +797,6 @@ message get_xml_req {
 }
 message get_xml_res {
     required int32 message_id = 1;
-    required string xml = 2;
+    required jm_log_level_enu_t logLevel = 2;
+    required string xml = 3;
 }

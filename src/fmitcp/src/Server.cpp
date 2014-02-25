@@ -994,9 +994,10 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     fmitcp_proto::get_xml_res * getXmlRes = res.mutable_get_xml_res();
     res.set_type(fmitcp_proto::fmitcp_message_Type_type_get_xml_res);
     getXmlRes->set_message_id(r->message_id());
+    getXmlRes->set_loglevel(fmiJMLogLevelToProtoJMLogLevel(m_logLevel));
     getXmlRes->set_xml(xml);
     // only printing the first 38 characters of xml.
-    m_logger.log(Logger::LOG_NETWORK,"> get_xml_res(mid=%d,xml=%.*s)\n",getXmlRes->message_id(), 38, getXmlRes->xml().c_str());
+    m_logger.log(Logger::LOG_NETWORK,"> get_xml_res(mid=%d,logLevel=%d,xml=%.*s)\n",getXmlRes->message_id(), getXmlRes->loglevel(), 38, getXmlRes->xml().c_str());
 
   } else {
     // Something is wrong.
