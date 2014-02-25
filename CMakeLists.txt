@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 2.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
-ADD_SUBDIRECTORY(fmi-master)
-ADD_SUBDIRECTORY(fmi-slave)
+#ADD_SUBDIRECTORY(src/common)
+ADD_SUBDIRECTORY(src/fmitcp)
+ADD_SUBDIRECTORY(test)
+
