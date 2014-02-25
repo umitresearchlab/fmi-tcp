@@ -95,6 +95,7 @@ namespace fmitcp {
         */
         virtual void on_fmi2_import_get_directional_derivative_res(int mid, const vector<double>& dz, fmitcp_proto::fmi2_status_t status){}
 
+        void getXml(int message_id, int fmuId);
         // =========== FMI 2.0 (CS) Co-Simulation functions ===========
         void fmi2_import_instantiate(int message_id);
         void fmi2_import_initialize_slave(int message_id, int fmuId, bool toleranceDefined, double tolerance, double startTime,

@@ -66,7 +66,7 @@ namespace fmitcp {
     void sendMessage(lw_client c, fmitcp_proto::fmitcp_message* message);
 
     Logger* getLogger() {return &m_logger;}
-    void setLogger(const Logger &logger);
+    void setLogger(const Logger &logger) {m_logger = logger;}
 
     bool isFmuParsed() {return m_fmuParsed;}
 
