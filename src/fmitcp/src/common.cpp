@@ -12,9 +12,9 @@ void fmitcp::sendProtoBuffer(lw_client c, fmitcp_proto::fmitcp_message * message
     //fflush(NULL);
 }
 
-std::string fmitcp::dataToString(const char* data, long size) {
-    std::string data2(data, size);
-    return data2;
+string fmitcp::dataToString(const char* data, long size) {
+  std::string data2(data, size);
+  return data2;
 }
 
 fmitcp_proto::jm_status_enu_t fmitcp::fmiJMStatusToProtoJMStatus(jm_status_enu_t status) {

@@ -304,7 +304,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     resetRes->set_status(fmi2StatusToProtofmi2Status(status));
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_reset_slave_res(mid=%d,status=%d)\n",messageId,resetRes->status());
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_free_slave_instance_req)  {
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_free_slave_instance_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_free_slave_instance_req * r = req.mutable_fmi2_import_free_slave_instance_req();
@@ -327,63 +327,69 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
 
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_free_slave_instance_res(mid=%d)\n",messageId);
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_real_input_derivatives_req){
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_real_input_derivatives_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_set_real_input_derivatives_req * r = req.mutable_fmi2_import_set_real_input_derivatives_req();
-    int fmuId = r->fmuid(),
-        messageId = r->message_id(),
-        numValueRefs = r->valuereferences_size(),
-        numValues = r->values_size();
+    int messageId = r->message_id();
+    int fmuId = r->fmuid();
+    fmi2_value_reference_t vr[r->valuereferences_size()];
+    fmi2_integer_t order[r->orders_size()];
+    fmi2_real_t value[r->values_size()];
 
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_set_real_input_derivatives_req(mid=%d,fmuId=%d)\n",messageId,fmuId);
+    for (int i = 0 ; i < r->valuereferences_size() ; i++) {
+      vr[i] = r->valuereferences(i);
+      order[i] = r->orders(i);
+      value[i] = r->values(i);
+    }
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_set_real_input_derivatives_req(mid=%d,fmuId=%d,vrs=%s,orders=%s,values=%s)\n",messageId,fmuId,
+        arrayToString(vr, r->valuereferences_size()).c_str(), arrayToString(order, r->orders_size()).c_str(), arrayToString(value, r->values_size()).c_str());
 
-    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_real_input_derivatives_res);
-    fmitcp_proto::fmi2_import_set_real_input_derivatives_res * resetRes = res.mutable_fmi2_import_set_real_input_derivatives_res();
-    resetRes->set_message_id(messageId);
-    resetRes->set_status(fmitcp_proto::fmi2_status_ok);
-
-    if(!m_sendDummyResponses){
-
-      // Get values
-      for(int i=0; i<numValues; i++){
-        r->values(i);
-        r->valuereferences(i);
-      }
-
-      // Interact with FMU here
-      // TODO
+    fmi2_status_t status = fmi2_status_ok;
+    if (!m_sendDummyResponses) {
+      // interact with FMU
+      status = fmi2_import_set_real_input_derivatives(m_fmi2Instance, vr, r->valuereferences_size(), order, value);
     }
 
-    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_set_real_input_derivatives_res(mid=%d)\n",messageId);
+    // Create response
+    fmitcp_proto::fmi2_import_set_real_input_derivatives_res * setRealInputDerivativesRes = res.mutable_fmi2_import_set_real_input_derivatives_res();
+    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_set_real_input_derivatives_res);
+    setRealInputDerivativesRes->set_message_id(messageId);
+    setRealInputDerivativesRes->set_status(fmi2StatusToProtofmi2Status(status));
+    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_set_real_input_derivatives_res(mid=%d,status=%d)\n",messageId, setRealInputDerivativesRes->status());
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_output_derivatives_req){
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_output_derivatives_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_get_real_output_derivatives_req * r = req.mutable_fmi2_import_get_real_output_derivatives_req();
-    int fmuId = r->fmuid(),
-        messageId = r->message_id(),
-        numValueRefs = r->valuereferences_size();
+    int messageId = r->message_id();
+    int fmuId = r->fmuid();
+    fmi2_value_reference_t vr[r->valuereferences_size()];
+    fmi2_integer_t order[r->orders_size()];
+    fmi2_real_t value[r->valuereferences_size()];
 
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_real_output_derivatives_req(mid=%d,fmuId=%d)\n",messageId,fmuId);
+    for (int i = 0 ; i < r->valuereferences_size() ; i++) {
+      vr[i] = r->valuereferences(i);
+      order[i] = r->orders(i);
+    }
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_real_output_derivatives_req(mid=%d,fmuId=%d,vrs=%s,orders=%s)\n",messageId,fmuId,
+        arrayToString(vr, r->valuereferences_size()).c_str(), arrayToString(order, r->orders_size()).c_str());
 
-    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_output_derivatives_res);
-    fmitcp_proto::fmi2_import_get_real_output_derivatives_res * resetRes = res.mutable_fmi2_import_get_real_output_derivatives_res();
-    resetRes->set_message_id(messageId);
-    resetRes->set_status(fmitcp_proto::fmi2_status_ok);
-
-    if(!m_sendDummyResponses){
-
-      // Set values
-      for(int i=0; i<numValueRefs; i++){
-        resetRes->set_values(i,0.0f); // Just testing
-      }
-
-      // Interact with FMU here
-      // TODO
+    fmi2_status_t status = fmi2_status_ok;
+    if (!m_sendDummyResponses) {
+      // interact with FMU
+      status = fmi2_import_get_real_output_derivatives(m_fmi2Instance, vr, r->valuereferences_size(), order, value);
     }
 
-    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_real_output_derivatives_res(mid=%d)\n",messageId);
+    // Create response
+    fmitcp_proto::fmi2_import_get_real_output_derivatives_res * getRealOutputDerivativesRes = res.mutable_fmi2_import_get_real_output_derivatives_res();
+    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_output_derivatives_res);
+    getRealOutputDerivativesRes->set_message_id(messageId);
+    getRealOutputDerivativesRes->set_status(fmi2StatusToProtofmi2Status(status));
+    for (int i = 0 ; i < r->valuereferences_size() ; i++) {
+      getRealOutputDerivativesRes->add_values(value[i]);
+    }
+    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_real_output_derivatives_res(mid=%d,status=%d,values=%s)\n",getRealOutputDerivativesRes->message_id(),getRealOutputDerivativesRes->status(),arrayToString(value, r->valuereferences_size()).c_str());
 
   } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_cancel_step_req) {
 
@@ -621,7 +627,8 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
       value[i] = r->values(i);
     }
 
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_set_real_req(mid=%d,fmuId=%d,vrs=...,values=...)\n",r->message_id(),r->fmuid());
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_set_real_req(mid=%d,fmuId=%d,vrs=%s,values=%s)\n",r->message_id(),r->fmuid(),
+        arrayToString(vr, r->valuereferences_size()).c_str(), arrayToString(value, r->values_size()).c_str());
 
     fmi2_status_t status = fmi2_status_ok;
     if (!m_sendDummyResponses) {
@@ -649,7 +656,8 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
       vr[i] = r->valuereferences(i);
       value[i] = r->values(i);
     }
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_set_integer_req(mid=%d,fmuId=%d,vrs=...,values=...)\n",r->message_id(),r->fmuid());
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_set_integer_req(mid=%d,fmuId=%d,vrs=%s,values=%s)\n",r->message_id(),r->fmuid(),
+        arrayToString(vr, r->valuereferences_size()).c_str(), arrayToString(value, r->values_size()).c_str());
 
     fmi2_status_t status = fmi2_status_ok;
     if (!m_sendDummyResponses) {
@@ -677,7 +685,8 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
       vr[i] = r->valuereferences(i);
       value[i] = r->values(i);
     }
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_set_boolean_req(mid=%d,fmuId=%d,vrs=...,values=...)\n",r->message_id(),r->fmuid());
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_set_boolean_req(mid=%d,fmuId=%d,vrs=%s,values=%s)\n",r->message_id(),r->fmuid(),
+        arrayToString(vr, r->valuereferences_size()).c_str(), arrayToString(value, r->values_size()).c_str());
 
     fmi2_status_t status = fmi2_status_ok;
     if (!m_sendDummyResponses) {
@@ -705,7 +714,8 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
       vr[i] = r->valuereferences(i);
       value[i] = r->values(i).c_str();
     }
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_set_string_req(mid=%d,fmuId=%d,vrs=...,values=...)\n",r->message_id(),r->fmuid());
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_set_string_req(mid=%d,fmuId=%d,vrs=%s,values=%s)\n",r->message_id(),r->fmuid(),
+        arrayToString(vr, r->valuereferences_size()).c_str(), arrayToString(value, r->values_size()).c_str());
 
     fmi2_status_t status = fmi2_status_ok;
     if (!m_sendDummyResponses) {
@@ -732,7 +742,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     for (int i = 0 ; i < r->valuereferences_size() ; i++) {
       vr[i] = r->valuereferences(i);
     }
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_real_req(mid=%d,fmuId=%d,vrs=...)\n",r->message_id(),r->fmuid());
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_real_req(mid=%d,fmuId=%d,vrs=%s)\n",r->message_id(),r->fmuid(),arrayToString(vr, r->valuereferences_size()).c_str());
 
     // Create response
     fmitcp_proto::fmi2_import_get_real_res * getRealRes = res.mutable_fmi2_import_get_real_res();
@@ -755,7 +765,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
         getRealRes->set_status(fmi2StatusToProtofmi2Status(fmi2_status_ok));
     }
 
-    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_real_res(mid=%d,status=%d,values=...)\n",getRealRes->message_id(),getRealRes->status());
+    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_real_res(mid=%d,status=%d,values=%s)\n",getRealRes->message_id(),getRealRes->status(),arrayToString(value, r->valuereferences_size()).c_str());
 
   } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_integer_req) {
 
@@ -769,7 +779,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     for (int i = 0 ; i < r->valuereferences_size() ; i++) {
       vr[i] = r->valuereferences(i);
     }
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_integer_req(mid=%d,fmuId=%d,vrs=...)\n",r->message_id(),r->fmuid());
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_integer_req(mid=%d,fmuId=%d,vrs=%s)\n",r->message_id(),r->fmuid(),arrayToString(vr, r->valuereferences_size()).c_str());
 
     fmi2_status_t status = fmi2_status_ok;
     if (!m_sendDummyResponses) {
@@ -785,7 +795,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     for (int i = 0 ; i < r->valuereferences_size() ; i++) {
       getIntegerRes->add_values(value[i]);
     }
-    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_integer_res(mid=%d,status=%d,values=...)\n",getIntegerRes->message_id(),getIntegerRes->status());
+    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_integer_res(mid=%d,status=%d,values=%s)\n",getIntegerRes->message_id(),getIntegerRes->status(),arrayToString(value, r->valuereferences_size()).c_str());
 
   } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_boolean_req) {
 
@@ -799,7 +809,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     for (int i = 0 ; i < r->valuereferences_size() ; i++) {
       vr[i] = r->valuereferences(i);
     }
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_boolean_req(mid=%d,fmuId=%d,vrs=...)\n",r->message_id(),r->fmuid());
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_boolean_req(mid=%d,fmuId=%d,vrs=%s)\n",r->message_id(),r->fmuid(),arrayToString(vr, r->valuereferences_size()).c_str());
 
     fmi2_status_t status = fmi2_status_ok;
     if (!m_sendDummyResponses) {
@@ -815,7 +825,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     for (int i = 0 ; i < r->valuereferences_size() ; i++) {
       getBooleanRes->add_values(value[i]);
     }
-    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_boolean_res(mid=%d,status=%d,values=...)\n",getBooleanRes->message_id(),getBooleanRes->status());
+    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_boolean_res(mid=%d,status=%d,values=%s)\n",getBooleanRes->message_id(),getBooleanRes->status(),arrayToString(value, r->valuereferences_size()).c_str());
 
   } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_string_req) {
 
@@ -829,7 +839,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     for (int i = 0 ; i < r->valuereferences_size() ; i++) {
       vr[i] = r->valuereferences(i);
     }
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_string_req(mid=%d,fmuId=%d,vrs=...)\n",r->message_id(),r->fmuid());
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_string_req(mid=%d,fmuId=%d,vrs=%s)\n",r->message_id(),r->fmuid(),arrayToString(vr, r->valuereferences_size()).c_str());
 
     fmi2_status_t status = fmi2_status_ok;
     if (!m_sendDummyResponses) {
@@ -845,7 +855,7 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     for (int i = 0 ; i < r->valuereferences_size() ; i++) {
       getStringRes->add_values(value[i]);
     }
-    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_string_res(mid=%d,status=%d,values=...)\n",getStringRes->message_id(),getStringRes->status());
+    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_string_res(mid=%d,status=%d,values=%s)\n",getStringRes->message_id(),getStringRes->status(),arrayToString(value, r->valuereferences_size()).c_str());
 
   } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_fmu_state_req){
 
@@ -911,23 +921,43 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
   } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_de_serialize_fmu_state_req){
     // TODO
     sendResponse = false;
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_directional_derivative_req){
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_directional_derivative_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_get_directional_derivative_req * r = req.mutable_fmi2_import_get_directional_derivative_req();
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_directional_derivative_req(mid=%d,fmuId=%d,vref=...,zref=...,dv=...)\n",r->message_id(),r->fmuid());
+    int messageId = r->message_id();
+    int fmuId = r->fmuid();
+    fmi2_value_reference_t v_ref[r->v_ref_size()];
+    fmi2_value_reference_t z_ref[r->z_ref_size()];
+    fmi2_real_t dv[r->dv_size()], dz[r->z_ref_size()];
 
-    fmitcp_proto::fmi2_import_get_directional_derivative_res * getStatusRes = res.mutable_fmi2_import_get_directional_derivative_res();
-    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_directional_derivative_res);
-    getStatusRes->set_message_id(r->message_id());
-    getStatusRes->set_status(fmitcp_proto::fmi2_status_ok);
+    for (int i = 0 ; i < r->v_ref_size() ; i++) {
+      v_ref[i] = r->v_ref(i);
+    }
+    for (int i = 0 ; i < r->z_ref_size() ; i++) {
+      z_ref[i] = r->z_ref(i);
+    }
+    for (int i = 0 ; i < r->dv_size() ; i++) {
+      dv[i] = r->dv(i);
+    }
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_directional_derivative_req(mid=%d,fmuId=%d,vref=%s,zref=%s,dv=%s)\n",r->message_id(),r->fmuid(),
+        arrayToString(v_ref, r->v_ref_size()).c_str(), arrayToString(z_ref, r->z_ref_size()).c_str(), arrayToString(dv, r->dv_size()).c_str());
 
-    if(!m_sendDummyResponses){
-      // TODO: interact with FMU
+    fmi2_status_t status = fmi2_status_ok;
+    if (!m_sendDummyResponses) {
+      // interact with FMU
+      status = fmi2_import_get_directional_derivative(m_fmi2Instance, v_ref, r->v_ref_size(), z_ref, r->z_ref_size(), dv, dz);
     }
 
     // Create response
-    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_directional_derivative_res(mid=%d,status=%d,dz=...)\n",getStatusRes->message_id(),getStatusRes->status());
+    fmitcp_proto::fmi2_import_get_directional_derivative_res * getDirectionalDerivativesRes = res.mutable_fmi2_import_get_directional_derivative_res();
+    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_directional_derivative_res);
+    getDirectionalDerivativesRes->set_message_id(r->message_id());
+    getDirectionalDerivativesRes->set_status(fmi2StatusToProtofmi2Status(status));
+    for (int i = 0 ; i < r->z_ref_size() ; i++) {
+      getDirectionalDerivativesRes->add_dz(dz[i]);
+    }
+    m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_directional_derivative_res(mid=%d,status=%d,dz=%s)\n",getDirectionalDerivativesRes->message_id(),getDirectionalDerivativesRes->status(),arrayToString(dz, r->z_ref_size()).c_str());
 
   } else if(type == fmitcp_proto::fmitcp_message_Type_type_get_xml_req){
 
@@ -953,8 +983,8 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     m_logger.log(Logger::LOG_ERROR,"Message type not recognized: %d.\n",type);
   }
 
-  if(sendResponse){
-    sendMessage(c,&res);
+  if (sendResponse) {
+    sendMessage(c, &res);
   }
 }
 
