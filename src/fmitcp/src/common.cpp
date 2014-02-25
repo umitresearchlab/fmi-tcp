@@ -11,7 +11,7 @@ void fmitcp::sendProtoBuffer(lw_client c, fmitcp_proto::fmitcp_message * message
     //lw_stream_write(c, newline.c_str(),newline.size());
     //fflush(NULL);
     //
-    printf("sendProtoBuffer(%s)\n", s.c_str());
+    printf("sendProtoBuffer(%s)\n", message->DebugString().c_str());
 }
 
 string fmitcp::dataToString(const char* data, long size) {
