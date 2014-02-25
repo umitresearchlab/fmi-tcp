@@ -15,7 +15,15 @@ lw_pump EventPump::getPump(){
     return m_pump;
 }
 
+void EventPump::tick(){
+    lw_eventpump_tick(m_pump);
+}
+
 void EventPump::startEventLoop(){
+    /*while(!m_exiting){
+        lw_eventpump_tick(m_pump);
+    }
+    */
     if(!m_exiting){
         lw_eventpump_start_eventloop(m_pump);
     }

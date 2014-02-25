@@ -17,6 +17,7 @@ namespace fmitcp {
         lw_pump getPump();
         void startEventLoop();
         void exitEventLoop();
+        void tick();
     };
 
 };

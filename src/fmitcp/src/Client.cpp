@@ -25,14 +25,18 @@ void clientOnError(lw_client c, lw_error error) {
 
 void Client::clientConnected(lw_client c){
     m_logger.log(Logger::LOG_NETWORK,"+ Connected to FMU server.\n");
-    onConnect();
 }
 
 void Client::clientData(lw_client c, const char* data, long size){
     string data2 = fmitcp::dataToString(data,size);
 
-    if(data2 ==  "\n")
+    if(data2 ==  "\n"){
+        m_logger.log(Logger::LOG_NETWORK,"Recieved empty message from server.\n");
         return;
+    } else if(data2 == "connected\n"){
+        m_logger.log(Logger::LOG_NETWORK,"Recieved connected message from server.\n");
+        return onConnect();
+    }
 
     // Parse message
     fmitcp_message res;
@@ -254,6 +258,8 @@ void Client::clientData(lw_client c, const char* data, long size){
 
 void Client::clientDisconnected(lw_client c){
     m_logger.log(Logger::LOG_NETWORK,"- Disconnected from server.\n");
+    lw_stream_close(c,true);
+    lw_stream_delete(c);
     onDisconnect();
 }
 
@@ -267,10 +273,15 @@ Client::Client(EventPump * pump){
     GOOGLE_PROTOBUF_VERIFY_VERSION;
     m_pump = pump;
     m_client = lw_client_new(m_pump->getPump());
-    lw_fdstream_nagle(m_client,lw_false);
+    //lw_fdstream_nagle(m_client,lw_false);
 }
 
 Client::~Client(){
+    m_logger.log(Logger::LOG_DEBUG,"Closing stream.\n");
+
+    bool status = lw_stream_close(m_client,false);
+    m_logger.log(Logger::LOG_DEBUG,"Closed stream with status %d.\n",status);
+
     lw_stream_delete(m_client);
     google::protobuf::ShutdownProtobufLibrary();
 }
@@ -324,6 +335,8 @@ void Client::fmi2_import_instantiate(int message_id) {
       message_id);
 
   sendMessage(&m);
+  /*string msg = "INSTANTIATEEEEE\n"; // TEST !? :)
+  lw_stream_write(m_client,msg.c_str(), msg.size());*/
 }
 
 void Client::fmi2_import_initialize_slave(int message_id, int fmuId, bool toleranceDefined, double tolerance, double startTime,

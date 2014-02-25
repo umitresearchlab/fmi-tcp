@@ -7,9 +7,11 @@ void fmitcp::sendProtoBuffer(lw_client c, fmitcp_proto::fmitcp_message * message
     bool status = message->SerializeToString(&s);
     //printf("serialize status=%d\n", status);
     lw_stream_write(c, s.c_str(), s.size());
-    std::string newline = "\n";
-    lw_stream_write(c, newline.c_str(),newline.size());
+    //std::string newline = "\n";
+    //lw_stream_write(c, newline.c_str(),newline.size());
     //fflush(NULL);
+    //
+    printf("sendProtoBuffer(%s)\n", s.c_str());
 }
 
 string fmitcp::dataToString(const char* data, long size) {

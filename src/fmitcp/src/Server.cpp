@@ -8,7 +8,7 @@ using namespace fmitcp;
 void serverOnConnect(lw_server s, lw_client c) {
   Server * server = (Server*)lw_server_tag(s);
   server->clientConnected(c);
-  lw_fdstream_nagle(c,lw_false);
+  //lw_fdstream_nagle(c,lw_false);
 }
 void serverOnData(lw_server s, lw_client client, const char* data, size_t size) {
   Server * server = (Server*)lw_server_tag(s);
@@ -146,17 +146,27 @@ void Server::init(EventPump * pump) {
   }
 }
 
-void Server::onClientConnect() {}
-void Server::onClientDisconnect() {}
-void Server::onError(string message) {}
-
 void Server::clientConnected(lw_client c) {
   m_logger.log(Logger::LOG_NETWORK,"+ Client connected.\n");
+  string msg = "connected\n";
+  lw_stream_write(c,msg.c_str(),msg.size());
+  m_logger.log(Logger::LOG_DEBUG,"Sent connected message to new client.\n");
   onClientConnect();
 }
 
 void Server::clientDisconnected(lw_client c) {
   m_logger.log(Logger::LOG_NETWORK,"- Client disconnected.\n");
+  /*
+  lw_stream_close(c,true);
+  lw_stream_delete(c);
+  fflush(NULL);
+  */
+
+ /*
+  lw_server_delete(m_server);
+  lw_pump_remove_user(m_pump->getPump());
+  init(m_pump);
+  */
   onClientDisconnect();
 }
 

@@ -47,11 +47,11 @@ namespace fmitcp {
 
     void init(EventPump *pump);
     /// To be implemented in subclass
-    virtual void onClientConnect();
+    virtual void onClientConnect(){};
     /// To be implemented in subclass
-    virtual void onClientDisconnect();
+    virtual void onClientDisconnect(){};
     /// To be implemented in subclass
-    virtual void onError(string message);
+    virtual void onError(string message){};
 
     void clientConnected(lw_client c);
     void clientDisconnected(lw_client c);
