@@ -282,7 +282,7 @@ Client::~Client(){
     bool status = lw_stream_close(m_client,false);
     m_logger.log(Logger::LOG_DEBUG,"Closed stream with status %d.\n",status);
 
-    lw_stream_delete(m_client);
+    //lw_stream_delete(m_client);
     google::protobuf::ShutdownProtobufLibrary();
 }
 
