@@ -449,103 +449,109 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     doStepRes->set_status(fmi2StatusToProtofmi2Status(status));
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_do_step_res(status=%d)\n",doStepRes->status());
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_status_req){
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_status_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_get_status_req * r = req.mutable_fmi2_import_get_status_req();
     int fmuId = r->fmuid();
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_status_req(fmuId=%d)\n",fmuId);
+    fmitcp_proto::fmi2_status_kind_t statusKind = r->status();
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_status_req(fmuId=%d,status=%d)\n",fmuId, statusKind);
 
-    // Defaults
-    fmitcp_proto::fmi2_import_get_status_res * getStatusRes = res.mutable_fmi2_import_get_status_res();
-    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_status_res);
-    getStatusRes->set_message_id(r->message_id());
-    getStatusRes->set_value(fmitcp_proto::fmi2_status_ok);
-
-    if(!m_sendDummyResponses){
-      // TODO: Step the FMU
+    fmi2_status_t status = fmi2_status_ok;
+    if (!m_sendDummyResponses) {
+      // get the FMU status
+      fmi2_import_get_status(m_fmi2Instance, protoStatusKindToFmiStatusKind(statusKind), &status);
     }
 
     // Create response
+    fmitcp_proto::fmi2_import_get_status_res * getStatusRes = res.mutable_fmi2_import_get_status_res();
+    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_status_res);
+    getStatusRes->set_message_id(r->message_id());
+    getStatusRes->set_value(fmi2StatusToProtofmi2Status(status));
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_status_res(value=%d)\n",getStatusRes->value());
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_status_req){
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_status_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_get_real_status_req * r = req.mutable_fmi2_import_get_real_status_req();
     int fmuId = r->fmuid();
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_real_status_req(fmuId=%d)\n",fmuId);
+    fmitcp_proto::fmi2_status_kind_t statusKind = r->kind();
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_real_status_req(fmuId=%d,status=%d)\n",fmuId, statusKind);
 
-    // Defaults
-    fmitcp_proto::fmi2_import_get_real_status_res * getStatusRes = res.mutable_fmi2_import_get_real_status_res();
-    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_status_res);
-    getStatusRes->set_message_id(r->message_id());
-    getStatusRes->set_value(0.0);
-
-    if(!m_sendDummyResponses){
-      // TODO: Step the FMU
+    fmi2_real_t value = 0.0;
+    if (!m_sendDummyResponses) {
+      // get the FMU real status
+      fmi2_import_get_real_status(m_fmi2Instance, protoStatusKindToFmiStatusKind(statusKind), &value);
     }
 
     // Create response
+    fmitcp_proto::fmi2_import_get_real_status_res * getStatusRes = res.mutable_fmi2_import_get_real_status_res();
+    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_real_status_res);
+    getStatusRes->set_message_id(r->message_id());
+    getStatusRes->set_value(value);
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_real_status_res(value=%g)\n",getStatusRes->value());
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_integer_status_req){
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_integer_status_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_get_integer_status_req * r = req.mutable_fmi2_import_get_integer_status_req();
     int fmuId = r->fmuid();
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_integer_status_req(fmuId=%d)\n",fmuId);
+    fmitcp_proto::fmi2_status_kind_t statusKind = r->kind();
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_integer_status_req(fmuId=%d,status=%d)\n",fmuId, statusKind);
 
+    fmi2_integer_t value = 0;
+    if (!m_sendDummyResponses) {
+      // get the FMU integer status
+      fmi2_import_get_integer_status(m_fmi2Instance, protoStatusKindToFmiStatusKind(statusKind), &value);
+    }
 
-    // Defaults
+    // Create response
     fmitcp_proto::fmi2_import_get_integer_status_res * getStatusRes = res.mutable_fmi2_import_get_integer_status_res();
     res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_integer_status_res);
     getStatusRes->set_message_id(r->message_id());
-    getStatusRes->set_value(0);
-
-    if(!m_sendDummyResponses){
-      // TODO: Step the FMU
-    }
-
-    // Create response
+    getStatusRes->set_value(value);
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_integer_status_res(value=%d)\n",getStatusRes->value());
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_boolean_status_req){
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_boolean_status_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_get_boolean_status_req * r = req.mutable_fmi2_import_get_boolean_status_req();
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_boolean_status_req(mid=%d,fmuId=%d)\n",r->message_id(),r->fmuid());
+    int fmuId = r->fmuid();
+    fmitcp_proto::fmi2_status_kind_t statusKind = r->kind();
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_boolean_status_req(mid=%d,fmuId=%d,status=%d)\n",r->message_id(), fmuId, statusKind);
 
-    // Defaults
+    fmi2_boolean_t value = 0;
+    if (!m_sendDummyResponses) {
+      // get the FMU boolean status
+      fmi2_import_get_boolean_status(m_fmi2Instance, protoStatusKindToFmiStatusKind(statusKind), &value);
+    }
+
+    // Create response
     fmitcp_proto::fmi2_import_get_boolean_status_res * getStatusRes = res.mutable_fmi2_import_get_boolean_status_res();
     res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_boolean_status_res);
     getStatusRes->set_message_id(r->message_id());
-    getStatusRes->set_value(true);
-
-    if(!m_sendDummyResponses){
-      // TODO: Step the FMU
-    }
-
-    // Create response
+    getStatusRes->set_value(value);
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_boolean_status_res(mid=%d,value=%d)\n",getStatusRes->message_id(),getStatusRes->value());
 
-  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_string_status_req){
+  } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_string_status_req) {
 
     // Unpack message
     fmitcp_proto::fmi2_import_get_string_status_req * r = req.mutable_fmi2_import_get_string_status_req();
-    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_string_status_req(mid=%d,fmuId=%d)\n",r->message_id(),r->fmuid());
+    int fmuId = r->fmuid();
+    fmitcp_proto::fmi2_status_kind_t statusKind = r->kind();
+    m_logger.log(Logger::LOG_NETWORK,"< fmi2_import_get_string_status_req(mid=%d,fmuId=%d,status=%d)\n",r->message_id(), fmuId, statusKind);
 
-    // Defaults
-    fmitcp_proto::fmi2_import_get_string_status_res * getStatusRes = res.mutable_fmi2_import_get_string_status_res();
-    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_string_status_res);
-    getStatusRes->set_message_id(r->message_id());
-    getStatusRes->set_value("hey there!");
-
-    if(!m_sendDummyResponses){
+    fmi2_string_t value = "";
+    if (!m_sendDummyResponses) {
       // TODO: Step the FMU
+      fmi2_import_get_string_status(m_fmi2Instance, protoStatusKindToFmiStatusKind(statusKind), &value);
     }
 
     // Create response
+    fmitcp_proto::fmi2_import_get_string_status_res * getStatusRes = res.mutable_fmi2_import_get_string_status_res();
+    res.set_type(fmitcp_proto::fmitcp_message_Type_type_fmi2_import_get_string_status_res);
+    getStatusRes->set_message_id(r->message_id());
+    getStatusRes->set_value(value);
     m_logger.log(Logger::LOG_NETWORK,"> fmi2_import_get_string_status_res(mid=%d,value=%s)\n",getStatusRes->message_id(),getStatusRes->value().c_str());
 
   } else if(type == fmitcp_proto::fmitcp_message_Type_type_fmi2_import_instantiate_model_req){

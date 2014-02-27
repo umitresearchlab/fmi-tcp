@@ -73,3 +73,18 @@ fmitcp_proto::jm_log_level_enu_t fmitcp::fmiJMLogLevelToProtoJMLogLevel(jm_log_l
     return fmitcp_proto::jm_log_level_nothing;
   }
 }
+
+fmi2_status_kind_t fmitcp::protoStatusKindToFmiStatusKind(fmitcp_proto::fmi2_status_kind_t statusKind) {
+  switch (statusKind) {
+  case fmitcp_proto::fmi2_do_step_status:
+    return fmi2_do_step_status;
+  case fmitcp_proto::fmi2_pending_status:
+    return fmi2_pending_status;
+  case fmitcp_proto::fmi2_last_successful_time:
+    return fmi2_last_successful_time;
+  case fmitcp_proto::fmi2_terminated:
+    return fmi2_terminated;
+  default: // should never be reached
+    return fmi2_do_step_status;
+  }
+}
