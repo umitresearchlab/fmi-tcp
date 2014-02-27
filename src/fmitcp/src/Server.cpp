@@ -127,8 +127,8 @@ void Server::init(EventPump * pump) {
     }
     m_instanceName = fmi2_import_get_model_name(m_fmi2Instance);
     m_fmuLocation = fmi_import_create_URL_from_abs_path(&m_jmCallbacks, m_fmuPath.c_str());
+    m_resourcePath = fmi_import_create_URL_from_abs_path(&m_jmCallbacks, m_workingDir.c_str());
 
-    strcpy(m_resourcePath, m_fmuLocation);
     strcat(m_resourcePath,"/resources");
 
     /* 0 - original order as found in the XML file;

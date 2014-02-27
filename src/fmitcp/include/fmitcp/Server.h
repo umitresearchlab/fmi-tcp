@@ -40,7 +40,7 @@ namespace fmitcp {
 
     const char* m_instanceName;
     char* m_fmuLocation;
-    char m_resourcePath[PATH_MAX];
+    char* m_resourcePath;
 
   public:
     Server(string fmuPath, bool debugLogging, jm_log_level_enu_t logLevel, EventPump *pump);
