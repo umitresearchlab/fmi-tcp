@@ -127,6 +127,10 @@ void Server::init(EventPump * pump) {
     }
     m_instanceName = fmi2_import_get_model_name(m_fmi2Instance);
     m_fmuLocation = fmi_import_create_URL_from_abs_path(&m_jmCallbacks, m_fmuPath.c_str());
+
+    strcpy(m_resourcePath, m_fmuLocation);
+    strcat(m_resourcePath,"/resources");
+
     /* 0 - original order as found in the XML file;
      * 1 - sorted alphabetically by variable name;
      * 2 sorted by types/value references.
@@ -196,7 +200,8 @@ void Server::clientData(lw_client c, const char *data, size_t size) {
     if (!m_sendDummyResponses) {
       // instantiate FMU
       fmi2_boolean_t visible = fmi2_false;
-      status = fmi2_import_instantiate(m_fmi2Instance, m_instanceName, fmi2_cosimulation, m_fmuLocation, visible);
+
+      status = fmi2_import_instantiate(m_fmi2Instance, m_instanceName, fmi2_cosimulation, m_resourcePath, visible);
       // set the debug logging for FMU
       if (status != jm_status_error) {
         // fetch the logging categories from the FMU
