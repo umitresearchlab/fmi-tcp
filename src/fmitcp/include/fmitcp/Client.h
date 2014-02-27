@@ -13,10 +13,18 @@ using namespace std;
 
 namespace fmitcp {
 
+    /**
+     * @brief FMI Client that can do requests to a server, similar to the FMI API.
+     * The idea is that this class should be extended by a subclass that implements its methods. In this way the subclass can fetch events such as "onConnect" and "onError".
+     */
     class Client {
 
     protected:
+
+        /// Event pump that will push the communication forward
         EventPump * m_pump;
+
+        /// For logging
         Logger m_logger;
 
     private:
@@ -26,9 +34,12 @@ namespace fmitcp {
         Client(EventPump * pump);
         ~Client();
 
+        /// Connect the client to a server
         void connect(string host, long port);
         void disconnect();
         Logger * getLogger();
+
+        /// Send a binary message
         void sendMessage(fmitcp_proto::fmitcp_message * message);
 
         bool isConnected();
@@ -42,12 +53,13 @@ namespace fmitcp {
         /// To be implemented in subclass
         virtual void onError(string message){}
 
+        /// Called when a client connects
         void clientConnected(lw_client c);
         void clientData(lw_client c, const char* data, long size);
         void clientDisconnected(lw_client c);
         void clientError(lw_client c, lw_error error);
 
-        // Response functions - to be implemented by the user
+        // Response functions - to be implemented by subclass
         virtual void onGetXmlRes(int mid, fmitcp_proto::jm_log_level_enu_t logLevel, string xml){}
         virtual void on_fmi2_import_instantiate_res                     (int mid, fmitcp_proto::jm_status_enu_t status){}
         virtual void on_fmi2_import_initialize_slave_res                (int mid, fmitcp_proto::fmi2_status_t status){}
@@ -96,6 +108,9 @@ namespace fmitcp {
         virtual void on_fmi2_import_get_directional_derivative_res(int mid, const vector<double>& dz, fmitcp_proto::fmi2_status_t status){}
 
         void getXml(int message_id, int fmuId);
+
+        // FMI functions follow. These should correspond to FMILibrary functions.
+
         // =========== FMI 2.0 (CS) Co-Simulation functions ===========
         void fmi2_import_instantiate(int message_id);
         void fmi2_import_initialize_slave(int message_id, int fmuId, bool toleranceDefined, double tolerance, double startTime,

@@ -14,6 +14,7 @@ using namespace std;
 
 namespace fmitcp {
 
+  /// Serves an FMU to a port via FMI/TCP.
   class Server {
 
   private:
@@ -25,15 +26,18 @@ namespace fmitcp {
   protected:
     EventPump * m_pump;
     string m_fmuPath;
-    // FMU logging level
+
+    /// FMU logging level
     jm_log_level_enu_t m_logLevel;
     bool m_debugLogging;
     jm_callbacks m_jmCallbacks;
-    // Directory for the unpacked FMU
+
+    /// Directory for the unpacked FMU
     string m_workingDir;
     fmi_import_context_t* m_context;
     fmi_version_enu_t m_version;
-    // FMI 2.0
+
+    /// FMI 2.0 instance
     fmi2_import_t* m_fmi2Instance;
     fmi2_callback_functions_t m_fmi2CallbackFunctions;
     fmi2_import_variable_list_t* m_fmi2Variables;
@@ -43,15 +47,20 @@ namespace fmitcp {
     char* m_resourcePath;
 
   public:
+
+    /// Create a server for an FMU using an eventpump
     Server(string fmuPath, bool debugLogging, jm_log_level_enu_t logLevel, EventPump *pump);
     Server(string fmuPath, bool debugLogging, jm_log_level_enu_t logLevel, EventPump *pump, const Logger &logger);
     virtual ~Server();
 
     void init(EventPump *pump);
+
     /// To be implemented in subclass
     virtual void onClientConnect(){};
+
     /// To be implemented in subclass
     virtual void onClientDisconnect(){};
+
     /// To be implemented in subclass
     virtual void onError(string message){};
 
@@ -60,11 +69,13 @@ namespace fmitcp {
     void clientData(lw_client c, const char *data, size_t size);
     void error(lw_server s, lw_error err);
 
+    /// Start hosting on a port.
     void host(string host, long port);
 
     /// Set to true to start ignoring the local FMU and just send back dummy responses. Good for debugging the protocol.
     void sendDummyResponses(bool);
 
+    /// Send a binary message to the client
     void sendMessage(lw_client c, fmitcp_proto::fmitcp_message* message);
 
     Logger* getLogger() {return &m_logger;}
@@ -72,7 +83,7 @@ namespace fmitcp {
 
     bool isFmuParsed() {return m_fmuParsed;}
 
-    /* Check if the fmi2 status is ok or warning */
+    /// Check if the fmi2 status is ok or warning
     bool fmi2StatusOkOrWarning(fmi2_status_t fmistatus) {
       return (fmistatus == fmi2_status_ok) || (fmistatus == fmi2_status_warning);
     }

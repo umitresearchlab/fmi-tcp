@@ -39,7 +39,10 @@ namespace fmitcp {
     return res;
   }
 
+  /// Send a binary protobuf to a client
   void sendProtoBuffer(lw_client c, fmitcp_proto::fmitcp_message * message);
+
+  /// Convert incoming data to a C++ string
   string dataToString(const char* data, long size);
 
   fmitcp_proto::jm_status_enu_t fmiJMStatusToProtoJMStatus(jm_status_enu_t status);
